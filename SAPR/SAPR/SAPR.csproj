@@ -131,6 +131,8 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="App_Code\Formularios\Proyecto\FormularioProyecto.aspx" />
+    <Content Include="App_Code\Formularios\Usuario\FormularioUsuario.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -204,6 +206,28 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="App_Code\DataSets\DataSetUsuarios.xsc">
+      <DependentUpon>DataSetUsuarios.xsd</DependentUpon>
+    </Content>
+    <Content Include="App_Code\DataSets\DataSetProyectos.xsc">
+      <DependentUpon>DataSetProyectos.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Code\DataSets\DataSetProyectos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetProyectos.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Code\DataSets\DataSetProyectos.xss">
+      <DependentUpon>DataSetProyectos.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Code\DataSets\DataSetUsuarios.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetUsuarios.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Code\DataSets\DataSetUsuarios.xss">
+      <DependentUpon>DataSetUsuarios.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -246,6 +270,36 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Controladoras\ControladoraProyecto.cs" />
+    <Content Include="App_Code\Controladoras\ControladoraUsuario.cs" />
+    <Content Include="App_Code\ControladorasBD\ControladoraBDUsuario.cs" />
+    <Content Include="App_Code\ControladorasBD\ControladoraBDProyecto.cs" />
+    <Content Include="App_Code\Entidades\EntidadProyecto.cs" />
+    <Content Include="App_Code\Entidades\EntidadUsuario.cs" />
+    <Content Include="App_Code\DataSets\DataSetUsuarios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetUsuarios.xsd</DependentUpon>
+    </Content>
+    <Content Include="App_Code\DataSets\DataSetProyectos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetProyectos.xsd</DependentUpon>
+    </Content>
+    <Compile Include="App_Code\Formularios\Proyecto\FormularioProyecto.aspx.cs">
+      <DependentUpon>FormularioProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\Formularios\Proyecto\FormularioProyecto.aspx.designer.cs">
+      <DependentUpon>FormularioProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\Formularios\Usuario\FormularioUsuario.aspx.cs">
+      <DependentUpon>FormularioUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\Formularios\Usuario\FormularioUsuario.aspx.designer.cs">
+      <DependentUpon>FormularioUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
