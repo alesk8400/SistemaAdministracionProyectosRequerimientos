@@ -57,6 +57,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Formularios\Proyecto\FormularioProyecto.aspx" />
+    <Content Include="App_Code\Formularios\Usuario\FormularioUsuario.aspx" />
+    <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -74,12 +77,30 @@
     <Compile Include="App_Code\Controladoras\ControladoraUsuario.cs" />
     <Compile Include="App_Code\Entidades\EntidadProyecto.cs" />
     <Compile Include="App_Code\Entidades\EntidadUsuario.cs" />
+    <Compile Include="App_Code\Formularios\Proyecto\FormularioProyecto.aspx.cs">
+      <DependentUpon>FormularioProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\Formularios\Proyecto\FormularioProyecto.aspx.designer.cs">
+      <DependentUpon>FormularioProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\Formularios\Usuario\FormularioUsuario.aspx.cs">
+      <DependentUpon>FormularioUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\Formularios\Usuario\FormularioUsuario.aspx.designer.cs">
+      <DependentUpon>FormularioUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Code\Formularios\Proyecto\" />
-    <Folder Include="App_Code\Formularios\Usuario\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
