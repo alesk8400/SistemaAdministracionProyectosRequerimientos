@@ -288,8 +288,8 @@
   <ItemGroup>
     <Content Include="App_Code\Controladoras\ControladoraProyecto.cs" />
     <Content Include="App_Code\Controladoras\ControladoraUsuario.cs" />
-    <Content Include="App_Code\ControladorasBD\ControladoraBDUsuario.cs" />
-    <Content Include="App_Code\ControladorasBD\ControladoraBDProyecto.cs" />
+    <Content Include="App_Code\Controladoras\ControladoraBDUsuario.cs" />
+    <Content Include="App_Code\Controladoras\ControladoraBDProyecto.cs" />
     <Content Include="App_Code\Entidades\EntidadProyecto.cs" />
     <Content Include="App_Code\Entidades\EntidadUsuario.cs" />
     <Content Include="App_Code\DataSets\DataSetUsuarios.Designer.cs">
