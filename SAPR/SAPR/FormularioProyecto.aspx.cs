@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SAPR.App_Code.Formularios.Usuario
+namespace SAPR
 {
-    public partial class FormularioUsuario : System.Web.UI.Page
+    public partial class FormularioProyecto : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -132,8 +132,6 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
-    <Content Include="App_Code\Formularios\Proyecto\FormularioProyecto.aspx" />
-    <Content Include="App_Code\Formularios\Usuario\FormularioUsuario.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -197,6 +195,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="FormularioProyecto.aspx" />
+    <Content Include="FormularioUsuario.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -302,20 +302,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetProyectos.xsd</DependentUpon>
     </Content>
-    <Compile Include="App_Code\Formularios\Proyecto\FormularioProyecto.aspx.cs">
-      <DependentUpon>FormularioProyecto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Code\Formularios\Proyecto\FormularioProyecto.aspx.designer.cs">
-      <DependentUpon>FormularioProyecto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Code\Formularios\Usuario\FormularioUsuario.aspx.cs">
-      <DependentUpon>FormularioUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Code\Formularios\Usuario\FormularioUsuario.aspx.designer.cs">
-      <DependentUpon>FormularioUsuario.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -374,6 +360,18 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioProyecto.aspx.cs">
+      <DependentUpon>FormularioProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioProyecto.aspx.designer.cs">
+      <DependentUpon>FormularioProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioUsuario.aspx.cs">
+      <DependentUpon>FormularioUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioUsuario.aspx.designer.cs">
+      <DependentUpon>FormularioUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
