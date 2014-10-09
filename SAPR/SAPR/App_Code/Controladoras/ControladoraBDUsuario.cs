@@ -57,9 +57,11 @@ namespace SAPR.App_Code.Controladoras {
 
         public String[] eliminarUsuario(String idUsuario){ //metodo getidusuario
             String[] resultado = new String[1];
+            int idUser = 0;
+            idUser = Int32.Parse(idUsuario);
             try
             {
-                this.ds.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefonos, usuarioViejo.Cedula);
+                this.ds.Delete(idUser);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
