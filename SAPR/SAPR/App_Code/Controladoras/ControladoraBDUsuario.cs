@@ -55,9 +55,9 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
-        public String[] eliminarUsuario(String idUsuario)
+        /*public String[] eliminarUsuario(String idUsuario)
         { //metodo getidusuario
             // return controladoraBDUsuario.eliminarUsuario(idUsuario);
-        }
+        }*/
     }     
 }
