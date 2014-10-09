@@ -55,9 +55,26 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
-        public String[] eliminarUsuario(String idUsuario)
-        { //metodo getidusuario
-            // return controladoraBDUsuario.eliminarUsuario(idUsuario);
+        public String[] eliminarUsuario(String idUsuario){ //metodo getidusuario
+            String[] resultado = new String[1];
+            try
+            {
+                this.ds.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefonos, usuarioViejo.Cedula);
+                resultado[0] = "Exito";
+            }
+            catch (SqlException e)
+            {
+                int n = e.Number;
+                if (n == 2627)
+                {
+                    resultado[0] = "Error";
+                }
+                else
+                {
+                    resultado[0] = "Error";
+                }
+            }
+            return resultado;
         }
     }     
 }
