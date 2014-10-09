@@ -50,10 +50,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Proyectos</a>
+                    <a href="FormularioProyecto">Proyectos</a>
                 </li>
                 <li>
-                    <a href="#">Usuarios</a>
+                    <a href="FormularioUsuario">Usuarios</a>
                 </li>
                 <li>
                     <a href="#">Consultas</a>

@@ -12,6 +12,7 @@
     </div>
     <div class="row row-botones">
         <div class="col-lg-5">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button runat="server"  id="botonAgregar" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
             <button runat="server" id="botonModificar" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
             <a id="botonEliminar" href="#modalEliminar" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>

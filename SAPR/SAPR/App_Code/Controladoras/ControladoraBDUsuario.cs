@@ -55,7 +55,7 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
-        public String[] eliminarUsuario(String idUsuario){ //metodo getidusuario sdsd
+        public String[] eliminarUsuario(String idUsuario){ //metodo getidusuario
             String[] resultado = new String[1];
             int idUser = 0;
             idUser = Int32.Parse(idUsuario);
