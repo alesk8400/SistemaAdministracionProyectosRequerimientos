@@ -4,19 +4,55 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
-using SAPR.App_Code.DataSets;
+using SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters;
 using SAPR.App_Code.Entidades;
 
 namespace SAPR.App_Code.Controladoras {
     public class ControladoraBDUsuario {
-        DataSetUsuarios ds;   //Este es el adapter
+        UsuariosTableAdapter ds;   //Este es el adapter
         //falta constructor
-        public String[] insertarUsuario(EntidadUsuario usuarioNuevo) { 
-             //return controladoraBDUsuario.insertarUsuario(usuario);
+
+        public ControladoraBDUsuario() {
+            ds = new UsuariosTableAdapter();
+        }
+        public String[] insertarUsuario(EntidadUsuario usuarioNuevo) {
+            String[] resultado = new String[1];
+            try {
+                this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefonos);
+                resultado[0] = "Exito";
+            }
+            catch(SqlException e){
+                int n = e.Number;
+                if(n==2627){
+                    resultado[0] = "Error";
+                }
+                else{
+                    resultado[0] = "Error";
+                }
+            }
+             return resultado;
         }
 
         public String[] modificarUsuario(EntidadUsuario usuarioNuevo, EntidadUsuario usuarioViejo){
-            // return controladoraBDUsuario.modificarUsuario(usuarioNuevo,usuarioViejo);
+            String[] resultado = new String[1];
+            try
+            {
+                this.ds.UpdateUser(usuarioNuevo.Cedula,usuarioNuevo.Nombre,usuarioNuevo.Correo,usuarioNuevo.Telefonos,usuarioViejo.Cedula);
+                resultado[0] = "Exito";
+            }
+            catch (SqlException e)
+            {
+                int n = e.Number;
+                if (n == 2627)
+                {
+                    resultado[0] = "Error";
+                }
+                else
+                {
+                    resultado[0] = "Error";
+                }
+            }
+            return resultado;
         }
 
         public String[] eliminarUsuario(String idUsuario)
