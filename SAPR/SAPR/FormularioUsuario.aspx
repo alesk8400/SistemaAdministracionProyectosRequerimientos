@@ -37,7 +37,8 @@
                                 <input runat="server" id="txtCedula" class="form-control" type="text" data-error="Espacio requerido. Sólo letras." required="required" title= "cedula" pattern= "[0-9 ]+$" data-minlength="5" maxlength="299" />
                                 <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
                             </div>
-                            <div class="help-block with-errors"></div>
+                            <div class="help-block with-errors">
+                            </div>
                         </div>
                     </div>
 
@@ -74,6 +75,36 @@
                         </div>
                     </div>
                          
+                    <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="textRoles" class="col-sm-3 control-label">Roles: </label>
+                        <div class="dropdown-toggle">
+                            <div class="help-block with-error"><asp:SqlDataSource ID="rolesBD" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT [Nombre] FROM [Roles]"></asp:SqlDataSource>
+
+                                <asp:DropDownList ID="cmbRol" runat="server" DataSourceID="rolesBD" DataTextField="Nombre" DataValueField="Nombre" Class ="dropdown">
+                                </asp:DropDownList>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="textRoles" class="col-sm-3 control-label">Proyecto: </label>
+                        <div class="dropdown-toggle">
+                            <div class="help-block with-error">
+
+                                <asp:DropDownList ID="cmbProyecto" runat="server" DataSourceID="nombreProyectos" DataTextField="Nombre" DataValueField="Nombre" Class ="dropdown">
+                                </asp:DropDownList>
+
+                                <asp:SqlDataSource ID="nombreProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT [Nombre], [IdProyecto] FROM [Proyecto]"></asp:SqlDataSource>
+
+                            </div>
+                        </div>
+                    </div>
+
+
 
                      
                                 </div>

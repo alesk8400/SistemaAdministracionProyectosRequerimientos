@@ -24,6 +24,7 @@
                     <asp:Label ID="labelTipoAlerta" runat="server" Text="Alerta! "></asp:Label></strong><asp:Label ID="labelAlerta" runat="server" Text="Mensaje de alerta"></asp:Label>
             </div>
         </div>
+        <br/>
     </div>
 
         <!--Datos del Proveedor-->
