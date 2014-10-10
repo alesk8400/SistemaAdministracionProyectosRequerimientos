@@ -78,5 +78,15 @@ namespace SAPR.App_Code.Controladoras {
             }
             return resultado;
         }
+
+        public DataTable consultarUsuario(String cedula){
+            DataTable resultado = new DataTable();
+
+            try{
+                resultado = ds.consultarFila(cedula);
+            }
+            catch (Exception e) { }
+            return resultado;
+        }
     }     
 }

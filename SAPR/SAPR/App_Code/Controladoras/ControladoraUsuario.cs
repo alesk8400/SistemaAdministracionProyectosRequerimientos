@@ -38,11 +38,23 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDUsuario.eliminarUsuario(idUsuario);
         }
 
-        /*
-        public String[] consultarUsuario(String idUsuario){ //metodo getidusuario
-            // return controladoraBDUsuario.eliminarUsuario(idUsuario);
-        }
+        
+        public EntidadUsuario consultarProveedor(String cedula)
+        {
+            EntidadUsuario usuario = null; //para encpasular los datos consultados.
+            Object[] datosConsultados = new Object[4]; //para guardar los datos obtenidos de la consulta temporalmente
+            DataTable filaUsuario = controladoraBDUsuario.consultarUsuario(cedula);
 
+            if (filaUsuario.Rows.Count == 1)
+            { // si hay un valor
+                for (int i = 0; i < 4; i++){
+                    datosConsultados[i] = filaUsuario.Rows[0][i].ToString();
+                }
+                usuario = new EntidadUsuario(datosConsultados);
+            }
+            return usuario;
+        }
+        /*
         public String[] listadoRoles(){ 
             // return controladoraBDUsuario.eliminarUsuario(idUsuario);
         }
