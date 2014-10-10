@@ -21,8 +21,14 @@ namespace SAPR
         protected void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
             string telefonos = this.textTelefono.Value.ToString() + " " + this.textCelular.Value.ToString();
-            controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), telefonos);
-            consultaGrideUsuarios.Update();
+            controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), telefonos, this.cmbRoles.SelectedItem.ToString());
+            try
+            {
+                consultaGrideUsuarios.DataBind();
+            }
+            catch { 
+                
+            }
         }
     }
 }

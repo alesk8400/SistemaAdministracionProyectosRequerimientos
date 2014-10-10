@@ -15,10 +15,15 @@ namespace SAPR.App_Code.Controladoras {
         public ControladoraBDUsuario() {
             ds = new UsuariosTableAdapter();
         }
-        public String[] insertarUsuario(EntidadUsuario usuarioNuevo) {
+        public String[] insertarUsuario(EntidadUsuario usuarioNuevo, String rol) {
             String[] resultado = new String[1];
             try {
                 this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefonos);
+                String idU = this.ds.getId(usuarioNuevo.Cedula).ToString();
+                int i;
+                Int32.TryParse(idU, out i);
+                this.ds.insertarRolUsuario(i, rol);
+                
                 resultado[0] = "Exito";
             }
             catch(SqlException e){

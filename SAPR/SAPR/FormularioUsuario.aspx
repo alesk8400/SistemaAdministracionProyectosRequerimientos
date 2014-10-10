@@ -79,9 +79,16 @@
                     <div class="form-group">
                         <label for="textRoles" class="col-sm-3 control-label">Roles: </label>
                         <div class="dropdown-toggle">
-                            <div class="help-block with-error"><asp:SqlDataSource ID="rolesBD" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT [Nombre] FROM [Roles]"></asp:SqlDataSource>
+                            <div class="help-block with-error"><asp:SqlDataSource ID="rolesBD" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT [Nombre] FROM [Roles]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [Roles] WHERE [Nombre] = @original_Nombre" InsertCommand="INSERT INTO [Roles] ([Nombre]) VALUES (@Nombre)" OldValuesParameterFormatString="original_{0}">
+                                <DeleteParameters>
+                                    <asp:Parameter Name="original_Nombre" Type="String" />
+                                </DeleteParameters>
+                                <InsertParameters>
+                                    <asp:Parameter Name="Nombre" Type="String" />
+                                </InsertParameters>
+                                </asp:SqlDataSource>
 
-                                <asp:DropDownList ID="cmbRol" runat="server" DataSourceID="rolesBD" DataTextField="Nombre" DataValueField="Nombre" Class ="dropdown">
+                                <asp:DropDownList ID="cmbRoles" runat="server" DataSourceID="rolesBD" DataTextField="Nombre" DataValueField="Nombre">
                                 </asp:DropDownList>
 
                             </div>

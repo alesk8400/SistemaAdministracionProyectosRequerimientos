@@ -14,14 +14,14 @@ namespace SAPR.App_Code.Controladoras
             controladoraBDUsuario = new ControladoraBDUsuario();
         }
 
-        public String[] insertarUsuario(String nombre,String cedula,String correo,String telefonos) { 
+        public String[] insertarUsuario(String nombre,String cedula,String correo,String telefonos, String rol ) { 
              Object[] datos = new Object[4]; 
              datos[0] = nombre;
              datos[1] = cedula;
              datos[2] = correo;
              datos[3] = telefonos;
              EntidadUsuario usuario = new EntidadUsuario(datos);
-             return controladoraBDUsuario.insertarUsuario(usuario);
+             return controladoraBDUsuario.insertarUsuario(usuario, rol);
         }
 
         public String[] modificarUsuario(String nombre, String cedula, String correo, String telefonos,EntidadUsuario usuarioViejo){
