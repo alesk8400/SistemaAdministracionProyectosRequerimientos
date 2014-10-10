@@ -49,6 +49,23 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDProyecto.eliminarProyecto(idProyecto);
         }
 
+        public EntidadProyecto consultarProyecto(String nombre)
+        {
+            EntidadProyecto proyecto = null; //para encpasular los datos consultados.
+            Object[] datosConsultados = new Object[7]; //para guardar los datos obtenidos de la consulta temporalmente
+            DataTable filaProyecto = controladoraBDProyecto.consultarProyecto(nombre);
+
+            if (filaProyecto.Rows.Count == 1)
+            { // si hay un valor
+                for (int i = 0; i < 7; i++)
+                {
+                    datosConsultados[i] = filaProyecto.Rows[0][i].ToString();
+                }
+                proyecto = new EntidadProyecto(datosConsultados);
+            }
+            return proyecto;
+        }
+
         /*public String[] consultarProyecto() { }
 
         public String[] getListadoProyectos() { }
