@@ -286,22 +286,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\Controladoras\ControladoraProyecto.cs" />
-    <Content Include="App_Code\Controladoras\ControladoraUsuario.cs" />
-    <Content Include="App_Code\Controladoras\ControladoraBDUsuario.cs" />
-    <Content Include="App_Code\Controladoras\ControladoraBDProyecto.cs" />
-    <Content Include="App_Code\Entidades\EntidadProyecto.cs" />
-    <Content Include="App_Code\Entidades\EntidadUsuario.cs" />
-    <Content Include="App_Code\DataSets\DataSetUsuarios.Designer.cs">
+    <Compile Include="App_Code\Controladoras\ControladoraProyecto.cs" />
+    <Compile Include="App_Code\Controladoras\ControladoraUsuario.cs" />
+    <Compile Include="App_Code\Controladoras\ControladoraBDUsuario.cs" />
+    <Compile Include="App_Code\Controladoras\ControladoraBDProyecto.cs" />
+    <Compile Include="App_Code\Entidades\EntidadProyecto.cs" />
+    <Compile Include="App_Code\Entidades\EntidadUsuario.cs" />
+    <Compile Include="App_Code\DataSets\DataSetUsuarios.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetUsuarios.xsd</DependentUpon>
-    </Content>
-    <Content Include="App_Code\DataSets\DataSetProyectos.Designer.cs">
+    </Compile>
+    <Compile Include="App_Code\DataSets\DataSetProyectos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetProyectos.xsd</DependentUpon>
-    </Content>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -363,12 +363,14 @@
     </Compile>
     <Compile Include="FormularioProyecto.aspx.cs">
       <DependentUpon>FormularioProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FormularioProyecto.aspx.designer.cs">
       <DependentUpon>FormularioProyecto.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormularioUsuario.aspx.cs">
       <DependentUpon>FormularioUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FormularioUsuario.aspx.designer.cs">
       <DependentUpon>FormularioUsuario.aspx</DependentUpon>
