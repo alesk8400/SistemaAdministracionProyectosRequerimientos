@@ -11,6 +11,11 @@
     <!-- Custom CSS -->
     <link href="Content/simple-sidebar.css" rel="stylesheet"/>
 
+    <!-- Custom CSS -->
+    <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet"/>
+
+    <link href="Content/prettify.css" rel="stylesheet">
+
 </head>
 <body>
     <form runat="server">
@@ -92,12 +97,22 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="Scripts/bootstrap.min.js"></script>
 
+    <script src="Scripts/bootstrap-datepicker.js"></script>
+
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    $(function () {
+        $('#dp3').datepicker({
+            format: 'dd/mm/yyyy',
+            
+        });
+    });
+
     </script>
     </form>
 </body>

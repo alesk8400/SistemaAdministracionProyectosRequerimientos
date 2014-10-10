@@ -27,7 +27,7 @@
         <br/>
     </div>
 
-        <!--Datos del Proveedor-->
+        <!--Datos del Proyecto-->
         <div class="col-lg-12">
             <div class="well bs-component">
                 <fieldset>
@@ -59,25 +59,21 @@
                         </div>
 
                     <div class="col-sm-4">
+
+                       <%-- FALTA TRABAJARLO--%>
                     <div class="form-group">
                         <label for="dateAsignacion" class="col-sm-3 control-label">Fecha de asignación: </label>
-                        <div class="col-sm-9">
-                            <div class="form-group">
-                                <div class='input-group date' id='datetimepicker1'>
-                                    <input type='text' class="form-control" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                 </div>
-                             </div>
-		                    <script type="text/javascript">
-		                        $(function () {
-		                            $('#datetimepicker1').datetimepicker();
-		                        });
-                            </script>
-                            <div class="help-block with-errors"></div>
-                        </div>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    			  <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
+				<input class="span2" size="16" type="text" value="" />
+				<span class="add-on"><i class="icon-calendar"></i></span>
+			  </div>
+                                    </div>
+                                <div class="help-block with-errors"></div>
+                            </div>
                     </div>
-                       
+             
 
                      
                     <div class="form-group">
