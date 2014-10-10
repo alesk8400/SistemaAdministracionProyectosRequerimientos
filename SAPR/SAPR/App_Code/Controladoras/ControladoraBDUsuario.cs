@@ -88,5 +88,15 @@ namespace SAPR.App_Code.Controladoras {
             catch (Exception e) { }
             return resultado;
         }
+
+        public DataTable getListadoUsuarios(){
+            DataTable filasUsuario = new DataTable();
+            try
+            {
+                filasUsuario = ds.getFilasUsuario();
+            }
+            catch (Exception e) { }
+            return filasUsuario;
+        }
     }     
 }

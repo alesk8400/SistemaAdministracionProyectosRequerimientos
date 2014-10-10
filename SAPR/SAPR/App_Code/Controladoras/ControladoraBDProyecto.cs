@@ -9,10 +9,10 @@ using SAPR.App_Code.Entidades;
 
 namespace SAPR.App_Code.Controladoras {
     public class ControladoraBDProyecto {
-        ProyectoTableAdapter ps;
+        Proyecto1TableAdapter ps;
 
         public ControladoraBDProyecto() {
-            ps = new ProyectoTableAdapter();
+            ps = new Proyecto1TableAdapter();
         }
 
         public String[] insertarProyecto(EntidadProyecto proyectoNuevo)
@@ -83,6 +83,18 @@ namespace SAPR.App_Code.Controladoras {
                     resultado[0] = "Error";
                 }
             }
+            return resultado;
+        }
+
+        public DataTable consultarProyecto(String nombre)
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = ps.consultarFilaProy(nombre);
+            }
+            catch (Exception e) { }
             return resultado;
         }
 

@@ -39,7 +39,7 @@ namespace SAPR.App_Code.Controladoras
         }
 
         
-        public EntidadUsuario consultarProveedor(String cedula)
+        public EntidadUsuario consultarUsuario(String cedula)
         {
             EntidadUsuario usuario = null; //para encpasular los datos consultados.
             Object[] datosConsultados = new Object[4]; //para guardar los datos obtenidos de la consulta temporalmente
@@ -54,6 +54,22 @@ namespace SAPR.App_Code.Controladoras
             }
             return usuario;
         }
+
+        public EntidadUsuario[] getListadoUsuario(){
+            EntidadUsuario[] usuarios;
+            Object[] datosConsultados = new Object[3];
+            int cont = 0;
+            DataTable filaUsuario = controladoraBDUsuario.getListadoUsuarios();
+            usuarios = new EntidadUsuario[filaUsuario.Rows.Count];
+            while (cont < filaUsuario.Rows.Count){
+                for (int i = 0; i < 3; i++){
+                    datosConsultados[i] = filaUsuario.Rows[cont][i].ToString();
+                }
+                usuarios[cont] = new EntidadUsuario(datosConsultados);
+            }
+            return usuarios;
+        }
+
         /*
         public String[] listadoRoles(){ 
             // return controladoraBDUsuario.eliminarUsuario(idUsuario);
@@ -67,9 +83,7 @@ namespace SAPR.App_Code.Controladoras
         
         }
 
-        public String[] getListadoUsuario() { 
         
-        }
 
         public String[] getNombreProyectos() { 
         
