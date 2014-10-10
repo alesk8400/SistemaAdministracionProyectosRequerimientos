@@ -4,7 +4,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnAgregarUsuario" runat="server"  Text="Agregar" class= "btn btn-primary"/>
+        <asp:Button ID="btnAgregarUsuario" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="btnAgregarUsuario_Click"/>
         <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar" class ="btn btn-primary "/>
         <asp:Button ID="btnEliminarUsuario" runat="server" Text="Eliminar" CssClass ="btn btn-primary" />
 
@@ -87,6 +87,7 @@
                             </div>
                         </div>
                     </div>
+                    </div>
 
 
                     <div class="col-sm-4">
@@ -112,7 +113,34 @@
             </div>
 
         </div>
-   
+
+    <div class =" col-lg-1">
+
+
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" DataSourceID="consultaGrideUsuarios" ForeColor="Black" Height="145px" Width="140px">
+            <Columns>
+                <asp:BoundField DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" />
+                <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
+            </Columns>
+            <FooterStyle BackColor="#CCCCCC" />
+            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+            <RowStyle BackColor="White" />
+            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#808080" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#383838" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="consultaGrideUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT U.Cedula AS &quot;Cedula&quot;,  U.Nombre AS &quot;Nombre&quot;,   R.NombreRol AS &quot;Rol&quot;
+FROM Usuarios U, RolesUsuario R
+WHERE U.idUsuario = R.idUsuario;
+
+"></asp:SqlDataSource>
+
+
+   </div>   
 
         
 
