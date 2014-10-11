@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SAPR.App_Code.Controladoras;
+using SAPR.App_Code.Entidades;
 
 namespace SAPR
 {
@@ -12,6 +13,7 @@ namespace SAPR
     {
 
         private static ControladoraUsuario controladora = new ControladoraUsuario();
+        private static EntidadUsuario entidadConsultada;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +27,7 @@ namespace SAPR
             try
             {
                 consultaGrideUsuarios.DataBind();
+                //consultaGrideUsuarios." ;
             }
             catch { 
                 
@@ -33,6 +36,19 @@ namespace SAPR
 
 
 
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            entidadConsultada = controladora.consultarUsuario(gridUsuarios.SelectedRow.ToString());
+            txtNombreUsuario.Value = entidadConsultada.Nombre.ToString();
+            txtCedula.Value = entidadConsultada.Cedula.ToString();
+            textTelefono.Value = entidadConsultada.Telefono.ToString();
+
+
+
+        }
+
+
+        
 
     }
 }

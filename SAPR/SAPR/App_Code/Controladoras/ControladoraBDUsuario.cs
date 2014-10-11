@@ -18,7 +18,7 @@ namespace SAPR.App_Code.Controladoras {
         public String[] insertarUsuario(EntidadUsuario usuarioNuevo, String rol) {
             String[] resultado = new String[1];
             try {
-                this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefonos);
+                this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular);
                 String idU = this.ds.getId(usuarioNuevo.Cedula).ToString();
                 int i;
                 Int32.TryParse(idU, out i);

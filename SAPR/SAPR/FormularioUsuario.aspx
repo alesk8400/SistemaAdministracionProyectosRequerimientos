@@ -116,7 +116,7 @@
     <div class =" col-lg-10">
 
 
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="consultaGrideUsuarios" >
+        <asp:GridView ID="gridUsuarios" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="consultaGrideUsuarios" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" >
             <Columns>
                 <asp:BoundField DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
