@@ -58,15 +58,6 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtCedula;
         
         /// <summary>
-        /// Control Button1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
         /// Control textTelefono.
         /// </summary>
         /// <remarks>
@@ -94,15 +85,6 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textEmail;
         
         /// <summary>
-        /// Control rolesBD.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource rolesBD;
-        
-        /// <summary>
         /// Control cmbRoles.
         /// </summary>
         /// <remarks>
@@ -110,6 +92,15 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList cmbRoles;
+        
+        /// <summary>
+        /// Control rolesBD.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource rolesBD;
         
         /// <summary>
         /// Control cmbProyecto.

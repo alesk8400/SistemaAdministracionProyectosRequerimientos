@@ -75,7 +75,6 @@ C:\Users\MaR\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\
 C:\Users\MaR\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.csprojResolveAssemblyReference.cache
 C:\Users\MaR\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.dll
 C:\Users\MaR\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.pdb
-C:\Users\a75952\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll.config
 C:\Users\a75952\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll
 C:\Users\a75952\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.pdb
 C:\Users\a75952\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\Antlr3.Runtime.dll
