@@ -15,9 +15,9 @@ namespace SAPR.App_Code.Entidades
         public EntidadUsuario(Object[] datos) {
             this.cedula = datos[0].ToString();
             this.nombre = datos[1].ToString();
-            this.correo = datos[2].ToString();
-            this.telefono = datos[3].ToString();
-            this.celular = datos[4].ToString();
+            this.telefono = datos[2].ToString();
+            this.celular = datos[3].ToString();
+            this.correo = datos[4].ToString();
         }
 
         public String Cedula{

@@ -121,7 +121,7 @@
                 <asp:BoundField DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                 <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
-                <asp:CommandField ShowSelectButton="True" ButtonType="Button" HeaderText="Consultar" />
+                <asp:CommandField ShowSelectButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -133,11 +133,7 @@
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
-        <asp:SqlDataSource ID="consultaGrideUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT U.Cedula AS &quot;Cedula&quot;,  U.Nombre AS &quot;Nombre&quot;,   R.NombreRol AS &quot;Rol&quot;
-FROM Usuarios U, RolesUsuario R
-WHERE U.idUsuario = R.idUsuario;
-
-"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="consultaGrideUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT U.Cedula, U.Nombre, R.NombreRol AS Rol FROM Usuarios AS U INNER JOIN RolesUsuario AS R ON U.IdUsuario = R.IdUsuario"></asp:SqlDataSource>
 
 
    </div>   

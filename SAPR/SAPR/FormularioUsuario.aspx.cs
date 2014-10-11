@@ -22,33 +22,43 @@ namespace SAPR
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            string telefonos = this.textTelefono.Value.ToString() + " " + this.textCelular.Value.ToString();
-            controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), telefonos, this.cmbRoles.SelectedItem.ToString());
+            controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
             try
             {
-                consultaGrideUsuarios.DataBind();
+                //consultaGrideUsuarios.DataBind();
                 //consultaGrideUsuarios." ;
             }
-            catch { 
-                
+            catch
+            {
+
             }
         }
 
 
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            entidadConsultada = controladora.consultarUsuario(gridUsuarios.SelectedRow.ToString());
-            txtNombreUsuario.Value = entidadConsultada.Nombre.ToString();
-            txtCedula.Value = entidadConsultada.Cedula.ToString();
-            textTelefono.Value = entidadConsultada.Telefono.ToString();
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)  {
+
+            
+            try
+            {
+                entidadConsultada = controladora.consultarUsuario(gridUsuarios.SelectedRow.Cells[0].Text.ToString());
+                txtNombreUsuario.Value = entidadConsultada.Nombre;
+                txtCedula.Value = entidadConsultada.Cedula;
+                textTelefono.Value = entidadConsultada.Telefono;
+                textCelular.Value = entidadConsultada.Celular;
+                textEmail.Value = entidadConsultada.Correo;
+            }
+            catch {
+
+                entidadConsultada = null;
+                // Hacer algo para indicar error
+            }
+
+            
 
 
 
         }
-
-
-        
-
     }
+
 }

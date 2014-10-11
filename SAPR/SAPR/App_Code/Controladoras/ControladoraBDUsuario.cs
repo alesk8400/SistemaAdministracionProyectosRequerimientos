@@ -42,7 +42,7 @@ namespace SAPR.App_Code.Controladoras {
             String[] resultado = new String[1];
             try
             {
-                this.ds.UpdateUser(usuarioNuevo.Cedula,usuarioNuevo.Nombre,usuarioNuevo.Correo,usuarioNuevo.Telefonos,usuarioViejo.Cedula);
+                this.ds.UpdateUser(usuarioNuevo.Cedula,usuarioNuevo.Nombre,usuarioNuevo.Correo,usuarioNuevo.Telefono,usuarioViejo.Cedula);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -66,7 +66,7 @@ namespace SAPR.App_Code.Controladoras {
             idUser = Int32.Parse(idUsuario);
             try
             {
-                this.ds.Delete(idUser);
+                //this.ds.Delete(idUser);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -88,11 +88,13 @@ namespace SAPR.App_Code.Controladoras {
             DataTable resultado = new DataTable();
 
             try{
-                resultado = ds.consultarFila(cedula);
+                resultado = ds.getUsuario(cedula);
             }
             catch (Exception e) { }
             return resultado;
         }
+
+
 
         public DataTable getListadoUsuarios(){
             DataTable filasUsuario = new DataTable();
