@@ -66,7 +66,7 @@ namespace SAPR.App_Code.Controladoras {
             idUser = Int32.Parse(idUsuario);
             try
             {
-                //this.ds.Delete(idUser);
+                this.ds.Delete1(idUser);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -83,6 +83,7 @@ namespace SAPR.App_Code.Controladoras {
             }
             return resultado;
         }
+
 
         public DataTable consultarUsuario(String cedula){
             DataTable resultado = new DataTable();

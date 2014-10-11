@@ -15,12 +15,13 @@ namespace SAPR.App_Code.Controladoras
         }
 
         public String[] insertarUsuario(String nombre,String cedula,String correo,String telefono, String celular, String rol ) { 
-             Object[] datos = new Object[5]; 
-             datos[0] = nombre;
+             Object[] datos = new Object[6];
+             datos[0] = 1;
+             datos[2] = nombre;
              datos[1] = cedula;
-             datos[2] = correo;
-             datos[3] = telefono;
-             datos[4] = celular;
+             datos[3] = correo;
+             datos[4] = telefono;
+             datos[5] = celular;
              EntidadUsuario usuario = new EntidadUsuario(datos);
              return controladoraBDUsuario.insertarUsuario(usuario, rol);
         }
@@ -43,15 +44,15 @@ namespace SAPR.App_Code.Controladoras
         public EntidadUsuario consultarUsuario(String cedula)
         {
             EntidadUsuario usuario = null; //para encpasular los datos consultados.
-            Object[] datosConsultados = new Object[5]; //para guardar los datos obtenidos de la consulta temporalmente
+            Object[] datosConsultados = new Object[6]; //para guardar los datos obtenidos de la consulta temporalmente
             DataTable filaUsuario = controladoraBDUsuario.consultarUsuario(cedula);
 
 
             if (filaUsuario.Rows.Count == 1)
             { // si hay un valor
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 6; i++)
                 {
-                    datosConsultados[i] = filaUsuario.Rows[0][i+1].ToString();
+                    datosConsultados[i] = filaUsuario.Rows[0][i].ToString();
                 }
                 usuario = new EntidadUsuario(datosConsultados);
             }

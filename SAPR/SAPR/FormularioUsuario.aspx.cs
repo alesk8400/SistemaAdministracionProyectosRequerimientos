@@ -23,15 +23,7 @@ namespace SAPR
         protected void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
             controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
-            try
-            {
-                //consultaGrideUsuarios.DataBind();
-                //consultaGrideUsuarios." ;
-            }
-            catch
-            {
-
-            }
+            gridUsuarios.DataBind();
         }
 
 
@@ -58,6 +50,18 @@ namespace SAPR
 
 
 
+        }
+
+        protected void btnEliminarUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                controladora.eliminarUsuario(entidadConsultada.ID.ToString());
+                gridUsuarios.DataBind();
+            }
+            catch { 
+            
+            }
         }
     }
 
