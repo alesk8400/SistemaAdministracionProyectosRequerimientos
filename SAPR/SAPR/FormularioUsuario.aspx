@@ -38,6 +38,7 @@
                                 <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
                             </div>
                             <div class="help-block with-errors">
+                                <asp:Button ID="Button1" runat="server" Text="Button" />
                             </div>
                         </div>
                     </div>
