@@ -64,12 +64,7 @@
                     <div class="form-group">
                         <label for="dateAsignacion" class="col-sm-3 control-label">Fecha de asignación: </label>
                             <div class="col-sm-9">
-                                <div class="form-group">
-                                    			  <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
-				<input class="span2" size="16" type="text" value="" />
-				<span class="add-on"><i class="icon-calendar"></i></span>
-			  </div>
-                                    </div>
+                                <input type="text" class="datepicker"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                     </div>
