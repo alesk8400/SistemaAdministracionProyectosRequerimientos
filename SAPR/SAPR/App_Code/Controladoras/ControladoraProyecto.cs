@@ -21,7 +21,7 @@ namespace SAPR.App_Code.Controladoras
             datos[1] = lider;
             datos[2] = estado;
             datos[3] = objetivo;
-            datos[4] = fechaAsig;
+            datos[4] = fechaAsig; //
             datos[5] = fechaInic;
             datos[6] = fechaFin;
             EntidadProyecto proyecto = new EntidadProyecto(datos);
