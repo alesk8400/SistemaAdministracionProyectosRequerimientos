@@ -60,57 +60,43 @@
 
                     <div class="col-sm-4">
 
-                       <%-- FALTA TRABAJARLO--%>
+                         <%-- FALTA TRABAJARLO--%>
                     <div class="form-group">
-                        <label for="dateAsignacion" class="col-sm-3 control-label">Fecha de asignación: </label>
+                        <label for="dateAsignacion" class="col-sm-3 control-label">Fecha de asignación:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="datepicker"/>
+                                <input type="text" class="datepicker" placeholder="Clic Aquí"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                     </div>
-             
+                    <div class="form-group">
+                        <label for="DateFinish" class="col-sm-3 control-label">Fecha de finalización:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="datepicker" placeholder="Clic Aquí"/>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    </div>
 
-                     
+                    <div class="col-sm-4">
+
                     <div class="form-group">
-                        <label for="textTelefono" class="col-sm-3 control-label">Teléfono: </label>
+                        <label for="dateStart" class="col-sm-3 control-label">Fecha de inicio: </label>
                         <div class="col-sm-9">
-                            <input runat="server" id="textTelefono" class="form-control" type="tel" placeholder="Teléfono" data-error="Número de teléfono inválido" title="telefono" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
+                            <input type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="textCelular" class="col-sm-3 control-label">Celular: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="textCelular" class="form-control" type="tel" placeholder="Celular" data-error="Número de teléfono inválido" title="Celular" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                        </div>
                         
-                            <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="textEmail" class="col-sm-3 control-label">E-mail: </label>
+                        <label for="text" class="col-sm-3 control-label">Estado: </label>
                         <div class="col-sm-9">
-                            <input runat="server" id="textEmail" class="form-control" type="email" placeholder="E-mail" data-error="Correo inválido" />
+                        <div class="dropdown-toggle">
+                            <input runat="server" id="text11" class="form-control" type="text" placeholder="Estado" data-error="Estado no válido" title="Estado" pattern="^[a-zA-Z ]*$" />
                             <div class="help-block with-errors"></div>
                         </div>
-                    </div>
-                         
-
-                     
-                    <div class="form-group">
-                        <label for="textURL" class="col-sm-3 control-label">Página web: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="textURL" class="form-control" type="url" placeholder="Página web" data-error="Dirección inválida" />
-                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                         
-
-                    <div class="form-group">
-                        <span class="label label-primary pull-right"><i class="fa fa-check fa-fw"></i>Espacio requerido</span>
-                    </div>
-                                </div>
+                   </div>
                 </fieldset>
             </div>
 
