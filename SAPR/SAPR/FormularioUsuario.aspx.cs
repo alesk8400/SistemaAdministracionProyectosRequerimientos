@@ -14,6 +14,7 @@ namespace SAPR
 
         private static ControladoraUsuario controladora = new ControladoraUsuario();
         private static EntidadUsuario entidadConsultada;
+        private static int modo = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -45,11 +46,6 @@ namespace SAPR
                 entidadConsultada = null;
                 // Hacer algo para indicar error
             }
-
-            
-
-
-
         }
 
         protected void btnEliminarUsuario_Click(object sender, EventArgs e)
@@ -62,6 +58,82 @@ namespace SAPR
             catch { 
             
             }
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e){
+
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void limpiarCampos()
+        {
+            this.txtNombreUsuario.Value = "";
+            this.txtCedula.Value = "";
+            this.textEmail.Value = "";
+            this.textTelefono.Value = "";
+            this.textCelular.Value = "";
+            this.cmbRoles.ClearSelection();
+        }
+
+        protected void irAModo()
+        {
+            if (modo == 0)
+            { // el modo 0 se usa para resetear la interfaz
+                btnAceptar.Enabled = false;
+                btnCancelar.Enabled = false;
+                btnModificarUsuario.Enabled = false;
+                btnAgregarUsuario.Enabled = false;
+                btnEliminarUsuario.Enabled = false;
+                habilitarCampos(false);
+            }
+            else if (modo == 1)
+            { // se desea insertar
+                btnAceptar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnModificarUsuario.Enabled = false;
+                btnAgregarUsuario.Enabled = true;
+                btnEliminarUsuario.Enabled = false;
+
+            }
+            else if (modo == 2)
+            { //modificar
+                btnAceptar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnModificarUsuario.Enabled = false;
+                btnAgregarUsuario.Enabled = true;
+                btnEliminarUsuario.Enabled = false;
+            }
+            else if (modo == 3)
+            { // eliminar
+                btnAceptar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnModificarUsuario.Enabled = false;
+                btnAgregarUsuario.Enabled = true;
+                btnEliminarUsuario.Enabled = false;
+            }
+            else if (modo == 4)
+            { //consultar
+                btnAceptar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnModificarUsuario.Enabled = false;
+                btnAgregarUsuario.Enabled = true;
+                btnEliminarUsuario.Enabled = false;
+            }
+
+           // aplicarPermisos();// se aplican los permisos del usuario para el acceso a funcionalidades
+        }
+
+        protected void habilitarCampos(Boolean habilitar){
+            this.txtNombreUsuario.Disabled = !habilitar;
+            this.txtCedula.Disabled = !habilitar;
+            this.textEmail.Disabled = !habilitar;
+            this.textTelefono.Disabled = !habilitar;
+            this.textCelular.Disabled = !habilitar;
+            this.cmbRoles.Enabled = habilitar;
         }
 
     }

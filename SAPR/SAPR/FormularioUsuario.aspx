@@ -137,10 +137,10 @@
    </div>   
      <div class="col-lg-12">
                     <div class="text-center">
-                <asp:Button runat="server" id="botonAceptar" CssClass="btn btn-success" Text="Aceptar" OnClick="btnAceptar_Click" />
-                <button runat="server" id="botonCancelar" class="btn btn-danger" type="reset">Cancelar</button>
 
-                        <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass ="btn btn-primary" OnClick="btnEliminarUsuario_Click" />
+                        <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn-success" Height="39px" OnClick="btnAceptar_Click" OnClientClick="btnAceptar_OnClick" Width="97px"/>
+                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn-danger" OnClientClick="btn_CancelarOnClick" Height="39px" Width="97px" OnClick="btnCancelar_Click"/>
+
      </div></div>
 
 
