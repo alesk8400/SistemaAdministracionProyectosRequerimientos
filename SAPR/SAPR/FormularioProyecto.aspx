@@ -35,7 +35,7 @@
 
                     <div class="form-group">
                         <label for="textNombre" class="col-sm-1 control-label">Nombre: </label>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class=" input-group margin-bottom-sm"> 
                                 <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" data-error="Ingresó una nombre inválido" title="Nombre" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="44" required="required" />
                                 <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
@@ -54,21 +54,21 @@
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                        </fieldset>
+                   </fieldset>
 
                         <fieldset>
-                            <div class="col-md-5">
+                   <div class="col-md-7">
                     <div class="form-group">
-                        <label for="fechaAsignacion" class="col-sm-6 control-label">Fecha de asignación:</label>
-                            <div class="col-sm-1">
+                        <label for="fechaAsignacion" class="col-sm-4 control-label">Fecha de asignación:</label>
+                            <div class="col-sm-5">
                                 <input runat="server" id="textFechaA" type="text" class="datepicker" placeholder="Clic Aquí"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="DateFinish" class="col-sm-6 control-label">Fecha de finalización:</label>
-                        <div class="col-md-1">
+                        <label for="DateFinish" class="col-sm-4 control-label">Fecha de finalización:</label>
+                        <div class="col-sm-5">
                             <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -77,8 +77,8 @@
 
                  <div class="col-md-5">
                     <div class="form-group">
-                        <label for="dateStart" class="col-sm-6 control-label">Fecha de inicio: </label>
-                        <div class="col-sm-1">
+                        <label for="dateStart" class="col-sm-5 control-label">Fecha de inicio: </label>
+                        <div class="col-sm-4">
                             <input runat="server" id="textFechaI" type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -86,8 +86,8 @@
                        
  
                     <div class="form-group">
-                        <label for="text" class="col-sm-6 control-label">Estado: </label>
-                        <div class="col-sm-1">
+                        <label for="text" class="col-sm-5 control-label">Estado: </label>
+                        <div class="col-sm-4">
                         <div class="dropdown-toggle"> 
                                 <asp:DropDownList ID="cmbEstado" runat="server">
                                     <asp:ListItem>Sin Iniciar</asp:ListItem>
@@ -98,7 +98,7 @@
                         </div>
                         </div>
                     </div>
-                                </div>
+                 </div>
                     </fieldset>
             </div>
             </div>
@@ -108,12 +108,12 @@
                 <fieldset>
                     <legend>Información de Contacto</legend>
 
-                    <div class="col-sm-4">
+                    <div class="col-md-7">
                     <div class="form-group">
-                        <label for="textCedula" class="col-sm-3 control-label">Cédula: </label>
-                        <div class="col-sm-9">
+                        <label for="textRepresentante" class="col-sm-4 control-label">Representante: </label>
+                        <div class="col-sm-5">
                             <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="text2" class="form-control" type="text" placeholder="Cédula" data-error="Ingresó una cédula inválida" title="Cédula" pattern="^[0-9]*$" data-minlength="9" maxlength="12" required="required" />
+                                <input runat="server" id="textRepresentante" class="form-control" type="text" placeholder="Nombre de Representante" data-error="Ingresó un nombre inválido" title="Representante" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="30" required="required" />
                                 <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
                             </div>
                             <div class="help-block with-errors"></div>
@@ -121,69 +121,44 @@
 
 
                     <div class="form-group">
-                        <label for="textNombre" class="col-sm-3 control-label">Empresa: </label>
-                        <div class="col-sm-9">
+                        <label for="textTelRepresentanre" class="col-sm-4 control-label">Teléfono de Representante: </label>
+                        <div class="col-sm-5">
                             <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="text3" class="form-control" type="text" placeholder="Nombre" data-error="Espacio requerido. Sólo letras y números." title="Empresa" required="required" pattern="^[a-zA-Z0-9 ]+$" />
+                                <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante" data-error="Espacio requerido. Sólo letras y números." title="Telefono" required="required" pattern="^[0-9]*$"/>
                                 <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
                             </div>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
-                        </div>
-
-                    <div class="col-sm-4">
+                        
                     <div class="form-group">
-                        <label for="textEncargado" class="col-sm-3 control-label">Encargado: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="text4" class="form-control" type="text" placeholder="Encargado" data-error="Nombre de encargado no válido" title="Encargado" pattern="^[a-zA-Z ]*$" />
+                        <label for="textEmailRepresentante" class="col-sm-4 control-label">E-mail: </label>
+                        <div class="col-sm-5">
+                            <input runat="server" id="textEmailRepresentante" class="form-control" type="email" placeholder="E-mail" data-error="Correo inválido" />
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                       
+                    
+                       </div>
 
-                     
+                 <div class="col-md-5">
                     <div class="form-group">
-                        <label for="textTelefono" class="col-sm-3 control-label">Teléfono: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Tel1" class="form-control" type="tel" placeholder="Teléfono" data-error="Número de teléfono inválido" title="telefono" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
+                        <label for="textOficina" class="col-sm-5 control-label">Oficina: </label>
+                        <div class="col-sm-4">
+                            <input runat="server" id="TextOficina" class="form-control" type="tel" placeholder="Oficina" data-error="Espacio Requerido" title="Oficina" pattern="^[a-zA-Z0-9 ]+$" data-minlength="8" maxlength="30" />
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="textCelular" class="col-sm-3 control-label">Celular: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Tel2" class="form-control" type="tel" placeholder="Celular" data-error="Número de teléfono inválido" title="Celular" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
+                        <label for="textTelSecundario" class="col-sm-5 control-label">Teléfono Secundario: </label>
+                        <div class="col-sm-4">
+                            <input runat="server" id="textTelSecundario" class="form-control" type="tel" placeholder="Teléfono Secundario" data-error="Número de teléfono inválido" title="Telefono secundario" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                         </div>
                         
-                            <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="textEmail" class="col-sm-3 control-label">E-mail: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Email1" class="form-control" type="email" placeholder="E-mail" data-error="Correo inválido" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                         
-
-                     
-                    <div class="form-group">
-                        <label for="textURL" class="col-sm-3 control-label">Página web: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Url1" class="form-control" type="url" placeholder="Página web" data-error="Dirección inválida" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                         
-
-                    <div class="form-group">
-                        <span class="label label-primary pull-right"><i class="fa fa-check fa-fw"></i>Espacio requerido</span>
-                    </div>
-                                </div>
                 </fieldset>
             </div>
 

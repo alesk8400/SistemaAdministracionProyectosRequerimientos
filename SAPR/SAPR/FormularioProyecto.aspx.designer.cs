@@ -130,67 +130,49 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.DropDownList cmbEstado;
         
         /// <summary>
-        /// Control text2.
+        /// Control textRepresentante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText text2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText textRepresentante;
         
         /// <summary>
-        /// Control text3.
+        /// Control textTelRepresentante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText text3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText textTelRepresentante;
         
         /// <summary>
-        /// Control text4.
+        /// Control textEmailRepresentante.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText text4;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textEmailRepresentante;
         
         /// <summary>
-        /// Control Tel1.
+        /// Control TextOficina.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Tel1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TextOficina;
         
         /// <summary>
-        /// Control Tel2.
+        /// Control textTelSecundario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Tel2;
-        
-        /// <summary>
-        /// Control Email1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Email1;
-        
-        /// <summary>
-        /// Control Url1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Url1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textTelSecundario;
         
         /// <summary>
         /// Control text1.
