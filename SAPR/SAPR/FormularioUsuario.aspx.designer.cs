@@ -85,6 +85,15 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textEmail;
         
         /// <summary>
+        /// Control cmbRoles.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbRoles;
+        
+        /// <summary>
         /// Control rolesBD.
         /// </summary>
         /// <remarks>
@@ -92,15 +101,6 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource rolesBD;
-        
-        /// <summary>
-        /// Control cmbRol.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbRol;
         
         /// <summary>
         /// Control cmbProyecto.
@@ -121,13 +121,13 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.SqlDataSource nombreProyectos;
         
         /// <summary>
-        /// Control GridView1.
+        /// Control gridUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gridUsuarios;
         
         /// <summary>
         /// Control consultaGrideUsuarios.
@@ -137,5 +137,32 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource consultaGrideUsuarios;
+        
+        /// <summary>
+        /// Control botonAceptar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonAceptar;
+        
+        /// <summary>
+        /// Control botonCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton botonCancelar;
+        
+        /// <summary>
+        /// Control Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

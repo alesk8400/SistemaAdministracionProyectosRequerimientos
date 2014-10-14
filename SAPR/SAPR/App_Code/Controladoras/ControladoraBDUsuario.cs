@@ -15,10 +15,15 @@ namespace SAPR.App_Code.Controladoras {
         public ControladoraBDUsuario() {
             ds = new UsuariosTableAdapter();
         }
-        public String[] insertarUsuario(EntidadUsuario usuarioNuevo) {
+        public String[] insertarUsuario(EntidadUsuario usuarioNuevo, String rol) {
             String[] resultado = new String[1];
             try {
-                this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefonos);
+                this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular);
+                String idU = this.ds.getId(usuarioNuevo.Cedula).ToString();
+                int i;
+                Int32.TryParse(idU, out i);
+                this.ds.insertarRolUsuario(i, rol);
+                
                 resultado[0] = "Exito";
             }
             catch(SqlException e){
@@ -37,7 +42,7 @@ namespace SAPR.App_Code.Controladoras {
             String[] resultado = new String[1];
             try
             {
-                this.ds.UpdateUser(usuarioNuevo.Cedula,usuarioNuevo.Nombre,usuarioNuevo.Correo,usuarioNuevo.Telefonos,usuarioViejo.Cedula);
+                this.ds.UpdateUser(usuarioNuevo.Cedula,usuarioNuevo.Nombre,usuarioNuevo.Correo,usuarioNuevo.Telefono,usuarioViejo.Cedula);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -61,7 +66,7 @@ namespace SAPR.App_Code.Controladoras {
             idUser = Int32.Parse(idUsuario);
             try
             {
-                this.ds.Delete(idUser);
+                this.ds.Delete1(idUser);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -79,15 +84,18 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
+
         public DataTable consultarUsuario(String cedula){
             DataTable resultado = new DataTable();
 
             try{
-                resultado = ds.consultarFila(cedula);
+                resultado = ds.getUsuario(cedula);
             }
             catch (Exception e) { }
             return resultado;
         }
+
+
 
         public DataTable getListadoUsuarios(){
             DataTable filasUsuario = new DataTable();

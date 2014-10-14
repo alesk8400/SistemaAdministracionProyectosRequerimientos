@@ -21,7 +21,7 @@ namespace SAPR.App_Code.Controladoras
             datos[1] = lider;
             datos[2] = estado;
             datos[3] = objetivo;
-            datos[4] = fechaAsig;
+            datos[4] = fechaAsig; 
             datos[5] = fechaInic;
             datos[6] = fechaFin;
             EntidadProyecto proyecto = new EntidadProyecto(datos);
@@ -52,12 +52,12 @@ namespace SAPR.App_Code.Controladoras
         public EntidadProyecto consultarProyecto(String nombre)
         {
             EntidadProyecto proyecto = null; //para encpasular los datos consultados.
-            Object[] datosConsultados = new Object[7]; //para guardar los datos obtenidos de la consulta temporalmente
+            Object[] datosConsultados = new Object[8]; //para guardar los datos obtenidos de la consulta temporalmente
             DataTable filaProyecto = controladoraBDProyecto.consultarProyecto(nombre);
 
             if (filaProyecto.Rows.Count == 1)
             { // si hay un valor
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     datosConsultados[i] = filaProyecto.Rows[0][i].ToString();
                 }

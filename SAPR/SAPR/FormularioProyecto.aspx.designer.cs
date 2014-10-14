@@ -94,40 +94,40 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlInputText textObjetivo;
         
         /// <summary>
-        /// Control textTelefono.
+        /// Control textFechaA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textTelefono;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText textFechaA;
         
         /// <summary>
-        /// Control textCelular.
+        /// Control textFechaF.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textCelular;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText textFechaF;
         
         /// <summary>
-        /// Control textEmail.
+        /// Control textFechaI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText textFechaI;
         
         /// <summary>
-        /// Control textURL.
+        /// Control cmbEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textURL;
+        protected global::System.Web.UI.WebControls.DropDownList cmbEstado;
         
         /// <summary>
         /// Control text2.
@@ -218,5 +218,23 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton botonCancelar;
+        
+        /// <summary>
+        /// Control gridProyecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridProyecto;
+        
+        /// <summary>
+        /// Control ListaProyectos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ListaProyectos;
     }
 }

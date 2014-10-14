@@ -113,8 +113,7 @@ input,
 optgroup,
 select,
 textarea {
-  margin: 0;
-  font: inherit;
+  margin: 15px 0 0 387px;
   color: inherit;
 }
 button {
@@ -1426,6 +1425,8 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+    top: 12px;
+    left: -3px;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;

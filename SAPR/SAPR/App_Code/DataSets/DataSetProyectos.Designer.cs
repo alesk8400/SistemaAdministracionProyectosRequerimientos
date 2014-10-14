@@ -1015,8 +1015,8 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT Nombre, [Objetivo(s)], Estado, FechaIni, FechaFin, FechaAsig, Lider FROM d" +
-                "bo.Proyecto WHERE Nombre = @nombre";
+            this._commandCollection[1].CommandText = "SELECT IdProyecto, Nombre, [Objetivo(s)], Estado, FechaIni, FechaFin, FechaAsig, " +
+                "Lider FROM Proyecto WHERE (Nombre = @nombre)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
