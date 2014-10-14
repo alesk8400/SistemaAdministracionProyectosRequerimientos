@@ -32,6 +32,7 @@ namespace SAPR
                 textFechaA.Value = entidadConsultada.FechaAsig.ToString();
                 textFechaF.Value = entidadConsultada.FechaFin.ToString();
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
+                cmbEstado.SelectedValue = entidadConsultada.Estado;
             }
             catch { 
                 
