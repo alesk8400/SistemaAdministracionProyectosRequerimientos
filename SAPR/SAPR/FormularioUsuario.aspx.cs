@@ -23,6 +23,7 @@ namespace SAPR
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
+           
             controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
             gridUsuarios.DataBind();
         }
@@ -103,8 +104,8 @@ namespace SAPR
             { //modificar
                 btnAceptar.Enabled = true;
                 btnCancelar.Enabled = true;
-                btnModificarUsuario.Enabled = false;
-                btnAgregarUsuario.Enabled = true;
+                btnModificarUsuario.Enabled = true;
+                btnAgregarUsuario.Enabled = false;
                 btnEliminarUsuario.Enabled = false;
             }
             else if (modo == 3)
@@ -112,12 +113,12 @@ namespace SAPR
                 btnAceptar.Enabled = true;
                 btnCancelar.Enabled = true;
                 btnModificarUsuario.Enabled = false;
-                btnAgregarUsuario.Enabled = true;
-                btnEliminarUsuario.Enabled = false;
+                btnAgregarUsuario.Enabled = false;
+                btnEliminarUsuario.Enabled = true;
             }
             else if (modo == 4)
             { //consultar
-                btnAceptar.Enabled = true;
+                btnAceptar.Enabled = false;
                 btnCancelar.Enabled = true;
                 btnModificarUsuario.Enabled = false;
                 btnAgregarUsuario.Enabled = true;
