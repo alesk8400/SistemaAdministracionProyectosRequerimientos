@@ -53,6 +53,9 @@ namespace SAPR
 
         protected void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
+            //modo = 3;
+            //irAModo();
+            /*
             try
             {
                 controladora.eliminarUsuario(entidadConsultada.ID.ToString());
@@ -61,25 +64,26 @@ namespace SAPR
             catch { 
             
             }
+             * */
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e){
 
             String []resultado = new String[1];
-
+            
             if (modo == 1) // si se quiere insertar
             {
                 resultado = controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
 
-                if (resultado[0] == "")
+                if (resultado[0] == "Exito")
                 { // si inserto el proveedor : va a modo consultar con ese proveedor
-                    proveedorConsultado = controladora.consultarProveedor(this.textCedula.Value.ToString());
-                    modo = 4;
+                    //modo = 4;
                     habilitarCampos(false);
                 } // si no lo inserto no debe cambiar de modo ni limpiar la pantalla
             }
             else if (modo == 2)//si se quiere modificar
             {
+                /*
                 Boolean res = true;
                 Object[] datosMod = obtenerDatosFormulario();
                 String[] result = controladora.modificarProveedor(datosMod, proveedorConsultado);
@@ -97,6 +101,7 @@ namespace SAPR
                 llenarGrid();
                 modo = 4;
                 irAModo();
+                 * */
                 // se recuperan los datos que se hallan ingresado(existe un método para esto)
 
                 // se le pide a la controladora que modifique el proveedor
@@ -107,6 +112,7 @@ namespace SAPR
                 //se carga el proveedor modificado en el grid(esto es volver a llenar el grid)
                 // se cambia a modo consultar con el proveedor modificado
             }
+                /*
             else if (modo == 3)// si se quiere eliminar
             {
                 limpiarCampos(); // se limpian los campos
@@ -117,6 +123,8 @@ namespace SAPR
                 irAModo();// se cambia de modo y actualiza el grid
                 llenarGrid();
             }
+              * */
+            
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -142,7 +150,7 @@ namespace SAPR
                 btnCancelar.Enabled = false;
                 btnModificarUsuario.Enabled = false;
                 btnAgregarUsuario.Enabled = false;
-                btnEliminarUsuario.Enabled = false;
+                btnEliminarUsuario.Disabled = true;
                 habilitarCampos(false);
             }
             else if (modo == 1)
@@ -150,7 +158,7 @@ namespace SAPR
                 btnAceptar.Enabled = true;
                 btnCancelar.Enabled = true;
                 btnModificarUsuario.Enabled = false;
-                btnEliminarUsuario.Enabled = false;
+                btnEliminarUsuario.Disabled = true;
 
             }
             else if (modo == 2)
@@ -159,7 +167,7 @@ namespace SAPR
                 btnCancelar.Enabled = true;
                 btnModificarUsuario.Enabled = true;
                 btnAgregarUsuario.Enabled = false;
-                btnEliminarUsuario.Enabled = false;
+                btnEliminarUsuario.Disabled = true;
             }
             else if (modo == 3)
             { // eliminar
@@ -167,7 +175,7 @@ namespace SAPR
                 btnCancelar.Enabled = true;
                 btnModificarUsuario.Enabled = false;
                 btnAgregarUsuario.Enabled = false;
-                btnEliminarUsuario.Enabled = true;
+                btnEliminarUsuario.Disabled = true;
             }
             else if (modo == 4)
             { //consultar
@@ -175,7 +183,7 @@ namespace SAPR
                 btnCancelar.Enabled = true;
                 btnModificarUsuario.Enabled = false;
                 btnAgregarUsuario.Enabled = true;
-                btnEliminarUsuario.Enabled = false;
+                btnEliminarUsuario.Disabled = true;
             }
 
            // aplicarPermisos();// se aplican los permisos del usuario para el acceso a funcionalidades
@@ -188,6 +196,37 @@ namespace SAPR
             this.textTelefono.Disabled = !habilitar;
             this.textCelular.Disabled = !habilitar;
             this.cmbRoles.Enabled = habilitar;
+        }
+
+        protected void ocultarMensaje()
+        {
+            alertAlerta.Attributes.Add("hidden", "hidden");
+        }
+        protected void mostrarMensaje(String tipoAlerta, String alerta, String mensaje)
+        {
+            alertAlerta.Attributes["class"] = "alert alert-" + tipoAlerta + " alert-dismissable fade in";
+            labelTipoAlerta.Text = alerta + " ";
+            labelAlerta.Text = mensaje;
+            alertAlerta.Attributes.Remove("hidden");
+        }
+
+        protected void clickAceptarEliminar(object sender, EventArgs e)
+        {
+            String[] result = new String[1];
+            result = controladora.eliminarUsuario(entidadConsultada.ID.ToString());
+            mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
+            if (result[0].Contains("Exito"))// si fue exitoso
+            {
+                modo = 0;
+                irAModo();
+                limpiarCampos();
+            }
+            //se muestra lo que halla sucedido
+            ////si lo eliminó correctamente, va al modo por defecto(reset=0), debe limpiar el proveedorConsultado,actualizar la información del grid,y limpiar todos los campos
+        }
+
+        protected void cancelarConsultar(object sender, EventArgs e)
+        {
         }
 
     }
