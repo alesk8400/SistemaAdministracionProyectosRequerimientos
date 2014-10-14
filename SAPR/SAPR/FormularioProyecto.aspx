@@ -181,65 +181,6 @@
                             <div class="help-block with-errors"></div>
                         </div></div>
 
-
-<%--                    <div class="form-group">
-                        <label for="textNombre" class="col-sm-3 control-label">Empresa: </label>
-                        <div class="col-sm-9">
-                            <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="text2" class="form-control" type="text" placeholder="Nombre" data-error="Espacio requerido. Sólo letras y números." title="Empresa" required="required" pattern="^[a-zA-Z0-9 ]+$" />
-                                <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
-                            </div>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-
-                        </div>
-
-                    <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="textEncargado" class="col-sm-3 control-label">Encargado: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="text3" class="form-control" type="text" placeholder="Encargado" data-error="Nombre de encargado no válido" title="Encargado" pattern="^[a-zA-Z ]*$" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                       
-
-                     
-                    <div class="form-group">
-                        <label for="textTelefono" class="col-sm-3 control-label">Teléfono: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Tel1" class="form-control" type="tel" placeholder="Teléfono" data-error="Número de teléfono inválido" title="telefono" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="textCelular" class="col-sm-3 control-label">Celular: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Tel2" class="form-control" type="tel" placeholder="Celular" data-error="Número de teléfono inválido" title="Celular" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                        </div>
-                        
-                            <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="textEmail" class="col-sm-3 control-label">E-mail: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Email1" class="form-control" type="email" placeholder="E-mail" data-error="Correo inválido" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                         
-
-                     
-                    <div class="form-group">
-                        <label for="textURL" class="col-sm-3 control-label">Página web: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Url1" class="form-control" type="url" placeholder="Página web" data-error="Dirección inválida" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>--%>
                          
 
                     <div class="form-group">

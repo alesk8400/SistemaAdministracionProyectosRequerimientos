@@ -23,7 +23,7 @@ namespace SAPR
             try
             {
                 if (entidadConsultada == null) {
-                    ClientScript.RegisterOnSubmitStatement(this.GetType(), "alert", "ASJIHD");
+                    //ClientScript.RegisterOnSubmitStatement(this.GetType(), "alert", "ASJIHD");
                 
                 }
                 entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[0].Text.ToString());
@@ -32,7 +32,28 @@ namespace SAPR
                 textFechaA.Value = entidadConsultada.FechaAsig.ToString();
                 textFechaF.Value = entidadConsultada.FechaFin.ToString();
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
-                cmbEstado.SelectedValue = entidadConsultada.Estado;
+                int i = 0;
+
+
+                //cmbEsta
+               /* int selectedListItem = cmbEstado.Items.FindByValue(entidadConsultada.Estado);
+
+                if (selectedListItem != null)
+                {
+                    selectedListItem.Selected = true;
+                };
+                    
+                //FindString(entidadConsultada.Estado);
+
+                while (i < 3) {
+                    if (entidadConsultada.Estado.Equals(cmbEstado.Items[i].Text.ToString())) {
+                        cmbEstado.SelectedIndex = i;
+                    }
+                    i++;
+                } */
+
+                //cmbEstado.SelectedIndex = 2;
+                gridProyecto.DataBind();
             }
             catch { 
                 
