@@ -33,10 +33,10 @@
                 <fieldset>
                     <legend>Información de Proyecto</legend>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
                     <div class="form-group">
                         <label for="textNombre" class="col-sm-3 control-label">Nombre: </label>
-                        <div class="col-sm-9">
+                        <div class="col-sm-5">
                             <div class=" input-group margin-bottom-sm">
                                 <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" data-error="Ingresó una nombre inválido" title="Nombre" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="44" required="required" />
                                 <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
@@ -58,20 +58,20 @@
 
                         </div>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
 
-                         <%-- FALTA TRABAJARLO--%>
+                        
                     <div class="form-group">
-                        <label for="dateAsignacion" class="col-sm-3 control-label">Fecha de asignación:</label>
+                        <label for="fechaAsignacion" class="col-sm-3 control-label">Fecha de asignación:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="datepicker" placeholder="Clic Aquí"/>
+                                <input runat="server" id="textFechaA" type="text" class="datepicker" placeholder="Clic Aquí"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="DateFinish" class="col-sm-3 control-label">Fecha de finalización:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="datepicker" placeholder="Clic Aquí"/>
+                        <div class="col-md-1">
+                            <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="form-group">
                         <label for="dateStart" class="col-sm-3 control-label">Fecha de inicio: </label>
                         <div class="col-sm-9">
-                            <input type="text" class="datepicker" placeholder="Clic Aquí"/>
+                            <input runat="server" id="textFechaI" type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -91,16 +91,20 @@
                         <label for="text" class="col-sm-3 control-label">Estado: </label>
                         <div class="col-sm-9">
                         <div class="dropdown-toggle">
-                            <input runat="server" id="text11" class="form-control" type="text" placeholder="Estado" data-error="Estado no válido" title="Estado" pattern="^[a-zA-Z ]*$" />
-                            <div class="help-block with-errors"></div>
+                            &nbsp;<div class="help-block with-errors">
+                                <asp:DropDownList ID="cmbEstado" runat="server">
+                                    <asp:ListItem>Sin Iniciar</asp:ListItem>
+                                    <asp:ListItem>En proceso</asp:ListItem>
+                                    <asp:ListItem>Finalizado</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
                         </div>
                         </div>
                     </div>
                    </div>
-                </fieldset>
+                    </fieldset>
             </div>
-
-        </div>
+            </div>
     <!--Datos de contacto-->
     <div class="col-lg-12">
             <div class="well bs-component">
@@ -271,13 +275,44 @@
                     </div>
                                 </div>
                 </fieldset>
-            </div>
+                
                                         <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
                 <button runat="server" id="botonAceptar" class="btn btn-success" type="submit">Aceptar</button>
                 <button runat="server" id="botonCancelar" class="btn btn-danger" type="reset">Cancelar</button>
                         </div></div>
+              
             </div>
         </div>
+                    
+                
+                
+                <div class = " col-lg-7">    
+                                      
+                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                    <Columns>
+                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                        <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
+                        <asp:BoundField DataField="Lider" HeaderText="Lider" SortExpression="Lider" />
+                        <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
+                    </Columns>
+                    <FooterStyle BackColor="#CCCCCC" />
+                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                    <RowStyle BackColor="White" />
+                    <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                    <SortedAscendingHeaderStyle BackColor="#808080" />
+                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                    <SortedDescendingHeaderStyle BackColor="#383838" />
+                </asp:GridView>
+                                
+                <asp:SqlDataSource ID="ListaProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT P.Nombre, P.Estado, U.Nombre AS Lider
+FROM Proyecto P, Usuarios U
+WHERE P.Lider = U.idUsuario"></asp:SqlDataSource>
+
+            </div>
+
+
 </asp:Content>

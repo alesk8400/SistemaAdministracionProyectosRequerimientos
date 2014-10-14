@@ -13,15 +13,18 @@ namespace SAPR.App_Code.Entidades
         private String fechaIni;
         private String fechaFin;
         private String fechaAsig;
+        private String idProyecto;
 
         public EntidadProyecto(Object[] datos) {
-            this.nombre = datos[0].ToString();
-            this.lider = Int32.Parse(datos[1].ToString());
+
+            this.idProyecto = datos[0].ToString();
+            this.nombre = datos[1].ToString();
             this.objetivos = datos[2].ToString();
             this.estado = datos[3].ToString();
             this.fechaIni = datos[4].ToString();
             this.fechaFin = datos[5].ToString();
             this.fechaAsig = datos[6].ToString();
+            this.lider = Int32.Parse(datos[7].ToString());
         }
 
         public String Nombre{

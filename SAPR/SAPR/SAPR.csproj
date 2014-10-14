@@ -346,6 +346,9 @@
     <Compile Include="App_Code\Controladoras\ControladoraUsuario.cs" />
     <Compile Include="App_Code\Controladoras\ControladoraBDUsuario.cs" />
     <Compile Include="App_Code\Controladoras\ControladoraBDProyecto.cs" />
+    <Content Include="App_Code\DataSets\DataSetProyectos.cs">
+      <DependentUpon>DataSetProyectos.xsd</DependentUpon>
+    </Content>
     <Compile Include="App_Code\Entidades\EntidadProyecto.cs" />
     <Compile Include="App_Code\Entidades\EntidadUsuario.cs" />
     <Compile Include="App_Code\DataSets\DataSetUsuarios.Designer.cs">
