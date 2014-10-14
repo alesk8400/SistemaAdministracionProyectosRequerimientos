@@ -227,3 +227,4 @@ C:\Users\gerjo\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAP
 C:\Users\a75952\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll.config
 C:\Users\gerjo\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll.CodeAnalysisLog.xml
 C:\Users\gerjo\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll.lastcodeanalysissucceeded
+C:\Users\a75952\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.csprojResolveAssemblyReference.cache

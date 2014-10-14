@@ -1,15 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioUsuario.aspx.cs" Inherits="SAPR.FormularioUsuario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <div class="row row-botones">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnAgregarUsuario" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="btnAgregarUsuario_Click"/>
         <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar" class ="btn btn-primary "/>
-        <asp:Button ID="btnEliminarUsuario" runat="server" Text="Eliminar" CssClass ="btn btn-primary" OnClick="btnEliminarUsuario_Click" />
+        <a id="btnEliminarUsuario" href="#modalEliminar" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
 
         <br />
 
+    </div>
+
+    <div class="col-lg-7">
+            <div id="alertAlerta" class="alert alert-danger fade in" runat="server" hidden="hidden">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>
+                    <asp:Label ID="labelTipoAlerta" runat="server" Text="Alerta! "></asp:Label></strong><asp:Label ID="labelAlerta" runat="server" Text="Mensaje de alerta"></asp:Label>
+            </div>
     </div>
 
 
@@ -142,6 +148,25 @@
                         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn-danger" OnClientClick="btn_CancelarOnClick" Height="39px" Width="97px" OnClick="btnCancelar_Click"/>
 
      </div></div>
+
+    <!--Modal Eliminar-->
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i>Confirmar eliminación</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea eliminar el usuario seleccionado?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonCancelarModal" class="btn btn-danger" data-dismiss="modal" onserverclick="cancelarConsultar">Cancelar</button>
+                    <button type="button" id="botonAceptarModal" class="btn btn-succes" runat="server" onserverclick="clickAceptarEliminar" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
