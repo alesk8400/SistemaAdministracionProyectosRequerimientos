@@ -33,21 +33,20 @@
                 <fieldset>
                     <legend>Información de Proyecto</legend>
 
-                    <div class="col-sm-9">
                     <div class="form-group">
-                        <label for="textNombre" class="col-sm-3 control-label">Nombre: </label>
-                        <div class="col-sm-5">
-                            <div class=" input-group margin-bottom-sm">
+                        <label for="textNombre" class="col-sm-1 control-label">Nombre: </label>
+                        <div class="col-sm-3">
+                            <div class=" input-group margin-bottom-sm"> 
                                 <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" data-error="Ingresó una nombre inválido" title="Nombre" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="44" required="required" />
                                 <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
                             </div>
                             <div class="help-block with-errors"></div>
                         </div></div>
-
-
+                    </fieldset>
+                    <fieldset>
                     <div class="form-group">
-                        <label for="textObjetivo" class="col-sm-3 control-label">Objetivo: </label>
-                        <div class="col-sm-9">
+                        <label for="textObjetivo" class="col-sm-1 control-label">Objetivo: </label>
+                        <div class="col-sm-7">
                             <div class=" input-group margin-bottom-sm">
                                 <input runat="server" id="textObjetivo" class="form-control" type="text" placeholder="Objetivo de Proyecto" data-error="Espacio requerido. Sólo letras." title="Objetivos" required="required" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="299" />
                                 <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
@@ -55,53 +54,51 @@
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
+                        </fieldset>
 
-                        </div>
-
-                    <div class="col-sm-9">
-
-                        
+                        <fieldset>
+                            <div class="col-md-5">
                     <div class="form-group">
-                        <label for="fechaAsignacion" class="col-sm-3 control-label">Fecha de asignación:</label>
-                            <div class="col-sm-9">
+                        <label for="fechaAsignacion" class="col-sm-6 control-label">Fecha de asignación:</label>
+                            <div class="col-sm-1">
                                 <input runat="server" id="textFechaA" type="text" class="datepicker" placeholder="Clic Aquí"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="DateFinish" class="col-sm-3 control-label">Fecha de finalización:</label>
+                        <label for="DateFinish" class="col-sm-6 control-label">Fecha de finalización:</label>
                         <div class="col-md-1">
                             <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                    </div>
+                </div>
 
-                    <div class="col-sm-4">
-
+                 <div class="col-md-5">
                     <div class="form-group">
-                        <label for="dateStart" class="col-sm-3 control-label">Fecha de inicio: </label>
-                        <div class="col-sm-9">
+                        <label for="dateStart" class="col-sm-6 control-label">Fecha de inicio: </label>
+                        <div class="col-sm-1">
                             <input runat="server" id="textFechaI" type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                        
+                       
+ 
                     <div class="form-group">
-                        <label for="text" class="col-sm-3 control-label">Estado: </label>
-                        <div class="col-sm-9">
-                        <div class="dropdown-toggle">
-                            &nbsp;<div class="help-block with-errors">
+                        <label for="text" class="col-sm-6 control-label">Estado: </label>
+                        <div class="col-sm-1">
+                        <div class="dropdown-toggle"> 
                                 <asp:DropDownList ID="cmbEstado" runat="server">
                                     <asp:ListItem>Sin Iniciar</asp:ListItem>
                                     <asp:ListItem>En proceso</asp:ListItem>
                                     <asp:ListItem>Finalizado</asp:ListItem>
                                 </asp:DropDownList>
-                            </div>
+                            <div class="help-block with-errors"></div>
                         </div>
                         </div>
                     </div>
-                   </div>
+                                </div>
                     </fieldset>
             </div>
             </div>
