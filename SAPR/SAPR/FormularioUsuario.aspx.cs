@@ -23,13 +23,9 @@ namespace SAPR
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e){          
             modo = 1;
-            //irAModo();
-           // controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
             habilitarCampos(true);
             btnAceptar.Enabled = true;
             btnCancelar.Enabled = true;
-            
-
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)  {           
