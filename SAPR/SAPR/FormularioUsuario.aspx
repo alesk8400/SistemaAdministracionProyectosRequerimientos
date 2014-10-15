@@ -3,8 +3,8 @@
     <div class="row row-botones">
         <br />
         <asp:Button ID="btnAgregarUsuario" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="btnAgregarUsuario_Click"/>
-        <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar" class ="btn btn-primary "/>
-        <a id="btnEliminarUsuario" href="#modalEliminar" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
+        <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar" class ="btn btn-primary " OnClick="btnModificarUsuario_Click"/>
+        <a id="btnEliminarUsuario" href="#modalEliminar" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
 
         <br />
 
@@ -139,7 +139,7 @@
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
-        <asp:SqlDataSource ID="consultaGrideUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT U.Cedula, U.Nombre, R.NombreRol AS Rol FROM Usuarios AS U INNER JOIN RolesUsuario AS R ON U.IdUsuario = R.IdUsuario"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="consultaGrideUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT U.Cedula, U.Nombre, R.NombreRol AS Rol FROM Usuarios AS U INNER JOIN RolesUsuario AS R ON U.Cedula = R.Cedula"></asp:SqlDataSource>
    </div>   
      <div class="col-lg-12">
                     <div class="text-center">
@@ -161,8 +161,8 @@
                     ¿Está seguro que desea eliminar el usuario seleccionado?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="botonCancelarModal" class="btn btn-danger" data-dismiss="modal" onserverclick="cancelarConsultar">Cancelar</button>
-                    <button type="button" id="botonAceptarModal" class="btn btn-succes" runat="server" onserverclick="clickAceptarEliminar" data-dismiss="modal">Aceptar</button>
+                    <button type="button" id="botonCancelarModal" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="botonAceptarModal" class="btn btn-primary" runat="server" onserverclick="clickAceptarEliminar">Aceptar</button>
                 </div>
             </div>
         </div>

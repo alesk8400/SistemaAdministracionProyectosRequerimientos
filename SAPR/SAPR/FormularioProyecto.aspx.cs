@@ -17,13 +17,31 @@ namespace SAPR
         {
             
         }
+        protected void botonAgregarClic(object sender, EventArgs e)
+        {
+            //limpiarCampos();
+           // modo = 1;
+            //irAModo();
+            // String fechaFin, String fechaInic, String estado, int lider
+            controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), "1 2345 678");
+            gridProyecto.DataBind();
+        }
+        protected void botonEliminarClic(object sender, EventArgs e)
+        {
+            //limpiarCampos();
+            // modo = 1;
+            //irAModo();
+            // String fechaFin, String fechaInic, String estado, int lider
+            controladora.eliminarProyecto(entidadConsultada.Id);
+            gridProyecto.DataBind();
+        }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 if (entidadConsultada == null) {
-                    ClientScript.RegisterOnSubmitStatement(this.GetType(), "alert", "ASJIHD");
+                    //ClientScript.RegisterOnSubmitStatement(this.GetType(), "alert", "ASJIHD");
                 
                 }
                 entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[0].Text.ToString());
@@ -32,7 +50,10 @@ namespace SAPR
                 textFechaA.Value = entidadConsultada.FechaAsig.ToString();
                 textFechaF.Value = entidadConsultada.FechaFin.ToString();
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
-                cmbEstado.SelectedValue = entidadConsultada.Estado;
+                cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
+
+                //cmbEstado.SelectedIndex = 2;
+                gridProyecto.DataBind();
             }
             catch { 
                 

@@ -23,10 +23,11 @@ namespace SAPR
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
+            
+            //modo = 1;
+            //irAModo();
+            controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
             limpiarCampos();
-            modo = 1;
-            irAModo();
-            //controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
             gridUsuarios.DataBind();
         }
 
@@ -53,18 +54,7 @@ namespace SAPR
 
         protected void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
-            //modo = 3;
-            //irAModo();
-            /*
-            try
-            {
-                controladora.eliminarUsuario(entidadConsultada.ID.ToString());
-                gridUsuarios.DataBind();
-            }
-            catch { 
-            
-            }
-             * */
+       
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e){
@@ -83,25 +73,12 @@ namespace SAPR
             }
             else if (modo == 2)//si se quiere modificar
             {
-                /*
-                Boolean res = true;
-                Object[] datosMod = obtenerDatosFormulario();
-                String[] result = controladora.modificarProveedor(datosMod, proveedorConsultado);
-                mostrarMensaje(result[0], result[1], result[2]); // se muestra el resultado
-                if (result[0].Contains("success"))// si fue exitoso
-                {
-                    llenarGrid(); //se actualiza el grid con el nuevo proveedor incluido
-                }
-                else if (result[2].Contains("cedula ingresada ya existe")) // si ya hay uno con esa cédula
-                {
-                    res = false;
-                    modo = 1; //no se cambia de modo y retorna false
-                }
-                proveedorConsultado = controladora.consultarProveedor(this.textCedula.Value.ToString());
-                llenarGrid();
-                modo = 4;
-                irAModo();
-                 * */
+                String[] result = controladora.modificarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString(), entidadConsultada);
+                gridUsuarios.DataBind();
+                // mostrarMensaje(result[0], result[1], result[2]); // se muestra el resultado
+               // modo = 4;
+               // irAModo();
+                
                 // se recuperan los datos que se hallan ingresado(existe un método para esto)
 
                 // se le pide a la controladora que modifique el proveedor
@@ -213,13 +190,14 @@ namespace SAPR
         protected void clickAceptarEliminar(object sender, EventArgs e)
         {
             String[] result = new String[1];
-            result = controladora.eliminarUsuario(entidadConsultada.ID.ToString());
+            result = controladora.eliminarUsuario(entidadConsultada.Cedula);
             mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
             if (result[0].Contains("Exito"))// si fue exitoso
             {
                 modo = 0;
                 irAModo();
                 limpiarCampos();
+                gridUsuarios.DataBind();
             }
             //se muestra lo que halla sucedido
             ////si lo eliminó correctamente, va al modo por defecto(reset=0), debe limpiar el proveedorConsultado,actualizar la información del grid,y limpiar todos los campos
@@ -227,6 +205,12 @@ namespace SAPR
 
         protected void cancelarConsultar(object sender, EventArgs e)
         {
+        }
+
+        protected void btnModificarUsuario_Click(object sender, EventArgs e){
+            //habilitar
+            //habilitar botones acp y canc
+            modo = 2;
         }
 
     }

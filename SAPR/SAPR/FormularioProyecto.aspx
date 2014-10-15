@@ -13,9 +13,9 @@
     <div class="row row-botones">
         <div class="col-lg-5">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button runat="server"  id="botonAgregar" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
+            <asp:Button ID="btnAgregarProyecto" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="botonAgregarClic"/>
             <button runat="server" id="botonModificar" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
-            <a id="botonEliminar" href="#modalEliminar" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
+            <asp:Button ID="btnEliminar" runat="server"  Text="Eliminar" class= "btn btn-primary" OnClick="botonEliminarClic"/>
         </div>
         <div class="col-lg-7">
             <div id="alertAlerta" class="alert alert-danger fade in" runat="server" hidden="hidden">
@@ -172,74 +172,16 @@
 
                     <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="textCedula" class="col-sm-3 control-label">Cédula: </label>
                         <div class="col-sm-9">
                             <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="text1" class="form-control" type="text" placeholder="Cédula" data-error="Ingresó una cédula inválida" title="Cédula" pattern="^[0-9]*$" data-minlength="9" maxlength="12" required="required" />
-                                <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
+                                &nbsp;<span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span></div>
+                            <div class="help-block with-errors">
+                                <asp:DropDownList ID="cmbNombreLider" runat="server" DataSourceID="GetLider" DataTextField="Nombre" DataValueField="Nombre">
+                                </asp:DropDownList>
+                                <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.Cedula FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.Cedula = p.Lider"></asp:SqlDataSource>
                             </div>
-                            <div class="help-block with-errors"></div>
                         </div></div>
 
-
-<%--                    <div class="form-group">
-                        <label for="textNombre" class="col-sm-3 control-label">Empresa: </label>
-                        <div class="col-sm-9">
-                            <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="text2" class="form-control" type="text" placeholder="Nombre" data-error="Espacio requerido. Sólo letras y números." title="Empresa" required="required" pattern="^[a-zA-Z0-9 ]+$" />
-                                <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
-                            </div>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-
-                        </div>
-
-                    <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="textEncargado" class="col-sm-3 control-label">Encargado: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="text3" class="form-control" type="text" placeholder="Encargado" data-error="Nombre de encargado no válido" title="Encargado" pattern="^[a-zA-Z ]*$" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                       
-
-                     
-                    <div class="form-group">
-                        <label for="textTelefono" class="col-sm-3 control-label">Teléfono: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Tel1" class="form-control" type="tel" placeholder="Teléfono" data-error="Número de teléfono inválido" title="telefono" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="textCelular" class="col-sm-3 control-label">Celular: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Tel2" class="form-control" type="tel" placeholder="Celular" data-error="Número de teléfono inválido" title="Celular" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                        </div>
-                        
-                            <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="textEmail" class="col-sm-3 control-label">E-mail: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Email1" class="form-control" type="email" placeholder="E-mail" data-error="Correo inválido" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                         
-
-                     
-                    <div class="form-group">
-                        <label for="textURL" class="col-sm-3 control-label">Página web: </label>
-                        <div class="col-sm-9">
-                            <input runat="server" id="Url1" class="form-control" type="url" placeholder="Página web" data-error="Dirección inválida" />
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>--%>
                          
 
                     <div class="form-group">
@@ -258,16 +200,16 @@
             </div>
         </div>
                     
-                
+              </div>  
                 
                 <div class = " col-lg-7">    
                                       
                     <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                     <Columns>
+                        <asp:CommandField ShowSelectButton="True" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                         <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                         <asp:BoundField DataField="Lider" HeaderText="Lider" SortExpression="Lider" />
-                        <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                     </Columns>
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -280,9 +222,7 @@
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                 </asp:GridView>
                                 
-                <asp:SqlDataSource ID="ListaProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT P.Nombre, P.Estado, U.Nombre AS Lider
-FROM Proyecto P, Usuarios U
-WHERE P.Lider = U.idUsuario"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="ListaProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT P.Nombre, P.Estado, U.Nombre AS Lider FROM Proyecto AS P INNER JOIN Usuarios AS U ON P.Lider = U.Cedula"></asp:SqlDataSource>
 
             </div>
 
