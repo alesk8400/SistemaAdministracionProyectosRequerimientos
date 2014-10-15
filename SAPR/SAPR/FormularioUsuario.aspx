@@ -1,12 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioUsuario.aspx.cs" Inherits="SAPR.FormularioUsuario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <div class="row row-botones">
-        <br />
-        <asp:Button ID="btnAgregarUsuario" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="btnAgregarUsuario_Click"/>
-        <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar" class ="btn btn-primary " OnClick="btnModificarUsuario_Click"/>
+        
+        
+        <%--<asp:Button ID="btnAgregarUsuario" runat="server"  Text="Agregar" class= "fa fa-trash-o fa-lg" OnClick="btnAgregarUsuario_Click" CssClass="btn-primary"/>
+        <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar" class ="fa fa-trash-o fa-lg" OnClick="btnModificarUsuario_Click" CssClass="btn-primary"/>--%>
+        <button runat="server" onserverclick="btnAgregarUsuario_Click" id="btnAgregarUsuario" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
+        <button runat="server" onserverclick="btnModificarUsuario_Click" id="btnModificarUsuario" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
         <a id="btnEliminarUsuario" href="#modalEliminar" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
 
-        <br />
+        
 
     </div>
 
@@ -124,10 +127,10 @@
 
         <asp:GridView ID="gridUsuarios" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="consultaGrideUsuarios" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" >
             <Columns>
+                <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                 <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
-                <asp:CommandField ShowSelectButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

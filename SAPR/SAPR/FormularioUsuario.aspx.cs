@@ -12,30 +12,27 @@ namespace SAPR
     public partial class FormularioUsuario : System.Web.UI.Page
     {
 
-        private static ControladoraUsuario controladora = new ControladoraUsuario();
+        private static ControladoraUsuario controladora;
         private static EntidadUsuario entidadConsultada;
         private static int modo = 0;
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
+        protected void Page_Load(object sender, EventArgs e){
+            controladora = new ControladoraUsuario();
+            restaurarPantalla();
         }
 
-        protected void btnAgregarUsuario_Click(object sender, EventArgs e)
-        {
-            
-            //modo = 1;
+        protected void btnAgregarUsuario_Click(object sender, EventArgs e){          
+            modo = 1;
             //irAModo();
-            controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
-            limpiarCampos();
-            gridUsuarios.DataBind();
+           // controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
+            habilitarCampos(true);
+            btnAceptar.Enabled = true;
+            btnCancelar.Enabled = true;
+            
+
         }
 
-
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)  {
-
-            
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)  {           
             try
             {
                 entidadConsultada = controladora.consultarUsuario(gridUsuarios.SelectedRow.Cells[0].Text.ToString());
@@ -50,6 +47,9 @@ namespace SAPR
                 entidadConsultada = null;
                 // Hacer algo para indicar error
             }
+            btnModificarUsuario.Disabled = false;
+            btnEliminarUsuario.Disabled = false;
+
         }
 
         protected void btnEliminarUsuario_Click(object sender, EventArgs e)
@@ -67,41 +67,16 @@ namespace SAPR
 
                 if (resultado[0] == "Exito")
                 { // si inserto el proveedor : va a modo consultar con ese proveedor
-                    //modo = 4;
-                    habilitarCampos(false);
+                    gridUsuarios.DataBind();
+                    restaurarPantalla();
                 } // si no lo inserto no debe cambiar de modo ni limpiar la pantalla
             }
             else if (modo == 2)//si se quiere modificar
             {
                 String[] result = controladora.modificarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString(), entidadConsultada);
                 gridUsuarios.DataBind();
-                // mostrarMensaje(result[0], result[1], result[2]); // se muestra el resultado
-               // modo = 4;
-               // irAModo();
-                
-                // se recuperan los datos que se hallan ingresado(existe un método para esto)
-
-                // se le pide a la controladora que modifique el proveedor
-
-                // se muestra el resultado de la modificación(revisar otros métodos para ver como mostrar el error devuelto)
-
-                // se actualiza el proveedor que se consultó por última vez, es decir, se consulta el proveedor recien modificado
-                //se carga el proveedor modificado en el grid(esto es volver a llenar el grid)
-                // se cambia a modo consultar con el proveedor modificado
-            }
-                /*
-            else if (modo == 3)// si se quiere eliminar
-            {
-                limpiarCampos(); // se limpian los campos
-                modo = 0;//se va a modo reset, y no se elimina porque existe un modal de confirmacion que se muestra
-            }
-            if (operacionCorrecta)// si se logró la operación
-            {
-                irAModo();// se cambia de modo y actualiza el grid
-                llenarGrid();
-            }
-              * */
-            
+                restaurarPantalla();
+            }          
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -109,8 +84,7 @@ namespace SAPR
 
         }
 
-        protected void limpiarCampos()
-        {
+        protected void limpiarCampos() {
             this.txtNombreUsuario.Value = "";
             this.txtCedula.Value = "";
             this.textEmail.Value = "";
@@ -118,54 +92,6 @@ namespace SAPR
             this.textCelular.Value = "";
             this.cmbRoles.ClearSelection();
         }
-
-        protected void irAModo()
-        {
-            if (modo == 0)
-            { // el modo 0 se usa para resetear la interfaz
-                btnAceptar.Enabled = false;
-                btnCancelar.Enabled = false;
-                btnModificarUsuario.Enabled = false;
-                btnAgregarUsuario.Enabled = false;
-                btnEliminarUsuario.Disabled = true;
-                habilitarCampos(false);
-            }
-            else if (modo == 1)
-            { // se desea insertar
-                btnAceptar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnModificarUsuario.Enabled = false;
-                btnEliminarUsuario.Disabled = true;
-
-            }
-            else if (modo == 2)
-            { //modificar
-                btnAceptar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnModificarUsuario.Enabled = true;
-                btnAgregarUsuario.Enabled = false;
-                btnEliminarUsuario.Disabled = true;
-            }
-            else if (modo == 3)
-            { // eliminar
-                btnAceptar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnModificarUsuario.Enabled = false;
-                btnAgregarUsuario.Enabled = false;
-                btnEliminarUsuario.Disabled = true;
-            }
-            else if (modo == 4)
-            { //consultar
-                btnAceptar.Enabled = false;
-                btnCancelar.Enabled = true;
-                btnModificarUsuario.Enabled = false;
-                btnAgregarUsuario.Enabled = true;
-                btnEliminarUsuario.Disabled = true;
-            }
-
-           // aplicarPermisos();// se aplican los permisos del usuario para el acceso a funcionalidades
-        }
-
         protected void habilitarCampos(Boolean habilitar){
             this.txtNombreUsuario.Disabled = !habilitar;
             this.txtCedula.Disabled = !habilitar;
@@ -173,29 +99,26 @@ namespace SAPR
             this.textTelefono.Disabled = !habilitar;
             this.textCelular.Disabled = !habilitar;
             this.cmbRoles.Enabled = habilitar;
+            this.cmbProyecto.Enabled = habilitar;
         }
 
-        protected void ocultarMensaje()
-        {
+        protected void ocultarMensaje() {
             alertAlerta.Attributes.Add("hidden", "hidden");
         }
-        protected void mostrarMensaje(String tipoAlerta, String alerta, String mensaje)
-        {
+        protected void mostrarMensaje(String tipoAlerta, String alerta, String mensaje) {
             alertAlerta.Attributes["class"] = "alert alert-" + tipoAlerta + " alert-dismissable fade in";
             labelTipoAlerta.Text = alerta + " ";
             labelAlerta.Text = mensaje;
             alertAlerta.Attributes.Remove("hidden");
         }
 
-        protected void clickAceptarEliminar(object sender, EventArgs e)
-        {
+        protected void clickAceptarEliminar(object sender, EventArgs e) {
             String[] result = new String[1];
             result = controladora.eliminarUsuario(entidadConsultada.Cedula);
             mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
             if (result[0].Contains("Exito"))// si fue exitoso
             {
                 modo = 0;
-                irAModo();
                 limpiarCampos();
                 gridUsuarios.DataBind();
             }
@@ -208,9 +131,26 @@ namespace SAPR
         }
 
         protected void btnModificarUsuario_Click(object sender, EventArgs e){
-            //habilitar
-            //habilitar botones acp y canc
+            this.txtNombreUsuario.Disabled = false;
+            this.textEmail.Disabled = false;
+            this.textTelefono.Disabled = false;
+            this.textCelular.Disabled = false;
+            this.cmbRoles.Enabled = true;
+            this.cmbProyecto.Enabled = true;
+            btnAceptar.Enabled = true;
+            btnCancelar.Enabled = true;
             modo = 2;
+        }
+
+        protected void restaurarPantalla()
+        {
+            habilitarCampos(false);
+            btnModificarUsuario.Disabled = true;
+            btnEliminarUsuario.Disabled = true;
+            btnAgregarUsuario.Disabled = false;
+            btnAceptar.Enabled = false;
+            btnCancelar.Enabled = false;
+            limpiarCampos();
         }
 
     }

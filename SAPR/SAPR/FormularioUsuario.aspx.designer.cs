@@ -19,7 +19,7 @@ namespace SAPR {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnAgregarUsuario;
         
         /// <summary>
         /// Control btnModificarUsuario.
@@ -28,7 +28,7 @@ namespace SAPR {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModificarUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnModificarUsuario;
         
         /// <summary>
         /// Control btnEliminarUsuario.
