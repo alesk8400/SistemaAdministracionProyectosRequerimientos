@@ -23,7 +23,7 @@ namespace SAPR
            // modo = 1;
             //irAModo();
             // String fechaFin, String fechaInic, String estado, int lider
-            controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), 5);
+            controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), "1 2345 678");
             gridProyecto.DataBind();
         }
         protected void botonEliminarClic(object sender, EventArgs e)

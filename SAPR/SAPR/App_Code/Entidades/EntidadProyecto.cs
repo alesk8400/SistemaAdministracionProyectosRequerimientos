@@ -7,7 +7,7 @@ namespace SAPR.App_Code.Entidades
 {
     public class EntidadProyecto{
         private String nombre;
-        private int lider;
+        private String lider;
         private String objetivos;
         private String estado;
         private String fechaIni;
@@ -24,7 +24,7 @@ namespace SAPR.App_Code.Entidades
             this.fechaIni = datos[4].ToString();
             this.fechaFin = datos[5].ToString();
             this.fechaAsig = datos[6].ToString();
-            this.lider = Int32.Parse(datos[7].ToString());
+            this.lider = datos[7].ToString();
         }
 
         public String Id
@@ -37,7 +37,7 @@ namespace SAPR.App_Code.Entidades
             set { nombre = value; }
         }
 
-        public int Lider {
+        public String Lider {
             get { return lider; }
             set { lider = value; }
         }

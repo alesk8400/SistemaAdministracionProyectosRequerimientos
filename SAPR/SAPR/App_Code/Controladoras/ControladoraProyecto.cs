@@ -18,7 +18,7 @@ namespace SAPR.App_Code.Controladoras
 
         }
         // Este método recibía String[] listaUsuarios, se lo quité por mientras
-        public String[] insertarProyecto(String nombre, String objetivo, String fechaAsig, String fechaFin, String fechaInic, String estado, int lider)
+        public String[] insertarProyecto(String nombre, String objetivo, String fechaAsig, String fechaFin, String fechaInic, String estado, String lider)
         {
             Object[] datos = new Object[8];
             datos[0] = 1;
