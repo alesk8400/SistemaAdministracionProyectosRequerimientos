@@ -176,7 +176,7 @@
                             <div class=" input-group margin-bottom-sm">
                                 &nbsp;<span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span></div>
                             <div class="help-block with-errors">
-                                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="GetLider" DataTextField="Nombre" DataValueField="Nombre">
+                                <asp:DropDownList ID="cmbNombreLider" runat="server" DataSourceID="GetLider" DataTextField="Nombre" DataValueField="Nombre">
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.IdUsuario FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.IdUsuario = p.Lider"></asp:SqlDataSource>
                             </div>

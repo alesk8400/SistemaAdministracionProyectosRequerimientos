@@ -10,9 +10,12 @@ namespace SAPR.App_Code.Controladoras
 {
     public class ControladoraProyecto {
         ControladoraBDProyecto controladoraBDProyecto;
-
+        ControladoraUsuario controladoraUsuario;
+        private static String lider; 
         public ControladoraProyecto() {
             controladoraBDProyecto = new ControladoraBDProyecto();
+            controladoraUsuario = new ControladoraUsuario();
+
         }
         // Este método recibía String[] listaUsuarios, se lo quité por mientras
         public String[] insertarProyecto(String nombre, String objetivo, String fechaAsig, String fechaFin, String fechaInic, String estado, int lider)

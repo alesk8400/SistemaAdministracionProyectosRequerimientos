@@ -73,6 +73,9 @@ namespace SAPR.App_Code.Controladoras
             }
             return usuarios;
         }
+        //public string ConsultarNomLider(){
+        
+       // }
 
         /*
         public String[] listadoRoles(){ 

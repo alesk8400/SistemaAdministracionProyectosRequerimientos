@@ -175,13 +175,13 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textTelSecundario;
         
         /// <summary>
-        /// Control DropDownList1.
+        /// Control cmbNombreLider.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList cmbNombreLider;
         
         /// <summary>
         /// Control GetLider.
