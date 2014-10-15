@@ -6,7 +6,6 @@ using System.Web;
 namespace SAPR.App_Code.Entidades
 {
     public class EntidadUsuario{
-        private String id;
         private String cedula;
         private String nombre;
         private String correo;
@@ -14,19 +13,11 @@ namespace SAPR.App_Code.Entidades
         private String celular;
 
         public EntidadUsuario(Object[] datos) {
-            this.id = datos[0].ToString();
+            this.nombre = datos[0].ToString();
             this.cedula = datos[1].ToString();
-            this.nombre = datos[2].ToString();
-            this.telefono = datos[4].ToString();
-            this.celular = datos[5].ToString();
-            this.correo = datos[3].ToString();
-        }
-
-
-        public String ID
-        {
-            get { return id; }
-            set { id = value; }
+            this.correo = datos[2].ToString();
+            this.telefono = datos[3].ToString();
+            this.celular = datos[4].ToString();           
         }
 
         public String Cedula{

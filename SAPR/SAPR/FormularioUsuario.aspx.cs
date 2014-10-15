@@ -23,10 +23,11 @@ namespace SAPR
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
+            
+            //modo = 1;
+            //irAModo();
+            controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
             limpiarCampos();
-            modo = 1;
-            irAModo();
-            //controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
             gridUsuarios.DataBind();
         }
 
@@ -202,13 +203,14 @@ namespace SAPR
         protected void clickAceptarEliminar(object sender, EventArgs e)
         {
             String[] result = new String[1];
-            result = controladora.eliminarUsuario(entidadConsultada.ID.ToString());
+            result = controladora.eliminarUsuario(entidadConsultada.Cedula);
             mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
             if (result[0].Contains("Exito"))// si fue exitoso
             {
                 modo = 0;
                 irAModo();
                 limpiarCampos();
+                gridUsuarios.DataBind();
             }
             //se muestra lo que halla sucedido
             ////si lo eliminó correctamente, va al modo por defecto(reset=0), debe limpiar el proveedorConsultado,actualizar la información del grid,y limpiar todos los campos
