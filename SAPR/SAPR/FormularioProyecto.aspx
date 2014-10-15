@@ -13,7 +13,7 @@
     <div class="row row-botones">
         <div class="col-lg-5">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button runat="server"  id="botonAgregar" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
+            <asp:Button ID="btnAgregarProyecto" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="botonAgregarClic"/>
             <button runat="server" id="botonModificar" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
             <a id="botonEliminar" href="#modalEliminar" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
         </div>
@@ -199,7 +199,7 @@
             </div>
         </div>
                     
-                
+              </div>  
                 
                 <div class = " col-lg-7">    
                                       

@@ -33,7 +33,6 @@ C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SA
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\es\System.Web.Providers.resources.dll
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\es\Microsoft.AspNet.Membership.OpenAuth.resources.dll
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
-C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.csprojResolveAssemblyReference.cache
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.dll
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.pdb
 C:\Users\MaR\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll.config

@@ -17,6 +17,15 @@ namespace SAPR
         {
             
         }
+        protected void botonAgregarClic(object sender, EventArgs e)
+        {
+            //limpiarCampos();
+           // modo = 1;
+            //irAModo();
+            // String fechaFin, String fechaInic, String estado, int lider
+            controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), 1);
+            //gridProyecto.DataBind();
+        }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -32,26 +41,7 @@ namespace SAPR
                 textFechaA.Value = entidadConsultada.FechaAsig.ToString();
                 textFechaF.Value = entidadConsultada.FechaFin.ToString();
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
-                int i = 0;
-
-
-                //cmbEsta
-               /* int selectedListItem = cmbEstado.Items.FindByValue(entidadConsultada.Estado);
-
-                if (selectedListItem != null)
-                {
-                    selectedListItem.Selected = true;
-                };
-                    
-                //FindString(entidadConsultada.Estado);
-
-                while (i < 3) {
-                    if (entidadConsultada.Estado.Equals(cmbEstado.Items[i].Text.ToString())) {
-                        cmbEstado.SelectedIndex = i;
-                    }
-                    i++;
-                } */
-
+                cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
                 //cmbEstado.SelectedIndex = 2;
                 gridProyecto.DataBind();
             }

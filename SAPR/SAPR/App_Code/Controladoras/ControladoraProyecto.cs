@@ -14,8 +14,9 @@ namespace SAPR.App_Code.Controladoras
         public ControladoraProyecto() {
             controladoraBDProyecto = new ControladoraBDProyecto();
         }
-
-        public String[] insertarProyecto(String nombre, int lider, String estado, String objetivo, String fechaAsig, String fechaInic, String fechaFin, String[] listaUsuarios) {
+        // Este método recibía String[] listaUsuarios, se lo quité por mientras
+        public String[] insertarProyecto(String nombre, String objetivo, String fechaAsig, String fechaFin, String fechaInic, String estado, int lider)
+        {
             Object[] datos = new Object[7];
             datos[0] = nombre;
             datos[1] = lider;

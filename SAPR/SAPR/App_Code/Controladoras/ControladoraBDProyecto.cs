@@ -20,7 +20,7 @@ namespace SAPR.App_Code.Controladoras {
             String[] resultado = new String[1];
             try
             {
-               // this.ps.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefonos);
+                //this.ps.Insert(proyectoNuevo.nombre, proyectoNuevo.objetivos, proyectoNuevo.estado, proyectoNuevo.fechaIni, proyectoNuevo.fechaFin, proyectoNuevo.fechaAsig, proyectoNuevo.lider);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
