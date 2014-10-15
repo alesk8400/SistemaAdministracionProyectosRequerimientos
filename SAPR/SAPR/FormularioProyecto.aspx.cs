@@ -24,7 +24,7 @@ namespace SAPR
             //irAModo();
             // String fechaFin, String fechaInic, String estado, int lider
             controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), 1);
-            //gridProyecto.DataBind();
+            gridProyecto.DataBind();
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

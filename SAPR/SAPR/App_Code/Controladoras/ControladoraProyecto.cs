@@ -17,14 +17,15 @@ namespace SAPR.App_Code.Controladoras
         // Este método recibía String[] listaUsuarios, se lo quité por mientras
         public String[] insertarProyecto(String nombre, String objetivo, String fechaAsig, String fechaFin, String fechaInic, String estado, int lider)
         {
-            Object[] datos = new Object[7];
-            datos[0] = nombre;
-            datos[1] = lider;
-            datos[2] = estado;
-            datos[3] = objetivo;
-            datos[4] = fechaAsig; 
-            datos[5] = fechaInic;
-            datos[6] = fechaFin;
+            Object[] datos = new Object[8];
+            datos[0] = 1;
+            datos[1] = nombre;
+            datos[7] = lider;
+            datos[3] = estado;
+            datos[2] = objetivo;
+            datos[6] = fechaAsig; 
+            datos[4] = fechaInic;
+            datos[5] = fechaFin;
             EntidadProyecto proyecto = new EntidadProyecto(datos);
             return controladoraBDProyecto.insertarProyecto(proyecto);
         
