@@ -98,7 +98,7 @@
     <script src="Scripts/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="Scripts/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
+<%--    <script type="text/javascript" src="Scripts/bootstrap.js"></script>--%>
 
     <!-- Menu Toggle Script -->
     <script>
@@ -107,7 +107,40 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker().on('changeDate', function (e) {
+        $(this).datepicker('hide');
+    });
+
+    //A partir de aqui, script para control de fechas.
+   
+
+    //var nowTemp = new Date();
+    //var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+
+    //var fAsignacion;
+    //var fInicio;
+    //var fechaAsignacion = $('#textFechaA').datepicker({
+    //}).on('changeDate', function (ev) {
+    //    alert("Ja!");
+    //    fAsignacion = $(this).datepicker("getDate");
+    //    fechaAsignacion.hide();
+
+    //    //$('#fechaInicioForm')[0].focus();
+    //}).data('datepicker');
+
+    //var fA = $('#textFechaA').datepicker("getDate");
+
+    //var fechaInicio = $('#textFechaI').datepicker({
+    //    onRender: function (date) {
+    //    }
+    //}).on('changeDate', function (ev) {
+    //    fInicio = $(this).datepicker("getDate");
+    //    if (fInicio > fAsignacion) {
+    //        alert("Fecha inválida");
+    //    }
+    //    fechaInicio.hide();
+    //}).data('datepicker');
 
     </script>
     </form>

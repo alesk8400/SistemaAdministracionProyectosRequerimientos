@@ -70,6 +70,9 @@
                         <label for="DateFinish" class="col-sm-4 control-label">Fecha de finalización:</label>
                         <div class="col-sm-5">
                             <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
+                            <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
+                                     ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   
+                                     ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -80,6 +83,9 @@
                         <label for="dateStart" class="col-sm-5 control-label">Fecha de inicio: </label>
                         <div class="col-sm-4">
                             <input runat="server" id="textFechaI" type="text" class="datepicker" placeholder="Clic Aquí"/>
+                            <asp:CompareValidator ID="cmpVal1" ControlToCompare="textFechaA" 
+                                     ControlToValidate="textFechaI" Type="Date" Operator="GreaterThanEqual"   
+                                     ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
