@@ -15,7 +15,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnAgregarProyecto" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="botonAgregarClic"/>
             <button runat="server" id="botonModificar" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
-            <a id="botonEliminar" href="#modalEliminar" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
+            <asp:Button ID="btnEliminar" runat="server"  Text="Eliminar" class= "btn btn-primary" OnClick="botonEliminarClic"/>
         </div>
         <div class="col-lg-7">
             <div id="alertAlerta" class="alert alert-danger fade in" runat="server" hidden="hidden">
@@ -172,13 +172,14 @@
 
                     <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="textCedula" class="col-sm-3 control-label">Cédula: </label>
                         <div class="col-sm-9">
                             <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="text1" class="form-control" type="text" placeholder="Cédula" data-error="Ingresó una cédula inválida" title="Cédula" pattern="^[0-9]*$" data-minlength="9" maxlength="12" required="required" />
-                                <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
+                                &nbsp;<span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span></div>
+                            <div class="help-block with-errors">
+                                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="GetLider" DataTextField="Nombre" DataValueField="Nombre">
+                                </asp:DropDownList>
+                                <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.IdUsuario FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.IdUsuario = p.Lider"></asp:SqlDataSource>
                             </div>
-                            <div class="help-block with-errors"></div>
                         </div></div>
 
                          

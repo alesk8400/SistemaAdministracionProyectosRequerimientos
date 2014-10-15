@@ -23,7 +23,16 @@ namespace SAPR
            // modo = 1;
             //irAModo();
             // String fechaFin, String fechaInic, String estado, int lider
-            controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), 1);
+            controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), 5);
+            gridProyecto.DataBind();
+        }
+        protected void botonEliminarClic(object sender, EventArgs e)
+        {
+            //limpiarCampos();
+            // modo = 1;
+            //irAModo();
+            // String fechaFin, String fechaInic, String estado, int lider
+            controladora.eliminarProyecto(entidadConsultada.Id);
             gridProyecto.DataBind();
         }
 
@@ -42,6 +51,7 @@ namespace SAPR
                 textFechaF.Value = entidadConsultada.FechaFin.ToString();
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
                 cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
+
                 //cmbEstado.SelectedIndex = 2;
                 gridProyecto.DataBind();
             }
