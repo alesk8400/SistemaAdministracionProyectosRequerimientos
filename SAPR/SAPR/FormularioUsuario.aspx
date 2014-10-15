@@ -127,10 +127,10 @@
 
         <asp:GridView ID="gridUsuarios" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="consultaGrideUsuarios" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" >
             <Columns>
-                <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                 <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
+                <asp:CommandField ShowSelectButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -147,8 +147,11 @@
      <div class="col-lg-12">
                     <div class="text-center">
 
-                        <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn-success" Height="39px" OnClick="btnAceptar_Click" OnClientClick="btnAceptar_OnClick" Width="97px"/>
-                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn-danger" OnClientClick="btn_CancelarOnClick" Height="39px" Width="97px" OnClick="btnCancelar_Click"/>
+                        <%--<asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn-success" Height="39px" OnClick="btnAceptar_Click" OnClientClick="btnAceptar_OnClick" Width="97px"/>--%>
+                        <%--<asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn-danger" OnClientClick="btn_CancelarOnClick" Height="39px" Width="97px" OnClick="btnCancelar_Click"/>--%>
+
+                        <button runat="server" onserverclick="btnAceptar_Click" id="btnAceptar" class="btn btn-success" type="button"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                        <a id="btnCancelar" href="#modalCancelar" class="btn btn-danger" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Cancelar</a>
 
      </div></div>
 
@@ -166,6 +169,25 @@
                 <div class="modal-footer">
                     <button type="button" id="botonCancelarModal" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button type="button" id="botonAceptarModal" class="btn btn-primary" runat="server" onserverclick="clickAceptarEliminar">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal Cancelar-->
+    <div class="modal fade" id="modalCancelar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myOtherModal"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i>Confirmar cancelación</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea cancelar los cambios? Perdería todos los datos ingresados hasta el momento.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonCancelarModal1" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="botonAceptarModal2" class="btn btn-primary" runat="server" onserverclick="btnCancelar_Click">Aceptar</button>
                 </div>
             </div>
         </div>

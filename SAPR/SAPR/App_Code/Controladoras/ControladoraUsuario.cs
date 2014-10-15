@@ -33,7 +33,7 @@ namespace SAPR.App_Code.Controladoras
             datos[3] = telefono;
             datos[4] = celular;
             EntidadUsuario usuarioNuevo = new EntidadUsuario(datos);
-            return controladoraBDUsuario.modificarUsuario(usuarioNuevo,usuarioViejo);
+            return controladoraBDUsuario.modificarUsuario(usuarioNuevo,usuarioViejo,rol);
         }
 
         public String[] eliminarUsuario(String cedula) { //metodo getidusuario
@@ -76,6 +76,13 @@ namespace SAPR.App_Code.Controladoras
             }
             return usuarios;
         }
+
+        public String getRolUsuario(String cedula)
+        { //metodo getidusuario
+            return controladoraBDUsuario.getRolUsuario(cedula) ;
+        }
+
+
         //public string ConsultarNomLider(){
         
        // }
@@ -85,9 +92,7 @@ namespace SAPR.App_Code.Controladoras
             // return controladoraBDUsuario.eliminarUsuario(idUsuario);
         }
 
-        public String[] getRolesUsuario(String idUsuario){ //metodo getidusuario
-            // return controladoraBDUsuario.eliminarUsuario(idUsuario);
-        }
+        
 
         public void validarCedula(String cedula) { 
         

@@ -36,11 +36,12 @@ namespace SAPR.App_Code.Controladoras {
              return resultado;
         }
 
-        public String[] modificarUsuario(EntidadUsuario usuarioNuevo, EntidadUsuario usuarioViejo){
+        public String[] modificarUsuario(EntidadUsuario usuarioNuevo, EntidadUsuario usuarioViejo, String rol){
             String[] resultado = new String[1];
             try
             {
                 this.ds.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular, usuarioViejo.Cedula, usuarioViejo.Nombre, usuarioViejo.Correo, usuarioViejo.Telefono, usuarioViejo.Celular);
+                this.ds.updateRol(rol, usuarioNuevo.Cedula);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -90,9 +91,6 @@ namespace SAPR.App_Code.Controladoras {
             catch (Exception e) { }
             return resultado;
         }
-
-
-
         public DataTable getListadoUsuarios(){
             DataTable filasUsuario = new DataTable();
             try
@@ -101,6 +99,15 @@ namespace SAPR.App_Code.Controladoras {
             }
             catch (Exception e) { }
             return filasUsuario;
+        }
+
+        public String getRolUsuario(String cedula)
+        { //metodo getidusuario
+            String rol;
+
+            rol = ds.GetRolUsuario(cedula);
+
+            return rol;
         }
     }     
 }
