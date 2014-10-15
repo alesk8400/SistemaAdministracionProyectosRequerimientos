@@ -53,18 +53,7 @@ namespace SAPR
 
         protected void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
-            //modo = 3;
-            //irAModo();
-            /*
-            try
-            {
-                controladora.eliminarUsuario(entidadConsultada.ID.ToString());
-                gridUsuarios.DataBind();
-            }
-            catch { 
-            
-            }
-             * */
+       
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e){
