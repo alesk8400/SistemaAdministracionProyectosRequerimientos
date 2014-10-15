@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using SAPR.App_Code.Controladoras;
 using SAPR.App_Code.Entidades;
 
+
 namespace SAPR
 {
     public partial class FormularioUsuario : System.Web.UI.Page
@@ -15,9 +16,7 @@ namespace SAPR
         private static ControladoraUsuario controladora = new ControladoraUsuario();
         private static EntidadUsuario entidadConsultada;
         private static int modo = 0;
-        //controladora = new ControladoraUsuario();
-
-
+     
         protected void Page_Load(object sender, EventArgs e){
 
             restaurarPantallaSinLimpiar();
@@ -26,8 +25,6 @@ namespace SAPR
         protected void btnAgregarUsuario_Click(object sender, EventArgs e){          
             modo = 1;
             limpiarCampos();
-            //irAModo();
-           // controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
             habilitarCampos(true);
             btnAceptar.Disabled = false;
             btnCancelar.Disabled = false;
@@ -65,6 +62,7 @@ namespace SAPR
 
                 if (resultado[0] == "Exito")
                 { // si inserto el proveedor : va a modo consultar con ese proveedor
+
                     gridUsuarios.DataBind();
                     restaurarPantalla();
                 } // si no lo inserto no debe cambiar de modo ni limpiar la pantalla
@@ -134,8 +132,6 @@ namespace SAPR
                 limpiarCampos();
                 gridUsuarios.DataBind();
             }
-            //se muestra lo que halla sucedido
-            ////si lo eliminó correctamente, va al modo por defecto(reset=0), debe limpiar el proveedorConsultado,actualizar la información del grid,y limpiar todos los campos
         }
         protected void btnModificarUsuario_Click(object sender, EventArgs e){
             this.txtNombreUsuario.Disabled = false;
