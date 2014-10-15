@@ -19,8 +19,8 @@ namespace SAPR.App_Code.Controladoras {
             String[] resultado = new String[1];
             try {
                 this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular);
-                String idU = this.ds.getId(usuarioNuevo.Cedula).ToString();
-                this.ds.insertarRolUsuario(usuarioNuevo.Cedula, rol);
+               // String idU = this.ds.getId(usuarioNuevo.Cedula).ToString();
+                this.ds.InsertRolesUser(usuarioNuevo.Cedula, rol);
                 
                 resultado[0] = "Exito";
             }
@@ -40,7 +40,7 @@ namespace SAPR.App_Code.Controladoras {
             String[] resultado = new String[1];
             try
             {
-                this.ds.UpdateUser(usuarioNuevo.Cedula,usuarioNuevo.Nombre,usuarioNuevo.Correo,usuarioNuevo.Telefono,usuarioViejo.Cedula);
+                this.ds.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular, usuarioViejo.Cedula, usuarioViejo.Nombre, usuarioViejo.Correo, usuarioViejo.Telefono, usuarioViejo.Celular);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)

@@ -1295,7 +1295,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertProyecto(string Nombre, string p1, string Estado, string FechaIni, string FechaFin, string FechaAsig, global::System.Nullable<int> Lider) {
+        public virtual int InsertProyecto(string Nombre, string p1, string Estado, string FechaIni, string FechaFin, string FechaAsig, string Lider) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
@@ -1333,11 +1333,11 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             else {
                 command.Parameters[5].Value = ((string)(FechaAsig));
             }
-            if ((Lider.HasValue == true)) {
-                command.Parameters[6].Value = ((int)(Lider.Value));
+            if ((Lider == null)) {
+                throw new global::System.ArgumentNullException("Lider");
             }
             else {
-                command.Parameters[6].Value = global::System.DBNull.Value;
+                command.Parameters[6].Value = ((string)(Lider));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

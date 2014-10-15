@@ -856,11 +856,10 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@identificador", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Cedula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "INSERT INTO [dbo].[RolesUsuario] ([Cedula], [NombreRol]) VALUES (@Cedula, @Nombre" +
-                "Usuario)";
+            this._commandCollection[4].CommandText = "INSERT INTO RolesUsuario(Cedula,NombreRol) Values(@Cedula,@NombreRol)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cedula", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Cedula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NombreUsuario", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "NombreRol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NombreRol", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "NombreRol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = "INSERT INTO Usuarios\r\n                         (Cedula, Nombre, Correo, Teléfono," +
@@ -873,14 +872,19 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Celular", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Celular", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "UPDATE [dbo].[Usuarios] SET [Cedula] = @Cedula, [Nombre] = @Nombre, [Correo] = @C" +
-                "orreo, [Teléfonos] = @Teléfonos WHERE (([Cedula] = @Original_Cedula))";
+            this._commandCollection[6].CommandText = @"UPDATE [Usuarios] SET [Cedula] = @Cedula, [Nombre] = @Nombre, [Correo] = @Correo, [Teléfono] = @Teléfono, [Celular] = @Celular WHERE (([Cedula] = @Original_Cedula) AND ([Nombre] = @Original_Nombre) AND ([Correo] = @Original_Correo) AND ([Teléfono] = @Original_Teléfono) AND ([Celular] = @Original_Celular));
+";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cedula", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Cedula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Correo", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Correo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Teléfonos", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Teléfonos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Teléfono", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Teléfono", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Celular", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Celular", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cedula", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Cedula", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Correo", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Correo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Teléfono", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Teléfono", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Celular", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Celular", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -991,7 +995,7 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int insertarRolUsuario(string Cedula, string NombreUsuario) {
+        public virtual int InsertRolesUser(string Cedula, string NombreRol) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((Cedula == null)) {
                 throw new global::System.ArgumentNullException("Cedula");
@@ -999,11 +1003,11 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             else {
                 command.Parameters[0].Value = ((string)(Cedula));
             }
-            if ((NombreUsuario == null)) {
-                throw new global::System.ArgumentNullException("NombreUsuario");
+            if ((NombreRol == null)) {
+                throw new global::System.ArgumentNullException("NombreRol");
             }
             else {
-                command.Parameters[1].Value = ((string)(NombreUsuario));
+                command.Parameters[1].Value = ((string)(NombreRol));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1079,7 +1083,7 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateUser(string Cedula, string Nombre, string Correo, string Teléfonos, string Original_Cedula) {
+        public virtual int UpdateUser(string Cedula, string Nombre, string Correo, string Teléfono, string Celular, string Original_Cedula, string Original_Nombre, string Original_Correo, string Original_Teléfono, string Original_Celular) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             if ((Cedula == null)) {
                 throw new global::System.ArgumentNullException("Cedula");
@@ -1099,17 +1103,47 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             else {
                 command.Parameters[2].Value = ((string)(Correo));
             }
-            if ((Teléfonos == null)) {
-                throw new global::System.ArgumentNullException("Teléfonos");
+            if ((Teléfono == null)) {
+                throw new global::System.ArgumentNullException("Teléfono");
             }
             else {
-                command.Parameters[3].Value = ((string)(Teléfonos));
+                command.Parameters[3].Value = ((string)(Teléfono));
+            }
+            if ((Celular == null)) {
+                throw new global::System.ArgumentNullException("Celular");
+            }
+            else {
+                command.Parameters[4].Value = ((string)(Celular));
             }
             if ((Original_Cedula == null)) {
                 throw new global::System.ArgumentNullException("Original_Cedula");
             }
             else {
-                command.Parameters[4].Value = ((string)(Original_Cedula));
+                command.Parameters[5].Value = ((string)(Original_Cedula));
+            }
+            if ((Original_Nombre == null)) {
+                throw new global::System.ArgumentNullException("Original_Nombre");
+            }
+            else {
+                command.Parameters[6].Value = ((string)(Original_Nombre));
+            }
+            if ((Original_Correo == null)) {
+                throw new global::System.ArgumentNullException("Original_Correo");
+            }
+            else {
+                command.Parameters[7].Value = ((string)(Original_Correo));
+            }
+            if ((Original_Teléfono == null)) {
+                throw new global::System.ArgumentNullException("Original_Teléfono");
+            }
+            else {
+                command.Parameters[8].Value = ((string)(Original_Teléfono));
+            }
+            if ((Original_Celular == null)) {
+                throw new global::System.ArgumentNullException("Original_Celular");
+            }
+            else {
+                command.Parameters[9].Value = ((string)(Original_Celular));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

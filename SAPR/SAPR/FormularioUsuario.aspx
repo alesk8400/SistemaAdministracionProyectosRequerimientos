@@ -3,7 +3,7 @@
     <div class="row row-botones">
         <br />
         <asp:Button ID="btnAgregarUsuario" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="btnAgregarUsuario_Click"/>
-        <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar" class ="btn btn-primary "/>
+        <asp:Button ID="btnModificarUsuario" runat="server" Text="Modificar" class ="btn btn-primary " OnClick="btnModificarUsuario_Click"/>
         <a id="btnEliminarUsuario" href="#modalEliminar" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
 
         <br />

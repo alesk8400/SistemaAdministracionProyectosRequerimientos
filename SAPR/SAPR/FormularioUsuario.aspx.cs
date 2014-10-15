@@ -73,25 +73,12 @@ namespace SAPR
             }
             else if (modo == 2)//si se quiere modificar
             {
-                /*
-                Boolean res = true;
-                Object[] datosMod = obtenerDatosFormulario();
-                String[] result = controladora.modificarProveedor(datosMod, proveedorConsultado);
-                mostrarMensaje(result[0], result[1], result[2]); // se muestra el resultado
-                if (result[0].Contains("success"))// si fue exitoso
-                {
-                    llenarGrid(); //se actualiza el grid con el nuevo proveedor incluido
-                }
-                else if (result[2].Contains("cedula ingresada ya existe")) // si ya hay uno con esa cédula
-                {
-                    res = false;
-                    modo = 1; //no se cambia de modo y retorna false
-                }
-                proveedorConsultado = controladora.consultarProveedor(this.textCedula.Value.ToString());
-                llenarGrid();
-                modo = 4;
-                irAModo();
-                 * */
+                String[] result = controladora.modificarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString(), entidadConsultada);
+                gridUsuarios.DataBind();
+                // mostrarMensaje(result[0], result[1], result[2]); // se muestra el resultado
+               // modo = 4;
+               // irAModo();
+                
                 // se recuperan los datos que se hallan ingresado(existe un método para esto)
 
                 // se le pide a la controladora que modifique el proveedor
@@ -218,6 +205,12 @@ namespace SAPR
 
         protected void cancelarConsultar(object sender, EventArgs e)
         {
+        }
+
+        protected void btnModificarUsuario_Click(object sender, EventArgs e){
+            //habilitar
+            //habilitar botones acp y canc
+            modo = 2;
         }
 
     }

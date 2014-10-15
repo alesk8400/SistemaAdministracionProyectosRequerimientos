@@ -178,7 +178,7 @@
                             <div class="help-block with-errors">
                                 <asp:DropDownList ID="cmbNombreLider" runat="server" DataSourceID="GetLider" DataTextField="Nombre" DataValueField="Nombre">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.IdUsuario FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.IdUsuario = p.Lider"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.Cedula FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.Cedula = p.Lider"></asp:SqlDataSource>
                             </div>
                         </div></div>
 
