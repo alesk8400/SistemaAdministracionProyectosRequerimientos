@@ -12,22 +12,25 @@ namespace SAPR
     public partial class FormularioUsuario : System.Web.UI.Page
     {
 
-        private static ControladoraUsuario controladora;
+        private static ControladoraUsuario controladora = new ControladoraUsuario();
         private static EntidadUsuario entidadConsultada;
         private static int modo = 0;
+        //controladora = new ControladoraUsuario();
+
 
         protected void Page_Load(object sender, EventArgs e){
-            controladora = new ControladoraUsuario();
-            restaurarPantalla();
+
+            restaurarPantallaSinLimpiar();
         }
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e){          
             modo = 1;
+            limpiarCampos();
             //irAModo();
            // controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
             habilitarCampos(true);
-            btnAceptar.Enabled = true;
-            btnCancelar.Enabled = true;
+            btnAceptar.Disabled = false;
+            btnCancelar.Disabled = false;
             
 
         }
@@ -41,20 +44,15 @@ namespace SAPR
                 textTelefono.Value = entidadConsultada.Telefono;
                 textCelular.Value = entidadConsultada.Celular;
                 textEmail.Value = entidadConsultada.Correo;
+                cmbRoles.Text = controladora.getRolUsuario(entidadConsultada.Cedula);
             }
             catch {
-
                 entidadConsultada = null;
-                // Hacer algo para indicar error
             }
+
             btnModificarUsuario.Disabled = false;
             btnEliminarUsuario.Disabled = false;
 
-        }
-
-        protected void btnEliminarUsuario_Click(object sender, EventArgs e)
-        {
-       
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e){
@@ -79,8 +77,22 @@ namespace SAPR
             }          
         }
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
+        protected void btnCancelar_Click(object sender, EventArgs e) {
+            if(modo == 1){
+                limpiarCampos();        
+            } 
+            
+            
+            if(modo == 2){
+                entidadConsultada = controladora.consultarUsuario(gridUsuarios.SelectedRow.Cells[0].Text.ToString());
+                txtNombreUsuario.Value = entidadConsultada.Nombre;
+                txtCedula.Value = entidadConsultada.Cedula;
+                textTelefono.Value = entidadConsultada.Telefono;
+                textCelular.Value = entidadConsultada.Celular;
+                textEmail.Value = entidadConsultada.Correo;
+                cmbRoles.Text = controladora.getRolUsuario(entidadConsultada.Cedula);
+            
+            }
 
         }
 
@@ -118,18 +130,13 @@ namespace SAPR
             mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
             if (result[0].Contains("Exito"))// si fue exitoso
             {
-                modo = 0;
+ 
                 limpiarCampos();
                 gridUsuarios.DataBind();
             }
             //se muestra lo que halla sucedido
             ////si lo eliminó correctamente, va al modo por defecto(reset=0), debe limpiar el proveedorConsultado,actualizar la información del grid,y limpiar todos los campos
         }
-
-        protected void cancelarConsultar(object sender, EventArgs e)
-        {
-        }
-
         protected void btnModificarUsuario_Click(object sender, EventArgs e){
             this.txtNombreUsuario.Disabled = false;
             this.textEmail.Disabled = false;
@@ -137,8 +144,8 @@ namespace SAPR
             this.textCelular.Disabled = false;
             this.cmbRoles.Enabled = true;
             this.cmbProyecto.Enabled = true;
-            btnAceptar.Enabled = true;
-            btnCancelar.Enabled = true;
+            btnAceptar.Disabled = false;
+            btnCancelar.Disabled = false;
             modo = 2;
         }
 
@@ -148,9 +155,19 @@ namespace SAPR
             btnModificarUsuario.Disabled = true;
             btnEliminarUsuario.Disabled = true;
             btnAgregarUsuario.Disabled = false;
-            btnAceptar.Enabled = false;
-            btnCancelar.Enabled = false;
+            btnAceptar.Disabled = true;
+            btnCancelar.Disabled = true;
             limpiarCampos();
+        }
+
+        protected void restaurarPantallaSinLimpiar()
+        {
+            habilitarCampos(false);
+            btnModificarUsuario.Disabled = true;
+            btnEliminarUsuario.Disabled = true;
+            btnAgregarUsuario.Disabled = false;
+            btnAceptar.Disabled = true;
+            btnCancelar.Disabled = true;
         }
 
     }
