@@ -20,7 +20,10 @@ namespace SAPR.App_Code.Controladoras {
             String[] resultado = new String[1];
             try
             {
-                this.ps.Insert(proyectoNuevo.Nombre, proyectoNuevo.Objetivos, proyectoNuevo.Estado, Convert.ToDateTime(proyectoNuevo.FechaIni), Convert.ToDateTime(proyectoNuevo.FechaFin), Convert.ToDateTime(proyectoNuevo.FechaAsig), proyectoNuevo.Lider);
+                System.Globalization.DateTimeFormatInfo prueba = new System.Globalization.DateTimeFormatInfo();
+                string datetipe = "MMddyyyy";
+                prueba.LongDatePattern = datetipe;
+                this.ps.InsertProyecto(proyectoNuevo.Nombre, proyectoNuevo.Objetivos, proyectoNuevo.Estado, proyectoNuevo.FechaIni, proyectoNuevo.FechaFin,proyectoNuevo.FechaAsig, proyectoNuevo.Lider);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -68,7 +71,7 @@ namespace SAPR.App_Code.Controladoras {
             idProy = Int32.Parse(idProyecto);
             try
             {
-                this.ps.Delete(idProy);
+                this.ps.BorrarProyecto(idProy);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)

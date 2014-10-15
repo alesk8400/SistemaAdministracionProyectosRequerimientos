@@ -40,13 +40,13 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlButton botonModificar;
         
         /// <summary>
-        /// Control botonEliminar.
+        /// Control btnEliminar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor botonEliminar;
+        protected global::System.Web.UI.WebControls.Button btnEliminar;
         
         /// <summary>
         /// Control alertAlerta.
@@ -175,13 +175,22 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl textTelSecundario;
         
         /// <summary>
-        /// Control text1.
+        /// Control cmbNombreLider.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText text1;
+        protected global::System.Web.UI.WebControls.DropDownList cmbNombreLider;
+        
+        /// <summary>
+        /// Control GetLider.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource GetLider;
         
         /// <summary>
         /// Control botonAceptar.

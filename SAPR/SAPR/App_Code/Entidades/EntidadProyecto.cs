@@ -27,6 +27,11 @@ namespace SAPR.App_Code.Entidades
             this.lider = Int32.Parse(datos[7].ToString());
         }
 
+        public String Id
+        {
+            get { return idProyecto; }
+            set { idProyecto = value; }
+        }
         public String Nombre{
             get { return nombre; }
             set { nombre = value; }
