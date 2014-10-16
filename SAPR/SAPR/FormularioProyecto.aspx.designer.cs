@@ -112,6 +112,15 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlInputText textFechaF;
         
         /// <summary>
+        /// Control CompareValidator0.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator0;
+        
+        /// <summary>
         /// Control textFechaI.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,15 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText textFechaI;
+        
+        /// <summary>
+        /// Control cmpVal1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cmpVal1;
         
         /// <summary>
         /// Control cmbEstado.

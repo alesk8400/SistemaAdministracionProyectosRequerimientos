@@ -41,3 +41,12 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.suo
+*.pdb
+*.suo
+*.pdb
+SAPR/SAPR/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+SAPR/SAPR/obj/Debug/SAPR.csprojResolveAssemblyReference.cache
+SAPR/SAPR/obj/Debug/SAPR.dll
+SAPR/SAPR/obj/Debug/SAPR.pdb
