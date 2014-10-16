@@ -50,3 +50,6 @@ SAPR/SAPR/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 SAPR/SAPR/obj/Debug/SAPR.csprojResolveAssemblyReference.cache
 SAPR/SAPR/obj/Debug/SAPR.dll
 SAPR/SAPR/obj/Debug/SAPR.pdb
+*.suo
+*.suo
+*.pdb

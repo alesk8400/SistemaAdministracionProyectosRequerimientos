@@ -289,6 +289,8 @@ namespace SAPR.App_Code.DataSets {
             
             private global::System.Data.DataColumn columnCelular;
             
+            private global::System.Data.DataColumn columnContrasenia;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public UsuariosDataTable() {
@@ -364,6 +366,14 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ContraseniaColumn {
+                get {
+                    return this.columnContrasenia;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,17 +409,25 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UsuariosRow AddUsuariosRow(string Cedula, string Nombre, string Correo, string Teléfono, string Celular) {
+            public UsuariosRow AddUsuariosRow(string Cedula, string Nombre, string Correo, string Teléfono, string Celular, string Contrasenia) {
                 UsuariosRow rowUsuariosRow = ((UsuariosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Cedula,
                         Nombre,
                         Correo,
                         Teléfono,
-                        Celular};
+                        Celular,
+                        Contrasenia};
                 rowUsuariosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUsuariosRow);
                 return rowUsuariosRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public UsuariosRow FindByCedula(string Cedula) {
+                return ((UsuariosRow)(this.Rows.Find(new object[] {
+                            Cedula})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -434,6 +452,7 @@ namespace SAPR.App_Code.DataSets {
                 this.columnCorreo = base.Columns["Correo"];
                 this.columnTeléfono = base.Columns["Teléfono"];
                 this.columnCelular = base.Columns["Celular"];
+                this.columnContrasenia = base.Columns["Contrasenia"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -449,7 +468,12 @@ namespace SAPR.App_Code.DataSets {
                 base.Columns.Add(this.columnTeléfono);
                 this.columnCelular = new global::System.Data.DataColumn("Celular", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCelular);
+                this.columnContrasenia = new global::System.Data.DataColumn("Contrasenia", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContrasenia);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnCedula}, true));
                 this.columnCedula.AllowDBNull = false;
+                this.columnCedula.Unique = true;
                 this.columnCedula.MaxLength = 15;
                 this.columnNombre.AllowDBNull = false;
                 this.columnNombre.MaxLength = 50;
@@ -459,6 +483,7 @@ namespace SAPR.App_Code.DataSets {
                 this.columnTeléfono.MaxLength = 30;
                 this.columnCelular.AllowDBNull = false;
                 this.columnCelular.MaxLength = 30;
+                this.columnContrasenia.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -653,6 +678,34 @@ namespace SAPR.App_Code.DataSets {
                     this[this.tableUsuarios.CelularColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Contrasenia {
+                get {
+                    try {
+                        return ((string)(this[this.tableUsuarios.ContraseniaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Contrasenia\' de la tabla \'Usuarios\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableUsuarios.ContraseniaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsContraseniaNull() {
+                return this.IsNull(this.tableUsuarios.ContraseniaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetContraseniaNull() {
+                this[this.tableUsuarios.ContraseniaColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -819,6 +872,7 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             tableMapping.ColumnMappings.Add("Correo", "Correo");
             tableMapping.ColumnMappings.Add("Teléfono", "Teléfono");
             tableMapping.ColumnMappings.Add("Celular", "Celular");
+            tableMapping.ColumnMappings.Add("Contrasenia", "Contrasenia");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -835,8 +889,8 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[9];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Cedula, Nombre, Correo, Teléfono, Celular FROM Usuarios WHERE (Cedula = @i" +
-                "d)";
+            this._commandCollection[0].CommandText = "SELECT Cedula, Nombre, Correo, Teléfono, Celular, Contrasenia FROM Usuarios WHERE" +
+                " (Cedula = @id)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Cedula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
