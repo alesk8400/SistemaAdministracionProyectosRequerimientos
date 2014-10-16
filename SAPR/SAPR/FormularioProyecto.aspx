@@ -179,13 +179,12 @@
                     <div class="col-sm-4">
                     <div class="form-group">
                         <div class="col-sm-9">
-                            <div class=" input-group margin-bottom-sm">
-                                &nbsp;<span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span></div>
-                            <div class="help-block with-errors">
                                 <asp:DropDownList ID="cmbNombreLider" runat="server" DataSourceID="GetLider" DataTextField="Nombre" DataValueField="Nombre">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.Cedula FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.Cedula = p.Lider"></asp:SqlDataSource>
-                            </div>
+                                <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.Cedula FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.Cedula = p.Lider"></asp:SqlDataSource>                           
+                            <div class=" input-group margin-bottom-sm">
+                                &nbsp;<span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span></div>
+                            <div class="help-block with-errors"> </div>
                         </div></div>
 
                          
@@ -212,7 +211,6 @@
                                       
                     <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                     <Columns>
-                        <asp:CommandField ShowSelectButton="True" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                         <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                         <asp:BoundField DataField="Lider" HeaderText="Lider" SortExpression="Lider" />

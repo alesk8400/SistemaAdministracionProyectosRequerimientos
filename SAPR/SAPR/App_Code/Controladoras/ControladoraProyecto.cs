@@ -35,7 +35,7 @@ namespace SAPR.App_Code.Controladoras
         
         }
 
-        public String[] modificarProyecto(String nombre, int lider, String estado, String objetivo, String fechaAsig, String fechaInic, String fechaFin, String[] listaUsuarios,EntidadProyecto proyectoViejo) {
+        public String[] modificarProyecto(String nombre, String lider, String estado, String objetivo, String fechaAsig, String fechaInic, String fechaFin, String[] listaUsuarios,EntidadProyecto proyectoViejo) {
             Object[] datos = new Object[7];
             datos[0] = nombre;
             datos[1] = lider;
