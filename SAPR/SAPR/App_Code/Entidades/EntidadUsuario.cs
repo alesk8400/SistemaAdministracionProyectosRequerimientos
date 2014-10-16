@@ -11,13 +11,15 @@ namespace SAPR.App_Code.Entidades
         private String correo;
         private String telefono;
         private String celular;
+        private String pass;
 
         public EntidadUsuario(Object[] datos) {
             this.nombre = datos[0].ToString();
             this.cedula = datos[1].ToString();
             this.correo = datos[2].ToString();
             this.telefono = datos[3].ToString();
-            this.celular = datos[4].ToString();           
+            this.celular = datos[4].ToString();
+            this.pass = datos[5].ToString(); 
         }
 
         public String Cedula{
@@ -44,6 +46,12 @@ namespace SAPR.App_Code.Entidades
         {
             get { return celular; }
             set { celular = value; }
+        }
+
+        public String Pass
+        {
+            get { return pass; }
+            set { pass = value; }
         }
 
     }

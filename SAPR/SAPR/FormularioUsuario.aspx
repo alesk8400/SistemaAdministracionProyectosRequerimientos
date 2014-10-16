@@ -80,6 +80,25 @@
                     </div>
                 </div>
 
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label for="txtPassword" class="col-sm-3 control-label">Contraseña: </label>
+                        <div class="col-sm-9">
+                            <input runat="server" id="password" class="form-control" type="password" placeholder="Contraseña" data-error="Contraseña inválida" />
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                        <label for="txtPassword2" class="col-sm-3 control-label">Confirme Contraseña: </label>
+                        <div class="col-sm-9">
+                            <input runat="server" id="password1" class="form-control" type="password" placeholder="Confirmar Contraseña" data-error="Confirmación Inválida" />
+                            <asp:CompareValidator ID="cmpPass" ControlToCompare="password" 
+                                     ControlToValidate="password1" Type="String" Operator="Equal"   
+                                     ErrorMessage="Contraseñas no concuerdan" runat="server"></asp:CompareValidator>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                </div>
+        
+
                 <div class="col-lg-8">
                     <div class="form-group">
                         <label for="textRoles" class="col-sm-3 control-label">Roles: </label>

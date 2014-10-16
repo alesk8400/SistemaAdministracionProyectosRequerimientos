@@ -18,7 +18,7 @@ namespace SAPR.App_Code.Controladoras {
         public String[] insertarUsuario(EntidadUsuario usuarioNuevo, String rol) {
             String[] resultado = new String[1];
             try {
-                this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular);
+                this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular, usuarioNuevo.Pass);
                // String idU = this.ds.getId(usuarioNuevo.Cedula).ToString();
                 this.ds.InsertRolesUser(usuarioNuevo.Cedula, rol);
                 
@@ -40,7 +40,7 @@ namespace SAPR.App_Code.Controladoras {
             String[] resultado = new String[1];
             try
             {
-                this.ds.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular, usuarioViejo.Cedula, usuarioViejo.Nombre, usuarioViejo.Correo, usuarioViejo.Telefono, usuarioViejo.Celular);
+                this.ds.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular, usuarioNuevo.Pass ,usuarioViejo.Cedula, usuarioViejo.Nombre, usuarioViejo.Correo, usuarioViejo.Telefono, usuarioViejo.Celular, usuarioViejo.Pass);
                 this.ds.updateRol(rol, usuarioNuevo.Cedula);
                 resultado[0] = "Exito";
             }

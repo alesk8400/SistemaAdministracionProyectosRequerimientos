@@ -58,7 +58,7 @@ namespace SAPR
             
             if (modo == 1) // si se quiere insertar
             {
-                resultado = controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString());
+                resultado = controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString() , this.password.Value.ToString());
 
                 if (resultado[0] == "Exito")
                 { // si inserto el proveedor : va a modo consultar con ese proveedor
@@ -69,7 +69,7 @@ namespace SAPR
             }
             else if (modo == 2)//si se quiere modificar
             {
-                String[] result = controladora.modificarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString(), entidadConsultada);
+                String[] result = controladora.modificarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString(), this.password.Value.ToString(),entidadConsultada);
                 gridUsuarios.DataBind();
                 restaurarPantalla();
             }          
@@ -100,6 +100,8 @@ namespace SAPR
             this.textEmail.Value = "";
             this.textTelefono.Value = "";
             this.textCelular.Value = "";
+            this.password.Value = "";
+            this.password1.Value = "";
             this.cmbRoles.ClearSelection();
         }
         protected void habilitarCampos(Boolean habilitar){
@@ -108,6 +110,8 @@ namespace SAPR
             this.textEmail.Disabled = !habilitar;
             this.textTelefono.Disabled = !habilitar;
             this.textCelular.Disabled = !habilitar;
+            this.password.Disabled = !habilitar;
+            this.password1.Disabled = !habilitar;
             this.cmbRoles.Enabled = habilitar;
             this.cmbProyecto.Enabled = habilitar;
         }
@@ -138,6 +142,8 @@ namespace SAPR
             this.textEmail.Disabled = false;
             this.textTelefono.Disabled = false;
             this.textCelular.Disabled = false;
+            this.password.Disabled = false;
+            this.password1.Disabled = false;
             this.cmbRoles.Enabled = true;
             this.cmbProyecto.Enabled = true;
             btnAceptar.Disabled = false;

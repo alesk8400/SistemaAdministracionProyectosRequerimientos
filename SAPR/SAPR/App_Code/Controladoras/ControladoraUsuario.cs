@@ -14,24 +14,26 @@ namespace SAPR.App_Code.Controladoras
             controladoraBDUsuario = new ControladoraBDUsuario();
         }
 
-        public String[] insertarUsuario(String nombre,String cedula,String correo,String telefono, String celular, String rol ) { 
-             Object[] datos = new Object[5];
+        public String[] insertarUsuario(String nombre,String cedula,String correo,String telefono, String celular, String rol, String pass ) { 
+             Object[] datos = new Object[6];
              datos[0] = nombre;
              datos[1] = cedula;
              datos[2] = correo;        
              datos[3] =telefono;
              datos[4] = celular;
+             datos[5] = pass;
              EntidadUsuario usuario = new EntidadUsuario(datos);
              return controladoraBDUsuario.insertarUsuario(usuario, rol);
         }
 
-        public String[] modificarUsuario(String nombre, String cedula, String correo, String telefono, String celular,String rol, EntidadUsuario usuarioViejo){
-            Object[] datos = new Object[5];
+        public String[] modificarUsuario(String nombre, String cedula, String correo, String telefono, String celular,String rol, String pass, EntidadUsuario usuarioViejo){
+            Object[] datos = new Object[6];
             datos[0] = nombre;
             datos[1] = cedula;
             datos[2] = correo;
             datos[3] = telefono;
             datos[4] = celular;
+            datos[5] = pass;
             EntidadUsuario usuarioNuevo = new EntidadUsuario(datos);
             return controladoraBDUsuario.modificarUsuario(usuarioNuevo,usuarioViejo,rol);
         }
@@ -44,7 +46,7 @@ namespace SAPR.App_Code.Controladoras
         public EntidadUsuario consultarUsuario(String cedula)
         {
             EntidadUsuario usuario = null; //para encpasular los datos consultados.
-            Object[] datosConsultados = new Object[5]; //para guardar los datos obtenidos de la consulta temporalmente
+            Object[] datosConsultados = new Object[6]; //para guardar los datos obtenidos de la consulta temporalmente
             DataTable filaUsuario = controladoraBDUsuario.consultarUsuario(cedula);
 
 
@@ -56,6 +58,7 @@ namespace SAPR.App_Code.Controladoras
                     datosConsultados[2] = filaUsuario.Rows[0][2].ToString();
                     datosConsultados[3] = filaUsuario.Rows[0][3].ToString();
                     datosConsultados[4] = filaUsuario.Rows[0][4].ToString();
+                    datosConsultados[5] = filaUsuario.Rows[0][5].ToString();
                
                 usuario = new EntidadUsuario(datosConsultados);
             }
