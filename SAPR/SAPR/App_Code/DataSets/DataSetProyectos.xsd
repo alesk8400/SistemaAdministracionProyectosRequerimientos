@@ -66,7 +66,7 @@
               <Mapping SourceColumn="Lider" DataSetColumn="Lider" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="BorrarProyecto" Modifier="Public" Name="BorrarProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="BorrarProyecto">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="BorrarProyecto" Modifier="Public" Name="BorrarProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="BorrarProyecto">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[Proyecto] WHERE (([Nombre] = @nombre))</CommandText>
@@ -86,7 +86,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="ingegscarlos.dbo.Proyecto" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getIdProyecto" Modifier="Public" Name="getIdProyecto" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="getIdProyecto">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="ingegscarlos.dbo.Proyecto" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getIdProyecto" Modifier="Public" Name="getIdProyecto" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="getIdProyecto">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT IdProyecto
@@ -98,7 +98,7 @@ WHERE Nombre = @nombre</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertProyecto" Modifier="Public" Name="InsertProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertProyecto">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertProyecto" Modifier="Public" Name="InsertProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertProyecto">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO Proyecto
@@ -174,7 +174,7 @@ VALUES        (@Nombre,@p1,@Estado,@FechaIni,@FechaFin,@FechaAsig,@Lider)</Comma
               <Mapping SourceColumn="Correo" DataSetColumn="Correo" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="actualizarCliente" Modifier="Public" Name="actualizarCliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="actualizarCliente">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="actualizarCliente" Modifier="Public" Name="actualizarCliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="actualizarCliente">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[Cliente] SET [Nombre] = @Nombre, [Telefono] = @Telefono, [Telefono2] = @Telefono2, [Oficina] = @Oficina, [Correo] = @Correo WHERE (([Id] = @Original_Id))</CommandText>
@@ -189,7 +189,19 @@ VALUES        (@Nombre,@p1,@Estado,@FechaIni,@FechaFin,@FechaAsig,@Lider)</Comma
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="ingegscarlos.dbo.Cliente" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getIdCliente" Modifier="Public" Name="getIdCliente" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="getIdCliente">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="ingegscarlos.dbo.Cliente" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="consultarCliente" GetMethodModifier="Public" GetMethodName="consultarCliente" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="consultarCliente" UserSourceName="consultarCliente">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Id, Nombre, Telefono, Telefono2, Oficina, Correo
+FROM            Cliente
+WHERE        (IdProyecto = @Id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Id" ColumnName="IdProyecto" DataSourceName="ingegscarlos.dbo.Cliente" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="IdProyecto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="ingegscarlos.dbo.Cliente" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getIdCliente" Modifier="Public" Name="getIdCliente" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="getIdCliente">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Id FROM cliente
@@ -200,7 +212,7 @@ WHERE IdProyecto = @id</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertarCliente" Modifier="Public" Name="InsertarCliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertarCliente">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertarCliente" Modifier="Public" Name="InsertarCliente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertarCliente">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO Cliente(IdProyecto, Nombre, Telefono, Telefono2, Oficina, Correo) VALUES (@IdProyecto, @Nombre, @Telefono, @Telefono2, @Oficina, @Correo)</CommandText>
@@ -225,7 +237,7 @@ WHERE IdProyecto = @id</CommandText>
   <xs:element name="DataSetProyectos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetProyectos" msprop:Generator_UserDSName="DataSetProyectos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Proyecto" msprop:Generator_TableClassName="ProyectoDataTable" msprop:Generator_TableVarName="tableProyecto" msprop:Generator_RowChangedName="ProyectoRowChanged" msprop:Generator_TablePropName="Proyecto" msprop:Generator_RowDeletingName="ProyectoRowDeleting" msprop:Generator_RowChangingName="ProyectoRowChanging" msprop:Generator_RowEvHandlerName="ProyectoRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectoRowDeleted" msprop:Generator_RowClassName="ProyectoRow" msprop:Generator_UserTableName="Proyecto" msprop:Generator_RowEvArgName="ProyectoRowChangeEvent">
+        <xs:element name="Proyecto" msprop:Generator_TableClassName="ProyectoDataTable" msprop:Generator_TableVarName="tableProyecto" msprop:Generator_TablePropName="Proyecto" msprop:Generator_RowDeletingName="ProyectoRowDeleting" msprop:Generator_RowChangingName="ProyectoRowChanging" msprop:Generator_RowEvHandlerName="ProyectoRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectoRowDeleted" msprop:Generator_UserTableName="Proyecto" msprop:Generator_RowChangedName="ProyectoRowChanged" msprop:Generator_RowEvArgName="ProyectoRowChangeEvent" msprop:Generator_RowClassName="ProyectoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdProyecto" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdProyecto" msprop:Generator_ColumnPropNameInRow="IdProyecto" msprop:Generator_ColumnPropNameInTable="IdProyectoColumn" msprop:Generator_UserColumnName="IdProyecto" type="xs:int" />
@@ -281,7 +293,7 @@ WHERE IdProyecto = @id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Cliente" msprop:Generator_TableClassName="ClienteDataTable" msprop:Generator_TableVarName="tableCliente" msprop:Generator_TablePropName="Cliente" msprop:Generator_RowDeletingName="ClienteRowDeleting" msprop:Generator_RowChangingName="ClienteRowChanging" msprop:Generator_RowEvHandlerName="ClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="ClienteRowDeleted" msprop:Generator_UserTableName="Cliente" msprop:Generator_RowChangedName="ClienteRowChanged" msprop:Generator_RowEvArgName="ClienteRowChangeEvent" msprop:Generator_RowClassName="ClienteRow">
+        <xs:element name="Cliente" msprop:Generator_TableClassName="ClienteDataTable" msprop:Generator_TableVarName="tableCliente" msprop:Generator_RowChangedName="ClienteRowChanged" msprop:Generator_TablePropName="Cliente" msprop:Generator_RowDeletingName="ClienteRowDeleting" msprop:Generator_RowChangingName="ClienteRowChanging" msprop:Generator_RowEvHandlerName="ClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="ClienteRowDeleted" msprop:Generator_RowClassName="ClienteRow" msprop:Generator_UserTableName="Cliente" msprop:Generator_RowEvArgName="ClienteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -337,7 +349,7 @@ WHERE IdProyecto = @id</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_dbo_Cliente_1" msdata:parent="Proyecto" msdata:child="Cliente" msdata:parentkey="IdProyecto" msdata:childkey="IdProyecto" msprop:Generator_UserChildTable="Cliente" msprop:Generator_ChildPropName="GetClienteRows" msprop:Generator_UserRelationName="FK_dbo_Cliente_1" msprop:Generator_ParentPropName="ProyectoRow" msprop:Generator_RelationVarName="relationFK_dbo_Cliente_1" msprop:Generator_UserParentTable="Proyecto" />
+      <msdata:Relationship name="FK_dbo_Cliente_1" msdata:parent="Proyecto" msdata:child="Cliente" msdata:parentkey="IdProyecto" msdata:childkey="IdProyecto" msprop:Generator_UserChildTable="Cliente" msprop:Generator_ChildPropName="GetClienteRows" msprop:Generator_UserRelationName="FK_dbo_Cliente_1" msprop:Generator_RelationVarName="relationFK_dbo_Cliente_1" msprop:Generator_UserParentTable="Proyecto" msprop:Generator_ParentPropName="ProyectoRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

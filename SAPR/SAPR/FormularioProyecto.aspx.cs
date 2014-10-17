@@ -13,6 +13,7 @@ namespace SAPR
     public partial class FormularioProyecto : System.Web.UI.Page
     {
         private static EntidadProyecto entidadConsultada;
+        private static EntidadCliente clienteConsultado;
         private static ControladoraUsuario controladoraUsuario = new ControladoraUsuario();
         private static ControladoraProyecto controladora = new ControladoraProyecto();
         private static Object[] idsGrid;
@@ -125,7 +126,16 @@ namespace SAPR
                 textFechaF.Value = entidadConsultada.FechaFin.ToString();
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
                 cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
-                //cmbNombreLider = controladoraUsuario.getNombre;
+
+                int idProy;
+                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());
+
+                clienteConsultado = controladora.consultarCliente(idProy);
+                textRepresentante.Value = clienteConsultado.Nombre.ToString();
+                textTelRepresentante.Value = clienteConsultado.Telefono.ToString();
+                textTelSecundario.Value = clienteConsultado.Celular.ToString();
+                TextOficina.Value = clienteConsultado.Oficina.ToString();
+                textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
 
 
                 //cmbEstado.SelectedIndex = 2;
@@ -175,6 +185,39 @@ namespace SAPR
             catch (Exception jh) {
                 int x = 9;
             }
+        }
+
+
+    /*
+     * METODOS INTERFAZ #####################################################################################################
+     * */
+        protected void limpiarCampos()
+        {
+               
+                this.textNombre.Value = "";
+                this.textObjetivo.Value = "";
+                this.textFechaA.Value = "";
+                this.textFechaF.Value = "";
+                this.textFechaI.Value = "";
+                this.textRepresentante.Value = "";
+                this.textTelRepresentante.Value = "";
+                this.textTelSecundario.Value = "";
+                this.TextOficina.Value = "";
+                this.textEmailRepresentante.Value = "";
+        }
+
+        protected void habilitarCampos(Boolean habilitar)
+        {
+            this.textNombre.Disabled = !habilitar;
+            this.textObjetivo.Disabled = !habilitar;
+            this.textFechaA.Value = "";
+            this.textFechaF.Value = "";
+            this.textFechaI.Value = "";
+            this.textRepresentante.Value = "";
+            this.textTelRepresentante.Value = "";
+            this.textTelSecundario.Value = "";
+            this.TextOficina.Value = "";
+            this.textEmailRepresentante.Value = "";
         }
 
 

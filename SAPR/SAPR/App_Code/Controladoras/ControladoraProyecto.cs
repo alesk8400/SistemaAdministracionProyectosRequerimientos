@@ -87,7 +87,6 @@ namespace SAPR.App_Code.Controladoras
 
         public String[] getListadoProyectos() { }
 
-        public String[] getIdSiguienteProyecto() { }
 
         public String[] validarNombre() { }
 
@@ -107,6 +106,27 @@ namespace SAPR.App_Code.Controladoras
         {
             return controladoraUsuario.getUsuariosProyecto();
 
+        }
+
+        public int getIdProyecto(String nombre)
+        {
+            return controladoraBDProyecto.getIdProy(nombre);
+        }
+
+        public EntidadCliente consultarCliente(int idProy)
+        {
+            EntidadCliente cliente = null; //para encpasular los datos consultados.
+            Object[] datosConsultados = new Object[5]; //para guardar los datos obtenidos de la consulta temporalmente
+            DataTable filaCliente = controladoraBDProyecto.consultarCliente(idProy);
+            if (filaCliente.Rows.Count == 1)
+            { // si hay un valor
+                for (int i = 2; i < 7; i++)
+                {
+                    datosConsultados[i - 2] = filaCliente.Rows[0][i].ToString();
+                }
+                cliente = new EntidadCliente(datosConsultados);
+            }
+            return cliente;
         }
     }
 }

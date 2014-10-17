@@ -108,6 +108,23 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
+        public int getIdProy( String nombre) {
+            int idProy;
+            idProy=  Int32.Parse(this.ps.getIdProyecto(nombre).ToString());
+            return idProy;
+        }
+
+        public DataTable consultarCliente(int idProy)
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = cs.consultarCliente(idProy);
+            }
+            catch (Exception e) { }
+            return resultado;
+        }
 
 
     }
