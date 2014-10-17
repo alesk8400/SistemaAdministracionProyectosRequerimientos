@@ -66,14 +66,13 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
-        public String[] eliminarProyecto(String idProyecto)
+        public String[] eliminarProyecto(String nombre)
         { 
             String[] resultado = new String[1];
-            int idProy = 0;
-            idProy = Int32.Parse(idProyecto);
+
             try
             {
-               // this.ps.BorrarProyecto(idProy);
+               this.ps.BorrarProyecto(nombre);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)

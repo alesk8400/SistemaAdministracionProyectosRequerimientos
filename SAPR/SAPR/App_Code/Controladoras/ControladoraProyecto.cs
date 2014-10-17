@@ -49,8 +49,8 @@ namespace SAPR.App_Code.Controladoras
         
         }
 
-        public String[] eliminarProyecto(String idProyecto){
-            return controladoraBDProyecto.eliminarProyecto(idProyecto);
+        public String[] eliminarProyecto(String nombre){
+            return controladoraBDProyecto.eliminarProyecto(nombre);
         }
 
 
