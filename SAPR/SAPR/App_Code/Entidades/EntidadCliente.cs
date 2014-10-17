@@ -14,7 +14,7 @@ namespace SAPR.App_Code.Entidades
         private String correo;
         private int fk_proyecto;
 
-        public EntidadCliente(Object[] datos) {
+        public EntidadCliente (Object[] datos) {
             this.nombre = datos[0].ToString();
             this.telefono = datos[1].ToString();
             this.celular = datos[2].ToString();

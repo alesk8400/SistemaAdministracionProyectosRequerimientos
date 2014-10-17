@@ -132,6 +132,9 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="App_Code\Entidades\EntidadCliente.cs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker3.css" />
@@ -349,7 +352,6 @@
     <Content Include="App_Code\DataSets\DataSetProyectos.cs">
       <DependentUpon>DataSetProyectos.xsd</DependentUpon>
     </Content>
-    <Content Include="App_Code\Entidades\EntidadCliente.cs" />
     <Compile Include="App_Code\Entidades\EntidadProyecto.cs" />
     <Compile Include="App_Code\Entidades\EntidadUsuario.cs" />
     <Compile Include="App_Code\DataSets\DataSetUsuarios.Designer.cs">

@@ -10,7 +10,8 @@ using SAPR.App_Code.Entidades;
 namespace SAPR.App_Code.Controladoras {
     public class ControladoraBDProyecto {
         adap ps;
-
+        adapCliente cs;
+        
         public ControladoraBDProyecto() {
             ps = new adap();
         }
@@ -24,6 +25,7 @@ namespace SAPR.App_Code.Controladoras {
                 //string datetipe = "MMddyyyy";
                 //prueba.LongDatePattern = datetipe;
                 this.ps.InsertProyecto(proyectoNuevo.Nombre, proyectoNuevo.Objetivos, proyectoNuevo.Estado, proyectoNuevo.FechaIni, proyectoNuevo.FechaFin,proyectoNuevo.FechaAsig, proyectoNuevo.Lider);
+               // this.cs.InsertarCliente
                 resultado[0] = "Exito";
             }
             catch (SqlException e){
