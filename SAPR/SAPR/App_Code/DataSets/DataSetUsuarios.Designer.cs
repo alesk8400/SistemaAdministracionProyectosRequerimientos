@@ -1333,10 +1333,10 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = @"SELECT Cedula, Nombre, Correo, Teléfono, Celular, Contrasenia 
 FROM Usuarios 
-WHERE NOT EXISTS ( Select U.Cedula, U.Nombre, U.Correo, U.Teléfono, U.Celular, U.Contrasenia
-                                       FROM Usuarios U, UsuarioProyecto P
-                                        WHERE U.Cedula = P.Cedula                                 
-                                      )";
+WHERE Cedula NOT IN ( Select U.Cedula
+                                            FROM Usuarios U, UsuarioProyecto P
+                                            WHERE U.Cedula = P.Cedula                                 
+                                           )";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;

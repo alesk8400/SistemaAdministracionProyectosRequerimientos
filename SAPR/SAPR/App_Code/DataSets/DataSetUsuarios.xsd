@@ -80,10 +80,10 @@ FROM            Usuarios AS v INNER JOIN
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Cedula, Nombre, Correo, Teléfono, Celular, Contrasenia 
 FROM Usuarios 
-WHERE NOT EXISTS ( Select U.Cedula, U.Nombre, U.Correo, U.Teléfono, U.Celular, U.Contrasenia
-                                       FROM Usuarios U, UsuarioProyecto P
-                                        WHERE U.Cedula = P.Cedula                                 
-                                      )</CommandText>
+WHERE Cedula NOT IN ( Select U.Cedula
+                                            FROM Usuarios U, UsuarioProyecto P
+                                            WHERE U.Cedula = P.Cedula                                 
+                                           )</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
