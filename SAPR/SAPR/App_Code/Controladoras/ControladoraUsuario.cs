@@ -85,7 +85,10 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDUsuario.getRolUsuario(cedula) ;
         }
 
-
+        public DataTable getUsuariosDisponibles()
+        {
+            return controladoraBDUsuario.getUsuariosDisponibles();
+        }
         //public string ConsultarNomLider(){
         
        // }

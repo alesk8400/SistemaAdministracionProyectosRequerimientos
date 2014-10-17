@@ -184,7 +184,10 @@
                                 <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.Cedula FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.Cedula = p.Lider"></asp:SqlDataSource>                           
                             <div class=" input-group margin-bottom-sm">
                                 &nbsp;<span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span></div>
-                            <div class="help-block with-errors"> </div>
+                            <div class="help-block with-errors"> 
+                                <asp:GridView ID="gridUsuarios" runat="server">
+                                </asp:GridView>
+                                </div>
                         </div></div>
 
                          

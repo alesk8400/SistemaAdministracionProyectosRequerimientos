@@ -109,5 +109,23 @@ namespace SAPR.App_Code.Controladoras {
 
             return rol;
         }
+
+        public DataTable getUsuariosDisponibles()
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = ds.getUsuariosDisponibles();
+            }
+            catch (Exception e)
+            {
+                resultado = null;
+            }
+
+            return resultado;
+
+        }
+
     }     
 }

@@ -54,6 +54,12 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDProyecto.eliminarProyecto(idProyecto);
         }
 
+
+        public DataTable getUsuariosDisponibles()
+        {
+            return controladoraUsuario.getUsuariosDisponibles();
+        }
+
         public EntidadProyecto consultarProyecto(String nombre)
         {
             EntidadProyecto proyecto = null; //para encpasular los datos consultados.
