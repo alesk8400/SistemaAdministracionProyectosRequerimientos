@@ -16,7 +16,7 @@ namespace SAPR.App_Code.Controladoras {
             ps = new adap();
         }
 
-        public String[] insertarProyecto(EntidadProyecto proyectoNuevo)
+        public String[] insertarProyecto(EntidadProyecto proyectoNuevo, EntidadCliente clienteNuevo)
         {
             String[] resultado = new String[1];
             try
