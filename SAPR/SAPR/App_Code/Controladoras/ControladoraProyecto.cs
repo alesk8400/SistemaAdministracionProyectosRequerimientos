@@ -96,5 +96,11 @@ namespace SAPR.App_Code.Controladoras
 
 
 
+
+        public DataTable getUsuariosProyecto()
+        {
+            return controladoraUsuario.getUsuariosProyecto();
+
+        }
     }
 }

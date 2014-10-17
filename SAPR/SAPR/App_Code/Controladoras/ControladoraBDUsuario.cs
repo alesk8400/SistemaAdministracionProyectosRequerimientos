@@ -95,7 +95,7 @@ namespace SAPR.App_Code.Controladoras {
             DataTable filasUsuario = new DataTable();
             try
             {
-                filasUsuario = ds.getFilasUsuario();
+       //         filasUsuario = ds.getFilasUsuario();
             }
             catch (Exception e) { }
             return filasUsuario;
@@ -105,7 +105,7 @@ namespace SAPR.App_Code.Controladoras {
         { //metodo getidusuario
             String rol;
 
-            rol = ds.GetRolUsuario(cedula);
+            rol = ds.GetRolUsuario(cedula).ToString();
 
             return rol;
         }
@@ -125,6 +125,19 @@ namespace SAPR.App_Code.Controladoras {
 
             return resultado;
 
+        }
+
+
+        public DataTable getUsuariosProyecto(int idProyecto)
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = ds.getUsPro(4);
+            }
+            catch (Exception e) { }
+            return resultado;
         }
 
     }     

@@ -17,7 +17,7 @@ namespace SAPR
         private static Object[] idsGrid;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            llenarGridUsuarios(1);
         }
         protected void botonAgregarClic(object sender, EventArgs e)
         {
@@ -25,7 +25,7 @@ namespace SAPR
            // modo = 1;
             //irAModo();
             // String fechaFin, String fechaInic, String estado, int lider
-            controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), "1 2345 678");
+            controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(),this.gridUsuarios.Columns[0].);
             gridProyecto.DataBind();
         }
         protected void botonEliminarClic(object sender, EventArgs e)
@@ -42,42 +42,50 @@ namespace SAPR
         protected void llenarGridUsuarios(int modo)
         {
             DataTable tabla = crearTablaUsuarios(); // se crea la tabla
-            int indiceNuevoProveedor = -1;
             int i = 0;
+            Object[] datos = new Object[2];
             //if (!(((SiteMaster)Page.Master).UsuarioLogueado).Equals("")) {
-            try
-            {
-                Object[] datos = new Object[2];
-                DataTable usuariosDisponibles = controladora.getUsuariosDisponibles();// se consultan todos los proveedores
-                idsGrid = new Object[usuariosDisponibles.Rows.Count]; //crear el vector para ids de proveedores en el grid
-                if (usuariosDisponibles.Rows.Count > 0)
+
+                
+                try
                 {
-                    foreach (DataRow fila in usuariosDisponibles.Rows)
+
+                    DataTable usuariosDisponibles = controladora.getUsuariosDisponibles();// se consultan todos los proveedores
+                    idsGrid = new Object[usuariosDisponibles.Rows.Count]; //crear el vector para ids de proveedores en el grid
+                    if (usuariosDisponibles.Rows.Count > 0)
                     {
-                        idsGrid[i] = fila[0].ToString();// guardar el id del proveedor para su posterior consulta
-                        datos[0] = fila[1].ToString();//obtener los datos a mostrar
-                        datos[1] = fila[3].ToString();
+                        foreach (DataRow fila in usuariosDisponibles.Rows)
+                        {
+                            idsGrid[i] = fila[0].ToString();// guardar el id del proveedor para su posterior consulta
+                            datos[0] = fila[0].ToString();//obtener los datos a mostrar
+                            datos[1] = fila[1].ToString();
 
-                        tabla.Rows.Add(datos);// cargar en la tabla los datos de cada proveedor
-                        i++;
+                            tabla.Rows.Add(datos);// cargar en la tabla los datos de cada proveedor
+                            i++;
+                        }
                     }
+                    else // en cualquier otro caso se pone vacía la tabla
+                    {
+                        datos[0] = "-";
+                        datos[1] = "-";
+                        tabla.Rows.Add(datos);
+                    }
+
+
+                    this.gridUsuarios.DataSource = tabla; // se colocan los datos en la tabla
+                    this.gridUsuarios.DataBind();
+
                 }
-                else // en cualquier otro caso se pone vacía la tabla
+                catch (Exception e)
                 {
-                    datos[0] = "-";
-                    datos[1] = "-";
-                    tabla.Rows.Add(datos);
+
                 }
 
-
-                this.gridUsuarios.DataSource = tabla; // se colocan los datos en la tabla
-                this.gridUsuarios.DataBind();
-
-            }
-            catch (Exception e)
-            {
-
-            }
+                if (modo == 2){  // CASO DE QUE SE MODIFIQUE
+                    DataTable usuariosDisponibles = controladora.getUsuariosProyecto();
+            
+                        
+                }
             //}
         }
 
@@ -129,5 +137,12 @@ namespace SAPR
                 
             }
         }
+
+        protected void gridUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.gridUsuarios.Columns[0].
+        }
+
+
     }
 }

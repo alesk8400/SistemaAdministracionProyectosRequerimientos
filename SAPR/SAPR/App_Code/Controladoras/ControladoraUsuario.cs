@@ -65,7 +65,7 @@ namespace SAPR.App_Code.Controladoras
             return usuario;
         }
 
-        public EntidadUsuario[] getListadoUsuario(){
+   /*     public EntidadUsuario[] getListadoUsuario(){
             EntidadUsuario[] usuarios;
             Object[] datosConsultados = new Object[3];
             int cont = 0;
@@ -78,7 +78,7 @@ namespace SAPR.App_Code.Controladoras
                 usuarios[cont] = new EntidadUsuario(datosConsultados);
             }
             return usuarios;
-        }
+        } */
 
         public String getRolUsuario(String cedula)
         { //metodo getidusuario
@@ -88,6 +88,12 @@ namespace SAPR.App_Code.Controladoras
         public DataTable getUsuariosDisponibles()
         {
             return controladoraBDUsuario.getUsuariosDisponibles();
+        }
+
+
+        public DataTable getUsuariosProyecto()
+        {
+            return controladoraBDUsuario.getUsuariosProyecto(2);
         }
         //public string ConsultarNomLider(){
         

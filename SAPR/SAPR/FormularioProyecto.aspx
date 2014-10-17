@@ -179,13 +179,34 @@
                     <div class="col-sm-4">
                     <div class="form-group">
                         <div class="col-sm-9">
-                                <asp:DropDownList ID="cmbNombreLider" runat="server" DataSourceID="GetLider" DataTextField="Nombre" DataValueField="Nombre">
+                                <asp:DropDownList ID="cmbNombreLider" runat="server" DataSourceID="GetLider" DataTextField="Nombre" DataValueField="Cedula">
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.Cedula FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.Cedula = p.Lider"></asp:SqlDataSource>                           
                             <div class=" input-group margin-bottom-sm">
                                 &nbsp;<span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span></div>
                             <div class="help-block with-errors"> 
-                                <asp:GridView ID="gridUsuarios" runat="server">
+                                <asp:GridView ID="gridUsuarios" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Lider">
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="cbLider" runat="server" OnCheckedChanged="cbMiembros_CheckedChanged" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Miembro">
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="cbMiembros" runat="server" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <FooterStyle BackColor="#CCCCCC" />
+                                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                                    <RowStyle BackColor="White" />
+                                    <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                    <SortedAscendingHeaderStyle BackColor="#808080" />
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                    <SortedDescendingHeaderStyle BackColor="#383838" />
                                 </asp:GridView>
                                 </div>
                         </div></div>
