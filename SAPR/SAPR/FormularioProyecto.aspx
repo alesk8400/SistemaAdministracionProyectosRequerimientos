@@ -189,7 +189,7 @@
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
-                                                <asp:CheckBox ID="cbLider" runat="server" OnCheckedChanged="cbLider_CheckedChanged" />
+                                                <asp:CheckBox ID="cbLider" runat="server" OnCheckedChanged="cbLider_CheckedChanged" AutoPostBack="True" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Miembro">

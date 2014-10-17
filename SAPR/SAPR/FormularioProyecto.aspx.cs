@@ -13,11 +13,15 @@ namespace SAPR
     public partial class FormularioProyecto : System.Web.UI.Page
     {
         private static EntidadProyecto entidadConsultada;
+        private static ControladoraUsuario controladoraUsuario = new ControladoraUsuario();
         private static ControladoraProyecto controladora = new ControladoraProyecto();
         private static Object[] idsGrid;
         protected void Page_Load(object sender, EventArgs e)
         {
-            llenarGridUsuarios(1);
+                if(!IsPostBack){
+                    llenarGridUsuarios(1);
+                }
+            
         }
 
         protected void botonEliminarClic(object sender, EventArgs e)
@@ -121,6 +125,7 @@ namespace SAPR
                 textFechaF.Value = entidadConsultada.FechaFin.ToString();
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
                 cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
+                //cmbNombreLider = controladoraUsuario.getNombre;
 
 
                 //cmbEstado.SelectedIndex = 2;
@@ -138,19 +143,24 @@ namespace SAPR
 
         protected void cbLider_CheckedChanged(object sender, EventArgs e)
         {
-            String cedula;
-            foreach (GridViewRow rw in gridUsuarios.Rows)
+                 CheckBox chk = (CheckBox)sender;
+            GridViewRow gv = (GridViewRow)chk.NamingContainer;
+            int rownumber = gv.RowIndex;
+
+            if (chk.Checked)
             {
-                CheckBox chk = (CheckBox)rw.Cells[0].FindControl("cbLider");
-                if (chk.Checked == true)
+                int i;
+                for (i = 0; i <= gridUsuarios.Rows.Count - 1; i++)
                 {
-                    gridUsuarios.SelectedIndex = rw.RowIndex;
-                    ViewState["SavIndex"] = rw.RowIndex;
-                    cedula = gridUsuarios.SelectedRow.Cells[2].ToString();
-                    int x;
+                    if (i != rownumber)
+                    {
+                        CheckBox chkcheckbox = ((CheckBox)(gridUsuarios.Rows[i].FindControl("cbLider")));
+                        chkcheckbox.Checked = false;
+                    }
                 }
             }
         }
+        
 
         protected void btnAgregarProyecto_Click(object sender, EventArgs e)
         {
