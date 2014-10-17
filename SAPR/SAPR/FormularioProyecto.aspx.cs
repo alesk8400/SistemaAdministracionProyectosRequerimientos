@@ -117,9 +117,10 @@ namespace SAPR
             try
             {
                 if (entidadConsultada == null) {
-                    //ClientScript.RegisterOnSubmitStatement(this.GetType(), "alert", "ASJIHD");
+                   
                 
                 }
+
                 entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
                 textNombre.Value = entidadConsultada.Nombre.ToString();
                 textObjetivo.Value = entidadConsultada.Objetivos.ToString();
@@ -319,6 +320,55 @@ namespace SAPR
                     }
                 }
             }
+        }
+
+        protected void clickAceptarEliminarProyecto(object sender, EventArgs e)
+        {
+            String[] result = new String[1];
+            result = controladora.eliminarProyecto(entidadConsultada.Nombre);
+          //  mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
+           // if (result[0].Contains("Exito"))// si fue exitoso
+            //{
+
+                limpiarCampos();
+                gridProyecto.DataBind();
+           // }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (modo == 1)
+            {
+                limpiarCampos();
+            }
+
+
+            if (modo == 2)
+            {
+                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
+                textNombre.Value = entidadConsultada.Nombre.ToString();
+                textObjetivo.Value = entidadConsultada.Objetivos.ToString();
+                textFechaA.Value = entidadConsultada.FechaAsig.ToString();
+                textFechaF.Value = entidadConsultada.FechaFin.ToString();
+                textFechaI.Value = entidadConsultada.FechaIni.ToString();
+                cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
+
+                int idProy;
+                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());
+
+                clienteConsultado = controladora.consultarCliente(idProy);
+                textRepresentante.Value = clienteConsultado.Nombre.ToString();
+                textTelRepresentante.Value = clienteConsultado.Telefono.ToString();
+                textTelSecundario.Value = clienteConsultado.Celular.ToString();
+                TextOficina.Value = clienteConsultado.Oficina.ToString();
+                textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
+                btnModificarProyecto.Disabled = false;
+                habilitarCampos(true);
+                //cmbEstado.SelectedIndex = 2;
+                gridProyecto.DataBind();
+
+            }
+
         }
 
 

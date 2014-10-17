@@ -116,7 +116,7 @@ namespace SAPR.App_Code.Controladoras {
 
             try
             {
-                resultado = ds.getUsuariosDisponibles();
+                resultado = ds.getUsuariosDisponibles1();
             }
             catch (Exception e)
             {
