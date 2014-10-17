@@ -168,7 +168,8 @@ namespace SAPR
             {
                 int x = 9;
                 String[] r = new String[1];
-                r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), "4 234 123");
+                r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), "4 234 123",
+                                                    this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
                 gridProyecto.DataBind();
             }
             catch (Exception jh) {

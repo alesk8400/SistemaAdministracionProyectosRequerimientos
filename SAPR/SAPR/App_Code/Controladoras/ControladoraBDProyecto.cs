@@ -11,12 +11,14 @@ namespace SAPR.App_Code.Controladoras {
     public class ControladoraBDProyecto {
         adap ps;
         adapCliente cs;
-        
+
+       
         public ControladoraBDProyecto() {
             ps = new adap();
+            cs = new adapCliente();
         }
 
-        public String[] insertarProyecto(EntidadProyecto proyectoNuevo, EntidadCliente clienteNuevo)
+        public String[] insertarProyecto(EntidadProyecto proyectoNuevo, EntidadCliente cliente)
         {
             String[] resultado = new String[1];
             try
@@ -24,8 +26,10 @@ namespace SAPR.App_Code.Controladoras {
                 //System.Globalization.DateTimeFormatInfo prueba = new System.Globalization.DateTimeFormatInfo();
                 //string datetipe = "MMddyyyy";
                 //prueba.LongDatePattern = datetipe;
+                int idProy;
                 this.ps.InsertProyecto(proyectoNuevo.Nombre, proyectoNuevo.Objetivos, proyectoNuevo.Estado, proyectoNuevo.FechaIni, proyectoNuevo.FechaFin,proyectoNuevo.FechaAsig, proyectoNuevo.Lider);
-               // this.cs.InsertarCliente
+                idProy= Int32.Parse(this.ps.getIdProyecto(proyectoNuevo.Nombre).ToString());
+                this.cs.InsertarCliente(idProy, cliente.Nombre, cliente.Telefono, cliente.Celular, cliente.Oficina, cliente.Correo);
                 resultado[0] = "Exito";
             }
             catch (SqlException e){

@@ -5,22 +5,21 @@ using System.Web;
 
 namespace SAPR.App_Code.Entidades
 {
-    public class EntidadCliente
-    {
+    public class EntidadCliente{
         private String nombre;
         private String telefono;
         private String celular;
         private String oficina;
         private String correo;
-        private int fk_proyecto;
+       // private int fk_proyecto;
 
-        public EntidadCliente (Object[] datos) {
+        public EntidadCliente(Object[] datos) {
             this.nombre = datos[0].ToString();
             this.telefono = datos[1].ToString();
             this.celular = datos[2].ToString();
             this.oficina = datos[3].ToString();
             this.correo = datos[4].ToString();
-            this.fk_proyecto = Int32.Parse(datos[5].ToString());
+            //this.fk_proyecto = Int32.Parse(datos[5].ToString());
 
         }
 
@@ -54,11 +53,11 @@ namespace SAPR.App_Code.Entidades
             set { oficina = value; }
         }
 
-        public int Fk_Proyecto
+        /*public int Fk_Proyecto
         {
             get { return fk_proyecto; }
             set { fk_proyecto = value; }
-        }
+        }*/
 
 
 

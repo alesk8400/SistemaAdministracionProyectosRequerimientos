@@ -18,7 +18,7 @@ namespace SAPR.App_Code.Controladoras
 
         }
         // Este método recibía String[] listaUsuarios, se lo quité por mientras
-        public String[] insertarProyecto(String nombre, String objetivo, String estado, String fechaInic, String fechaFin, String fechaAsig, String lider)
+        public String[] insertarProyecto(String nombre, String objetivo, String estado, String fechaInic, String fechaFin, String fechaAsig, String lider, String nombreCliente, String telefono, String telefono1, String oficina, String correoCliente )
         {
             Object[] datos = new Object[7];
             datos[0] = nombre;
@@ -28,8 +28,15 @@ namespace SAPR.App_Code.Controladoras
             datos[4] = fechaFin;
             datos[5] = fechaAsig; 
             datos[6] = lider;
+            Object[] datosCliente = new Object[5];
+            datosCliente[0] = nombreCliente;
+            datosCliente[1] = telefono;
+            datosCliente[2] = telefono1;
+            datosCliente[3] = oficina;
+            datosCliente[4] = correoCliente;
             EntidadProyecto proyecto = new EntidadProyecto(datos);
-            return controladoraBDProyecto.insertarProyecto(proyecto);
+            EntidadCliente cliente = new EntidadCliente(datosCliente);
+            return controladoraBDProyecto.insertarProyecto(proyecto, cliente);
         
         
         }
