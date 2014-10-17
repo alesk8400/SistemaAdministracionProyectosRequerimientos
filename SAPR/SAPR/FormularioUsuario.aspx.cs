@@ -65,7 +65,7 @@ namespace SAPR
 
                     gridUsuarios.DataBind();
                     restaurarPantalla();
-                } // si no lo inserto no debe cambiar de modo ni limpiar la pantalla
+                } // si no lo inserto no debe cambiar de modo ni limpiar la pantalla.
             }
             else if (modo == 2)//si se quiere modificar
             {
