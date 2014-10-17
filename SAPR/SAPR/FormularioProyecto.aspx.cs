@@ -22,7 +22,7 @@ namespace SAPR
                 if(!IsPostBack){
                     llenarGridUsuarios(1);
                 }
-            
+                restaurarPantallaSinLimpiar();
         }
 
         protected void botonEliminarClic(object sender, EventArgs e)
@@ -136,8 +136,8 @@ namespace SAPR
                 textTelSecundario.Value = clienteConsultado.Celular.ToString();
                 TextOficina.Value = clienteConsultado.Oficina.ToString();
                 textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
-
-
+                btnModificarProyecto.Disabled = false;
+                habilitarCampos(true);
                 //cmbEstado.SelectedIndex = 2;
                 gridProyecto.DataBind();
             }
@@ -151,34 +151,36 @@ namespace SAPR
            //this.gridUsuarios.Columns[0].
         }
 
-        protected void cbLider_CheckedChanged(object sender, EventArgs e)
-        {
-                 CheckBox chk = (CheckBox)sender;
-            GridViewRow gv = (GridViewRow)chk.NamingContainer;
-            int rownumber = gv.RowIndex;
-
-            if (chk.Checked)
-            {
-                int i;
-                for (i = 0; i <= gridUsuarios.Rows.Count - 1; i++)
-                {
-                    if (i != rownumber)
-                    {
-                        CheckBox chkcheckbox = ((CheckBox)(gridUsuarios.Rows[i].FindControl("cbLider")));
-                        chkcheckbox.Checked = false;
-                    }
-                }
-            }
-        }
         
 
         protected void btnAgregarProyecto_Click(object sender, EventArgs e)
         {
+
+            String[] miembros = new String[gridUsuarios.Rows.Count];
+            String cedulaLider;
+
+            for (int i = 0; i < gridUsuarios.Rows.Count; i++)
+            {
+                GridViewRow row = gridUsuarios.Rows[i];
+                bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLider")).Checked;
+                bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembros")).Checked;
+
+                if (estaSeleccionadoLider)
+                {
+                    cedulaLider = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                }
+
+                if (estaSeleccionadoMiembro)
+                {
+                    miembros[i] = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                }
+            }
+
             try
             {
-                int x = 9;
+              
                 String[] r = new String[1];
-                r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), "4 234 123",
+                r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider,
                                                     this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
                 gridProyecto.DataBind();
             }
@@ -186,6 +188,8 @@ namespace SAPR
                 int x = 9;
             }
         }
+
+        
 
 
     /*
@@ -210,16 +214,89 @@ namespace SAPR
         {
             this.textNombre.Disabled = !habilitar;
             this.textObjetivo.Disabled = !habilitar;
-            this.textFechaA.Value = "";
-            this.textFechaF.Value = "";
-            this.textFechaI.Value = "";
-            this.textRepresentante.Value = "";
-            this.textTelRepresentante.Value = "";
-            this.textTelSecundario.Value = "";
-            this.TextOficina.Value = "";
-            this.textEmailRepresentante.Value = "";
+            this.textFechaA.Disabled = !habilitar;
+            this.textFechaF.Disabled = !habilitar;
+            this.textFechaI.Disabled = !habilitar;
+            this.textRepresentante.Disabled = !habilitar;
+            this.textTelRepresentante.Disabled = !habilitar;
+            this.textTelSecundario.Disabled = !habilitar;
+            this.TextOficina.Disabled = !habilitar;
+            this.textEmailRepresentante.Disabled = !habilitar;
+            this.cmbEstado.Enabled = habilitar;
         }
 
+        protected void restaurarPantalla()
+        {
+            habilitarCampos(false);
+            btnAgregarProyecto.Disabled = false;
+            btnModificarProyecto.Disabled = true;
+            btnEliminarProyecto.Disabled = true;
+            botonAceptar.Disabled = true;
+            botonCancelar.Disabled = true;
+            cmbEstado.Enabled = false;
+            limpiarCampos();
+        }
+
+        protected void restaurarPantallaSinLimpiar()
+        {
+            habilitarCampos(false);
+            btnAgregarProyecto.Disabled = false;
+            btnModificarProyecto.Disabled = true;
+            btnEliminarProyecto.Disabled = true;
+            botonAceptar.Disabled = true;
+            botonCancelar.Disabled = true;
+        }
+
+        protected void modificar_Click(object sender, EventArgs e)
+        {
+            String[] miembros = new String[gridUsuarios.Rows.Count];
+            String cedulaLider;
+
+            // Select the checkboxes from the GridView control
+            for (int i = 0; i < gridUsuarios.Rows.Count; i++)
+            {
+                GridViewRow row = gridUsuarios.Rows[i];
+                bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLider")).Checked;
+                bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembros")).Checked;
+
+                if (estaSeleccionadoLider)
+                {
+                    cedulaLider = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                }
+
+                if (estaSeleccionadoMiembro)
+                {
+                    miembros[i] = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                }
+
+            }
+
+            String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider , entidadConsultada);
+
+            
+            gridProyecto.DataBind();
+            restaurarPantalla();
+        }
+
+        protected void cbLider_CheckedChanged1(object sender, EventArgs e)
+        {
+            CheckBox chk = (CheckBox)sender;
+            GridViewRow gv = (GridViewRow)chk.NamingContainer;
+            int rownumber = gv.RowIndex;
+
+            if (chk.Checked)
+            {
+                int i;
+                for (i = 0; i <= gridUsuarios.Rows.Count - 1; i++)
+                {
+                    if (i != rownumber)
+                    {
+                        CheckBox chkcheckbox = ((CheckBox)(gridUsuarios.Rows[i].FindControl("cbLider")));
+                        chkcheckbox.Checked = false;
+                    }
+                }
+            }
+        }
 
 
     }

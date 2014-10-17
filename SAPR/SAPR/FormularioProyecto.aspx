@@ -13,9 +13,12 @@
     <div class="row row-botones">
         <div class="col-lg-5">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnAgregarProyecto" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="btnAgregarProyecto_Click" />
-            <button runat="server" id="botonModificar" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
-            <asp:Button ID="btnEliminar" runat="server"  Text="Eliminar" class= "btn btn-primary" OnClick="botonEliminarClic"/>
+            <button runat="server" id="btnAgregarProyecto" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Agregar</button>
+            <button runat="server" id="btnModificarProyecto" class="btn btn-primary" type="button" visible="True"><i class="fa fa-pencil-square-o"></i>Modificar</button>
+            <button runat="server" id="btnEliminarProyecto" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Eliminar</button>
+          
+            <asp:Button ID="modificar" runat="server" Text="Button" OnClick="modificar_Click" />
+          
         </div>
         <div class="col-lg-7">
             <div id="alertAlerta" class="alert alert-danger fade in" runat="server" hidden="hidden">
@@ -38,7 +41,6 @@
                         <div class="col-sm-4">
                             <div class=" input-group margin-bottom-sm"> 
                                 <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" data-error="Ingresó una nombre inválido" title="Nombre" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="44" required="required" />
-                                <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
                             </div>
                             <div class="help-block with-errors"></div>
                         </div></div>
@@ -49,7 +51,7 @@
                         <div class="col-sm-7">
                             <div class=" input-group margin-bottom-sm">
                                 <input runat="server" id="textObjetivo" class="form-control" type="text" placeholder="Objetivo de Proyecto" data-error="Espacio requerido. Sólo letras." title="Objetivos" required="required" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="299" />
-                                <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
+
                             </div>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -57,7 +59,7 @@
                    </fieldset>
 
                         <fieldset>
-                   <div class="col-md-7">
+                   <div class="col-sm-7">
                     <div class="form-group">
                         <label for="fechaAsignacion" class="col-sm-4 control-label">Fecha de asignación:</label>
                             <div class="col-sm-5">
@@ -120,7 +122,6 @@
                         <div class="col-sm-5">
                             <div class=" input-group margin-bottom-sm">
                                 <input runat="server" id="textRepresentante" class="form-control" type="text" placeholder="Nombre de Representante" data-error="Ingresó un nombre inválido" title="Representante" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="30" required="required" />
-                                <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
                             </div>
                             <div class="help-block with-errors"></div>
                         </div></div>
@@ -131,7 +132,6 @@
                         <div class="col-sm-5">
                             <div class=" input-group margin-bottom-sm">
                                 <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante" data-error="Espacio requerido. Sólo letras y números." title="Telefono" required="required" pattern="^[0-9]*$"/>
-                                <span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span>
                             </div>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -179,17 +179,15 @@
                     <div class="col-sm-4">
                     <div class="form-group">
                         <div class="col-sm-9">
-                                <asp:DropDownList ID="cmbNombreLider" runat="server" DataSourceID="GetLider" DataTextField="Nombre" DataValueField="Cedula">
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="GetLider" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT DISTINCT l.Nombre, l.Cedula FROM Usuarios AS l INNER JOIN Proyecto AS p ON l.Cedula = p.Lider"></asp:SqlDataSource>                           
-                            <div class=" input-group margin-bottom-sm">
-                                &nbsp;<span class="input-group-addon"><i class="fa fa-check fa-fw"></i></span></div>
-                            <div class="help-block with-errors"> 
+                                
+                            <div class= "cl-sm-9">
+                           
+                            <div class= "cl-sm-9"> 
                                 <asp:GridView ID="gridUsuarios" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
-                                                <asp:CheckBox ID="cbLider" runat="server" OnCheckedChanged="cbLider_CheckedChanged" AutoPostBack="True" />
+                                                <asp:CheckBox ID="cbLider" runat="server"  AutoPostBack="True" OnCheckedChanged="cbLider_CheckedChanged1" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Miembro">
@@ -214,8 +212,7 @@
                          
 
                     <div class="form-group">
-                        <span class="label label-primary pull-right"><i class="fa fa-check fa-fw"></i>Espacio requerido</span>
-                    </div>
+                        &nbsp;</div>
                                 </div>
                 </fieldset>
                 

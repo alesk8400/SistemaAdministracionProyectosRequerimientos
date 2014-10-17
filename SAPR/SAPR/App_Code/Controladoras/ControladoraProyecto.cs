@@ -41,21 +41,6 @@ namespace SAPR.App_Code.Controladoras
         
         }
 
-        public String[] modificarProyecto(String nombre, String lider, String estado, String objetivo, String fechaAsig, String fechaInic, String fechaFin, String[] listaUsuarios,EntidadProyecto proyectoViejo) {
-            Object[] datos = new Object[7];
-            datos[0] = nombre;
-            datos[1] = lider;
-            datos[2] = estado;
-            datos[3] = objetivo;
-            datos[4] = fechaAsig;
-            datos[5] = fechaInic;
-            datos[6] = fechaFin;
-            EntidadProyecto proyectoNuevo = new EntidadProyecto(datos);
-            return controladoraBDProyecto.modificarProyecto(proyectoNuevo,proyectoViejo);
-
-        
-        }
-
         public String[] eliminarProyecto(String nombre){
             return controladoraBDProyecto.eliminarProyecto(nombre);
         }
@@ -127,6 +112,20 @@ namespace SAPR.App_Code.Controladoras
                 cliente = new EntidadCliente(datosConsultados);
             }
             return cliente;
+        }
+
+        public string[] modificarProyecto(String nombre, String objetivos, String estado, String fechaIni, String fechaFin,String fechaAsig, String lider, EntidadProyecto proyectoViejo)
+        {
+            Object[] datos = new Object[7];
+            datos[0] = nombre;
+            datos[1] = objetivos;
+            datos[2] = estado;
+            datos[3] = fechaIni;
+            datos[4] = fechaFin;
+            datos[5] = fechaAsig;
+            datos[6] = lider;
+            EntidadProyecto proyectoNuevo = new EntidadProyecto(datos);
+            return controladoraBDProyecto.modificarProyecto(proyectoNuevo, proyectoViejo.Nombre);
         }
     }
 }

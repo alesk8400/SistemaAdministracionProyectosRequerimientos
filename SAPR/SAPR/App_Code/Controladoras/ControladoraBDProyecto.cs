@@ -49,12 +49,12 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
-        public String[] modificarProyecto(EntidadProyecto proyectoNuevo, EntidadProyecto proyectoViejo)
+        public String[] modificarProyecto(EntidadProyecto proyectoNuevo, String nombreviejo)
         {
             String[] resultado = new String[1];
             try
             {
-               // this.ps.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefonos, usuarioViejo.Cedula);
+                this.ps.actualizarProyecto(proyectoNuevo.Nombre, proyectoNuevo.Objetivos, proyectoNuevo.Estado, proyectoNuevo.FechaIni, proyectoNuevo.FechaFin, proyectoNuevo.FechaAsig, proyectoNuevo.Lider, nombreviejo );
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -125,6 +125,7 @@ namespace SAPR.App_Code.Controladoras {
             catch (Exception e) { }
             return resultado;
         }
+
 
 
     }
