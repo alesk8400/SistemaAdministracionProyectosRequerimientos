@@ -9,10 +9,10 @@ using SAPR.App_Code.Entidades;
 
 namespace SAPR.App_Code.Controladoras {
     public class ControladoraBDProyecto {
-        Proyecto1TableAdapter ps;
+        adap ps;
 
         public ControladoraBDProyecto() {
-            ps = new Proyecto1TableAdapter();
+            ps = new adap();
         }
 
         public String[] insertarProyecto(EntidadProyecto proyectoNuevo)
@@ -20,15 +20,14 @@ namespace SAPR.App_Code.Controladoras {
             String[] resultado = new String[1];
             try
             {
-                System.Globalization.DateTimeFormatInfo prueba = new System.Globalization.DateTimeFormatInfo();
-                string datetipe = "MMddyyyy";
-                prueba.LongDatePattern = datetipe;
+                //System.Globalization.DateTimeFormatInfo prueba = new System.Globalization.DateTimeFormatInfo();
+                //string datetipe = "MMddyyyy";
+                //prueba.LongDatePattern = datetipe;
                 this.ps.InsertProyecto(proyectoNuevo.Nombre, proyectoNuevo.Objetivos, proyectoNuevo.Estado, proyectoNuevo.FechaIni, proyectoNuevo.FechaFin,proyectoNuevo.FechaAsig, proyectoNuevo.Lider);
                 resultado[0] = "Exito";
             }
-            catch (SqlException e)
-            {
-                int n = e.Number;
+            catch (SqlException e){
+              int n = e.Number;
                 if (n == 2627)
                 {
                     resultado[0] = "Error";
@@ -38,6 +37,9 @@ namespace SAPR.App_Code.Controladoras {
                     resultado[0] = "Error";
                 }
             }
+            
+                
+            
             return resultado;
         }
 
@@ -71,7 +73,7 @@ namespace SAPR.App_Code.Controladoras {
             idProy = Int32.Parse(idProyecto);
             try
             {
-                this.ps.BorrarProyecto(idProy);
+               // this.ps.BorrarProyecto(idProy);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -95,7 +97,7 @@ namespace SAPR.App_Code.Controladoras {
 
             try
             {
-                resultado = ps.consultarFilaProy(nombre);
+                resultado = ps.ConsultarProyecto(nombre);
             }
             catch (Exception e) { }
             return resultado;

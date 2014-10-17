@@ -13,7 +13,7 @@
     <div class="row row-botones">
         <div class="col-lg-5">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnAgregarProyecto" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="botonAgregarClic"/>
+            <asp:Button ID="btnAgregarProyecto" runat="server"  Text="Agregar" class= "btn btn-primary" OnClick="btnAgregarProyecto_Click" />
             <button runat="server" id="botonModificar" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
             <asp:Button ID="btnEliminar" runat="server"  Text="Eliminar" class= "btn btn-primary" OnClick="botonEliminarClic"/>
         </div>
@@ -189,7 +189,7 @@
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
-                                                <asp:CheckBox ID="cbLider" runat="server" OnCheckedChanged="cbMiembros_CheckedChanged" />
+                                                <asp:CheckBox ID="cbLider" runat="server" OnCheckedChanged="cbLider_CheckedChanged" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Miembro">
@@ -233,8 +233,9 @@
                 
                 <div class = " col-lg-7">    
                                       
-                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
                     <Columns>
+                        <asp:CommandField ShowSelectButton="True" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                         <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                         <asp:BoundField DataField="Lider" HeaderText="Lider" SortExpression="Lider" />

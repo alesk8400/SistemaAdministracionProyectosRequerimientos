@@ -19,22 +19,14 @@ namespace SAPR
         {
             llenarGridUsuarios(1);
         }
-        protected void botonAgregarClic(object sender, EventArgs e)
-        {
-            //limpiarCampos();
-           // modo = 1;
-            //irAModo();
-            // String fechaFin, String fechaInic, String estado, int lider
-            controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.textFechaA.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaI.Value.ToString(), this.cmbEstado.SelectedItem.ToString(),this.gridUsuarios.Columns[0].);
-            gridProyecto.DataBind();
-        }
+
         protected void botonEliminarClic(object sender, EventArgs e)
         {
             //limpiarCampos();
             // modo = 1;
             //irAModo();
             // String fechaFin, String fechaInic, String estado, int lider
-            controladora.eliminarProyecto(entidadConsultada.Id);
+            controladora.eliminarProyecto(entidadConsultada.Nombre);
             gridProyecto.DataBind();
         }
 
@@ -122,13 +114,14 @@ namespace SAPR
                     //ClientScript.RegisterOnSubmitStatement(this.GetType(), "alert", "ASJIHD");
                 
                 }
-                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[0].Text.ToString());
+                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
                 textNombre.Value = entidadConsultada.Nombre.ToString();
                 textObjetivo.Value = entidadConsultada.Objetivos.ToString();
                 textFechaA.Value = entidadConsultada.FechaAsig.ToString();
                 textFechaF.Value = entidadConsultada.FechaFin.ToString();
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
                 cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
+
 
                 //cmbEstado.SelectedIndex = 2;
                 gridProyecto.DataBind();
@@ -140,8 +133,39 @@ namespace SAPR
 
         protected void gridUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.gridUsuarios.Columns[0].
+           //this.gridUsuarios.Columns[0].
         }
+
+        protected void cbLider_CheckedChanged(object sender, EventArgs e)
+        {
+            String cedula;
+            foreach (GridViewRow rw in gridUsuarios.Rows)
+            {
+                CheckBox chk = (CheckBox)rw.Cells[0].FindControl("cbLider");
+                if (chk.Checked == true)
+                {
+                    gridUsuarios.SelectedIndex = rw.RowIndex;
+                    ViewState["SavIndex"] = rw.RowIndex;
+                    cedula = gridUsuarios.SelectedRow.Cells[2].ToString();
+                    int x;
+                }
+            }
+        }
+
+        protected void btnAgregarProyecto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int x = 9;
+                String[] r = new String[1];
+                r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), "4 234 123");
+                gridProyecto.DataBind();
+            }
+            catch (Exception jh) {
+                int x = 9;
+            }
+        }
+
 
 
     }

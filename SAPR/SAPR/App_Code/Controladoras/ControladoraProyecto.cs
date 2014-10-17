@@ -18,17 +18,16 @@ namespace SAPR.App_Code.Controladoras
 
         }
         // Este método recibía String[] listaUsuarios, se lo quité por mientras
-        public String[] insertarProyecto(String nombre, String objetivo, String fechaAsig, String fechaFin, String fechaInic, String estado, String lider)
+        public String[] insertarProyecto(String nombre, String objetivo, String estado, String fechaInic, String fechaFin, String fechaAsig, String lider)
         {
-            Object[] datos = new Object[8];
-            datos[0] = 1;
-            datos[1] = nombre;
-            datos[7] = lider;
-            datos[3] = estado;
-            datos[2] = objetivo;
-            datos[6] = fechaAsig; 
-            datos[4] = fechaInic;
-            datos[5] = fechaFin;
+            Object[] datos = new Object[7];
+            datos[0] = nombre;
+            datos[1] = objetivo;
+            datos[2] = estado;
+            datos[3] = fechaInic;
+            datos[4] = fechaFin;
+            datos[5] = fechaAsig; 
+            datos[6] = lider;
             EntidadProyecto proyecto = new EntidadProyecto(datos);
             return controladoraBDProyecto.insertarProyecto(proyecto);
         
@@ -63,14 +62,14 @@ namespace SAPR.App_Code.Controladoras
         public EntidadProyecto consultarProyecto(String nombre)
         {
             EntidadProyecto proyecto = null; //para encpasular los datos consultados.
-            Object[] datosConsultados = new Object[8]; //para guardar los datos obtenidos de la consulta temporalmente
+            Object[] datosConsultados = new Object[7]; //para guardar los datos obtenidos de la consulta temporalmente
             DataTable filaProyecto = controladoraBDProyecto.consultarProyecto(nombre);
 
             if (filaProyecto.Rows.Count == 1)
             { // si hay un valor
-                for (int i = 0; i < 8; i++)
+                for (int i = 1; i < 8; i++)
                 {
-                    datosConsultados[i] = filaProyecto.Rows[0][i].ToString();
+                    datosConsultados[i-1] = filaProyecto.Rows[0][i].ToString();
                 }
                 proyecto = new EntidadProyecto(datosConsultados);
             }

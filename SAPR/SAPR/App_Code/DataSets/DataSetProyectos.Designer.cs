@@ -24,7 +24,7 @@ namespace SAPR.App_Code.DataSets {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DataSetProyectos : global::System.Data.DataSet {
         
-        private Proyecto1DataTable tableProyecto1;
+        private ProyectoDataTable tableProyecto;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace SAPR.App_Code.DataSets {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Proyecto1"] != null)) {
-                    base.Tables.Add(new Proyecto1DataTable(ds.Tables["Proyecto1"]));
+                if ((ds.Tables["Proyecto"] != null)) {
+                    base.Tables.Add(new ProyectoDataTable(ds.Tables["Proyecto"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace SAPR.App_Code.DataSets {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public Proyecto1DataTable Proyecto1 {
+        public ProyectoDataTable Proyecto {
             get {
-                return this.tableProyecto1;
+                return this.tableProyecto;
             }
         }
         
@@ -152,8 +152,8 @@ namespace SAPR.App_Code.DataSets {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Proyecto1"] != null)) {
-                    base.Tables.Add(new Proyecto1DataTable(ds.Tables["Proyecto1"]));
+                if ((ds.Tables["Proyecto"] != null)) {
+                    base.Tables.Add(new ProyectoDataTable(ds.Tables["Proyecto"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace SAPR.App_Code.DataSets {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableProyecto1 = ((Proyecto1DataTable)(base.Tables["Proyecto1"]));
+            this.tableProyecto = ((ProyectoDataTable)(base.Tables["Proyecto"]));
             if ((initTable == true)) {
-                if ((this.tableProyecto1 != null)) {
-                    this.tableProyecto1.InitVars();
+                if ((this.tableProyecto != null)) {
+                    this.tableProyecto.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace SAPR.App_Code.DataSets {
             this.Namespace = "http://tempuri.org/DataSetProyectos.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableProyecto1 = new Proyecto1DataTable();
-            base.Tables.Add(this.tableProyecto1);
+            this.tableProyecto = new ProyectoDataTable();
+            base.Tables.Add(this.tableProyecto);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeProyecto1() {
+        private bool ShouldSerializeProyecto() {
             return false;
         }
         
@@ -270,14 +270,14 @@ namespace SAPR.App_Code.DataSets {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void Proyecto1RowChangeEventHandler(object sender, Proyecto1RowChangeEvent e);
+        public delegate void ProyectoRowChangeEventHandler(object sender, ProyectoRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class Proyecto1DataTable : global::System.Data.TypedTableBase<Proyecto1Row> {
+        public partial class ProyectoDataTable : global::System.Data.TypedTableBase<ProyectoRow> {
             
             private global::System.Data.DataColumn columnIdProyecto;
             
@@ -297,8 +297,8 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Proyecto1DataTable() {
-                this.TableName = "Proyecto1";
+            public ProyectoDataTable() {
+                this.TableName = "Proyecto";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -306,7 +306,7 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal Proyecto1DataTable(global::System.Data.DataTable table) {
+            internal ProyectoDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -323,7 +323,7 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected Proyecto1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ProyectoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -403,34 +403,34 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Proyecto1Row this[int index] {
+            public ProyectoRow this[int index] {
                 get {
-                    return ((Proyecto1Row)(this.Rows[index]));
+                    return ((ProyectoRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event Proyecto1RowChangeEventHandler Proyecto1RowChanging;
+            public event ProyectoRowChangeEventHandler ProyectoRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event Proyecto1RowChangeEventHandler Proyecto1RowChanged;
+            public event ProyectoRowChangeEventHandler ProyectoRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event Proyecto1RowChangeEventHandler Proyecto1RowDeleting;
+            public event ProyectoRowChangeEventHandler ProyectoRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event Proyecto1RowChangeEventHandler Proyecto1RowDeleted;
+            public event ProyectoRowChangeEventHandler ProyectoRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddProyecto1Row(Proyecto1Row row) {
+            public void AddProyectoRow(ProyectoRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Proyecto1Row AddProyecto1Row(string Nombre, string _Objetivo_s_, string Estado, System.DateTime FechaIni, System.DateTime FechaFin, System.DateTime FechaAsig, int Lider) {
-                Proyecto1Row rowProyecto1Row = ((Proyecto1Row)(this.NewRow()));
+            public ProyectoRow AddProyectoRow(string Nombre, string _Objetivo_s_, string Estado, string FechaIni, string FechaFin, string FechaAsig, string Lider) {
+                ProyectoRow rowProyectoRow = ((ProyectoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Nombre,
@@ -440,22 +440,22 @@ namespace SAPR.App_Code.DataSets {
                         FechaFin,
                         FechaAsig,
                         Lider};
-                rowProyecto1Row.ItemArray = columnValuesArray;
-                this.Rows.Add(rowProyecto1Row);
-                return rowProyecto1Row;
+                rowProyectoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowProyectoRow);
+                return rowProyectoRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Proyecto1Row FindByIdProyecto(int IdProyecto) {
-                return ((Proyecto1Row)(this.Rows.Find(new object[] {
+            public ProyectoRow FindByIdProyecto(int IdProyecto) {
+                return ((ProyectoRow)(this.Rows.Find(new object[] {
                             IdProyecto})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                Proyecto1DataTable cln = ((Proyecto1DataTable)(base.Clone()));
+                ProyectoDataTable cln = ((ProyectoDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -463,7 +463,7 @@ namespace SAPR.App_Code.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new Proyecto1DataTable();
+                return new ProyectoDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -492,13 +492,13 @@ namespace SAPR.App_Code.DataSets {
                 base.Columns.Add(this._columnObjetivo_s_);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
-                this.columnFechaIni = new global::System.Data.DataColumn("FechaIni", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnFechaIni = new global::System.Data.DataColumn("FechaIni", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaIni);
-                this.columnFechaFin = new global::System.Data.DataColumn("FechaFin", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnFechaFin = new global::System.Data.DataColumn("FechaFin", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaFin);
-                this.columnFechaAsig = new global::System.Data.DataColumn("FechaAsig", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnFechaAsig = new global::System.Data.DataColumn("FechaAsig", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaAsig);
-                this.columnLider = new global::System.Data.DataColumn("Lider", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnLider = new global::System.Data.DataColumn("Lider", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLider);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdProyecto}, true));
@@ -514,33 +514,37 @@ namespace SAPR.App_Code.DataSets {
                 this._columnObjetivo_s_.MaxLength = 300;
                 this.columnEstado.AllowDBNull = false;
                 this.columnEstado.MaxLength = 20;
+                this.columnFechaIni.MaxLength = 50;
+                this.columnFechaFin.MaxLength = 50;
                 this.columnFechaAsig.AllowDBNull = false;
+                this.columnFechaAsig.MaxLength = 50;
+                this.columnLider.MaxLength = 15;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Proyecto1Row NewProyecto1Row() {
-                return ((Proyecto1Row)(this.NewRow()));
+            public ProyectoRow NewProyectoRow() {
+                return ((ProyectoRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new Proyecto1Row(builder);
+                return new ProyectoRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(Proyecto1Row);
+                return typeof(ProyectoRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.Proyecto1RowChanged != null)) {
-                    this.Proyecto1RowChanged(this, new Proyecto1RowChangeEvent(((Proyecto1Row)(e.Row)), e.Action));
+                if ((this.ProyectoRowChanged != null)) {
+                    this.ProyectoRowChanged(this, new ProyectoRowChangeEvent(((ProyectoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -548,8 +552,8 @@ namespace SAPR.App_Code.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.Proyecto1RowChanging != null)) {
-                    this.Proyecto1RowChanging(this, new Proyecto1RowChangeEvent(((Proyecto1Row)(e.Row)), e.Action));
+                if ((this.ProyectoRowChanging != null)) {
+                    this.ProyectoRowChanging(this, new ProyectoRowChangeEvent(((ProyectoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -557,8 +561,8 @@ namespace SAPR.App_Code.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.Proyecto1RowDeleted != null)) {
-                    this.Proyecto1RowDeleted(this, new Proyecto1RowChangeEvent(((Proyecto1Row)(e.Row)), e.Action));
+                if ((this.ProyectoRowDeleted != null)) {
+                    this.ProyectoRowDeleted(this, new ProyectoRowChangeEvent(((ProyectoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -566,14 +570,14 @@ namespace SAPR.App_Code.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.Proyecto1RowDeleting != null)) {
-                    this.Proyecto1RowDeleting(this, new Proyecto1RowChangeEvent(((Proyecto1Row)(e.Row)), e.Action));
+                if ((this.ProyectoRowDeleting != null)) {
+                    this.ProyectoRowDeleting(this, new ProyectoRowChangeEvent(((ProyectoRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveProyecto1Row(Proyecto1Row row) {
+            public void RemoveProyectoRow(ProyectoRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -600,7 +604,7 @@ namespace SAPR.App_Code.DataSets {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "Proyecto1DataTable";
+                attribute2.FixedValue = "ProyectoDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -644,25 +648,25 @@ namespace SAPR.App_Code.DataSets {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class Proyecto1Row : global::System.Data.DataRow {
+        public partial class ProyectoRow : global::System.Data.DataRow {
             
-            private Proyecto1DataTable tableProyecto1;
+            private ProyectoDataTable tableProyecto;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal Proyecto1Row(global::System.Data.DataRowBuilder rb) : 
+            internal ProyectoRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableProyecto1 = ((Proyecto1DataTable)(this.Table));
+                this.tableProyecto = ((ProyectoDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int IdProyecto {
                 get {
-                    return ((int)(this[this.tableProyecto1.IdProyectoColumn]));
+                    return ((int)(this[this.tableProyecto.IdProyectoColumn]));
                 }
                 set {
-                    this[this.tableProyecto1.IdProyectoColumn] = value;
+                    this[this.tableProyecto.IdProyectoColumn] = value;
                 }
             }
             
@@ -670,10 +674,10 @@ namespace SAPR.App_Code.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Nombre {
                 get {
-                    return ((string)(this[this.tableProyecto1.NombreColumn]));
+                    return ((string)(this[this.tableProyecto.NombreColumn]));
                 }
                 set {
-                    this[this.tableProyecto1.NombreColumn] = value;
+                    this[this.tableProyecto.NombreColumn] = value;
                 }
             }
             
@@ -681,10 +685,10 @@ namespace SAPR.App_Code.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string _Objetivo_s_ {
                 get {
-                    return ((string)(this[this.tableProyecto1._Objetivo_s_Column]));
+                    return ((string)(this[this.tableProyecto._Objetivo_s_Column]));
                 }
                 set {
-                    this[this.tableProyecto1._Objetivo_s_Column] = value;
+                    this[this.tableProyecto._Objetivo_s_Column] = value;
                 }
             }
             
@@ -692,106 +696,106 @@ namespace SAPR.App_Code.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Estado {
                 get {
-                    return ((string)(this[this.tableProyecto1.EstadoColumn]));
+                    return ((string)(this[this.tableProyecto.EstadoColumn]));
                 }
                 set {
-                    this[this.tableProyecto1.EstadoColumn] = value;
+                    this[this.tableProyecto.EstadoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime FechaIni {
+            public string FechaIni {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableProyecto1.FechaIniColumn]));
+                        return ((string)(this[this.tableProyecto.FechaIniColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaIni\' de la tabla \'Proyecto1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaIni\' de la tabla \'Proyecto\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProyecto1.FechaIniColumn] = value;
+                    this[this.tableProyecto.FechaIniColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime FechaFin {
+            public string FechaFin {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableProyecto1.FechaFinColumn]));
+                        return ((string)(this[this.tableProyecto.FechaFinColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaFin\' de la tabla \'Proyecto1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaFin\' de la tabla \'Proyecto\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProyecto1.FechaFinColumn] = value;
+                    this[this.tableProyecto.FechaFinColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime FechaAsig {
+            public string FechaAsig {
                 get {
-                    return ((global::System.DateTime)(this[this.tableProyecto1.FechaAsigColumn]));
+                    return ((string)(this[this.tableProyecto.FechaAsigColumn]));
                 }
                 set {
-                    this[this.tableProyecto1.FechaAsigColumn] = value;
+                    this[this.tableProyecto.FechaAsigColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Lider {
+            public string Lider {
                 get {
                     try {
-                        return ((int)(this[this.tableProyecto1.LiderColumn]));
+                        return ((string)(this[this.tableProyecto.LiderColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Lider\' de la tabla \'Proyecto1\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Lider\' de la tabla \'Proyecto\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProyecto1.LiderColumn] = value;
+                    this[this.tableProyecto.LiderColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFechaIniNull() {
-                return this.IsNull(this.tableProyecto1.FechaIniColumn);
+                return this.IsNull(this.tableProyecto.FechaIniColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFechaIniNull() {
-                this[this.tableProyecto1.FechaIniColumn] = global::System.Convert.DBNull;
+                this[this.tableProyecto.FechaIniColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFechaFinNull() {
-                return this.IsNull(this.tableProyecto1.FechaFinColumn);
+                return this.IsNull(this.tableProyecto.FechaFinColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFechaFinNull() {
-                this[this.tableProyecto1.FechaFinColumn] = global::System.Convert.DBNull;
+                this[this.tableProyecto.FechaFinColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsLiderNull() {
-                return this.IsNull(this.tableProyecto1.LiderColumn);
+                return this.IsNull(this.tableProyecto.LiderColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetLiderNull() {
-                this[this.tableProyecto1.LiderColumn] = global::System.Convert.DBNull;
+                this[this.tableProyecto.LiderColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -799,22 +803,22 @@ namespace SAPR.App_Code.DataSets {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class Proyecto1RowChangeEvent : global::System.EventArgs {
+        public class ProyectoRowChangeEvent : global::System.EventArgs {
             
-            private Proyecto1Row eventRow;
+            private ProyectoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Proyecto1RowChangeEvent(Proyecto1Row row, global::System.Data.DataRowAction action) {
+            public ProyectoRowChangeEvent(ProyectoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Proyecto1Row Row {
+            public ProyectoRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -842,7 +846,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class Proyecto1TableAdapter : global::System.ComponentModel.Component {
+    public partial class adap : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -856,7 +860,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public Proyecto1TableAdapter() {
+        public adap() {
             this.ClearBeforeFill = true;
         }
         
@@ -953,7 +957,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Proyecto1";
+            tableMapping.DataSetTable = "Proyecto";
             tableMapping.ColumnMappings.Add("IdProyecto", "IdProyecto");
             tableMapping.ColumnMappings.Add("Nombre", "Nombre");
             tableMapping.ColumnMappings.Add("Objetivo(s)", "Objetivo(s)");
@@ -977,10 +981,10 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Objetivo(s)", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaIni", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaIni", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaFin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaAsig", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaAsig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lider", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lider", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaIni", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaIni", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaFin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaAsig", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaAsig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lider", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lider", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Proyecto] SET [Nombre] = @Nombre, [Objetivo(s)] = @p1, [Estado] = @" +
@@ -990,10 +994,10 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Objetivo(s)", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaIni", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaIni", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaFin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaAsig", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaAsig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lider", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lider", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaIni", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaIni", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaFin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaAsig", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaAsig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lider", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lider", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdProyecto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdProyecto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -1007,7 +1011,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT IdProyecto, Nombre, [Objetivo(s)], Estado, FechaIni, FechaFin, FechaAsig, " +
@@ -1015,35 +1019,30 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "DELETE FROM Proyecto\r\nWHERE        (IdProyecto = @Original_IdProyecto)";
+            this._commandCollection[1].CommandText = "SELECT IdProyecto, Nombre, [Objetivo(s)], Estado, FechaIni, FechaFin, FechaAsig, " +
+                "Lider FROM Proyecto WHERE (Nombre = @nombre)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdProyecto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdProyecto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT IdProyecto, Nombre, [Objetivo(s)], Estado, FechaIni, FechaFin, FechaAsig, " +
-                "Lider FROM Proyecto WHERE (Nombre = @nombre)";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "INSERT INTO Proyecto\r\n                         (Nombre, [Objetivo(s)], Estado, Fe" +
+            this._commandCollection[2].CommandText = "INSERT INTO Proyecto\r\n                         (Nombre, [Objetivo(s)], Estado, Fe" +
                 "chaIni, FechaFin, FechaAsig, Lider)\r\nVALUES        (@Nombre,@p1,@Estado,@FechaIn" +
                 "i,@FechaFin,@FechaAsig,@Lider)";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.VarChar, 300, global::System.Data.ParameterDirection.Input, 0, 0, "Objetivo(s)", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaIni", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "FechaIni", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "FechaFin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaAsig", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "FechaAsig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lider", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Lider", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.VarChar, 300, global::System.Data.ParameterDirection.Input, 0, 0, "Objetivo(s)", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaIni", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "FechaIni", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "FechaFin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaAsig", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "FechaAsig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lider", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Lider", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetProyectos.Proyecto1DataTable dataTable) {
+        public virtual int Fill(DataSetProyectos.ProyectoDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1056,45 +1055,26 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetProyectos.Proyecto1DataTable GetData() {
+        public virtual DataSetProyectos.ProyectoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetProyectos.Proyecto1DataTable dataTable = new DataSetProyectos.Proyecto1DataTable();
+            DataSetProyectos.ProyectoDataTable dataTable = new DataSetProyectos.ProyectoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(DataSetProyectos.Proyecto1DataTable dataTable, string nombre) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((nombre == null)) {
-                throw new global::System.ArgumentNullException("nombre");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nombre));
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetProyectos.Proyecto1DataTable consultarFilaProy(string nombre) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+        public virtual DataSetProyectos.ProyectoDataTable ConsultarProyecto(string nombre) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((nombre == null)) {
                 throw new global::System.ArgumentNullException("nombre");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nombre));
             }
-            DataSetProyectos.Proyecto1DataTable dataTable = new DataSetProyectos.Proyecto1DataTable();
+            DataSetProyectos.ProyectoDataTable dataTable = new DataSetProyectos.ProyectoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1102,7 +1082,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetProyectos.Proyecto1DataTable dataTable) {
+        public virtual int Update(DataSetProyectos.ProyectoDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -1110,7 +1090,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(DataSetProyectos dataSet) {
-            return this.Adapter.Update(dataSet, "Proyecto1");
+            return this.Adapter.Update(dataSet, "Proyecto");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1154,7 +1134,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Nombre, string p1, string Estado, global::System.Nullable<global::System.DateTime> FechaIni, global::System.Nullable<global::System.DateTime> FechaFin, System.DateTime FechaAsig, global::System.Nullable<int> Lider) {
+        public virtual int Insert(string Nombre, string p1, string Estado, string FechaIni, string FechaFin, string FechaAsig, string Lider) {
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -1173,24 +1153,29 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Estado));
             }
-            if ((FechaIni.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(FechaIni.Value));
-            }
-            else {
+            if ((FechaIni == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((FechaFin.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(FechaFin.Value));
-            }
             else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(FechaIni));
+            }
+            if ((FechaFin == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(FechaAsig));
-            if ((Lider.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Lider.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(FechaFin));
+            }
+            if ((FechaAsig == null)) {
+                throw new global::System.ArgumentNullException("FechaAsig");
             }
             else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(FechaAsig));
+            }
+            if ((Lider == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Lider));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1212,7 +1197,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nombre, string p1, string Estado, global::System.Nullable<global::System.DateTime> FechaIni, global::System.Nullable<global::System.DateTime> FechaFin, System.DateTime FechaAsig, global::System.Nullable<int> Lider, int Original_IdProyecto) {
+        public virtual int Update(string Nombre, string p1, string Estado, string FechaIni, string FechaFin, string FechaAsig, string Lider, int Original_IdProyecto) {
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -1231,24 +1216,29 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Estado));
             }
-            if ((FechaIni.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(FechaIni.Value));
-            }
-            else {
+            if ((FechaIni == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((FechaFin.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(FechaFin.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(FechaIni));
+            }
+            if ((FechaFin == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(FechaAsig));
-            if ((Lider.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Lider.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(FechaFin));
+            }
+            if ((FechaAsig == null)) {
+                throw new global::System.ArgumentNullException("FechaAsig");
             }
             else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(FechaAsig));
+            }
+            if ((Lider == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Lider));
             }
             this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_IdProyecto));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
@@ -1270,33 +1260,9 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
-        public virtual int BorrarProyecto(int Original_IdProyecto) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            command.Parameters[0].Value = ((int)(Original_IdProyecto));
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertProyecto(string Nombre, string p1, string Estado, string FechaIni, string FechaFin, string FechaAsig, string Lider) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -1369,7 +1335,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private Proyecto1TableAdapter _proyecto1TableAdapter;
+        private adap _adap;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1391,12 +1357,12 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public Proyecto1TableAdapter Proyecto1TableAdapter {
+        public adap adap {
             get {
-                return this._proyecto1TableAdapter;
+                return this._adap;
             }
             set {
-                this._proyecto1TableAdapter = value;
+                this._adap = value;
             }
         }
         
@@ -1419,9 +1385,9 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._proyecto1TableAdapter != null) 
-                            && (this._proyecto1TableAdapter.Connection != null))) {
-                    return this._proyecto1TableAdapter.Connection;
+                if (((this._adap != null) 
+                            && (this._adap.Connection != null))) {
+                    return this._adap.Connection;
                 }
                 return null;
             }
@@ -1436,7 +1402,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._proyecto1TableAdapter != null)) {
+                if ((this._adap != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1450,12 +1416,12 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(DataSetProyectos dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._proyecto1TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Proyecto1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._adap != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Proyecto.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._proyecto1TableAdapter.Update(updatedRows));
+                    result = (result + this._adap.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1469,11 +1435,11 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(DataSetProyectos dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._proyecto1TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Proyecto1.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._adap != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Proyecto.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._proyecto1TableAdapter.Update(addedRows));
+                    result = (result + this._adap.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1487,11 +1453,11 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(DataSetProyectos dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._proyecto1TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Proyecto1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._adap != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Proyecto.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._proyecto1TableAdapter.Update(deletedRows));
+                    result = (result + this._adap.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1534,8 +1500,8 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._proyecto1TableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._proyecto1TableAdapter.Connection) == false))) {
+            if (((this._adap != null) 
+                        && (this.MatchTableAdapterConnection(this._adap.Connection) == false))) {
                 throw new global::System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi" +
                         "sma cadena de conexión.");
             }
@@ -1571,13 +1537,13 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._proyecto1TableAdapter != null)) {
-                    revertConnections.Add(this._proyecto1TableAdapter, this._proyecto1TableAdapter.Connection);
-                    this._proyecto1TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._proyecto1TableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._proyecto1TableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._proyecto1TableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._proyecto1TableAdapter.Adapter);
+                if ((this._adap != null)) {
+                    revertConnections.Add(this._adap, this._adap.Connection);
+                    this._adap.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._adap.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._adap.Adapter.AcceptChangesDuringUpdate) {
+                        this._adap.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._adap.Adapter);
                     }
                 }
                 // 
@@ -1638,9 +1604,9 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._proyecto1TableAdapter != null)) {
-                    this._proyecto1TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._proyecto1TableAdapter]));
-                    this._proyecto1TableAdapter.Transaction = null;
+                if ((this._adap != null)) {
+                    this._adap.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._adap]));
+                    this._adap.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
