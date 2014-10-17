@@ -13,6 +13,15 @@ namespace SAPR {
     public partial class FormularioUsuario {
         
         /// <summary>
+        /// Control informacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor informacion;
+        
+        /// <summary>
         /// Control btnAgregarUsuario.
         /// </summary>
         /// <remarks>

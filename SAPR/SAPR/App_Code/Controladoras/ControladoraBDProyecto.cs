@@ -11,11 +11,13 @@ namespace SAPR.App_Code.Controladoras {
     public class ControladoraBDProyecto {
         adap ps;
         adapCliente cs;
+        AdapterUsuarioProyecto us;
 
        
         public ControladoraBDProyecto() {
             ps = new adap();
             cs = new adapCliente();
+            us = new AdapterUsuarioProyecto();
         }
 
         public String[] insertarProyecto(EntidadProyecto proyectoNuevo, EntidadCliente cliente)
@@ -128,5 +130,10 @@ namespace SAPR.App_Code.Controladoras {
 
 
 
+
+        public void InsertarUsuarioProyecto(int idP, string cedula){
+
+            this.us.InsertarUsuarioProyecto(idP,cedula);
+        }
     }
 }

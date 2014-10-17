@@ -127,5 +127,10 @@ namespace SAPR.App_Code.Controladoras
             EntidadProyecto proyectoNuevo = new EntidadProyecto(datos);
             return controladoraBDProyecto.modificarProyecto(proyectoNuevo, proyectoViejo.Nombre);
         }
+
+        public void insertarUsuarioProyecto(int idP, string cedula)
+        {
+            controladoraBDProyecto.InsertarUsuarioProyecto(idP,cedula);
+        }
     }
 }

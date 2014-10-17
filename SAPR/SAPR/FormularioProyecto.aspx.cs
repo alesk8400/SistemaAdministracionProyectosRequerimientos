@@ -23,19 +23,12 @@ namespace SAPR
                 if(!IsPostBack){
                     llenarGridUsuarios(1);
                 }
-               // restaurarPantallaSinLimpiar();
-        }
 
-        protected void botonEliminarClic(object sender, EventArgs e)
-        {
-            //limpiarCampos();
-            // modo = 1;
-            //irAModo();
-            // String fechaFin, String fechaInic, String estado, int lider
-            controladora.eliminarProyecto(entidadConsultada.Nombre);
-            gridProyecto.DataBind();
+            if(modo != 1 && modo !=2){
+                restaurarPantallaSinLimpiar();
+            }
+                
         }
-
 
         protected void llenarGridUsuarios(int modo)
         {
@@ -139,6 +132,7 @@ namespace SAPR
                 TextOficina.Value = clienteConsultado.Oficina.ToString();
                 textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
                 btnModificarProyecto.Disabled = false;
+                btnEliminarProyecto.Disabled = false;
                 habilitarCampos(true);
                 //cmbEstado.SelectedIndex = 2;
                 gridProyecto.DataBind();
@@ -174,6 +168,7 @@ namespace SAPR
             String[] resultado = new String[1];
             String[] miembros = new String[gridUsuarios.Rows.Count];
             String cedulaLider = "";
+            int conta = 0;
 
             for (int i = 0; i < gridUsuarios.Rows.Count; i++)
             {
@@ -188,7 +183,9 @@ namespace SAPR
 
                 if (estaSeleccionadoMiembro)
                 {
-                    miembros[i] = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                    
+                    miembros[conta] = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                    conta++;
                 }
 
             }
@@ -205,7 +202,13 @@ namespace SAPR
                     
                     r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider,
                                                         this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
-                    
+                    int k = 0;
+                    int idP = 0;
+                    while (gridUsuarios.Rows[k].Cells[2].Text != null){
+                        idP = controladora.getIdProyecto(this.textNombre.Value.ToString());
+                        controladora.insertarUsuarioProyecto(idP,miembros[k]);
+                        k++;
+                    }
                 }
                 catch (Exception jh)
                 {
@@ -220,8 +223,10 @@ namespace SAPR
                 
                 
             }
+            modo = 0;
             restaurarPantalla();
             gridProyecto.DataBind();
+            
         }
 
         
@@ -368,6 +373,8 @@ namespace SAPR
                 gridProyecto.DataBind();
 
             }
+
+            modo = 0;
 
         }
 
