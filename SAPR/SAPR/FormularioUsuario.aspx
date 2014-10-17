@@ -166,9 +166,6 @@
      <div class="col-lg-12">
                     <div class="text-center">
 
-                        <%--<asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn-success" Height="39px" OnClick="btnAceptar_Click" OnClientClick="btnAceptar_OnClick" Width="97px"/>--%>
-                        <%--<asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn-danger" OnClientClick="btn_CancelarOnClick" Height="39px" Width="97px" OnClick="btnCancelar_Click"/>--%>
-
                         <button runat="server" onserverclick="btnAceptar_Click" id="btnAceptar" class="btn btn-success" type="button"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
                         <a id="btnCancelar" href="#modalCancelar" class="btn btn-danger" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Cancelar</a>
 

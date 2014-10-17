@@ -1587,7 +1587,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "UPDATE [dbo].[Proyecto] SET [Nombre] = @Nombre, [Objetivo(s)] = @p1, [Estado] = @" +
                 "Estado, [FechaIni] = @FechaIni, [FechaFin] = @FechaFin, [FechaAsig] = @FechaAsig" +
-                ", [Lider] = @Lider WHERE ([Nombre] = @nombre)";
+                ", [Lider] = @Lider WHERE ([Nombre] = @viejonombre)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.VarChar, 300, global::System.Data.ParameterDirection.Input, 0, 0, "Objetivo(s)", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1596,7 +1596,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "FechaFin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaAsig", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "FechaAsig", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lider", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Lider", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@viejonombre", global::System.Data.SqlDbType.VarChar, 45, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "DELETE FROM [dbo].[Proyecto] WHERE (([Nombre] = @nombre))";
@@ -1851,7 +1851,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int actualizarProyecto(string Nombre, string p1, string Estado, string FechaIni, string FechaFin, string FechaAsig, string Lider, string nombre1) {
+        public virtual int actualizarProyecto(string Nombre, string p1, string Estado, string FechaIni, string FechaFin, string FechaAsig, string Lider, string viejonombre) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
@@ -1895,11 +1895,11 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
             else {
                 command.Parameters[6].Value = ((string)(Lider));
             }
-            if ((nombre1 == null)) {
-                throw new global::System.ArgumentNullException("nombre1");
+            if ((viejonombre == null)) {
+                throw new global::System.ArgumentNullException("viejonombre");
             }
             else {
-                command.Parameters[7].Value = ((string)(nombre1));
+                command.Parameters[7].Value = ((string)(viejonombre));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

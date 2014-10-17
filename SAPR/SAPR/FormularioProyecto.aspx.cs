@@ -17,12 +17,13 @@ namespace SAPR
         private static ControladoraUsuario controladoraUsuario = new ControladoraUsuario();
         private static ControladoraProyecto controladora = new ControladoraProyecto();
         private static Object[] idsGrid;
+        private static int modo = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
                 if(!IsPostBack){
                     llenarGridUsuarios(1);
                 }
-                restaurarPantallaSinLimpiar();
+               // restaurarPantallaSinLimpiar();
         }
 
         protected void botonEliminarClic(object sender, EventArgs e)
@@ -151,13 +152,27 @@ namespace SAPR
            //this.gridUsuarios.Columns[0].
         }
 
-        
+
 
         protected void btnAgregarProyecto_Click(object sender, EventArgs e)
         {
+            modo = 1;
+            limpiarCampos();
+            habilitarCampos(true);
+            botonAceptar.Disabled = false;
+            botonCancelar.Disabled = false;
 
+
+        }
+
+
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+            String[] resultado = new String[1];
             String[] miembros = new String[gridUsuarios.Rows.Count];
-            String cedulaLider;
+            String cedulaLider = "";
 
             for (int i = 0; i < gridUsuarios.Rows.Count; i++)
             {
@@ -174,19 +189,38 @@ namespace SAPR
                 {
                     miembros[i] = gridUsuarios.Rows[i].Cells[2].Text.ToString();
                 }
+
             }
 
-            try
+            if (modo == 1) // si se quiere insertar
             {
-              
+                
+
+                
                 String[] r = new String[1];
-                r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider,
-                                                    this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
-                gridProyecto.DataBind();
+                try
+                {
+
+                    
+                    r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider,
+                                                        this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
+                    
+                }
+                catch (Exception jh)
+                {
+                    int x = 9;
+                }
+
+                //FALTA LO DEL EXITO
             }
-            catch (Exception jh) {
-                int x = 9;
+            else if (modo == 2)//si se quiere modificar
+            {
+                String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider, entidadConsultada);
+                
+                
             }
+            restaurarPantalla();
+            gridProyecto.DataBind();
         }
 
         
@@ -247,35 +281,24 @@ namespace SAPR
             botonCancelar.Disabled = true;
         }
 
+
+
         protected void modificar_Click(object sender, EventArgs e)
         {
-            String[] miembros = new String[gridUsuarios.Rows.Count];
-            String cedulaLider;
-
-            // Select the checkboxes from the GridView control
-            for (int i = 0; i < gridUsuarios.Rows.Count; i++)
-            {
-                GridViewRow row = gridUsuarios.Rows[i];
-                bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLider")).Checked;
-                bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembros")).Checked;
-
-                if (estaSeleccionadoLider)
-                {
-                    cedulaLider = gridUsuarios.Rows[i].Cells[2].Text.ToString();
-                }
-
-                if (estaSeleccionadoMiembro)
-                {
-                    miembros[i] = gridUsuarios.Rows[i].Cells[2].Text.ToString();
-                }
-
-            }
-
-            String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider , entidadConsultada);
-
-            
-            gridProyecto.DataBind();
-            restaurarPantalla();
+            this.textNombre.Disabled = false;
+            this.textObjetivo.Disabled = false;
+            this.textFechaA.Disabled = true;
+            this.textFechaF.Disabled = false;
+            this.textFechaI.Disabled = false;
+            this.textRepresentante.Disabled = false;
+            this.textTelRepresentante.Disabled = false;
+            this.textTelSecundario.Disabled = false ;
+            this.TextOficina.Disabled = false;
+            this.textEmailRepresentante.Disabled = false;
+            this.cmbEstado.Enabled =true;
+            botonAceptar.Disabled = false;
+            botonCancelar.Disabled = false;
+            modo = 2;
         }
 
         protected void cbLider_CheckedChanged1(object sender, EventArgs e)

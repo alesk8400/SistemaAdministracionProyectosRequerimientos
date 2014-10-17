@@ -13,11 +13,11 @@
     <div class="row row-botones">
         <div class="col-lg-5">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button runat="server" id="btnAgregarProyecto" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Agregar</button>
-            <button runat="server" id="btnModificarProyecto" class="btn btn-primary" type="button" visible="True"><i class="fa fa-pencil-square-o"></i>Modificar</button>
+            <button runat="server" id="btnAgregarProyecto" onserverclick="btnAgregarProyecto_Click" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Agregar</button>
+            <button runat="server" id="btnModificarProyecto" onserverclick="modificar_Click" class="btn btn-primary" type="button" visible="True"><i class="fa fa-pencil-square-o"></i>Modificar</button>
             <button runat="server" id="btnEliminarProyecto" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Eliminar</button>
           
-            <asp:Button ID="modificar" runat="server" Text="Button" OnClick="modificar_Click" />
+    
           
         </div>
         <div class="col-lg-7">
@@ -219,7 +219,7 @@
                                         <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
-                <button runat="server" id="botonAceptar" class="btn btn-success" type="submit">Aceptar</button>
+                <button runat="server" id="botonAceptar" onserverclick="btnAceptar_Click" class="btn btn-success" type="submit">Aceptar</button>
                 <button runat="server" id="botonCancelar" class="btn btn-danger" type="reset">Cancelar</button>
                         </div></div>
               
