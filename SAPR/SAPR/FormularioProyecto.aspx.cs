@@ -17,6 +17,8 @@ namespace SAPR
         private static ControladoraUsuario controladoraUsuario = new ControladoraUsuario();
         private static ControladoraProyecto controladora = new ControladoraProyecto();
         private static Object[] idsGrid;
+        private static Object[] idAsignados;
+
         private static int modo = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -109,10 +111,6 @@ namespace SAPR
         {
             try
             {
-                if (entidadConsultada == null) {
-                   
-                
-                }
 
                 entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
                 textNombre.Value = entidadConsultada.Nombre.ToString();
@@ -134,8 +132,45 @@ namespace SAPR
                 btnModificarProyecto.Disabled = false;
                 btnEliminarProyecto.Disabled = false;
                 habilitarCampos(true);
-                //cmbEstado.SelectedIndex = 2;
                 gridProyecto.DataBind();
+
+          
+                DataTable tablaAsignados = crearTablaUsuarios(); // se crea la tabla
+                int i = 0;
+                Object[] datos = new Object[2];
+                           
+                DataTable usuariosAsignados = controladora.getUsuariosAsignados(idProy);// se consultan todos los proveedores
+                idAsignados = new Object[usuariosAsignados.Rows.Count]; //crear el vector para ids de proveedores en el grid
+                    if (usuariosAsignados.Rows.Count > 0)
+                    {
+                        foreach (DataRow fila in usuariosAsignados.Rows)
+                        {
+                            idAsignados[i] = fila[0].ToString();// guardar el id del proveedor para su posterior consulta
+                            datos[0] = fila[1].ToString();//obtener los datos a mostrar
+                            datos[1] = fila[2].ToString();
+
+                            tablaAsignados.Rows.Add(datos);
+                            i++;
+                        }
+                    }
+                    else // en cualquier otro caso se pone vacía la tabla
+                    {
+                        datos[0] = "-";
+                        datos[1] = "-";
+                        tablaAsignados.Rows.Add(datos);
+                    }
+                
+
+                   this.gridUsuariosAsignados.DataSource = tablaAsignados; // se colocan los datos en la tabla
+                   this.gridUsuariosAsignados.DataBind();
+
+                
+                    if (modo == 2){  // CASO DE QUE SE MODIFIQUE
+                        //DataTable usuariosDisponibles = controladora.getUsuariosProyecto();
+                                    
+                    }
+                //cmbEstado.SelectedIndex = 2;
+                //
             }
             catch { 
                 

@@ -132,5 +132,11 @@ namespace SAPR.App_Code.Controladoras
         {
             controladoraBDProyecto.InsertarUsuarioProyecto(idP,cedula);
         }
+
+        public DataTable getUsuariosAsignados(int idProy)
+        {
+            DataTable respuesta= controladoraBDProyecto.getUsuariosAsignados(idProy);
+            return respuesta;
+        }
     }
 }

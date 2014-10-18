@@ -66,7 +66,7 @@
               <Mapping SourceColumn="Lider" DataSetColumn="Lider" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="actualizarProyecto" Modifier="Public" Name="actualizarProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="actualizarProyecto">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="actualizarProyecto" Modifier="Public" Name="actualizarProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="actualizarProyecto">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[Proyecto] SET [Nombre] = @Nombre, [Objetivo(s)] = @p1, [Estado] = @Estado, [FechaIni] = @FechaIni, [FechaFin] = @FechaFin, [FechaAsig] = @FechaAsig, [Lider] = @Lider WHERE ([Nombre] = @viejonombre)</CommandText>
@@ -83,7 +83,7 @@
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="BorrarProyecto" Modifier="Public" Name="BorrarProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="BorrarProyecto">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="BorrarProyecto" Modifier="Public" Name="BorrarProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="BorrarProyecto">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[Proyecto] WHERE (([Nombre] = @nombre))</CommandText>
@@ -103,7 +103,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="ingegscarlos.dbo.Proyecto" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getIdProyecto" Modifier="Public" Name="getIdProyecto" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="getIdProyecto">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="ingegscarlos.dbo.Proyecto" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="getIdProyecto" Modifier="Public" Name="getIdProyecto" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="getIdProyecto">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT IdProyecto
@@ -115,7 +115,7 @@ WHERE Nombre = @nombre</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertProyecto" Modifier="Public" Name="InsertProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertProyecto">
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertProyecto" Modifier="Public" Name="InsertProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="InsertProyecto">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO Proyecto
@@ -289,6 +289,16 @@ WHERE IdProyecto = @id</CommandText>
               <Mapping SourceColumn="Cedula" DataSetColumn="Cedula" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="getMierda" GetMethodModifier="Public" GetMethodName="getMierda" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="getMierda" UserSourceName="getMierda">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT P.idProyecto, P.Cedula, U.Nombre FROM UsuarioProyecto AS P INNER JOIN Usuarios AS U ON P.Cedula = U.Cedula WHERE (P.idProyecto = @proyecto)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="proyecto" ColumnName="idProyecto" DataSourceName="ingegscarlos.dbo.UsuarioProyecto" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@proyecto" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idProyecto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertarUsuarioProyecto" Modifier="Public" Name="InsertarUsuarioProyecto" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertarUsuarioProyecto">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -302,6 +312,62 @@ WHERE IdProyecto = @id</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsuariosTableAdapter" GeneratorDataComponentClassName="UsuariosTableAdapter" Name="Usuarios" UserDataComponentName="UsuariosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ingegscarlosConnectionString (Web.config)" DbObjectName="ingegscarlos.dbo.Usuarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Usuarios] WHERE (([Cedula] = @Original_Cedula))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Cedula" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Cedula" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Usuarios] ([Cedula], [Nombre], [Correo], [Teléfono], [Celular], [Contrasenia]) VALUES (@Cedula, @Nombre, @Correo, @Teléfono, @Celular, @Contrasenia)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Cedula" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Cedula" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Nombre" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Nombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Correo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Correo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Teléfono" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Teléfono" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Celular" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Celular" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Contrasenia" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Contrasenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Cedula, Nombre, Correo, Teléfono, Celular, Contrasenia FROM dbo.Usuarios</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Usuarios] SET [Cedula] = @Cedula, [Nombre] = @Nombre, [Correo] = @Correo, [Teléfono] = @Teléfono, [Celular] = @Celular, [Contrasenia] = @Contrasenia WHERE (([Cedula] = @Original_Cedula))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Cedula" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Cedula" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Nombre" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Nombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Correo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Correo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Teléfono" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Teléfono" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Celular" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Celular" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Contrasenia" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Contrasenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Cedula" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Cedula" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Cedula" DataSetColumn="Cedula" />
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="Correo" DataSetColumn="Correo" />
+              <Mapping SourceColumn="Teléfono" DataSetColumn="Teléfono" />
+              <Mapping SourceColumn="Celular" DataSetColumn="Celular" />
+              <Mapping SourceColumn="Contrasenia" DataSetColumn="Contrasenia" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -310,7 +376,7 @@ WHERE IdProyecto = @id</CommandText>
   <xs:element name="DataSetProyectos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetProyectos" msprop:Generator_UserDSName="DataSetProyectos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Proyecto" msprop:Generator_TableClassName="ProyectoDataTable" msprop:Generator_TableVarName="tableProyecto" msprop:Generator_RowChangedName="ProyectoRowChanged" msprop:Generator_TablePropName="Proyecto" msprop:Generator_RowDeletingName="ProyectoRowDeleting" msprop:Generator_RowChangingName="ProyectoRowChanging" msprop:Generator_RowEvHandlerName="ProyectoRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectoRowDeleted" msprop:Generator_RowClassName="ProyectoRow" msprop:Generator_UserTableName="Proyecto" msprop:Generator_RowEvArgName="ProyectoRowChangeEvent">
+        <xs:element name="Proyecto" msprop:Generator_TableClassName="ProyectoDataTable" msprop:Generator_TableVarName="tableProyecto" msprop:Generator_TablePropName="Proyecto" msprop:Generator_RowDeletingName="ProyectoRowDeleting" msprop:Generator_RowChangingName="ProyectoRowChanging" msprop:Generator_RowEvHandlerName="ProyectoRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectoRowDeleted" msprop:Generator_UserTableName="Proyecto" msprop:Generator_RowChangedName="ProyectoRowChanged" msprop:Generator_RowEvArgName="ProyectoRowChangeEvent" msprop:Generator_RowClassName="ProyectoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdProyecto" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdProyecto" msprop:Generator_ColumnPropNameInRow="IdProyecto" msprop:Generator_ColumnPropNameInTable="IdProyectoColumn" msprop:Generator_UserColumnName="IdProyecto" type="xs:int" />
@@ -366,7 +432,7 @@ WHERE IdProyecto = @id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Cliente" msprop:Generator_TableClassName="ClienteDataTable" msprop:Generator_TableVarName="tableCliente" msprop:Generator_TablePropName="Cliente" msprop:Generator_RowDeletingName="ClienteRowDeleting" msprop:Generator_RowChangingName="ClienteRowChanging" msprop:Generator_RowEvHandlerName="ClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="ClienteRowDeleted" msprop:Generator_UserTableName="Cliente" msprop:Generator_RowChangedName="ClienteRowChanged" msprop:Generator_RowEvArgName="ClienteRowChangeEvent" msprop:Generator_RowClassName="ClienteRow">
+        <xs:element name="Cliente" msprop:Generator_TableClassName="ClienteDataTable" msprop:Generator_TableVarName="tableCliente" msprop:Generator_RowChangedName="ClienteRowChanged" msprop:Generator_TablePropName="Cliente" msprop:Generator_RowDeletingName="ClienteRowDeleting" msprop:Generator_RowChangingName="ClienteRowChanging" msprop:Generator_RowEvHandlerName="ClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="ClienteRowDeleted" msprop:Generator_RowClassName="ClienteRow" msprop:Generator_UserTableName="Cliente" msprop:Generator_RowEvArgName="ClienteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -409,7 +475,7 @@ WHERE IdProyecto = @id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="UsuarioProyecto" msprop:Generator_TableClassName="UsuarioProyectoDataTable" msprop:Generator_TableVarName="tableUsuarioProyecto" msprop:Generator_TablePropName="UsuarioProyecto" msprop:Generator_RowDeletingName="UsuarioProyectoRowDeleting" msprop:Generator_RowChangingName="UsuarioProyectoRowChanging" msprop:Generator_RowEvHandlerName="UsuarioProyectoRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioProyectoRowDeleted" msprop:Generator_UserTableName="UsuarioProyecto" msprop:Generator_RowChangedName="UsuarioProyectoRowChanged" msprop:Generator_RowEvArgName="UsuarioProyectoRowChangeEvent" msprop:Generator_RowClassName="UsuarioProyectoRow">
+        <xs:element name="UsuarioProyecto" msprop:Generator_TableClassName="UsuarioProyectoDataTable" msprop:Generator_TableVarName="tableUsuarioProyecto" msprop:Generator_RowChangedName="UsuarioProyectoRowChanged" msprop:Generator_TablePropName="UsuarioProyecto" msprop:Generator_RowDeletingName="UsuarioProyectoRowDeleting" msprop:Generator_RowChangingName="UsuarioProyectoRowChanging" msprop:Generator_RowEvHandlerName="UsuarioProyectoRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioProyectoRowDeleted" msprop:Generator_RowClassName="UsuarioProyectoRow" msprop:Generator_UserTableName="UsuarioProyecto" msprop:Generator_RowEvArgName="UsuarioProyectoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idProyecto" msprop:Generator_ColumnVarNameInTable="columnidProyecto" msprop:Generator_ColumnPropNameInRow="idProyecto" msprop:Generator_ColumnPropNameInTable="idProyectoColumn" msprop:Generator_UserColumnName="idProyecto" type="xs:int" />
@@ -417,6 +483,54 @@ WHERE IdProyecto = @id</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Usuarios" msprop:Generator_TableClassName="UsuariosDataTable" msprop:Generator_TableVarName="tableUsuarios" msprop:Generator_TablePropName="Usuarios" msprop:Generator_RowDeletingName="UsuariosRowDeleting" msprop:Generator_RowChangingName="UsuariosRowChanging" msprop:Generator_RowEvHandlerName="UsuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosRowDeleted" msprop:Generator_UserTableName="Usuarios" msprop:Generator_RowChangedName="UsuariosRowChanged" msprop:Generator_RowEvArgName="UsuariosRowChangeEvent" msprop:Generator_RowClassName="UsuariosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Cedula" msprop:Generator_ColumnVarNameInTable="columnCedula" msprop:Generator_ColumnPropNameInRow="Cedula" msprop:Generator_ColumnPropNameInTable="CedulaColumn" msprop:Generator_UserColumnName="Cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_UserColumnName="Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Correo" msprop:Generator_ColumnVarNameInTable="columnCorreo" msprop:Generator_ColumnPropNameInRow="Correo" msprop:Generator_ColumnPropNameInTable="CorreoColumn" msprop:Generator_UserColumnName="Correo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Teléfono" msprop:Generator_ColumnVarNameInTable="columnTeléfono" msprop:Generator_ColumnPropNameInRow="Teléfono" msprop:Generator_ColumnPropNameInTable="TeléfonoColumn" msprop:Generator_UserColumnName="Teléfono">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Celular" msprop:Generator_ColumnVarNameInTable="columnCelular" msprop:Generator_ColumnPropNameInRow="Celular" msprop:Generator_ColumnPropNameInTable="CelularColumn" msprop:Generator_UserColumnName="Celular">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contrasenia" msprop:Generator_ColumnVarNameInTable="columnContrasenia" msprop:Generator_ColumnPropNameInRow="Contrasenia" msprop:Generator_ColumnPropNameInTable="ContraseniaColumn" msprop:Generator_UserColumnName="Contrasenia" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -437,11 +551,17 @@ WHERE IdProyecto = @id</CommandText>
       <xs:selector xpath=".//mstns:UsuarioProyecto" />
       <xs:field xpath="mstns:Cedula" />
     </xs:unique>
+    <xs:unique name="Usuarios_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Usuarios" />
+      <xs:field xpath="mstns:Cedula" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_dbo_Cliente_1" msdata:parent="Proyecto" msdata:child="Cliente" msdata:parentkey="IdProyecto" msdata:childkey="IdProyecto" msprop:Generator_UserChildTable="Cliente" msprop:Generator_ChildPropName="GetClienteRows" msprop:Generator_UserRelationName="FK_dbo_Cliente_1" msprop:Generator_ParentPropName="ProyectoRow" msprop:Generator_RelationVarName="relationFK_dbo_Cliente_1" msprop:Generator_UserParentTable="Proyecto" />
-      <msdata:Relationship name="Foreignidproyecto" msdata:parent="Proyecto" msdata:child="UsuarioProyecto" msdata:parentkey="IdProyecto" msdata:childkey="idProyecto" msprop:Generator_UserChildTable="UsuarioProyecto" msprop:Generator_ChildPropName="GetUsuarioProyectoRows" msprop:Generator_UserRelationName="Foreignidproyecto" msprop:Generator_ParentPropName="ProyectoRow" msprop:Generator_RelationVarName="relationForeignidproyecto" msprop:Generator_UserParentTable="Proyecto" />
+      <msdata:Relationship name="FK_dbo_Cliente_1" msdata:parent="Proyecto" msdata:child="Cliente" msdata:parentkey="IdProyecto" msdata:childkey="IdProyecto" msprop:Generator_UserChildTable="Cliente" msprop:Generator_ChildPropName="GetClienteRows" msprop:Generator_UserRelationName="FK_dbo_Cliente_1" msprop:Generator_RelationVarName="relationFK_dbo_Cliente_1" msprop:Generator_UserParentTable="Proyecto" msprop:Generator_ParentPropName="ProyectoRow" />
+      <msdata:Relationship name="Foreignidproyecto" msdata:parent="Proyecto" msdata:child="UsuarioProyecto" msdata:parentkey="IdProyecto" msdata:childkey="idProyecto" msprop:Generator_UserChildTable="UsuarioProyecto" msprop:Generator_ChildPropName="GetUsuarioProyectoRows" msprop:Generator_UserRelationName="Foreignidproyecto" msprop:Generator_RelationVarName="relationForeignidproyecto" msprop:Generator_UserParentTable="Proyecto" msprop:Generator_ParentPropName="ProyectoRow" />
+      <msdata:Relationship name="FK_dbo_Proyecto_1" msdata:parent="Usuarios" msdata:child="Proyecto" msdata:parentkey="Cedula" msdata:childkey="Lider" msprop:Generator_UserChildTable="Proyecto" msprop:Generator_ChildPropName="GetProyectoRows" msprop:Generator_UserRelationName="FK_dbo_Proyecto_1" msprop:Generator_RelationVarName="relationFK_dbo_Proyecto_1" msprop:Generator_UserParentTable="Usuarios" msprop:Generator_ParentPropName="UsuariosRow" />
+      <msdata:Relationship name="ForeignCedulaUserproy" msdata:parent="Usuarios" msdata:child="UsuarioProyecto" msdata:parentkey="Cedula" msdata:childkey="Cedula" msprop:Generator_UserChildTable="UsuarioProyecto" msprop:Generator_ChildPropName="GetUsuarioProyectoRows" msprop:Generator_UserRelationName="ForeignCedulaUserproy" msprop:Generator_RelationVarName="relationForeignCedulaUserproy" msprop:Generator_UserParentTable="Usuarios" msprop:Generator_ParentPropName="UsuariosRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

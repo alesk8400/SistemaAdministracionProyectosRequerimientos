@@ -176,14 +176,10 @@
                 <fieldset>
                     <legend>Información del Equipo</legend>
 
-                    <div class="col-sm-4">
-                    <div class="form-group">
-                        <div class="col-sm-9">
-                                
-                            <div class= "cl-sm-9">
-                           
-                            <div class= "cl-sm-9"> 
-                                <asp:GridView ID="gridUsuarios" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged">
+                    <div class="col-sm-6">
+
+
+                                <asp:GridView ID="gridUsuarios" cssClass="table" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
@@ -207,16 +203,41 @@
                                     <SortedDescendingHeaderStyle BackColor="#383838" />
                                 </asp:GridView>
                                 </div>
-                        </div></div>
 
+
+                                <div class="col-sm-6">
+                                <asp:GridView ID="gridUsuariosAsignados" CssClass ="table" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Lider">
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="cbLiderAsignado" runat="server" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Miembros">
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="cbMiembrosAsignados" runat="server" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+                                    <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
+                                    <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
+                                    <RowStyle BackColor="White" ForeColor="#003399" />
+                                    <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+                                    <SortedAscendingCellStyle BackColor="#EDF6F6" />
+                                    <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
+                                    <SortedDescendingCellStyle BackColor="#D6DFDF" />
+                                    <SortedDescendingHeaderStyle BackColor="#002876" />
+                                </asp:GridView>
+
+                        </div>
                          
-
-                    <div class="form-group">
-                        &nbsp;</div>
-                                </div>
+                                
                 </fieldset>
                 
-                                        <div class="row">
+
+        </div>
+                <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
                 <button runat="server" id="botonAceptar" onserverclick="btnAceptar_Click" class="btn btn-success" type="submit">Aceptar</button>
@@ -225,7 +246,6 @@
                         </div></div>
               
             </div>
-        </div>
                     
               </div>  
                 
