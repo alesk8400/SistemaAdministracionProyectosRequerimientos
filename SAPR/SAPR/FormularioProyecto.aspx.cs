@@ -19,6 +19,7 @@ namespace SAPR
         private static Object[] idsGrid;
         private static Object[] idAsignados;
         private static int idProy;
+        private static String liderModificado;
 
         private static int modo = 0;
         protected void Page_Load(object sender, EventArgs e)
@@ -119,7 +120,7 @@ namespace SAPR
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
                 cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
 
-                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());
+                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());    // ESTAAAAAAAAAAAAAAAAAAAAAAAAAAAAATICO
 
                 clienteConsultado = controladora.consultarCliente(idProy);
                 textRepresentante.Value = clienteConsultado.Nombre.ToString();
@@ -282,18 +283,24 @@ namespace SAPR
                 
                 
                 
-                controladora.eliminarMiembros(idProy);  // Elimina los proyectos
+                controladora.eliminarMiembros(idProy);  // Elimina los proyectos perfecto
+         
+                int k = 0;
 
-               /* int k = 0;
-                int idP = 0;
-                while (gridUsuarios.Rows[k].Cells[2].Text != null)
+                for (int u = 0; u < gridUsuariosAsignados.Rows.Count; u++ ) { // Inserción de los nuevos miembros
+                        controladora.insertarUsuarioProyecto(idProy, miembros[k]);
+                        k++;
+                }   
+
+                k = 0;
+
+                for (int u = 0; u < gridUsuarios.Rows.Count; u++)
                 {
-                    idP = controladora.getIdProyecto(this.textNombre.Value.ToString());
-                    controladora.insertarUsuarioProyecto(idP, miembros[k]);
+                    controladora.insertarUsuarioProyecto(idProy, miembrosOriginales[k]); // RE-Inserción de los miembros originales
                     k++;
                 }
                 
-                */
+               
                 
                 
                 
@@ -393,7 +400,10 @@ namespace SAPR
             for (int i = 0; i < gridUsuarios.Rows.Count; i++)
             {
                 CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbLider");
+                chkIndividual.Checked = false;
                 chkIndividual.Enabled = false;
+                chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbMiembros");
+                chkIndividual.Checked = false;
             }
 
 
@@ -493,11 +503,6 @@ namespace SAPR
 
         }
 
-        protected void cbLiderAsignado_CheckedChanged(object sender, EventArgs e)
-        {
-            //CheckBox chkcheckbox = ((CheckBox)(gridUsuarios.Rows[1].FindControl("cbLider")));
-            //chkcheckbox.Checked = true;
-        }
 
 
 
