@@ -25,7 +25,7 @@ namespace SAPR
         protected void Page_Load(object sender, EventArgs e)
         {
                 if(!IsPostBack){
-                    llenarGridUsuarios(1);
+                    llenarGridUsuarios();
                 }
 
             if(modo != 1 && modo ==2){
@@ -35,9 +35,30 @@ namespace SAPR
         }
 
 
+        protected DataTable crearTablaUsuarios()
+        {
+            DataTable tabla = new DataTable();
+            DataColumn columna;
 
-        // METODO PARA LLENAR LOS USUARIOS DISPONIBLES
-        protected void llenarGridUsuarios(int modo)
+            //se agrega el campo de nombre
+            columna = new DataColumn();
+            columna.DataType = System.Type.GetType("System.String");
+            columna.ColumnName = "Cédula";
+            tabla.Columns.Add(columna);
+
+            //se agrega el campo de Telefono
+            columna = new DataColumn();
+            columna.DataType = System.Type.GetType("System.String");
+            columna.ColumnName = "Nombre";
+            tabla.Columns.Add(columna);
+
+
+            return tabla;
+        }
+
+
+        // METODO PARA LLENAR LOS USUARIOS DISPONIBLES PARA EL AGREGAR O EL MODIFICAR
+        protected void llenarGridUsuarios()
         {
             DataTable tabla = crearTablaUsuarios(); // se crea la tabla
             int i = 0;
@@ -77,63 +98,12 @@ namespace SAPR
 
                 }
 
-                if (modo == 2){  // CASO DE QUE SE MODIFIQUE
-                    DataTable usuariosDisponibles = controladora.getUsuariosProyecto();       
-                }
-        }
-
-
-        protected DataTable crearTablaUsuarios()
-        {
-            DataTable tabla = new DataTable();
-            DataColumn columna;
-
-            //se agrega el campo de nombre
-            columna = new DataColumn();
-            columna.DataType = System.Type.GetType("System.String");
-            columna.ColumnName = "Cédula";
-            tabla.Columns.Add(columna);
-
-            //se agrega el campo de Telefono
-            columna = new DataColumn();
-            columna.DataType = System.Type.GetType("System.String");
-            columna.ColumnName = "Nombre";
-            tabla.Columns.Add(columna);
-
-
-            return tabla;
         }
 
 
 
-        // EVENTO que se activa al CONSULTAR un proyecto
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-
-                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
-                textNombre.Value = entidadConsultada.Nombre.ToString();
-                textObjetivo.Value = entidadConsultada.Objetivos.ToString();
-                textFechaA.Value = entidadConsultada.FechaAsig.ToString();
-                textFechaF.Value = entidadConsultada.FechaFin.ToString();
-                textFechaI.Value = entidadConsultada.FechaIni.ToString();
-                cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
-
-                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());    // ESTAAAAAAAAAAAAAAAAAAAAAAAAAAAAATICO
-
-                clienteConsultado = controladora.consultarCliente(idProy);
-                textRepresentante.Value = clienteConsultado.Nombre.ToString();
-                textTelRepresentante.Value = clienteConsultado.Telefono.ToString();
-                textTelSecundario.Value = clienteConsultado.Celular.ToString();
-                TextOficina.Value = clienteConsultado.Oficina.ToString();
-                textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
-                btnModificarProyecto.Disabled = false;
-                btnEliminarProyecto.Disabled = false;
-                habilitarCampos(true);
-                gridProyecto.DataBind();
-
-                // ********** Parte para llenar los usuarios asignados cuando se CONSULTA un proyecto
+        // METODO PARA LLENAR GRID DE USUARIOS ASIGNADOS PARA EL MODIFICAR
+        public void llenarUsuariosAsignados() { 
                 DataTable tablaAsignados = crearTablaUsuarios(); // se crea la tabla
                 int i = 0;
                 Object[] datos = new Object[2];         
@@ -168,12 +138,45 @@ namespace SAPR
                        String cedulaAux = gridUsuariosAsignados.Rows[t].Cells[2].Text.ToString();
                        if (entidadConsultada.Lider == cedulaAux) {
                            chkLider.Checked = true;
-                       }
-                   } 
-            }
-            catch { 
+                        }
+                    
+            }    
+        }
+
+
+        // EVENTO que se activa al CONSULTAR un proyecto
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
+                textNombre.Value = entidadConsultada.Nombre.ToString();
+                textObjetivo.Value = entidadConsultada.Objetivos.ToString();
+                textFechaA.Value = entidadConsultada.FechaAsig.ToString();
+                textFechaF.Value = entidadConsultada.FechaFin.ToString();
+                textFechaI.Value = entidadConsultada.FechaIni.ToString();
+                cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
+
+                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());    // ESTAAAAAAAAAAAAAAAAAAAAAAAAAAAAATICO
+
+                clienteConsultado = controladora.consultarCliente(idProy);
+                textRepresentante.Value = clienteConsultado.Nombre.ToString();
+                textTelRepresentante.Value = clienteConsultado.Telefono.ToString();
+                textTelSecundario.Value = clienteConsultado.Celular.ToString();
+                TextOficina.Value = clienteConsultado.Oficina.ToString();
+                textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
+                btnModificarProyecto.Disabled = false;
+                btnEliminarProyecto.Disabled = false;
+                habilitarCampos(true);
+                gridProyecto.DataBind();
+                llenarUsuariosAsignados();
+                llenarGridUsuarios();
+                }
+                catch (Exception o){ 
                 
             }
+
         }
 
         protected void gridUsuarios_SelectedIndexChanged(object sender, EventArgs e)
@@ -245,7 +248,7 @@ namespace SAPR
                         controladora.insertarUsuarioProyecto(idP,miembros[k]);
                         k++;
                     }
-                    llenarGridUsuarios(1);
+                    llenarGridUsuarios();
                 }
                 catch (Exception jh)
                 {
@@ -262,18 +265,18 @@ namespace SAPR
                 contador = 0;
                 for (int i = 0; i < gridUsuariosAsignados.Rows.Count; i++)
                 {
-                    GridViewRow row = gridUsuarios.Rows[i];
-                    bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLider")).Checked;
-                    bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembros")).Checked;
+                    GridViewRow row = gridUsuariosAsignados.Rows[i];
+                    bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLiderAsignado")).Checked;
+                    bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembrosAsignados")).Checked;
 
                     if (estaSeleccionadoLider)
                     {
-                        cedulaLider = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                        cedulaLider = gridUsuariosAsignados.Rows[i].Cells[2].Text.ToString();
                     }
 
                     if (estaSeleccionadoMiembro)
                     {
-                        String nuevoMiembro = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                        String nuevoMiembro = gridUsuariosAsignados.Rows[i].Cells[2].Text.ToString();
                         miembrosOriginales[contador] = nuevoMiembro;
                         contador++;
                     }
@@ -283,38 +286,27 @@ namespace SAPR
                 
                 
                 
-                controladora.eliminarMiembros(idProy);  // Elimina los proyectos perfecto
+                controladora.eliminarMiembros(idProy);  // Elimina los usuarios del proyecto perfecto
          
                 int k = 0;
 
-                for (int u = 0; u < gridUsuariosAsignados.Rows.Count; u++ ) { // Inserción de los nuevos miembros
+                for (int u = 0; u < gridUsuarios.Rows.Count && miembros[k] != null && miembros[k] != "-"; u++)  // Inserción de los nuevos miembros
+                { 
                         controladora.insertarUsuarioProyecto(idProy, miembros[k]);
                         k++;
                 }   
 
                 k = 0;
 
-                for (int u = 0; u < gridUsuarios.Rows.Count; u++)
+                for (int u = 0; u < gridUsuariosAsignados.Rows.Count && miembrosOriginales[k] != null && miembrosOriginales[k] != "-"; u++)
                 {
                     controladora.insertarUsuarioProyecto(idProy, miembrosOriginales[k]); // RE-Inserción de los miembros originales
                     k++;
                 }
-                
-               
-                
-                
-                
-                //Agregar llos originales que quedaron
-                //Agregar los nuevos
-
-
-     //           if (entidadConsultada.Lider == ) {
                     String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), entidadConsultada.Lider, entidadConsultada);
-       //         } else {
-                
-         //       }
-                
             }
+
+
             modo = 0;
             restaurarPantalla();
             gridProyecto.DataBind();
