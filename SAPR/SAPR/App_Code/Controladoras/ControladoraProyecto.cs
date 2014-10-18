@@ -138,5 +138,10 @@ namespace SAPR.App_Code.Controladoras
             DataTable respuesta= controladoraBDProyecto.getUsuariosAsignados(idProy);
             return respuesta;
         }
+
+        public void eliminarMiembros(int idProy)
+        {
+            controladoraBDProyecto.eliminarMiembros(idProy);
+        }
     }
 }

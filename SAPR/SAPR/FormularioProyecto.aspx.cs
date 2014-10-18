@@ -18,6 +18,7 @@ namespace SAPR
         private static ControladoraProyecto controladora = new ControladoraProyecto();
         private static Object[] idsGrid;
         private static Object[] idAsignados;
+        private static int idProy;
 
         private static int modo = 0;
         protected void Page_Load(object sender, EventArgs e)
@@ -26,20 +27,21 @@ namespace SAPR
                     llenarGridUsuarios(1);
                 }
 
-            if(modo != 1 && modo !=2){
+            if(modo != 1 && modo ==2){
                 restaurarPantallaSinLimpiar();
             }
                 
         }
 
+
+
+        // METODO PARA LLENAR LOS USUARIOS DISPONIBLES
         protected void llenarGridUsuarios(int modo)
         {
             DataTable tabla = crearTablaUsuarios(); // se crea la tabla
             int i = 0;
             Object[] datos = new Object[2];
             //if (!(((SiteMaster)Page.Master).UsuarioLogueado).Equals("")) {
-
-                
                 try
                 {
 
@@ -75,11 +77,8 @@ namespace SAPR
                 }
 
                 if (modo == 2){  // CASO DE QUE SE MODIFIQUE
-                    DataTable usuariosDisponibles = controladora.getUsuariosProyecto();
-            
-                        
+                    DataTable usuariosDisponibles = controladora.getUsuariosProyecto();       
                 }
-            //}
         }
 
 
@@ -106,7 +105,7 @@ namespace SAPR
 
 
 
-
+        // EVENTO que se activa al CONSULTAR un proyecto
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -120,7 +119,6 @@ namespace SAPR
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
                 cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
 
-                int idProy;
                 idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());
 
                 clienteConsultado = controladora.consultarCliente(idProy);
@@ -134,11 +132,10 @@ namespace SAPR
                 habilitarCampos(true);
                 gridProyecto.DataBind();
 
-          
+                // ********** Parte para llenar los usuarios asignados cuando se CONSULTA un proyecto
                 DataTable tablaAsignados = crearTablaUsuarios(); // se crea la tabla
                 int i = 0;
-                Object[] datos = new Object[2];
-                           
+                Object[] datos = new Object[2];         
                 DataTable usuariosAsignados = controladora.getUsuariosAsignados(idProy);// se consultan todos los proveedores
                 idAsignados = new Object[usuariosAsignados.Rows.Count]; //crear el vector para ids de proveedores en el grid
                     if (usuariosAsignados.Rows.Count > 0)
@@ -148,7 +145,6 @@ namespace SAPR
                             idAsignados[i] = fila[0].ToString();// guardar el id del proveedor para su posterior consulta
                             datos[0] = fila[1].ToString();//obtener los datos a mostrar
                             datos[1] = fila[2].ToString();
-
                             tablaAsignados.Rows.Add(datos);
                             i++;
                         }
@@ -163,14 +159,16 @@ namespace SAPR
 
                    this.gridUsuariosAsignados.DataSource = tablaAsignados; // se colocan los datos en la tabla
                    this.gridUsuariosAsignados.DataBind();
-
-                
-                    if (modo == 2){  // CASO DE QUE SE MODIFIQUE
-                        //DataTable usuariosDisponibles = controladora.getUsuariosProyecto();
-                                    
-                    }
-                //cmbEstado.SelectedIndex = 2;
-                //
+                   for (int t = 0; t < gridUsuariosAsignados.Rows.Count; t++)
+                   {
+                       CheckBox chkIndividual = (CheckBox)gridUsuariosAsignados.Rows[t].FindControl("cbMiembrosAsignados");
+                       chkIndividual.Checked = true;
+                       CheckBox chkLider = (CheckBox)gridUsuariosAsignados.Rows[t].FindControl("cbLiderAsignado");
+                       String cedulaAux = gridUsuariosAsignados.Rows[t].Cells[2].Text.ToString();
+                       if (entidadConsultada.Lider == cedulaAux) {
+                           chkLider.Checked = true;
+                       }
+                   } 
             }
             catch { 
                 
@@ -191,6 +189,11 @@ namespace SAPR
             habilitarCampos(true);
             botonAceptar.Disabled = false;
             botonCancelar.Disabled = false;
+            for (int i = 0; i < gridUsuarios.Rows.Count; i++)
+            {
+                CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbLider");
+                chkIndividual.Enabled = true;
+            }
 
 
         }
@@ -199,11 +202,12 @@ namespace SAPR
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            // Parte para captar los miembros y el lider que se decidieron agregar al proyecto
+            // ###################################################
             String[] resultado = new String[1];
             String[] miembros = new String[gridUsuarios.Rows.Count];
             String cedulaLider = "";
-            int conta = 0;
+            int contador = 0;
 
             for (int i = 0; i < gridUsuarios.Rows.Count; i++)
             {
@@ -218,23 +222,19 @@ namespace SAPR
 
                 if (estaSeleccionadoMiembro)
                 {
-                    
-                    miembros[conta] = gridUsuarios.Rows[i].Cells[2].Text.ToString();
-                    conta++;
+                    String nuevoMiembro =gridUsuarios.Rows[i].Cells[2].Text.ToString() ;
+                    miembros[contador] = nuevoMiembro;
+                    contador++;
                 }
 
             }
+            //###################################################################
 
             if (modo == 1) // si se quiere insertar
-            {
-                
-
-                
+            {  
                 String[] r = new String[1];
                 try
                 {
-
-                    
                     r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider,
                                                         this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
                     int k = 0;
@@ -244,6 +244,7 @@ namespace SAPR
                         controladora.insertarUsuarioProyecto(idP,miembros[k]);
                         k++;
                     }
+                    llenarGridUsuarios(1);
                 }
                 catch (Exception jh)
                 {
@@ -252,10 +253,59 @@ namespace SAPR
 
                 //FALTA LO DEL EXITO
             }
-            else if (modo == 2)//si se quiere modificar
+            else if (modo == 2)// MOOOOOOODIFICAR
             {
-                String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider, entidadConsultada);
+
+                // --------------------------Se llena con los Usuarios Originales (gridUsuariosAsignados)
+                String[] miembrosOriginales = new String[gridUsuariosAsignados.Rows.Count];
+                contador = 0;
+                for (int i = 0; i < gridUsuariosAsignados.Rows.Count; i++)
+                {
+                    GridViewRow row = gridUsuarios.Rows[i];
+                    bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLider")).Checked;
+                    bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembros")).Checked;
+
+                    if (estaSeleccionadoLider)
+                    {
+                        cedulaLider = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                    }
+
+                    if (estaSeleccionadoMiembro)
+                    {
+                        String nuevoMiembro = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                        miembrosOriginales[contador] = nuevoMiembro;
+                        contador++;
+                    }
+
+                }
+               //--------------------------------------------------------------------------- 
                 
+                
+                
+                controladora.eliminarMiembros(idProy);  // Elimina los proyectos
+
+               /* int k = 0;
+                int idP = 0;
+                while (gridUsuarios.Rows[k].Cells[2].Text != null)
+                {
+                    idP = controladora.getIdProyecto(this.textNombre.Value.ToString());
+                    controladora.insertarUsuarioProyecto(idP, miembros[k]);
+                    k++;
+                }
+                
+                */
+                
+                
+                
+                //Agregar llos originales que quedaron
+                //Agregar los nuevos
+
+
+     //           if (entidadConsultada.Lider == ) {
+                    String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), entidadConsultada.Lider, entidadConsultada);
+       //         } else {
+                
+         //       }
                 
             }
             modo = 0;
@@ -340,6 +390,13 @@ namespace SAPR
             botonAceptar.Disabled = false;
             botonCancelar.Disabled = false;
             modo = 2;
+            for (int i = 0; i < gridUsuarios.Rows.Count; i++)
+            {
+                CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbLider");
+                chkIndividual.Enabled = false;
+            }
+
+
         }
 
         protected void cbLider_CheckedChanged1(object sender, EventArgs e)
@@ -350,6 +407,16 @@ namespace SAPR
 
             if (chk.Checked)
             {
+                try
+                {
+                    CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[rownumber].FindControl("cbMiembros");  // Checkea al lider de una vez
+                    chkIndividual.Checked = true;
+                }
+                catch
+                {
+
+                }
+
                 int i;
                 for (i = 0; i <= gridUsuarios.Rows.Count - 1; i++)
                 {
@@ -359,6 +426,19 @@ namespace SAPR
                         chkcheckbox.Checked = false;
                     }
                 }
+            }
+            else {
+
+                try
+                {
+                    CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[rownumber].FindControl("cbMiembros");
+                    chkIndividual.Checked = false;
+                }
+                catch
+                {
+
+                }
+            
             }
         }
 
@@ -393,7 +473,7 @@ namespace SAPR
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
                 cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
 
-                int idProy;
+                
                 idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());
 
                 clienteConsultado = controladora.consultarCliente(idProy);
@@ -412,6 +492,13 @@ namespace SAPR
             modo = 0;
 
         }
+
+        protected void cbLiderAsignado_CheckedChanged(object sender, EventArgs e)
+        {
+            //CheckBox chkcheckbox = ((CheckBox)(gridUsuarios.Rows[1].FindControl("cbLider")));
+            //chkcheckbox.Checked = true;
+        }
+
 
 
     }

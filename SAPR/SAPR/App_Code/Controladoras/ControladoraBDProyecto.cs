@@ -141,5 +141,10 @@ namespace SAPR.App_Code.Controladoras {
             DataTable resp = us.getMierda(idProy);
             return resp;
         }
+
+        public void eliminarMiembros(int idProy)
+        {
+            us.deleteUsuarioProyecto(idProy);
+        }
     }
 }

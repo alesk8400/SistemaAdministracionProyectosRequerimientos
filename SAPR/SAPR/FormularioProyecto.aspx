@@ -206,11 +206,11 @@
 
 
                                 <div class="col-sm-6">
-                                <asp:GridView ID="gridUsuariosAsignados" CssClass ="table" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+                                <asp:GridView ID="gridUsuariosAsignados" CssClass ="table" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" >
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
-                                                <asp:CheckBox ID="cbLiderAsignado" runat="server" />
+                                                <asp:CheckBox ID="cbLiderAsignado" runat="server" OnCheckedChanged="cbLiderAsignado_CheckedChanged" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Miembros">
