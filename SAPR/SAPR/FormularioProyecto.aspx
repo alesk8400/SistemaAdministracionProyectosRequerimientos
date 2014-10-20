@@ -40,7 +40,11 @@
                         <label for="textNombre" class="col-sm-1 control-label">Nombre: </label>
                         <div class="col-sm-4">
                             <div class=" input-group margin-bottom-sm"> 
-                                <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" data-error="Ingresó una nombre inválido" title="Nombre" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="44" required="required" />
+                                <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" title="Nombre" required="required" />
+                                <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="textNombre" 
+            ErrorMessage="Nombre Proyecto Inválido. Debe tener entre 5 y 44 caracteres" 
+            ValidationExpression="^[a-zA-Z0-9]{5,44}$" />
                             </div>
                             <div class="help-block with-errors"></div>
                         </div></div>
@@ -50,7 +54,11 @@
                         <label for="textObjetivo" class="col-sm-1 control-label">Objetivo: </label>
                         <div class="col-sm-7">
                             <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="textObjetivo" class="form-control" type="text" placeholder="Objetivo de Proyecto" data-error="Espacio requerido. Sólo letras." title="Objetivos" required="required" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="299" />
+                                <input runat="server" id="textObjetivo" class="form-control" type="text" placeholder="Objetivo de Proyecto"  title="Objetivos" required="required" />
+                                <asp:RegularExpressionValidator runat=server 
+                                 ControlToValidate="textObjetivo" 
+                                 ErrorMessage="Objetivos Inválidos. Debe tener entre 5 y 300 caracteres" 
+                                 ValidationExpression="^[a-zA-Z0-9]{5,300}$" />
 
                             </div>
                             <div class="help-block with-errors"></div>
@@ -121,8 +129,12 @@
                         <label for="textRepresentante" class="col-sm-4 control-label">Representante: </label>
                         <div class="col-sm-5">
                             <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="textRepresentante" class="form-control" type="text" placeholder="Nombre de Representante" data-error="Ingresó un nombre inválido" title="Representante" pattern="^[a-zA-Z0-9 ]+$" data-minlength="5" maxlength="30" required="required" />
-                            </div>
+                                <input runat="server" id="textRepresentante" class="form-control" type="text" placeholder="Nombre de Representante" title="Representante" required="required" />
+                                <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="textRepresentante" 
+            ErrorMessage="Nombre Representante Inválido. Debe tener entre 5 y 44 caracteres" 
+            ValidationExpression="^[a-zA-Z]{5,50}$" />
+                             </div>
                             <div class="help-block with-errors"></div>
                         </div></div>
 
@@ -131,7 +143,11 @@
                         <label for="textTelRepresentanre" class="col-sm-4 control-label">Teléfono de Representante: </label>
                         <div class="col-sm-5">
                             <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante" data-error="Espacio requerido. Sólo letras y números." title="Telefono" required="required" pattern="^[0-9]{8}$"/>
+                                <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante"  title="Telefono" required="required"/>
+                                <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="textTelRepresentante" 
+            ErrorMessage="Teléfono incorrecto. Debe tener 8 números" 
+            ValidationExpression="[0-9]{8}" />
                             </div>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -141,7 +157,11 @@
                     <div class="form-group">
                         <label for="textEmailRepresentante" class="col-sm-4 control-label">E-mail: </label>
                         <div class="col-sm-5">
-                            <input runat="server" id="textEmailRepresentante" class="form-control" type="email" placeholder="E-mail" data-error="Correo inválido" />
+                            <input runat="server" id="textEmailRepresentante" class="form-control" type="email" placeholder="E-mail" />
+                            <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="textEmailRepresentante" 
+            ErrorMessage="Email incorrecto. Debe tener este formato : ejemplo@correo.com" 
+            ValidationExpression="^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>

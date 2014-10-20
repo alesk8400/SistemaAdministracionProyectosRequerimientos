@@ -220,6 +220,7 @@ namespace SAPR
             String[] resultado = new String[1];
             String[] miembros = new String[gridUsuarios.Rows.Count];
             String cedulaLider = "";
+            String[] r = new String[1];
             int contador = 0;
 
             for (int i = 0; i < gridUsuarios.Rows.Count; i++)
@@ -245,7 +246,7 @@ namespace SAPR
 
             if (modo == 1) // si se quiere insertar
             {  
-                String[] r = new String[1];
+            
                 try
                 {
                     r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider,
@@ -257,7 +258,7 @@ namespace SAPR
                         controladora.insertarUsuarioProyecto(idP,miembros[k]);
                         k++;
                     }
-                    llenarGridUsuarios();
+                   // llenarGridUsuarios();
                 }
                 catch (Exception jh)
                 {
@@ -316,13 +317,15 @@ namespace SAPR
                     llenarUsuariosAsignados();
             }
 
-
-            modo = 0;
-            restaurarPantalla();
-            gridProyecto.DataBind();
-            llenarGridUsuarios();
-            this.gridUsuariosAsignados.Visible = false;
-            this.gridProyecto.Enabled = true;
+            if(r[0].Equals("Exito")){
+                modo = 0;
+                restaurarPantalla();
+                gridProyecto.DataBind();
+                llenarGridUsuarios();
+                this.gridUsuariosAsignados.Visible = false;
+                this.gridProyecto.Enabled = true;
+            }
+           
             
         }
 
