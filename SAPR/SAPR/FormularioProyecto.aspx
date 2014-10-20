@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label for="fechaAsignacion" class="col-sm-4 control-label">Fecha de asignación:</label>
                             <div class="col-sm-5">
-                                <input runat="server" id="textFechaA" type="text" class="datepicker" placeholder="Clic Aquí"/>
+                                <input runat="server" id="textFechaA" type="text" class="datepicker" placeholder="Clic Aquí" required="required"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                     </div>
@@ -73,7 +73,7 @@
                         <div class="col-sm-5">
                             <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
-                                     ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   
+                                     ControlToValidate="textFechaF" Type="Date" Operator="GreaterThan"   
                                      ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -85,10 +85,10 @@
                         <label for="dateStart" class="col-sm-5 control-label">Fecha de inicio: </label>
                         <div class="col-sm-4">
                             <input runat="server" id="textFechaI" type="text" class="datepicker" placeholder="Clic Aquí"/>
-                            <asp:CompareValidator ID="cmpVal1" ControlToCompare="textFechaA" 
+                            <asp:CompareValidator ID="CompareValidator1" ControlToCompare="textFechaA" 
                                      ControlToValidate="textFechaI" Type="Date" Operator="GreaterThanEqual"   
                                      ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
-                            <div class="help-block with-errors"></div>
+                            &nbsp;<div class="help-block with-errors"></div>
                         </div>
                     </div>
                        
@@ -131,7 +131,7 @@
                         <label for="textTelRepresentanre" class="col-sm-4 control-label">Teléfono de Representante: </label>
                         <div class="col-sm-5">
                             <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante" data-error="Espacio requerido. Sólo letras y números." title="Telefono" required="required" pattern="^[0-9]*$"/>
+                                <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante" data-error="Espacio requerido. Sólo letras y números." title="Telefono" required="required" pattern="^[0-9]{8}$"/>
                             </div>
                             <div class="help-block with-errors"></div>
                         </div>

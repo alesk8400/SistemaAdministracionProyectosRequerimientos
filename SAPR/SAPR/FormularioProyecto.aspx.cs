@@ -28,7 +28,7 @@ namespace SAPR
                     llenarGridUsuarios();
                 }
 
-            if(modo != 1 && modo ==2){
+            if(modo != 1 && modo != 2){
                 restaurarPantallaSinLimpiar();
             }
                 
@@ -168,7 +168,8 @@ namespace SAPR
                 textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
                 btnModificarProyecto.Disabled = false;
                 btnEliminarProyecto.Disabled = false;
-                habilitarCampos(true);
+                this.gridUsuariosAsignados.Visible = true;
+               // habilitarCampos(true);
                 gridProyecto.DataBind();
                 llenarUsuariosAsignados();
                 llenarGridUsuarios();
@@ -193,6 +194,14 @@ namespace SAPR
             habilitarCampos(true);
             botonAceptar.Disabled = false;
             botonCancelar.Disabled = false;
+            this.gridUsuariosAsignados.Visible = false;
+            btnModificarProyecto.Disabled = true;
+            btnEliminarProyecto.Disabled = true;
+            this.gridProyecto.Enabled = false;
+            btnAgregarProyecto.Disabled = true;
+
+            
+            
             for (int i = 0; i < gridUsuarios.Rows.Count; i++)
             {
                 CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbLider");
@@ -304,12 +313,16 @@ namespace SAPR
                     k++;
                 }
                     String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), entidadConsultada.Lider, entidadConsultada);
+                    llenarUsuariosAsignados();
             }
 
 
             modo = 0;
             restaurarPantalla();
             gridProyecto.DataBind();
+            llenarGridUsuarios();
+            this.gridUsuariosAsignados.Visible = false;
+            this.gridProyecto.Enabled = true;
             
         }
 
@@ -332,6 +345,7 @@ namespace SAPR
                 this.textTelSecundario.Value = "";
                 this.TextOficina.Value = "";
                 this.textEmailRepresentante.Value = "";
+                this.cmbEstado.Text = "Sin Iniciar";
         }
 
         protected void habilitarCampos(Boolean habilitar)
@@ -347,6 +361,8 @@ namespace SAPR
             this.TextOficina.Disabled = !habilitar;
             this.textEmailRepresentante.Disabled = !habilitar;
             this.cmbEstado.Enabled = habilitar;
+            this.gridUsuarios.Enabled = habilitar;
+            this.gridUsuariosAsignados.Enabled = habilitar;
         }
 
         protected void restaurarPantalla()
@@ -386,6 +402,10 @@ namespace SAPR
             this.TextOficina.Disabled = false;
             this.textEmailRepresentante.Disabled = false;
             this.cmbEstado.Enabled =true;
+            this.gridUsuarios.Enabled = true;
+            this.gridUsuariosAsignados.Enabled = true;
+            this.gridProyecto.Enabled = false;
+            btnAgregarProyecto.Disabled = true;
             botonAceptar.Disabled = false;
             botonCancelar.Disabled = false;
             modo = 2;
@@ -448,6 +468,9 @@ namespace SAPR
         {
             String[] result = new String[1];
             result = controladora.eliminarProyecto(entidadConsultada.Nombre);
+            this.gridUsuariosAsignados.Visible = false;
+            this.gridProyecto.Enabled = true;
+            llenarGridUsuarios();
           //  mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
            // if (result[0].Contains("Exito"))// si fue exitoso
             //{
@@ -462,6 +485,7 @@ namespace SAPR
             if (modo == 1)
             {
                 limpiarCampos();
+                this.gridUsuariosAsignados.Visible = false;
             }
 
 
@@ -484,14 +508,20 @@ namespace SAPR
                 textTelSecundario.Value = clienteConsultado.Celular.ToString();
                 TextOficina.Value = clienteConsultado.Oficina.ToString();
                 textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
-                btnModificarProyecto.Disabled = false;
-                habilitarCampos(true);
+                btnModificarProyecto.Disabled = true;
+                
                 //cmbEstado.SelectedIndex = 2;
                 gridProyecto.DataBind();
+                this.gridUsuariosAsignados.Visible = true;
 
             }
-
+            habilitarCampos(false);
             modo = 0;
+            botonAceptar.Disabled = true;
+            botonCancelar.Disabled = true;
+            this.gridProyecto.Enabled = true;
+            btnAgregarProyecto.Disabled = false;
+         
 
         }
 
