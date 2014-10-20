@@ -164,7 +164,7 @@
                             <asp:RegularExpressionValidator runat=server 
             ControlToValidate="textEmailRepresentante" 
             ErrorMessage="Email incorrecto. Debe tener este formato : ejemplo@correo.com" 
-            ValidationExpression="^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
+            ValidationExpression="^[a-zA-Z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
                             <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="red" controltovalidate="textEmailRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>

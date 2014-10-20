@@ -107,7 +107,7 @@
                             <asp:RegularExpressionValidator runat=server 
             ControlToValidate="textEmail" 
             ErrorMessage="Email incorrecto. Debe tener este formato : ejemplo@correo.com" 
-            ValidationExpression="^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
+            ValidationExpression="^[a-zA-Z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
                             <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="red" controltovalidate="textEmail" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -119,6 +119,10 @@
                         <label for="txtPassword" class="col-sm-3 control-label">Contraseña: </label>
                         <div class="col-sm-9">
                             <input runat="server" id="password" class="form-control" type="password" placeholder="Contraseña" data-error="Contraseña inválida" />
+                            <asp:CompareValidator ID="CompareValidator1" ControlToCompare="password1" 
+                                     ControlToValidate="password" Type="String" Operator="Equal"   
+                                     ErrorMessage="Contraseñas no concuerdan" runat="server" ValidationGroup="A"></asp:CompareValidator>
+                              <asp:requiredfieldvalidator id="RequiredFieldValidator7" runat="server" errormessage="" forecolor="red" controltovalidate="password" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -127,8 +131,8 @@
                             <input runat="server" id="password1" class="form-control" type="password" placeholder="Confirmar Contraseña" data-error="Confirmación Inválida" />
                             <asp:CompareValidator ID="cmpPass" ControlToCompare="password" 
                                      ControlToValidate="password1" Type="String" Operator="Equal"   
-                                     ErrorMessage="Contraseñas no concuerdan" runat="server"></asp:CompareValidator>
-                            <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="red" controltovalidate="password" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+                                     ErrorMessage="Contraseñas no concuerdan" runat="server" ValidationGroup="A"></asp:CompareValidator>
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="red" controltovalidate="password1" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>
                 </div>
