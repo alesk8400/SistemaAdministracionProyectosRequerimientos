@@ -317,13 +317,20 @@ namespace SAPR
                     llenarUsuariosAsignados();
             }
 
-            if(r[0].Equals("Exito")){
+            if (r[0].Equals("Exito"))
+            {
                 modo = 0;
                 restaurarPantalla();
                 gridProyecto.DataBind();
                 llenarGridUsuarios();
                 this.gridUsuariosAsignados.Visible = false;
                 this.gridProyecto.Enabled = true;
+            }
+            else {
+                alertAlerta.Attributes["class"] = "alert alert-" + "PELIGRO" + " alert-dismissable fade in";
+                labelTipoAlerta.Text = "" + " ";
+                labelAlerta.Text ="¡Problema al insertar proyecto! Intente de nuevo.";
+                alertAlerta.Attributes.Remove("hidden");
             }
            
             

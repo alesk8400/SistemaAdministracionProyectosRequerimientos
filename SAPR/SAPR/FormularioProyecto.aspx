@@ -44,7 +44,8 @@
                                 <asp:RegularExpressionValidator runat=server 
             ControlToValidate="textNombre" 
             ErrorMessage="Nombre Proyecto Inválido. Debe tener entre 5 y 44 caracteres" 
-            ValidationExpression="^[a-zA-Z0-9]{5,44}$" />
+            ValidationExpression="^[a-zA-Z0-9\s]{5,44}$" />
+                                <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="red" controltovalidate="textNombre" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             </div>
                             <div class="help-block with-errors"></div>
                         </div></div>
@@ -58,8 +59,8 @@
                                 <asp:RegularExpressionValidator runat=server 
                                  ControlToValidate="textObjetivo" 
                                  ErrorMessage="Objetivos Inválidos. Debe tener entre 5 y 300 caracteres" 
-                                 ValidationExpression="^[a-zA-Z0-9]{5,300}$" />
-
+                                 ValidationExpression="^[a-zA-Z0-9\s]{5,300}$" />
+                                <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="red" controltovalidate="textObjetivo" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             </div>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -133,8 +134,9 @@
                                 <asp:RegularExpressionValidator runat=server 
             ControlToValidate="textRepresentante" 
             ErrorMessage="Nombre Representante Inválido. Debe tener entre 5 y 44 caracteres" 
-            ValidationExpression="^[a-zA-Z]{5,50}$" />
-                             </div>
+            ValidationExpression="^[a-zA-Z\s]{5,50}$" />
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator2" runat="server" errormessage="" forecolor="red" controltovalidate="textRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator> 
+                            </div>
                             <div class="help-block with-errors"></div>
                         </div></div>
 
@@ -146,8 +148,9 @@
                                 <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante"  title="Telefono" required="required"/>
                                 <asp:RegularExpressionValidator runat=server 
             ControlToValidate="textTelRepresentante" 
-            ErrorMessage="Teléfono incorrecto. Debe tener 8 números" 
+            ErrorMessage="Teléfono incorrecto. Debe tener 8 números. Sin espacios." 
             ValidationExpression="[0-9]{8}" />
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="red" controltovalidate="textTelRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             </div>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -162,6 +165,7 @@
             ControlToValidate="textEmailRepresentante" 
             ErrorMessage="Email incorrecto. Debe tener este formato : ejemplo@correo.com" 
             ValidationExpression="^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="red" controltovalidate="textEmailRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -172,14 +176,23 @@
                     <div class="form-group">
                         <label for="textOficina" class="col-sm-5 control-label">Oficina: </label>
                         <div class="col-sm-4">
-                            <input runat="server" id="TextOficina" class="form-control" type="tel" placeholder="Oficina" data-error="Espacio Requerido" title="Oficina" pattern="^[a-zA-Z0-9 ]+$" data-minlength="8" maxlength="30" />
+                            <input runat="server" id="TextOficina" class="form-control" type="tel" placeholder="Oficina" title="Oficina"/>
+                            <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="TextOficina" 
+            ErrorMessage="Oficina incorrecta. Debe tener un largo de 5-15 caracteres." 
+            ValidationExpression="[a-zA-Z0-9\-\s]{5,15}$" />
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="red" controltovalidate="TextOficina" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="textTelSecundario" class="col-sm-5 control-label">Teléfono Secundario: </label>
                         <div class="col-sm-4">
-                            <input runat="server" id="textTelSecundario" class="form-control" type="tel" placeholder="Teléfono Secundario" data-error="Número de teléfono inválido" title="Telefono secundario" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
+                            <input runat="server" id="textTelSecundario" class="form-control" type="tel" placeholder="Teléfono Secundario" title="Telefono secundario"/>
+                             <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="textTelSecundario" 
+            ErrorMessage="Teléfono incorrecto. Debe tener 8 números. Sin espacios." 
+            ValidationExpression="[0-9]{8}$" />
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -260,7 +273,7 @@
                 <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
-                <button runat="server" id="botonAceptar" onserverclick="btnAceptar_Click" class="btn btn-success" type="submit">Aceptar</button>
+                <button runat="server" id="botonAceptar" onserverclick="btnAceptar_Click" class="btn btn-success" type="submit" validationgroup="A" xmlns:asp="#unknown">Aceptar</button>
                 <%--<button runat="server" id="botonCancelar" class="btn btn-danger" type="reset">Cancelar</button>--%>
                 <a id="botonCancelar" href="#modalCancelar" class="btn btn-danger" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Cancelar</a>
                         </div></div>

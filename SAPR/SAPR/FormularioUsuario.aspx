@@ -42,7 +42,12 @@
                     <div class="form-group">
                         <label for="textNombre" class="col-sm-3 control-label">Nombre: </label>
                             <div class="col-sm-9">
-                                <input runat="server" id="txtNombreUsuario" placeholder= "Nombre completo" class="form-control" type="text" data-error="Nombre inválido" title="Nombre" pattern="^[a-zA-Z0-9 ]+$" data-minlength="8" maxlength="44" required="required" />
+                                <input runat="server" id="txtNombreUsuario" placeholder= "Nombre completo" class="form-control" type="text" title="Nombre" required="required" />
+                                <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="txtNombreUsuario" 
+            ErrorMessage="Nombre Incorrecto. Debe tener entre 5 y 50 caracteres" 
+            ValidationExpression="[a-zA-Z\s]{5,50}$" />
+                                <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="red" controltovalidate="txtNombreUsuario" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                                 <div class="help-block with-errors"></div>
                             </div>      
                     </div>
@@ -51,8 +56,13 @@
                     <div class="form-group">
                         <label for="txtCedula" class="col-sm-3 control-label">Cédula: </label>
                             <div class= "col-sm-9">
-                                <input runat="server" placeholder= "X XXX XXX" id ="txtCedula" class="form-control" type="text" data-error="Espacio requerido. Sólo letras." required="required" title="cedula" pattern="[0-9 ]+$" data-minlength="5" maxlength="10" />
-                                <div class="help-block with-errors">
+                                <input runat="server" placeholder= "X XXX XXX" id ="txtCedula" class="form-control" type="text" required="required" title="cedula"/>
+                                <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="txtCedula" 
+            ErrorMessage="Cédula inválida. Formato con números X XXXX XXXX" 
+            ValidationExpression="[1-9]\s[0-9]{4}\s[0-9]{4}$" />
+                               <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="red" controltovalidate="txtCedula" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+                                 <div class="help-block with-errors">
                             </div>
                             </div>
                     </div>
@@ -64,7 +74,12 @@
                     <div class="form-group">
                         <label for="textTelefono" class="col-sm-3 control-label">Teléfono: </label>
                         <div class="col-sm-7">
-                            <input runat="server" id="textTelefono" class="form-control" type="tel" placeholder="Teléfono" data-error="Número de teléfono inválido" title="telefono" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
+                            <input runat="server" id="textTelefono" class="form-control" type="tel" placeholder="Teléfono" title="telefono"/>
+                            <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="textTelefono" 
+            ErrorMessage="Teléfono incorrecto. Debe tener 8 números.  Sin espacios." 
+            ValidationExpression="[0-9]{8}" />
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator2" runat="server" errormessage="" forecolor="red" controltovalidate="textTelefono" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -72,7 +87,12 @@
                     <div class="form-group">
                         <label for="textCelular" class="col-sm-3 control-label">Celular: </label>
                         <div class="col-sm-7">
-                            <input runat="server" id="textCelular" class="form-control" type="tel" placeholder="Celular" data-error="Número de teléfono inválido" title="Celular" pattern="^[0-9]*$" data-minlength="8" maxlength="12" />
+                            <input runat="server" id="textCelular" class="form-control" type="tel" placeholder="Celular" title="Celular"/>
+                            <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="textCelular" 
+            ErrorMessage="Teléfono incorrecto. Debe tener 8 números.  Sin espacios." 
+            ValidationExpression="[0-9]{8}" />
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="red" controltovalidate="textCelular" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -84,6 +104,11 @@
                         <label for="textEmail" class="col-sm-3 control-label">E-mail: </label>
                         <div class="col-sm-9">
                             <input runat="server" id="textEmail" class="form-control" type="email" placeholder="E-mail" data-error="Correo inválido" />
+                            <asp:RegularExpressionValidator runat=server 
+            ControlToValidate="textEmail" 
+            ErrorMessage="Email incorrecto. Debe tener este formato : ejemplo@correo.com" 
+            ValidationExpression="^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="red" controltovalidate="textEmail" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -103,6 +128,7 @@
                             <asp:CompareValidator ID="cmpPass" ControlToCompare="password" 
                                      ControlToValidate="password1" Type="String" Operator="Equal"   
                                      ErrorMessage="Contraseñas no concuerdan" runat="server"></asp:CompareValidator>
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="red" controltovalidate="password" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                         </div>
                 </div>
@@ -175,7 +201,7 @@
      <div class="col-lg-12">
                     <div class="text-center">
 
-                        <button runat="server" onserverclick="btnAceptar_Click" id="btnAceptar" class="btn btn-success" type="button"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                        <button runat="server" onserverclick="btnAceptar_Click" id="btnAceptar" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
                         <a id="btnCancelar" href="#modalCancelar" class="btn btn-danger" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Cancelar</a>
 
      </div></div>
