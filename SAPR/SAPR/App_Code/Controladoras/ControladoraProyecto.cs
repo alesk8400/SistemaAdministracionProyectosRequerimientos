@@ -143,5 +143,10 @@ namespace SAPR.App_Code.Controladoras
         {
             controladoraBDProyecto.eliminarMiembros(idProy);
         }
+
+        public void eliminarUsuarioProyecto(int IdProy, string p)
+        {
+            controladoraBDProyecto.eliminarUsuarioProyecto(IdProy, p);
+        }
     }
 }

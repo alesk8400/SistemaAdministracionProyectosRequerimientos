@@ -96,6 +96,7 @@ namespace SAPR
                     if (!proyecto.Equals("Ninguno"))
                     {
                         int IdProy = controladora.getProyecto(proyecto);
+                        controladora.eliminarUsuarioProyecto(IdProy, this.txtCedula.Value.ToString());
                         controladora.insertarUsuarioProyecto(IdProy, this.txtCedula.Value.ToString());
                     }
                     gridUsuarios.DataBind();

@@ -146,5 +146,10 @@ namespace SAPR.App_Code.Controladoras {
         {
             us.deleteUsuarioProyecto(idProy);
         }
+
+        public void eliminarUsuarioProyecto(int idProy, String cedula)
+        {
+            us.eliminarUsuarioProyecto(cedula, idProy);
+        }
     }
 }

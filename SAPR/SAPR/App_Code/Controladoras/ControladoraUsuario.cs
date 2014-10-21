@@ -139,5 +139,11 @@ namespace SAPR.App_Code.Controladoras
             ControladoraProyecto controlProyecto = new ControladoraProyecto();
             controlProyecto.insertarUsuarioProyecto(IdProy, p);
         }
+
+        public void eliminarUsuarioProyecto(int IdProy, string p)
+        {
+            ControladoraProyecto controlProyecto = new ControladoraProyecto();
+            controlProyecto.eliminarUsuarioProyecto(IdProy, p);
+        }
     }
 }
