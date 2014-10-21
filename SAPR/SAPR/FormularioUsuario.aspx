@@ -62,6 +62,7 @@
             ErrorMessage="Cédula inválida. Formato con números X XXXX XXXX" 
             ValidationExpression="[1-9]\s[0-9]{4}\s[0-9]{4}$" />
                                <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="red" controltovalidate="txtCedula" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+                                <asp:Label ID="errorCedulaRepetida" runat="server" Text=""></asp:Label>
                                  <div class="help-block with-errors">
                             </div>
                             </div>
@@ -167,6 +168,7 @@
                                 <div class="help-block with-error">
 
                                     <asp:DropDownList ID="cmbProyecto" runat="server" DataSourceID="nombreProyectos" DataTextField="Nombre" DataValueField="Nombre" Class="dropdown">
+                                        <asp:ListItem Selected="True">Ninguno</asp:ListItem>
                                     </asp:DropDownList>
 
                                     <asp:SqlDataSource ID="nombreProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT [Nombre], [IdProyecto] FROM [Proyecto]"></asp:SqlDataSource>

@@ -82,7 +82,7 @@
                         <div class="col-sm-5">
                             <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
-                                     ControlToValidate="textFechaF" Type="Date" Operator="GreaterThan"   
+                                     ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   Display="Dynamic" SetFocusOnError="true" CultureInvariantValues="true"
                                      ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -243,7 +243,7 @@
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
-                                                <asp:CheckBox ID="cbLiderAsignado" runat="server" />
+                                                <asp:CheckBox ID="cbLiderAsignado" runat="server" AutoPostBack="True" OnCheckedChanged="cbLiderAsignado_CheckedChanged" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Miembros">

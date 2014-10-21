@@ -16,10 +16,14 @@ namespace SAPR
         private static ControladoraUsuario controladora = new ControladoraUsuario();
         private static EntidadUsuario entidadConsultada;
         private static int modo = 0;
+        private bool revisado = false;
      
         protected void Page_Load(object sender, EventArgs e){
 
             restaurarPantallaSinLimpiar();
+
+            //String handler = ClientScript.GetPostBackEventReference(this.btnAceptar, "");
+            //txtCedula.Attributes.Add("onblur", handler);
         }
 
         protected void btnAgregarUsuario_Click(object sender, EventArgs e){          
@@ -28,6 +32,13 @@ namespace SAPR
             habilitarCampos(true);
             btnAceptar.Disabled = false;
             btnCancelar.Disabled = false;
+            
+
+            if(cmbProyecto.Items.Contains(new ListItem("Ninguno"))){
+            } else{
+            cmbProyecto.Items.Add("Ninguno");
+            }
+            
             
 
         }
@@ -55,25 +66,56 @@ namespace SAPR
         protected void btnAceptar_Click(object sender, EventArgs e){
 
             String []resultado = new String[1];
-            
-            if (modo == 1) // si se quiere insertar
-            {
-                resultado = controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString() , this.password.Value.ToString());
+            //RevisarDuplicado();
 
-                if (resultado[0] == "Exito")
-                { // si inserto el proveedor : va a modo consultar con ese proveedor
+                if (modo == 1) // si se quiere insertar
+                {
+                    resultado = controladora.insertarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString() , this.password.Value.ToString());
 
+                    if (resultado[0] == "Exito")
+                    { // si inserto el proveedor : va a modo consultar con ese proveedor
+
+
+                        String proyecto = cmbProyecto.SelectedValue.ToString();
+
+                        if (!proyecto.Equals("Ninguno"))
+                        {
+                            int IdProy = controladora.getProyecto(proyecto);
+                            controladora.insertarUsuarioProyecto(IdProy, this.txtCedula.Value.ToString());
+                        }
+                        gridUsuarios.DataBind();
+                        restaurarPantalla();
+                    } // si no lo inserto no debe cambiar de modo ni limpiar la pantalla.
+                }
+                else if (modo == 2)//si se quiere modificar
+                {
+                    String[] result = controladora.modificarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString(), this.password.Value.ToString(),entidadConsultada);
+
+                    String proyecto = cmbProyecto.SelectedValue.ToString();
+
+                    if (!proyecto.Equals("Ninguno"))
+                    {
+                        int IdProy = controladora.getProyecto(proyecto);
+                        controladora.insertarUsuarioProyecto(IdProy, this.txtCedula.Value.ToString());
+                    }
                     gridUsuarios.DataBind();
                     restaurarPantalla();
-                } // si no lo inserto no debe cambiar de modo ni limpiar la pantalla.
-            }
-            else if (modo == 2)//si se quiere modificar
-            {
-                String[] result = controladora.modificarUsuario(this.txtNombreUsuario.Value.ToString(), this.txtCedula.Value.ToString(), this.textEmail.Value.ToString(), this.textTelefono.Value.ToString(), this.textCelular.Value.ToString(), this.cmbRoles.SelectedItem.ToString(), this.password.Value.ToString(),entidadConsultada);
-                gridUsuarios.DataBind();
-                restaurarPantalla();
-            }          
+
+                }                           
+       
         }
+
+        //private void RevisarDuplicado()
+        //{
+        //    String cedulaUsuario = this.txtCedula.Value.ToString();
+        //    int resultado = controladora.validarUsuario(cedulaUsuario);
+
+
+        //    if (resultado != 0){
+        //        errorCedulaRepetida.Text = "Error";
+        //    }
+          
+        //}
 
         protected void btnCancelar_Click(object sender, EventArgs e) {
             if(modo == 1){
@@ -149,6 +191,14 @@ namespace SAPR
             btnAceptar.Disabled = false;
             btnCancelar.Disabled = false;
             modo = 2;
+            if (cmbProyecto.Items.Contains(new ListItem("Ninguno")))
+            {
+            }
+            else
+            {
+                cmbProyecto.Items.Add("Ninguno");
+            }
+            
         }
 
         protected void restaurarPantalla()

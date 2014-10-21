@@ -9,9 +9,11 @@ namespace SAPR.App_Code.Controladoras
 {
     public class ControladoraUsuario{
         ControladoraBDUsuario controladoraBDUsuario;
+        
 
         public ControladoraUsuario() {
             controladoraBDUsuario = new ControladoraBDUsuario();
+            
         }
 
         public String[] insertarUsuario(String nombre,String cedula,String correo,String telefono, String celular, String rol, String pass ) { 
@@ -96,6 +98,10 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDUsuario.getUsuariosProyecto(2);
         }
 
+        public int validarUsuario(String cedulaUsuario) {
+            return controladoraBDUsuario.validarUsuario(cedulaUsuario);        
+        }
+
 
         //public string ConsultarNomLider(){
         
@@ -121,5 +127,17 @@ namespace SAPR.App_Code.Controladoras
         public String[] getProyectosDeUsuario(String idUsuario){
 
         }*/
+
+        public int getProyecto(string proyecto)
+        {
+            ControladoraProyecto controlProyecto = new ControladoraProyecto();
+            return controlProyecto.getIdProyecto(proyecto);
+        }
+
+        public void insertarUsuarioProyecto(int IdProy, string p)
+        {
+            ControladoraProyecto controlProyecto = new ControladoraProyecto();
+            controlProyecto.insertarUsuarioProyecto(IdProy, p);
+        }
     }
 }

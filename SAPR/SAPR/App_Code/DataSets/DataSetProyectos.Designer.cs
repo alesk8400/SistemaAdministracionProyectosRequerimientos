@@ -3805,7 +3805,7 @@ namespace SAPR.App_Code.DataSets.DataSetProyectosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetProyectos.UsuarioProyectoDataTable getMierda(int proyecto) {
+        public virtual DataSetProyectos.UsuarioProyectoDataTable getUsuariosProyecto(int proyecto) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(proyecto));
             DataSetProyectos.UsuarioProyectoDataTable dataTable = new DataSetProyectos.UsuarioProyectoDataTable();

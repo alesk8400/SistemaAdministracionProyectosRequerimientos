@@ -313,25 +313,19 @@ namespace SAPR
                     controladora.insertarUsuarioProyecto(idProy, miembrosOriginales[k]); // RE-Inserción de los miembros originales
                     k++;
                 }
-                    String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), entidadConsultada.Lider, entidadConsultada);
+                    String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider, entidadConsultada);
                     llenarUsuariosAsignados();
             }
 
-            if (r[0].Equals("Exito"))
-            {
+            
                 modo = 0;
                 restaurarPantalla();
                 gridProyecto.DataBind();
                 llenarGridUsuarios();
                 this.gridUsuariosAsignados.Visible = false;
                 this.gridProyecto.Enabled = true;
-            }
-            else {
-                alertAlerta.Attributes["class"] = "alert alert-" + "PELIGRO" + " alert-dismissable fade in";
-                labelTipoAlerta.Text = "" + " ";
-                labelAlerta.Text ="¡Problema al insertar proyecto! Intente de nuevo.";
-                alertAlerta.Attributes.Remove("hidden");
-            }
+            
+           
            
             
         }
@@ -523,6 +517,8 @@ namespace SAPR
                 //cmbEstado.SelectedIndex = 2;
                 gridProyecto.DataBind();
                 this.gridUsuariosAsignados.Visible = true;
+                llenarGridUsuarios();
+                llenarUsuariosAsignados();
 
             }
             habilitarCampos(false);
@@ -532,6 +528,52 @@ namespace SAPR
             this.gridProyecto.Enabled = true;
             btnAgregarProyecto.Disabled = false;
          
+
+        }
+
+        protected void cbLiderAsignado_CheckedChanged(object sender, EventArgs e)
+        {
+
+            CheckBox chk = (CheckBox)sender;
+            GridViewRow gv = (GridViewRow)chk.NamingContainer;
+            int rownumber = gv.RowIndex;
+
+            if (chk.Checked)
+            {
+                try
+                {
+                    CheckBox chkIndividual = (CheckBox)gridUsuariosAsignados.Rows[rownumber].FindControl("cbMiembrosAsignados");  // Checkea al lider de una vez
+                    chkIndividual.Checked = true;
+                }
+                catch
+                {
+
+                }
+
+                int i;
+                for (i = 0; i <= gridUsuariosAsignados.Rows.Count - 1; i++)
+                {
+                    if (i != rownumber)
+                    {
+                        CheckBox chkcheckbox = ((CheckBox)(gridUsuariosAsignados.Rows[i].FindControl("cbLiderAsignado")));
+                        chkcheckbox.Checked = false;
+                    }
+                }
+            }
+            else
+            {
+
+                try
+                {
+                    CheckBox chkIndividual = (CheckBox)gridUsuariosAsignados.Rows[rownumber].FindControl("cbMiembros");
+                    chkIndividual.Checked = false;
+                }
+                catch
+                {
+
+                }
+
+            }
 
         }
 

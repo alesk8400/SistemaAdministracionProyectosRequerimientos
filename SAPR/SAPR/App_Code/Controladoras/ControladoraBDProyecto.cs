@@ -138,7 +138,7 @@ namespace SAPR.App_Code.Controladoras {
 
         public DataTable getUsuariosAsignados(int idProy)
         {
-            DataTable resp = us.getMierda(idProy);
+            DataTable resp = us.getUsuariosProyecto(idProy);
             return resp;
         }
 
