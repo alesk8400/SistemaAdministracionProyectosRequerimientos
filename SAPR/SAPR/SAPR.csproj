@@ -126,6 +126,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
@@ -225,6 +232,7 @@
     <Content Include="App_Code\DataSets\DataSetProyectos.xsc">
       <DependentUpon>DataSetProyectos.xsd</DependentUpon>
     </Content>
+    <Content Include="WebForm1.aspx" />
     <None Include="App_Code\DataSets\DataSetProyectos.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
