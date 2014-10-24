@@ -142,5 +142,11 @@ namespace SAPR.App_Code.Controladoras {
 
 
 
+
+        public int validarUsuario(string cedulaUsuario)
+        {
+            int resultado = (int)this.ds.validarUsuario(cedulaUsuario);
+            return resultado;
+        }
     }     
 }

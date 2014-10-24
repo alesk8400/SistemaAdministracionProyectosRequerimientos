@@ -138,13 +138,18 @@ namespace SAPR.App_Code.Controladoras {
 
         public DataTable getUsuariosAsignados(int idProy)
         {
-            DataTable resp = us.getMierda(idProy);
+            DataTable resp = us.getUsuariosProyecto(idProy);
             return resp;
         }
 
         public void eliminarMiembros(int idProy)
         {
             us.deleteUsuarioProyecto(idProy);
+        }
+
+        public void eliminarUsuarioProyecto(int idProy, String cedula)
+        {
+            us.eliminarUsuarioProyecto(cedula, idProy);
         }
     }
 }

@@ -81,9 +81,9 @@
                         <label for="DateFinish" class="col-sm-4 control-label">Fecha de finalización:</label>
                         <div class="col-sm-5">
                             <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
-                            <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
-                                     ControlToValidate="textFechaF" Type="Date" Operator="GreaterThan"   
-                                     ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
+                           <%-- <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
+                                     ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   Display="Dynamic" SetFocusOnError="true" CultureInvariantValues="true"
+                                     ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>--%>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                     <div class="col-sm-6">
 
 
-                                <asp:GridView ID="gridUsuarios" cssClass="table" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged">
+                                <asp:GridView ID="gridUsuarios" Caption='<table width="100%" class="TestCssStyle"><tr><td class="text_Title">Usuarios Disponibles</td></tr></table>' cssClass="table" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" AllowPaging="True">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
@@ -239,11 +239,11 @@
 
 
                                 <div class="col-sm-6">
-                                <asp:GridView ID="gridUsuariosAsignados" CssClass ="table" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" >
+                                <asp:GridView ID="gridUsuariosAsignados" Caption='<table width="100%" class="TestCssStyle"><tr><td class="text_Title">Usuarios Asignados</td></tr></table>' CssClass ="table" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" AllowPaging="True" >
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
-                                                <asp:CheckBox ID="cbLiderAsignado" runat="server" />
+                                                <asp:CheckBox ID="cbLiderAsignado" runat="server" AutoPostBack="True" OnCheckedChanged="cbLiderAsignado_CheckedChanged" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Miembros">
