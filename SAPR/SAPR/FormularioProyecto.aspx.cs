@@ -10,18 +10,25 @@ using System.Data;
 
 namespace SAPR
 {
+	/*
+	*	Clase que maneja la interfaz de Proyecto, y se comunica con la controladora de la misma, como también la de Usuario.
+	*/
     public partial class FormularioProyecto : System.Web.UI.Page
     {
-        private static EntidadProyecto entidadConsultada;
+        private static EntidadProyecto entidadConsultada; //Instancias de entidades consultadas estáticas.
         private static EntidadCliente clienteConsultado;
         private static ControladoraUsuario controladoraUsuario = new ControladoraUsuario();
         private static ControladoraProyecto controladora = new ControladoraProyecto();
         private static Object[] idsGrid;
         private static Object[] idAsignados;
-        private static int idProy;
+        private static int idProy; //Guarda de manera estática el id del proyecto consultado
         private static String liderModificado;
-
-        private static int modo = 0;
+        private static int modo = 0; //Manejo de modo para categorizar si se está agregando,modificando,consultando o eliminando.
+		
+		
+		/*
+		* La carga de página la cual carga el Grid de Usuarios y restaura la página si está en modo consultar.
+		*/
         protected void Page_Load(object sender, EventArgs e)
         {
                 if(!IsPostBack){
@@ -34,50 +41,50 @@ namespace SAPR
                 
         }
 
-
+		/*
+		* Metodo que crea un datatable con columnas de Cédula y Nombre de usuarios.
+		*/
         protected DataTable crearTablaUsuarios()
         {
             DataTable tabla = new DataTable();
             DataColumn columna;
 
-            //se agrega el campo de nombre
+            //se agrega el campo de Cedula
             columna = new DataColumn();
             columna.DataType = System.Type.GetType("System.String");
             columna.ColumnName = "Cédula";
             tabla.Columns.Add(columna);
 
-            //se agrega el campo de Telefono
+            //se agrega el campo de Nombre
             columna = new DataColumn();
             columna.DataType = System.Type.GetType("System.String");
             columna.ColumnName = "Nombre";
             tabla.Columns.Add(columna);
-
-
+			
             return tabla;
         }
 
 
-        // METODO PARA LLENAR LOS USUARIOS DISPONIBLES PARA EL AGREGAR O EL MODIFICAR
+        /*
+		*  Metodo para llenar los usuarios disponibles para el agregar o el modificar.
+		*/		
         protected void llenarGridUsuarios()
         {
-            DataTable tabla = crearTablaUsuarios(); // se crea la tabla
-            int i = 0;
-            Object[] datos = new Object[2];
-            //if (!(((SiteMaster)Page.Master).UsuarioLogueado).Equals("")) {
+            DataTable tabla = crearTablaUsuarios(); // Se crea la tabla de Usuarios
+            int i = 0; //Contador para moverse por el Grid
+            Object[] datos = new Object[2];           
                 try
                 {
-
-                    DataTable usuariosDisponibles = controladora.getUsuariosDisponibles();// se consultan todos los proveedores
-                    idsGrid = new Object[usuariosDisponibles.Rows.Count]; //crear el vector para ids de proveedores en el grid
+                    DataTable usuariosDisponibles = controladora.getUsuariosDisponibles();// Se obtienen usuarios disponibles
+                    idsGrid = new Object[usuariosDisponibles.Rows.Count]; //Inicializa el vector de idsGrid
                     if (usuariosDisponibles.Rows.Count > 0)
                     {
                         foreach (DataRow fila in usuariosDisponibles.Rows)
                         {
-                            idsGrid[i] = fila[0].ToString();// guardar el id del proveedor para su posterior consulta
-                            datos[0] = fila[0].ToString();//obtener los datos a mostrar
-                            datos[1] = fila[1].ToString();
-
-                            tabla.Rows.Add(datos);// cargar en la tabla los datos de cada proveedor
+                            idsGrid[i] = fila[0].ToString(); //Guarda cédulas de los usuarios
+                            datos[0] = fila[0].ToString(); //Cedulas
+                            datos[1] = fila[1].ToString(); //Nombres
+                            tabla.Rows.Add(datos);// cargar en la tabla los datos de cada usuario
                             i++;
                         }
                     }
@@ -90,7 +97,7 @@ namespace SAPR
 
 
                     this.gridUsuarios.DataSource = tabla; // se colocan los datos en la tabla
-                    this.gridUsuarios.DataBind();
+                    this.gridUsuarios.DataBind(); //Se actualiza la tabla
 
                 }
                 catch (Exception e)
@@ -102,18 +109,20 @@ namespace SAPR
 
 
 
-        // METODO PARA LLENAR GRID DE USUARIOS ASIGNADOS PARA EL MODIFICAR
+        /*	
+		* Metodo para llenar el grid de usuarios asignados para el modificar.
+		*/		
         public void llenarUsuariosAsignados() { 
-                DataTable tablaAsignados = crearTablaUsuarios(); // se crea la tabla
+                DataTable tablaAsignados = crearTablaUsuarios(); // Se crea la tabla
                 int i = 0;
                 Object[] datos = new Object[2];         
-                DataTable usuariosAsignados = controladora.getUsuariosAsignados(idProy);// se consultan todos los proveedores
-                idAsignados = new Object[usuariosAsignados.Rows.Count]; //crear el vector para ids de proveedores en el grid
+                DataTable usuariosAsignados = controladora.getUsuariosAsignados(idProy); //Se traen los usuarios asignados a ese proyecto consultado.
+                idAsignados = new Object[usuariosAsignados.Rows.Count]; // Vector con cédulas de usuarios asignados.
                     if (usuariosAsignados.Rows.Count > 0)
                     {
                         foreach (DataRow fila in usuariosAsignados.Rows)
                         {
-                            idAsignados[i] = fila[0].ToString();// guardar el id del proveedor para su posterior consulta
+                            idAsignados[i] = fila[0].ToString(); //Guarda cedulas de usuarios asignados
                             datos[0] = fila[1].ToString();//obtener los datos a mostrar
                             datos[1] = fila[2].ToString();
                             tablaAsignados.Rows.Add(datos);
@@ -129,7 +138,9 @@ namespace SAPR
                 
 
                    this.gridUsuariosAsignados.DataSource = tablaAsignados; // se colocan los datos en la tabla
-                   this.gridUsuariosAsignados.DataBind();
+                   this.gridUsuariosAsignados.DataBind(); //Actualiza tabla
+				   
+				   // Ciclo que carga los checkboxes con los usuarios que ya estan asignados.
                    for (int t = 0; t < gridUsuariosAsignados.Rows.Count; t++)
                    {
                        CheckBox chkIndividual = (CheckBox)gridUsuariosAsignados.Rows[t].FindControl("cbMiembrosAsignados");
@@ -142,14 +153,14 @@ namespace SAPR
                     
             }    
         }
-
-
-        // EVENTO que se activa al CONSULTAR un proyecto
+      
+		/*
+		 * Evento que se activa al consultar un proyecto.
+		*/
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-
                 entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
                 textNombre.Value = entidadConsultada.Nombre.ToString();
                 textObjetivo.Value = entidadConsultada.Objetivos.ToString();
@@ -158,7 +169,7 @@ namespace SAPR
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
                 cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
 
-                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());    // ESTAAAAAAAAAAAAAAAAAAAAAAAAAAAAATICO
+                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString()); //ID Estático
 
                 clienteConsultado = controladora.consultarCliente(idProy);
                 textRepresentante.Value = clienteConsultado.Nombre.ToString();
@@ -169,7 +180,6 @@ namespace SAPR
                 btnModificarProyecto.Disabled = false;
                 btnEliminarProyecto.Disabled = false;
                 this.gridUsuariosAsignados.Visible = true;
-               // habilitarCampos(true);
                 gridProyecto.DataBind();
                 llenarUsuariosAsignados();
                 llenarGridUsuarios();
@@ -180,39 +190,134 @@ namespace SAPR
 
         }
 
-        protected void gridUsuarios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           //this.gridUsuarios.Columns[0].
-        }
-
-
-
+		/*
+		* Metodo que se activa al darle Click al AGREGAR en Proyecto
+		*/
         protected void btnAgregarProyecto_Click(object sender, EventArgs e)
         {
-            modo = 1;
-            limpiarCampos();
-            habilitarCampos(true);
-            botonAceptar.Disabled = false;
-            botonCancelar.Disabled = false;
-            this.gridUsuariosAsignados.Visible = false;
-            btnModificarProyecto.Disabled = true;
-            btnEliminarProyecto.Disabled = true;
-            this.gridProyecto.Enabled = false;
-            btnAgregarProyecto.Disabled = true;
-
-            
-            
+            modo = 1; //Pasa a modo de inserción
+            limpiarCampos(); //Limpia todos los campos de los textfields.
+            habilitarCampos(true); //Habilita los campos en pantalla
+            botonAceptar.Disabled = false; //Habilita el botón aceptar
+            botonCancelar.Disabled = false; //Habilita boton cancelar
+            this.gridUsuariosAsignados.Visible = false; //Desaparece el grid de usuarios asignados.
+            btnModificarProyecto.Disabled = true; //Deshabilita boton de modificar proyecto.
+            btnEliminarProyecto.Disabled = true; //Deshabilita boton de eliminar proyecto.
+            this.gridProyecto.Enabled = false; //Deshabilita la selección de proyectos.
+            btnAgregarProyecto.Disabled = true; //Deshabilita el botón de agregar, hasta que se cancele el proceso o se acepte.
+			
+			//Se habilitan los checkboxes de usuarios disponibles.
             for (int i = 0; i < gridUsuarios.Rows.Count; i++)
             {
                 CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbLider");
                 chkIndividual.Enabled = true;
             }
+        }
+		
+		/*
+		* Metodo que se activa al darle click al Modificar en Proyecto. No se habilita la cédula (por ahora)
+		*/
+		   protected void modificar_Click(object sender, EventArgs e)
+        {
+            this.textNombre.Disabled = false;
+            this.textObjetivo.Disabled = false;
+            this.textFechaA.Disabled = true;
+            this.textFechaF.Disabled = false;
+            this.textFechaI.Disabled = false;
+            this.textRepresentante.Disabled = false;
+            this.textTelRepresentante.Disabled = false;
+            this.textTelSecundario.Disabled = false ;
+            this.TextOficina.Disabled = false;
+            this.textEmailRepresentante.Disabled = false;
+            this.cmbEstado.Enabled =true;
+            this.gridUsuarios.Enabled = true;
+            this.gridUsuariosAsignados.Enabled = true;
+            this.gridProyecto.Enabled = false;
+            btnAgregarProyecto.Disabled = true;
+            botonAceptar.Disabled = false;
+            botonCancelar.Disabled = false;
+            modo = 2; //Pasa a modo modificación
+			
+			//En usuarios disponibles se deshabilita todo.
+            for (int i = 0; i < gridUsuarios.Rows.Count; i++)
+            {
+                CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbLider");
+                chkIndividual.Checked = false;
+                chkIndividual.Enabled = false;
+                chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbMiembros");
+                chkIndividual.Checked = false;
+            }
 
+
+        }
+		
+		/*
+		* Metodo que se activa cuando se le da click a eliminar proyecto, es un Modal de eliminacion.
+		*/
+		protected void clickAceptarEliminarProyecto(object sender, EventArgs e)
+        {
+            String[] result = new String[1];
+            result = controladora.eliminarProyecto(entidadConsultada.Nombre); //Habla con la controladora de proyecto para eliminar un proyecto, según su nombre.
+            this.gridUsuariosAsignados.Visible = false; 
+            this.gridProyecto.Enabled = true;
+            llenarGridUsuarios();
+            limpiarCampos();
+            gridProyecto.DataBind();      
+        }
+
+			/*
+			* Metodo que se activa cuando se cancelan los cambios tanto en agregar como en modificar.
+			*/
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (modo == 1) //En agregar, limpia los campos. 
+            {
+                limpiarCampos();
+                this.gridUsuariosAsignados.Visible = false;
+            }
+
+
+            if (modo == 2) //En modificar, todo vuelve a su estado inicial de consulta.
+            {
+                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
+                textNombre.Value = entidadConsultada.Nombre.ToString();
+                textObjetivo.Value = entidadConsultada.Objetivos.ToString();
+                textFechaA.Value = entidadConsultada.FechaAsig.ToString();
+                textFechaF.Value = entidadConsultada.FechaFin.ToString();
+                textFechaI.Value = entidadConsultada.FechaIni.ToString();
+                cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
+
+                
+                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());
+
+                clienteConsultado = controladora.consultarCliente(idProy);
+                textRepresentante.Value = clienteConsultado.Nombre.ToString();
+                textTelRepresentante.Value = clienteConsultado.Telefono.ToString();
+                textTelSecundario.Value = clienteConsultado.Celular.ToString();
+                TextOficina.Value = clienteConsultado.Oficina.ToString();
+                textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
+                btnModificarProyecto.Disabled = true;
+                gridProyecto.DataBind();
+                this.gridUsuariosAsignados.Visible = true;
+                llenarGridUsuarios();
+                llenarUsuariosAsignados();
+
+            }
+			
+            habilitarCampos(false);
+            modo = 0; //Se devuelve a modo consulta luego de cancelar.
+            botonAceptar.Disabled = true;
+            botonCancelar.Disabled = true;
+            this.gridProyecto.Enabled = true;
+            btnAgregarProyecto.Disabled = false;
+         
 
         }
 
 
-
+		/*
+		* Metodo importante que toma decisiones después de aceptar un Agregar o un Modificar.
+		*/
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             // Parte para captar los miembros y el lider que se decidieron agregar al proyecto
@@ -231,43 +336,37 @@ namespace SAPR
 
                 if (estaSeleccionadoLider)
                 {
-                    cedulaLider = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                    cedulaLider = gridUsuarios.Rows[i].Cells[2].Text.ToString(); //Obtiene cedula del lider marcado.
                 }
 
                 if (estaSeleccionadoMiembro)
                 {
                     String nuevoMiembro =gridUsuarios.Rows[i].Cells[2].Text.ToString() ;
-                    miembros[contador] = nuevoMiembro;
+                    miembros[contador] = nuevoMiembro; //llena vector de usuarios que se asignan a proyecto
                     contador++;
                 }
 
             }
             //###################################################################
 
-            if (modo == 1) // si se quiere insertar
-            {  
-            
+            if (modo == 1) // Si se quiere agregar un proyecto
+            {             
                 try
                 {
                     r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider,
                                                         this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
                     int k = 0;
                     int idP = 0;
-                    while (gridUsuarios.Rows[k].Cells[2].Text != null){
+                    while (gridUsuarios.Rows[k].Cells[2].Text != null){ //Del grid de usuarios, agarra los marcados con Check, para insertarlos en su proyecto asignado.
                         idP = controladora.getIdProyecto(this.textNombre.Value.ToString());
                         controladora.insertarUsuarioProyecto(idP,miembros[k]);
                         k++;
                     }
-                   // llenarGridUsuarios();
                 }
                 catch (Exception jh)
-                {
-                    int x = 9;
-                }
-
-                //FALTA LO DEL EXITO
+                {}
             }
-            else if (modo == 2)// MOOOOOOODIFICAR
+            else if (modo == 2) //Si se quiere modificar un proyecto.
             {
 
                 // --------------------------Se llena con los Usuarios Originales (gridUsuariosAsignados)
@@ -293,21 +392,14 @@ namespace SAPR
 
                 }
                //--------------------------------------------------------------------------- 
-                
-                
-                
                 controladora.eliminarMiembros(idProy);  // Elimina los usuarios del proyecto perfecto
-         
                 int k = 0;
-
                 for (int u = 0; u < gridUsuarios.Rows.Count && miembros[k] != null && miembros[k] != "-"; u++)  // Inserción de los nuevos miembros
                 { 
                         controladora.insertarUsuarioProyecto(idProy, miembros[k]);
                         k++;
                 }   
-
                 k = 0;
-
                 for (int u = 0; u < gridUsuariosAsignados.Rows.Count && miembrosOriginales[k] != null && miembrosOriginales[k] != "-"; u++)
                 {
                     controladora.insertarUsuarioProyecto(idProy, miembrosOriginales[k]); // RE-Inserción de los miembros originales
@@ -315,27 +407,21 @@ namespace SAPR
                 }
                     String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider, entidadConsultada);
                     llenarUsuariosAsignados();
-            }
-
-            
+            }         
                 modo = 0;
                 restaurarPantalla();
                 gridProyecto.DataBind();
                 llenarGridUsuarios();
                 this.gridUsuariosAsignados.Visible = false;
-                this.gridProyecto.Enabled = true;
-            
-           
-           
-            
+                this.gridProyecto.Enabled = true;          
         }
-
-        
-
-
     /*
-     * METODOS INTERFAZ #####################################################################################################
-     * */
+     * METODOS INTERFAZ ##################################################################################################### 
+	 */
+	 
+	 /*
+	 * Limpia campos en vacío.
+	 */
         protected void limpiarCampos()
         {
                
@@ -351,7 +437,11 @@ namespace SAPR
                 this.textEmailRepresentante.Value = "";
                 this.cmbEstado.Text = "Sin Iniciar";
         }
-
+	
+	
+		/*
+		* Habilita campos para agregar o modificar.
+		*/
         protected void habilitarCampos(Boolean habilitar)
         {
             this.textNombre.Disabled = !habilitar;
@@ -368,7 +458,10 @@ namespace SAPR
             this.gridUsuarios.Enabled = habilitar;
             this.gridUsuariosAsignados.Enabled = habilitar;
         }
-
+		
+		/*
+		* Restaura pantalla, es decir pone todo en modo consulta. Limpiando campos también
+		*/
         protected void restaurarPantalla()
         {
             habilitarCampos(false);
@@ -380,7 +473,10 @@ namespace SAPR
             cmbEstado.Enabled = false;
             limpiarCampos();
         }
-
+		
+		/*
+		* Restaura pantalla, es decir pone todo en modo consulta. No limpia campos, para el modo modificar.
+		*/
         protected void restaurarPantallaSinLimpiar()
         {
             habilitarCampos(false);
@@ -390,41 +486,10 @@ namespace SAPR
             botonAceptar.Disabled = true;
             botonCancelar.Disabled = true;
         }
-
-
-
-        protected void modificar_Click(object sender, EventArgs e)
-        {
-            this.textNombre.Disabled = false;
-            this.textObjetivo.Disabled = false;
-            this.textFechaA.Disabled = true;
-            this.textFechaF.Disabled = false;
-            this.textFechaI.Disabled = false;
-            this.textRepresentante.Disabled = false;
-            this.textTelRepresentante.Disabled = false;
-            this.textTelSecundario.Disabled = false ;
-            this.TextOficina.Disabled = false;
-            this.textEmailRepresentante.Disabled = false;
-            this.cmbEstado.Enabled =true;
-            this.gridUsuarios.Enabled = true;
-            this.gridUsuariosAsignados.Enabled = true;
-            this.gridProyecto.Enabled = false;
-            btnAgregarProyecto.Disabled = true;
-            botonAceptar.Disabled = false;
-            botonCancelar.Disabled = false;
-            modo = 2;
-            for (int i = 0; i < gridUsuarios.Rows.Count; i++)
-            {
-                CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbLider");
-                chkIndividual.Checked = false;
-                chkIndividual.Enabled = false;
-                chkIndividual = (CheckBox)gridUsuarios.Rows[i].FindControl("cbMiembros");
-                chkIndividual.Checked = false;
-            }
-
-
-        }
-
+		
+		/*
+		* Metodo que se activa cuando se cambia de lider en el grid de lideres. En donde no deja que se marquen más de 1 lider.
+		*/
         protected void cbLider_CheckedChanged1(object sender, EventArgs e)
         {
             CheckBox chk = (CheckBox)sender;
@@ -439,9 +504,7 @@ namespace SAPR
                     chkIndividual.Checked = true;
                 }
                 catch
-                {
-
-                }
+                {}
 
                 int i;
                 for (i = 0; i <= gridUsuarios.Rows.Count - 1; i++)
@@ -454,7 +517,6 @@ namespace SAPR
                 }
             }
             else {
-
                 try
                 {
                     CheckBox chkIndividual = (CheckBox)gridUsuarios.Rows[rownumber].FindControl("cbMiembros");
@@ -467,70 +529,10 @@ namespace SAPR
             
             }
         }
-
-        protected void clickAceptarEliminarProyecto(object sender, EventArgs e)
-        {
-            String[] result = new String[1];
-            result = controladora.eliminarProyecto(entidadConsultada.Nombre);
-            this.gridUsuariosAsignados.Visible = false;
-            this.gridProyecto.Enabled = true;
-            llenarGridUsuarios();
-          //  mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
-           // if (result[0].Contains("Exito"))// si fue exitoso
-            //{
-
-                limpiarCampos();
-                gridProyecto.DataBind();
-           // }
-        }
-
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            if (modo == 1)
-            {
-                limpiarCampos();
-                this.gridUsuariosAsignados.Visible = false;
-            }
-
-
-            if (modo == 2)
-            {
-                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
-                textNombre.Value = entidadConsultada.Nombre.ToString();
-                textObjetivo.Value = entidadConsultada.Objetivos.ToString();
-                textFechaA.Value = entidadConsultada.FechaAsig.ToString();
-                textFechaF.Value = entidadConsultada.FechaFin.ToString();
-                textFechaI.Value = entidadConsultada.FechaIni.ToString();
-                cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
-
-                
-                idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString());
-
-                clienteConsultado = controladora.consultarCliente(idProy);
-                textRepresentante.Value = clienteConsultado.Nombre.ToString();
-                textTelRepresentante.Value = clienteConsultado.Telefono.ToString();
-                textTelSecundario.Value = clienteConsultado.Celular.ToString();
-                TextOficina.Value = clienteConsultado.Oficina.ToString();
-                textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
-                btnModificarProyecto.Disabled = true;
-                
-                //cmbEstado.SelectedIndex = 2;
-                gridProyecto.DataBind();
-                this.gridUsuariosAsignados.Visible = true;
-                llenarGridUsuarios();
-                llenarUsuariosAsignados();
-
-            }
-            habilitarCampos(false);
-            modo = 0;
-            botonAceptar.Disabled = true;
-            botonCancelar.Disabled = true;
-            this.gridProyecto.Enabled = true;
-            btnAgregarProyecto.Disabled = false;
-         
-
-        }
-
+		
+		/*
+		* Método que revisa el lider en el grid de usuarios asignados para que tampoco se pueda seleccionar más de un lider.
+		*/
         protected void cbLiderAsignado_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -542,7 +544,7 @@ namespace SAPR
             {
                 try
                 {
-                    CheckBox chkIndividual = (CheckBox)gridUsuariosAsignados.Rows[rownumber].FindControl("cbMiembrosAsignados");  // Checkea al lider de una vez
+                    CheckBox chkIndividual = (CheckBox)gridUsuariosAsignados.Rows[rownumber].FindControl("cbMiembrosAsignados");  
                     chkIndividual.Checked = true;
                 }
                 catch
@@ -576,9 +578,5 @@ namespace SAPR
             }
 
         }
-
-
-
-
     }
 }
