@@ -212,7 +212,7 @@
                     <div class="col-sm-6">
 
 
-                                <asp:GridView ID="gridUsuarios" Caption='<table width="100%" class="TestCssStyle"><tr><td class="text_Title">Usuarios Disponibles</td></tr></table>' cssClass="table" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" AllowPaging="True">
+                                <asp:GridView ID="gridUsuarios" Caption='<table width="100%" class="TestCssStyle"><tr><td class="text_Title">Usuarios Disponibles</td></tr></table>' cssClass="table" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black"  AllowPaging="True">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
