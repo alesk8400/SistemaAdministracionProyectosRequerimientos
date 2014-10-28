@@ -15,7 +15,10 @@ namespace SAPR.App_Code.Controladoras
             controladoraBDUsuario = new ControladoraBDUsuario();
             
         }
-
+        /*
+         Método que recibe los datos de un usuario, los mete en un vector, crea un objeto EntidadUsuario con los 
+         datos de ese vector y manda a la controladoraBDUsuario a insertar la entidadUsuario y su rol.
+         */
         public String[] insertarUsuario(String nombre,String cedula,String correo,String telefono, String celular, String rol, String pass ) { 
              Object[] datos = new Object[6];
              datos[0] = nombre;
@@ -28,6 +31,11 @@ namespace SAPR.App_Code.Controladoras
              return controladoraBDUsuario.insertarUsuario(usuario, rol);
         }
 
+        /*
+         Método que recibe los datos modificados de un usuario, y una EntidadUsuario con los datos que tenía anteriormente, 
+         mete los nuevos en un vector, crea un objeto EntidadUsuario con los datos de ese vector (los nuevos) y manda la 
+         controladoraBDUsuario a modificar el usuario con la entidadUsuario Nuevo, entidadUsuario Viejo y su rol.
+         */
         public String[] modificarUsuario(String nombre, String cedula, String correo, String telefono, String celular,String rol, String pass, EntidadUsuario usuarioViejo){
             Object[] datos = new Object[6];
             datos[0] = nombre;
@@ -40,11 +48,18 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDUsuario.modificarUsuario(usuarioNuevo,usuarioViejo,rol);
         }
 
+        /*
+         Método que recibe la cédula de un usuario y manda a la controladoraBDUsuario a eleminar un usuario con su cédula.
+         */
         public String[] eliminarUsuario(String cedula) { //metodo getidusuario
             return controladoraBDUsuario.eliminarUsuario(cedula);
         }
 
-        
+        /*
+         Método que recibe la cédula de un usuario, manda a consultar a la controladoraBDUsuario con la cédula que recibió
+         y lo de deja en un DataTable, luego saca lo del DataTable y lo va metiendo en un objeto vector, para luego 
+         mandarselo a el constructor de una EntidadUsuario y retorna la Entidad.
+         */
         public EntidadUsuario consultarUsuario(String cedula)
         {
             EntidadUsuario usuario = null; //para encpasular los datos consultados.
@@ -67,83 +82,58 @@ namespace SAPR.App_Code.Controladoras
             return usuario;
         }
 
-   /*     public EntidadUsuario[] getListadoUsuario(){
-            EntidadUsuario[] usuarios;
-            Object[] datosConsultados = new Object[3];
-            int cont = 0;
-            DataTable filaUsuario = controladoraBDUsuario.getListadoUsuarios();
-            usuarios = new EntidadUsuario[filaUsuario.Rows.Count];
-            while (cont < filaUsuario.Rows.Count){
-                for (int i = 0; i < 3; i++){
-                    datosConsultados[i] = filaUsuario.Rows[cont][i].ToString();
-                }
-                usuarios[cont] = new EntidadUsuario(datosConsultados);
-            }
-            return usuarios;
-        } */
-
+        /*
+         Método que recibe la cédula de un usuario y manda a la controladoraBDUsuario a consultar el rol del usuario 
+         con esa cédula y lo retorna.
+         */
         public String getRolUsuario(String cedula)
         { //metodo getidusuario
             return controladoraBDUsuario.getRolUsuario(cedula) ;
         }
 
+        /*
+         Método que manda a la controladoraBDUsuario a consultar todos los usuarios que no están asigandos a ningún proyecto, 
+         y los retorna en un DataTable.
+         */
         public DataTable getUsuariosDisponibles()
         {
             return controladoraBDUsuario.getUsuariosDisponibles();
         }
 
-
-        public DataTable getUsuariosProyecto()
-        {
-            return controladoraBDUsuario.getUsuariosProyecto(2);
-        }
-
+        /*
+         Método que recibe la cédula de un usuario y manda a la controladoraBDUsuario a validar los datos de ese Usuario.
+         */
         public int validarUsuario(String cedulaUsuario) {
             return controladoraBDUsuario.validarUsuario(cedulaUsuario);        
         }
 
-
-        //public string ConsultarNomLider(){
-        
-       // }
-
         /*
-        public String[] listadoRoles(){ 
-            // return controladoraBDUsuario.eliminarUsuario(idUsuario);
-        }
-
-        
-
-        public void validarCedula(String cedula) { 
-        
-        }
-
-        
-
-        public String[] getNombreProyectos() { 
-        
-        }
-
-        public String[] getProyectosDeUsuario(String idUsuario){
-
-        }*/
-
+         Método que recibe el nombre de un proyecto, crea un objeto ControladoraProyecto y lo manda a obtener el ID de ese proyecto.
+         */
         public int getProyecto(string proyecto)
         {
             ControladoraProyecto controlProyecto = new ControladoraProyecto();
             return controlProyecto.getIdProyecto(proyecto);
         }
 
-        public void insertarUsuarioProyecto(int IdProy, string p)
+        /*
+         Método que recibe el ID de un proyecto y la cédula de un usuario, crea un objeto ControladoraProyecto y lo manda a insertar 
+         ese usuario a ese proyecto.
+         */
+        public void insertarUsuarioProyecto(int IdProy, string ced)
         {
             ControladoraProyecto controlProyecto = new ControladoraProyecto();
-            controlProyecto.insertarUsuarioProyecto(IdProy, p);
+            controlProyecto.insertarUsuarioProyecto(IdProy, ced);
         }
 
-        public void eliminarUsuarioProyecto(int IdProy, string p)
+        /*
+         Método que recibe el ID de un proyecto y la cédula de un usuario, crea un objeto ControladoraProyecto y lo manda a eliminar 
+         ese usuario de ese proyecto.
+         */
+        public void eliminarUsuarioProyecto(int IdProy, string ced)
         {
             ControladoraProyecto controlProyecto = new ControladoraProyecto();
-            controlProyecto.eliminarUsuarioProyecto(IdProy, p);
+            controlProyecto.eliminarUsuarioProyecto(IdProy, ced);
         }
     }
 }

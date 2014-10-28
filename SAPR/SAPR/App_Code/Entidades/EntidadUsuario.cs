@@ -13,6 +13,11 @@ namespace SAPR.App_Code.Entidades
         private String celular;
         private String pass;
 
+        /* 
+         * Constructor de una Entidad Usuario con la
+         * información especificada en el vector de datos 
+         * que entra como parámetro.
+         */
         public EntidadUsuario(Object[] datos) {
             this.nombre = datos[0].ToString();
             this.cedula = datos[1].ToString();
@@ -22,6 +27,9 @@ namespace SAPR.App_Code.Entidades
             this.pass = datos[5].ToString(); 
         }
 
+        /*
+         * Getters y Setters para cada atributo de la Entidad        
+         */
         public String Cedula{
             get { return cedula; }
             set { cedula = value; }

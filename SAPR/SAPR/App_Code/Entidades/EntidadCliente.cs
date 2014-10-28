@@ -11,19 +11,27 @@ namespace SAPR.App_Code.Entidades
         private String celular;
         private String oficina;
         private String correo;
-       // private int fk_proyecto;
 
+
+        /* 
+         * Constructor de una Entidad Cliente con la
+         * información especificada en el vector de datos 
+         * que entra como parámetro.
+         */
         public EntidadCliente(Object[] datos) {
             this.nombre = datos[0].ToString();
             this.telefono = datos[1].ToString();
             this.celular = datos[2].ToString();
             this.oficina = datos[3].ToString();
             this.correo = datos[4].ToString();
-            //this.fk_proyecto = Int32.Parse(datos[5].ToString());
 
         }
 
 
+
+        /*
+         * Getters y Setters para cada atributo de la Entidad        
+         */
         public String Nombre
         {
             get { return nombre; }

@@ -9,18 +9,26 @@ using SAPR.App_Code.Entidades;
 
 namespace SAPR.App_Code.Controladoras {
     public class ControladoraBDUsuario {
-        UsuariosTableAdapter ds;   //Este es el adapter
+        UsuariosTableAdapter adaptUsuario;   //Este es el adapter
         //falta constructor
-
+        /*
+         Constructor de la clase ControladoraBDUsuario que incializa el adapter
+         */
         public ControladoraBDUsuario() {
-            ds = new UsuariosTableAdapter();
+            adaptUsuario = new UsuariosTableAdapter();
         }
+
+        /*
+         Método que recibe un objeto de tipo EntidadUsuario y su rol, tiene una variable con el resultado de la operación, 
+         manda al adapter de Usuarios a insertar un usurio con los atributos de la EntidadUsuario recibida y también lo manda
+         a insertar el rol mandadole la cédula y el rol recibido, luego de esto pone en resultado Éxito, en caso de error, 
+         hace la excepción y pone en resultado Error y retorna resultado.
+         */
         public String[] insertarUsuario(EntidadUsuario usuarioNuevo, String rol) {
             String[] resultado = new String[1];
             try {
-                this.ds.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular, usuarioNuevo.Pass);
-               // String idU = this.ds.getId(usuarioNuevo.Cedula).ToString();
-                this.ds.InsertRolesUser(usuarioNuevo.Cedula, rol);
+                this.adaptUsuario.InsertUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular, usuarioNuevo.Pass);
+                this.adaptUsuario.InsertRolesUser(usuarioNuevo.Cedula, rol);
                 
                 resultado[0] = "Exito";
             }
@@ -36,12 +44,19 @@ namespace SAPR.App_Code.Controladoras {
              return resultado;
         }
 
+        /*
+         Método que recibe un objeto de tipo EntidadUsuario con datos nuevos, otro con datos viejos y su rol nuevo, tiene 
+         una variable con el resultado de la operación, manda al adapter de Usuarios a modificar un usurio con los atributos 
+         nuevos de la EntidadUsuario recibida y también los viejos, el adapter también modifica el rol mandadole la cédula 
+         y el rol recibido, luego de esto pone en resultado Éxito, en caso de error, hace la excepción y pone en resultado 
+         Error y retorna resultado.
+         */
         public String[] modificarUsuario(EntidadUsuario usuarioNuevo, EntidadUsuario usuarioViejo, String rol){
             String[] resultado = new String[1];
             try
             {
-                this.ds.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular, usuarioNuevo.Pass ,usuarioViejo.Cedula, usuarioViejo.Nombre, usuarioViejo.Correo, usuarioViejo.Telefono, usuarioViejo.Celular, usuarioViejo.Pass);
-                this.ds.updateRol(rol, usuarioNuevo.Cedula);
+                this.adaptUsuario.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefono, usuarioNuevo.Celular, usuarioNuevo.Pass, usuarioViejo.Cedula, usuarioViejo.Nombre, usuarioViejo.Correo, usuarioViejo.Telefono, usuarioViejo.Celular, usuarioViejo.Pass);
+                this.adaptUsuario.updateRol(rol, usuarioNuevo.Cedula);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -59,11 +74,14 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
+        /*
+         Método que recibe la cédula de un Usuario y manda al adapter de Usuario a eleminarlo, enviandole ese cédula. 
+         */
         public String[] eliminarUsuario(String cedula){ //metodo getidusuario
             String[] resultado = new String[1];
             try
             {
-                this.ds.DeleteUser(cedula);
+                this.adaptUsuario.DeleteUser(cedula);
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -81,42 +99,44 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
-
+        /*
+         Método que recibe la cédula de un Usuario y manda al adapter a consultar un Usuario, deja los datos en un 
+         DataTable y lo retorna. 
+         */
         public DataTable consultarUsuario(String cedula){
             DataTable resultado = new DataTable();
 
             try{
-                resultado = ds.getUsuario(cedula);
+                resultado = adaptUsuario.getUsuario(cedula);
             }
             catch (Exception e) { }
             return resultado;
         }
-        public DataTable getListadoUsuarios(){
-            DataTable filasUsuario = new DataTable();
-            try
-            {
-       //         filasUsuario = ds.getFilasUsuario();
-            }
-            catch (Exception e) { }
-            return filasUsuario;
-        }
 
+        /*
+         Método que recibe la cédula de un Usuario y manda al adapter a consultar el rol de un Usuario, deja ese rol 
+         en un String y lo retorna. 
+         */
         public String getRolUsuario(String cedula)
         { //metodo getidusuario
             String rol;
 
-            rol = ds.GetRolUsuario(cedula).ToString();
+            rol = adaptUsuario.GetRolUsuario(cedula).ToString();
 
             return rol;
         }
 
+        /*
+         Método que manda al adapter de Usuario a consultar los Usuarios disponibles, deja los datos en un DataTable 
+         y lo retorna. 
+         */
         public DataTable getUsuariosDisponibles()
         {
             DataTable resultado = new DataTable();
 
             try
             {
-                resultado = ds.getUsuariosDisponibles1();
+                resultado = adaptUsuario.getUsuariosDisponibles1();
             }
             catch (Exception e)
             {
@@ -127,25 +147,13 @@ namespace SAPR.App_Code.Controladoras {
 
         }
 
-
-        public DataTable getUsuariosProyecto(int idProyecto)
-        {
-            DataTable resultado = new DataTable();
-
-            try
-            {
-                resultado = ds.getUsPro(4);
-            }
-            catch (Exception e) { }
-            return resultado;
-        }
-
-
-
-
+        /*
+         Método que recibe la cédula de un Usuario, manda al adapter de Usuario a validar ese Usuario, deja la validación en un int resutado y lo retorna. 
+         y lo retorna. 
+         */
         public int validarUsuario(string cedulaUsuario)
         {
-            int resultado = (int)this.ds.validarUsuario(cedulaUsuario);
+            int resultado = (int)this.adaptUsuario.validarUsuario(cedulaUsuario);
             return resultado;
         }
     }     

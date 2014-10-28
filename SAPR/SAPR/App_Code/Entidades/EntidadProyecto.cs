@@ -14,6 +14,12 @@ namespace SAPR.App_Code.Entidades
         private String fechaFin;
         private String fechaAsig;
 
+
+        /* 
+         * Constructor de una Entidad Proyecto con la
+         * información especificada en el vector de datos 
+         * que entra como parámetro.
+         */
         public EntidadProyecto(Object[] datos) {
 
             this.nombre = datos[0].ToString();
@@ -25,6 +31,10 @@ namespace SAPR.App_Code.Entidades
             this.lider = datos[6].ToString();
         }
 
+
+        /*
+         * Getters y Setters para cada atributo de la Entidad        
+         */
         public String Nombre{
             get { return nombre; }
             set { nombre = value; }
