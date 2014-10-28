@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using SAPR.App_Code.Controladoras;
 using SAPR.App_Code.Entidades;
 using System.Data;
+using System.Text;
 
 namespace SAPR
 {
@@ -143,24 +144,35 @@ namespace SAPR
 
         protected void cbLider_CheckedChanged(object sender, EventArgs e)
         {
-                 CheckBox chk = (CheckBox)sender;
-            GridViewRow gv = (GridViewRow)chk.NamingContainer;
-            int rownumber = gv.RowIndex;
+            //CheckBox chk = (CheckBox)sender;
+            //GridViewRow gv = (GridViewRow)chk.NamingContainer;
+            //int rownumber = gv.RowIndex;
+            //String names;
+            //int x = 0;
+            ////int names;
+            //if (chk.Checked)
+            //{
+            //    int i;
+            //    for (i = 0; i <= gridUsuarios.Rows.Count - 1; i++)
+            //    {
+            //        if (i != rownumber)
+            //        {
+            //            CheckBox chkcheckbox = ((CheckBox)(gridUsuarios.Rows[i].FindControl("cbLider")));
+            //            chkcheckbox.Checked = false;
+            //            names = gridUsuarios.Rows[0].Cells.
+            //                //gridUsuarios.Rows.
+            //                // names = gridUsuarios.DataKeys[gv.RowIndex].Value.ToString();
+            //             x++;
+            //            /*  if(chkcheckbox.Checked){
+                           
+            //                  x++;
+            //              }*/
+            //        }
+            //    }
+            //}
 
-            if (chk.Checked)
-            {
-                int i;
-                for (i = 0; i <= gridUsuarios.Rows.Count - 1; i++)
-                {
-                    if (i != rownumber)
-                    {
-                        CheckBox chkcheckbox = ((CheckBox)(gridUsuarios.Rows[i].FindControl("cbLider")));
-                        chkcheckbox.Checked = false;
-                    }
-                }
-            }
-        }
-        
+
+        } 
 
         protected void btnAgregarProyecto_Click(object sender, EventArgs e)
         {
@@ -168,8 +180,34 @@ namespace SAPR
             {
                 int x = 9;
                 String[] r = new String[1];
-                r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), "4 234 123",
-                                                    this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
+                //r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), "4 234 123",
+                   //                                this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
+
+
+
+                String[] miembros = new String[gridUsuarios.Rows.Count];
+                String cedulaLider;
+
+                // Select the checkboxes from the GridView control
+                for (int i = 0; i < gridUsuarios.Rows.Count; i++)
+                {
+                    GridViewRow row = gridUsuarios.Rows[i];
+                    bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLider")).Checked;
+                    bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembros")).Checked;
+
+                    if (estaSeleccionadoLider)
+                    {
+                        cedulaLider = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                    }
+
+                    if (estaSeleccionadoMiembro)
+                    {
+                        miembros[i] = gridUsuarios.Rows[i].Cells[2].Text.ToString();
+                    }
+
+                }
+
+
                 gridProyecto.DataBind();
             }
             catch (Exception jh) {
