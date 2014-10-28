@@ -11,11 +11,13 @@ namespace SAPR.App_Code.Controladoras {
     public class ControladoraBDProyecto {
         adap ps;
         adapCliente cs;
+        AdapterUsuarioProyecto us;
 
        
         public ControladoraBDProyecto() {
             ps = new adap();
             cs = new adapCliente();
+            us = new AdapterUsuarioProyecto();
         }
 
         public String[] insertarProyecto(EntidadProyecto proyectoNuevo, EntidadCliente cliente)
@@ -49,12 +51,12 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
-        public String[] modificarProyecto(EntidadProyecto proyectoNuevo, EntidadProyecto proyectoViejo)
+        public String[] modificarProyecto(EntidadProyecto proyectoNuevo, String nombreviejo)
         {
             String[] resultado = new String[1];
             try
             {
-               // this.ps.UpdateUser(usuarioNuevo.Cedula, usuarioNuevo.Nombre, usuarioNuevo.Correo, usuarioNuevo.Telefonos, usuarioViejo.Cedula);
+                this.ps.actualizarProyecto(proyectoNuevo.Nombre, proyectoNuevo.Objetivos, proyectoNuevo.Estado, proyectoNuevo.FechaIni, proyectoNuevo.FechaFin, proyectoNuevo.FechaAsig, proyectoNuevo.Lider, nombreviejo );
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -108,7 +110,46 @@ namespace SAPR.App_Code.Controladoras {
             return resultado;
         }
 
+        public int getIdProy( String nombre) {
+            int idProy;
+            idProy=  Int32.Parse(this.ps.getIdProyecto(nombre).ToString());
+            return idProy;
+        }
+
+        public DataTable consultarCliente(int idProy)
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = cs.consultarCliente(idProy);
+            }
+            catch (Exception e) { }
+            return resultado;
+        }
 
 
+
+
+        public void InsertarUsuarioProyecto(int idP, string cedula){
+
+            this.us.InsertarUsuarioProyecto(idP,cedula);
+        }
+
+        public DataTable getUsuariosAsignados(int idProy)
+        {
+            DataTable resp = us.getUsuariosProyecto(idProy);
+            return resp;
+        }
+
+        public void eliminarMiembros(int idProy)
+        {
+            us.deleteUsuarioProyecto(idProy);
+        }
+
+        public void eliminarUsuarioProyecto(int idProy, String cedula)
+        {
+            us.eliminarUsuarioProyecto(cedula, idProy);
+        }
     }
 }
