@@ -193,6 +193,7 @@ namespace SAPR
 		*/
         protected void btnModificarUsuario_Click(object sender, EventArgs e){
             this.txtNombreUsuario.Disabled = false;
+            this.txtCedula.Disabled = false;
             this.textEmail.Disabled = false;
             this.textTelefono.Disabled = false;
             this.textCelular.Disabled = false;
