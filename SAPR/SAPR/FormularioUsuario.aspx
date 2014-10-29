@@ -27,6 +27,8 @@
 
     </div>
 
+    <br />
+
     <div class="col-lg-7">
             <div id="alertAlerta" class="alert alert-danger fade in" runat="server" hidden="hidden">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -255,7 +257,7 @@
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
-        <asp:SqlDataSource ID="consultaGrideUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT U.Cedula, U.Nombre, R.NombreRol AS Rol FROM Usuarios AS U INNER JOIN RolesUsuario AS R ON U.Cedula = R.Cedula"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="consultaGrideUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT U.Cedula, U.Nombre, R.NombreRol AS Rol FROM Usuarios AS U INNER JOIN RolesUsuario AS R ON U.Cedula = R.Cedula ORDER BY U.idUsuario DESC"></asp:SqlDataSource>
    </div>   
     
 

@@ -25,7 +25,10 @@ namespace SAPR
 		* Carga de página que deshabilita botones.
 		*/
         protected void Page_Load(object sender, EventArgs e){
-            restaurarPantallaSinLimpiar();
+            if (modo != 1 && modo != 2)
+            {
+                restaurarPantallaSinLimpiar();
+            }
         }
 
 		/*
@@ -78,6 +81,8 @@ namespace SAPR
 
                     if (resultado[0] == "Exito")
                     { // si inserto el proveedor : va a modo consultar con ese proveedor
+                        mostrarMensaje("success", "Exito!!!", "El usuario se ha ingresado correctamente");
+                       
                         String proyecto = cmbProyecto.SelectedValue.ToString();
                         if (!proyecto.Equals("Ninguno"))
                         {
@@ -85,7 +90,12 @@ namespace SAPR
                             controladora.insertarUsuarioProyecto(IdProy, this.txtCedula.Value.ToString());
                         }
                         gridUsuarios.DataBind();
-                        restaurarPantalla();
+                        gridUsuarios.SelectRow(0);
+                        restaurarPantallaSinLimpiar();
+                    }
+                    else {
+                        mostrarMensaje("danger","Error","La cédula ingresada ya existe");
+                        this.txtCedula.Value = "";
                     } // si no lo inserto no debe cambiar de modo ni limpiar la pantalla.
                 }
                 else if (modo == 2)//si se quiere modificar

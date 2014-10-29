@@ -333,6 +333,8 @@ namespace SAPR.App_Code.DataSets {
             
             private global::System.Data.DataColumn columnContrasenia;
             
+            private global::System.Data.DataColumn columnidUsuario;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public UsuariosDataTable() {
@@ -416,6 +418,14 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idUsuarioColumn {
+                get {
+                    return this.columnidUsuario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,7 +469,8 @@ namespace SAPR.App_Code.DataSets {
                         Correo,
                         Teléfono,
                         Celular,
-                        Contrasenia};
+                        Contrasenia,
+                        null};
                 rowUsuariosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUsuariosRow);
                 return rowUsuariosRow;
@@ -495,6 +506,7 @@ namespace SAPR.App_Code.DataSets {
                 this.columnTeléfono = base.Columns["Teléfono"];
                 this.columnCelular = base.Columns["Celular"];
                 this.columnContrasenia = base.Columns["Contrasenia"];
+                this.columnidUsuario = base.Columns["idUsuario"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -512,6 +524,8 @@ namespace SAPR.App_Code.DataSets {
                 base.Columns.Add(this.columnCelular);
                 this.columnContrasenia = new global::System.Data.DataColumn("Contrasenia", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnContrasenia);
+                this.columnidUsuario = new global::System.Data.DataColumn("idUsuario", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidUsuario);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCedula}, true));
                 this.columnCedula.AllowDBNull = false;
@@ -526,6 +540,11 @@ namespace SAPR.App_Code.DataSets {
                 this.columnCelular.AllowDBNull = false;
                 this.columnCelular.MaxLength = 30;
                 this.columnContrasenia.MaxLength = 100;
+                this.columnidUsuario.AutoIncrement = true;
+                this.columnidUsuario.AutoIncrementSeed = -1;
+                this.columnidUsuario.AutoIncrementStep = -1;
+                this.columnidUsuario.AllowDBNull = false;
+                this.columnidUsuario.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1016,6 +1035,17 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idUsuario {
+                get {
+                    return ((int)(this[this.tableUsuarios.idUsuarioColumn]));
+                }
+                set {
+                    this[this.tableUsuarios.idUsuarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsContraseniaNull() {
                 return this.IsNull(this.tableUsuarios.ContraseniaColumn);
             }
@@ -1285,6 +1315,7 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             tableMapping.ColumnMappings.Add("Teléfono", "Teléfono");
             tableMapping.ColumnMappings.Add("Celular", "Celular");
             tableMapping.ColumnMappings.Add("Contrasenia", "Contrasenia");
+            tableMapping.ColumnMappings.Add("idUsuario", "idUsuario");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1301,8 +1332,8 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[10];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Cedula, Nombre, Correo, Teléfono, Celular, Contrasenia FROM Usuarios WHERE" +
-                " (Cedula = @id)";
+            this._commandCollection[0].CommandText = "SELECT Cedula, Nombre, Correo, Teléfono, Celular, Contrasenia,idUsuario FROM Usua" +
+                "rios WHERE (Cedula = @id)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Cedula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -1312,24 +1343,20 @@ namespace SAPR.App_Code.DataSets.DataSetUsuariosTableAdapters {
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cedula", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Cedula", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        NombreRol\r\nFROM            RolesUsuario\r\nWHERE        (Cedula = @ce" +
-                "dula)";
+            this._commandCollection[2].CommandText = "SELECT NombreRol FROM RolesUsuario WHERE (Cedula = @cedula)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cedula", global::System.Data.SqlDbType.VarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Cedula", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        v.Cedula, v.Nombre, v.Correo, v.Teléfono, v.Celular, v.Contrasenia\r" +
-                "\nFROM            Usuarios AS v INNER JOIN\r\n                         UsuarioProye" +
-                "cto AS P ON v.Cedula <> P.Cedula";
+            this._commandCollection[3].CommandText = "SELECT v.Cedula, v.Celular, v.Contrasenia, v.Correo, v.Nombre, v.Teléfono, v.idUs" +
+                "uario FROM Usuarios AS v INNER JOIN UsuarioProyecto AS P ON v.Cedula <> P.Cedula" +
+                "";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"SELECT Cedula, Nombre, Correo, Teléfono, Celular, Contrasenia 
-FROM Usuarios 
-WHERE Cedula NOT IN ( Select U.Cedula
-                                            FROM Usuarios U, UsuarioProyecto P
-                                            WHERE U.Cedula = P.Cedula                                 
-                                           )";
+            this._commandCollection[4].CommandText = "SELECT Cedula, Celular, Contrasenia, Correo, Nombre, Teléfono, idUsuario FROM Usu" +
+                "arios WHERE (Cedula NOT IN (SELECT U.Cedula FROM Usuarios AS U INNER JOIN Usuari" +
+                "oProyecto AS P ON U.Cedula = P.Cedula))";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
