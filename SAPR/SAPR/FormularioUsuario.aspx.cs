@@ -189,10 +189,11 @@ namespace SAPR
         protected void clickAceptarEliminar(object sender, EventArgs e) {
             String[] result = new String[1];
             result = controladora.eliminarUsuario(entidadConsultada.Cedula); //Obtiene la cedula para elimianr al usuario.
-            mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
+            
             //Si encontró la cédula, result[0] guarda EXITO.
 			if (result[0].Contains("Exito"))// si fue exitoso
             {
+                mostrarMensaje("success", "Exito:", "Se eliminó el usuario correctamente"); // se muestra el resultado
                 limpiarCampos();
                 gridUsuarios.DataBind();
             }
