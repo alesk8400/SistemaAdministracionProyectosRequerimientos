@@ -131,7 +131,7 @@
      <!--Datos de seguridad-->
   
     <div class="col-lg-8 text-center">
-      <div style="width:800px; margin-right: 750px; margin-left: 375px; position:relative; float: left">
+      <div style="width:100%; margin-right: 550px; margin-left: 275px; position:relative; float: left">
             <div class="well bs-component">
                 <fieldset>
                     <legend>Información de Seguridad</legend>
@@ -178,9 +178,12 @@
                 </div>
 
                         </div>
-                    
-             
-                  <div class ="col-md-1">
+                   
+                    </fieldset>
+                &nbsp
+                <fieldset>
+
+                    <div class ="col-md-1">
                         <label for="textRoles">Roles: </label>
                         <div class="dropdown-toggle">
                             <div class="help-block with-error">
@@ -200,9 +203,7 @@
                             </div>
                         </div>
                    </div>
-
-                    
-                    </fieldset>
+                </fieldset>
                     </div>
         </div>
         </div>
