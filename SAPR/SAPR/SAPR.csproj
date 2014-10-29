@@ -126,6 +126,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Controladoras\ControladoraEstructura.cs" />
+    <Compile Include="App_Code\Controladoras\ControladoraBDEstructura.cs" />
+    <Compile Include="App_Code\DataSets\DataSetsEstructuras.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetsEstructuras.xsd</DependentUpon>
+    </Compile>
+    <Content Include="App_Code\Entidades\EntidadRequerimientos.cs" />
+    <Compile Include="App_Code\Entidades\EntidadSprint.cs" />
+    <Compile Include="App_Code\Entidades\EntidadModulo.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -240,6 +250,17 @@
     </None>
     <Content Include="App_Code\DataSets\DataSetProyectos.xss">
       <DependentUpon>DataSetProyectos.xsd</DependentUpon>
+    </Content>
+    <Content Include="App_Code\DataSets\DataSetsEstructuras.xsc">
+      <DependentUpon>DataSetsEstructuras.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Code\DataSets\DataSetsEstructuras.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetsEstructuras.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Code\DataSets\DataSetsEstructuras.xss">
+      <DependentUpon>DataSetsEstructuras.xsd</DependentUpon>
     </Content>
     <None Include="App_Code\DataSets\DataSetUsuarios.xsd">
       <SubType>Designer</SubType>
