@@ -31,91 +31,85 @@
     </div>
 
         <!--Datos del Proyecto-->
-        <div class="col-lg-12">
+        <div class="col-lg-12 text-center">
             <div class="well bs-component">
                 <fieldset>
                     <legend>Información de Proyecto</legend>
+                    <div class="row">
 
-                    <div class="form-group">
-                        <label for="textNombre" class="col-sm-1 control-label">Nombre: </label>
-                        <div class="col-sm-4">
-                            <div class=" input-group margin-bottom-sm"> 
-                                <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" title="Nombre" required="required" />
-                                <asp:RegularExpressionValidator runat=server 
-            ControlToValidate="textNombre" 
-            ErrorMessage="Nombre Proyecto Inválido. Debe tener entre 5 y 44 caracteres" 
-            ValidationExpression="^[a-zA-Z0-9\s]{5,44}$" />
-                                <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="red" controltovalidate="textNombre" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
-                            </div>
-                            <div class="help-block with-errors"></div>
-                        </div></div>
-                    </fieldset>
-                    <fieldset>
-                    <div class="form-group">
-                        <label for="textObjetivo" class="col-sm-1 control-label">Objetivo: </label>
-                        <div class="col-sm-7">
-                            <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="textObjetivo" class="form-control" type="text" placeholder="Objetivo de Proyecto"  title="Objetivos" required="required" />
-                                <asp:RegularExpressionValidator runat=server 
-                                 ControlToValidate="textObjetivo" 
-                                 ErrorMessage="Objetivos Inválidos. Debe tener entre 5 y 300 caracteres" 
-                                 ValidationExpression="^[a-zA-Z0-9\s]{5,300}$" />
-                                <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="red" controltovalidate="textObjetivo" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
-                            </div>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                   </fieldset>
+                            <div class="col-md-4">
+                                <label for="textNombre" >Nombre: </label>
 
-                        <fieldset>
-                   <div class="col-sm-7">
-                    <div class="form-group">
-                        <label for="fechaAsignacion" class="col-sm-4 control-label">Fecha de asignación:</label>
-                            <div class="col-sm-5">
-                                <input runat="server" id="textFechaA" type="text" class="datepicker" placeholder="Clic Aquí" required="required"/>
+                                    <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" title="Nombre" required="required" />
+                                    <asp:RegularExpressionValidator runat="server" 
+                                        ControlToValidate="textNombre" 
+                                        ErrorMessage="Nombre Proyecto Inválido. Debe tener entre 5 y 44 caracteres" 
+                                        ValidationExpression="^[a-zA-Z0-9\s]{5,44}$" />
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="red" controltovalidate="textNombre" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+
                                 <div class="help-block with-errors"></div>
                             </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="DateFinish" class="col-sm-4 control-label">Fecha de finalización:</label>
-                        <div class="col-sm-5">
-                            <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
-                           <%-- <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
-                                     ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   Display="Dynamic" SetFocusOnError="true" CultureInvariantValues="true"
-                                     ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>--%>
-                            <div class="help-block with-errors"></div>
+                            <div class="col-md-4">
+                                <label for="textObjetivo">Objetivo: </label>
+
+                                    <input runat="server" id="textObjetivo" class="form-control" type="text" placeholder="Objetivo de Proyecto"  title="Objetivos" required="required" />
+                                    <asp:RegularExpressionValidator runat="server" 
+                                     ControlToValidate="textObjetivo" 
+                                     ErrorMessage="Objetivos Inválidos. Debe tener entre 5 y 300 caracteres" 
+                                     ValidationExpression="^[a-zA-Z0-9\s]{5,300}$" />
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="red" controltovalidate="textObjetivo" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                        <div class="col-md-4">
+                            <label for="text" >Estado: </label>
+                            <div class="dropdown-toggle"> 
+                                    <asp:DropDownList ID="cmbEstado" runat="server">
+                                        <asp:ListItem>Sin Iniciar</asp:ListItem>
+                                        <asp:ListItem>En proceso</asp:ListItem>
+                                        <asp:ListItem>Finalizado</asp:ListItem>
+                                    </asp:DropDownList>
+                                <div class="help-block with-errors"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                 <div class="col-md-5">
-                    <div class="form-group">
-                        <label for="dateStart" class="col-sm-5 control-label">Fecha de inicio: </label>
-                        <div class="col-sm-4">
+                   </fieldset>
+                &nbsp;
+                    <fieldset>
+
+                    <div class="row">
+
+                        
+                        <div class="col-md-4">
+                            <label for="textFechaA">Fecha de Asignación:</label>
+                            <input runat="server" id="textFechaA" type="text" class="datepicker" placeholder="Clic Aquí" required="required"/>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                         <div class="col-md-4">
+                            <label for="textFechaI">Fecha de Inicio: </label>
+                        
                             <input runat="server" id="textFechaI" type="text" class="datepicker" placeholder="Clic Aquí"/>
                             <asp:CompareValidator ID="CompareValidator1" ControlToCompare="textFechaA" 
-                                     ControlToValidate="textFechaI" Type="Date" Operator="GreaterThanEqual"   
-                                     ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
+                                        ControlToValidate="textFechaI" Type="Date" Operator="GreaterThanEqual"   
+                                        ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
                             &nbsp;<div class="help-block with-errors"></div>
-                        </div>
+                         </div>
+
+                        <div class="col-md-4">
+                            <label for="textFechaF">Fecha de Finalización:</label>
+                                <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
+                                <%-- <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
+                                            ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   Display="Dynamic" SetFocusOnError="true" CultureInvariantValues="true"
+                                            ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>--%>
+                                <div class="help-block with-errors"></div>
+                        </div>              
+
                     </div>
-                       
- 
-                    <div class="form-group">
-                        <label for="text" class="col-sm-5 control-label">Estado: </label>
-                        <div class="col-sm-4">
-                        <div class="dropdown-toggle"> 
-                                <asp:DropDownList ID="cmbEstado" runat="server">
-                                    <asp:ListItem>Sin Iniciar</asp:ListItem>
-                                    <asp:ListItem>En proceso</asp:ListItem>
-                                    <asp:ListItem>Finalizado</asp:ListItem>
-                                </asp:DropDownList>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        </div>
-                    </div>
-                 </div>
+
                     </fieldset>
             </div>
             </div>
