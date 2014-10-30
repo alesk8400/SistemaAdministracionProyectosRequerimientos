@@ -101,10 +101,10 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
-        public int getIdSprint(String nombreSprint)
+        public int getIdSprint(String nombreSprint, int idProyecto)
         {
             int idSprint;
-            idSprint = Int32.Parse(this.adaptS.getIdSprint(nombreSprint).ToString());
+            idSprint = Int32.Parse(this.adaptS.getIdSprint(nombreSprint, idProyecto).ToString());
             return idSprint;
         }
 
@@ -128,6 +128,64 @@ namespace SAPR.App_Code.Controladoras
                     resultado[0] = "Error";
                 }
             }
+            return resultado;
+        }
+
+        public String[] modificarModulo(EntidadModulo moduloNuevo, int idSprint, String nombreViejo)
+        {
+            String[] resultado = new String[1];
+            try
+            {   //se llama al dataSet de Estructura para modificar el sprint
+
+                this.adaptM.modificarModulo(moduloNuevo.Nombre, moduloNuevo.Descripcion, nombreViejo, idSprint);
+                resultado[0] = "Exito";
+            }
+            catch (SqlException e)
+            {
+                int n = e.Number;
+                if (n == 2627)
+                {
+                    resultado[0] = "Error";
+                }
+                else
+                {
+                    resultado[0] = "Error";
+                }
+            }
+            return resultado;
+        }
+        public String[] eliminarModulo(String nombreModulo, int idSprint)
+        {
+            String[] resultado = new String[1];
+
+            try
+            {
+                this.adaptM.eliminarModulo(nombreModulo, idSprint); 
+                resultado[0] = "Exito";
+            }
+            catch (SqlException e)
+            {
+                int n = e.Number;
+                if (n == 2627)
+                {
+                    resultado[0] = "Error";
+                }
+                else
+                {
+                    resultado[0] = "Error";
+                }
+            }
+            return resultado;
+        }
+        public DataTable consultarModulo(String nombreModulo, int idSprint)
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = adaptM.consultarModulo(nombreModulo, idSprint); //se llama al dataSet de Estructura para consultar el Sprint
+            }
+            catch (Exception e) { }
             return resultado;
         }
     }

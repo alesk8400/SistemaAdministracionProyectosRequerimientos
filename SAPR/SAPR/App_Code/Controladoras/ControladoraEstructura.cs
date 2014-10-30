@@ -37,11 +37,13 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDEstructura.modificarSprint(sprintNuevo, idProyecto, sprintViejo.Nombre);
         }
 
-        public String[] eliminarSprint(String nombreSprint) {
+        public String[] eliminarSprint(String nombreSprint)
+        { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! VER (debería recibir también el nombre del proyecto)
             return controladoraBDEstructura.eliminarSprint(nombreSprint);
         }
 
-        public EntidadSprint consultarSprint(String nombreSprint) {
+        public EntidadSprint consultarSprint(String nombreSprint)
+        {   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! VER (debería recibir también el nombre del proyecto)
             EntidadSprint sprint = null; //para encapsular los datos consultados.
             Object[] datosConsultados = new Object[2]; //para guardar los datos obtenidos de la consulta temporalmente
             DataTable filaSprint = controladoraBDEstructura.consultarSprint(nombreSprint);
@@ -57,19 +59,57 @@ namespace SAPR.App_Code.Controladoras
             return sprint;
         }
 
-        public String[] insertarModulo(String nombre, String descripcion, String nombreSprint)
+        public String[] insertarModulo(String nombre, String descripcion, String nombreSprint, String nombreProyecto)
         {
             Object[] datos = new Object[2];  //Se crea un objeto con los datos del sprint
             int idSprint = 0;
             datos[0] = nombre;
             datos[1] = descripcion;
             EntidadModulo modulo = new EntidadModulo(datos);  //Se encapsulan los datos del sprint
-            idSprint = this.getIdSprint(nombreSprint);
+            idSprint = this.getIdSprint(nombreSprint, nombreProyecto);
             return controladoraBDEstructura.insertarModulo(modulo, idSprint);
         }
 
-        public int getIdSprint(String nombreSprint) {
-            return controladoraBDEstructura.getIdSprint(nombreSprint);
+        public int getIdSprint(String nombreSprint, String nombreProyecto) { //Requiere el proyecto para que en la consulta solo busque los sprints de ese proyecto. (No debe haber nombres de sprints iguales en un mismo proyecto)
+            int idProyecto = 0;
+            idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
+            return controladoraBDEstructura.getIdSprint(nombreSprint, idProyecto);
+        }
+        public string[] modificarModulo(String nombre, String descripcion, String nombreSprint, String nombreProyecto, EntidadModulo moduloViejo) //En un sprint no deben existir módulos con el mismo nombre
+        {
+            Object[] datos = new Object[2];
+            int idSprint = 0;
+            datos[0] = nombre;
+            datos[1] = descripcion;
+            EntidadModulo moduloNuevo = new EntidadModulo(datos);  //se encapsulan los datos del modulo a modificar
+            idSprint = this.getIdSprint(nombreSprint, nombreProyecto);
+            return controladoraBDEstructura.modificarModulo(moduloNuevo, idSprint, moduloViejo.Nombre);
+        }
+
+        public String[] eliminarModulo(String nombreModulo, String nombreSprint, String nombreProyecto)
+        { //Requiere mandar el id del sprint para poder identificar cual módulo se eliminará, con solo el nombre no se puede saber
+            int idSprint = 0;
+            idSprint = this.getIdSprint(nombreSprint, nombreProyecto);
+            return controladoraBDEstructura.eliminarModulo(nombreModulo, idSprint);
+        }
+
+        public EntidadModulo consultarModulo(String nombreModulo, String nombreSprint, String nombreProyecto)
+        { //Requiere mandar el id del sprint para poder identificar cual módulo se consultará, con solo el nombre no se puede saber
+            int idSprint = 0;
+            EntidadModulo modulo = null; //para encapsular los datos consultados.
+            Object[] datosConsultados = new Object[2]; //para guardar los datos obtenidos de la consulta temporalmente
+            idSprint = this.getIdSprint(nombreSprint, nombreProyecto);
+            DataTable filaModulo = controladoraBDEstructura.consultarModulo(nombreModulo, idSprint);
+
+            if (filaModulo.Rows.Count == 1)
+            { //se recorre el dataTable de estructura tomando los datos del módulo
+                for (int i = 1; i < 3; i++)
+                {
+                    datosConsultados[i - 1] = filaModulo.Rows[0][i].ToString();
+                }
+                modulo = new EntidadModulo(datosConsultados); //se encapsulan los datos del modulo
+            }
+            return modulo;
         }
     }
 }
