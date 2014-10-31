@@ -128,5 +128,10 @@ namespace SAPR.App_Code.Controladoras
         {
             return controladoraBDEstructura.getRequerimientos(moduloId); ;
         }
+
+        /*public DataTable getProyectos()
+        {
+            //controladoraProyecto.geNombreProyectos();
+        }*/
     }
 }

@@ -21,7 +21,7 @@ namespace SAPR
 
             if (!IsPostBack)
             {
-                gridSprints.DataSource = getSprints();
+                gridSprints.DataSource = getSprints();  // Toma todos........ Falta agregar eso
                 gridSprints.DataBind();
             }
         }
@@ -68,7 +68,11 @@ namespace SAPR
 
 
 
+         private void llenarCmbProy() {
 
+             //string[] nombres = controladora.getProyectos();
+             //cmbProyecto.DataSource = nombres;
+         }
 
 
 

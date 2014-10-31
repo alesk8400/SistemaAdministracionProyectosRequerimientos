@@ -15,7 +15,16 @@
     });
 </script>
     
-    
+        <div class="page-header">
+        <div class="row">
+            <div class="col-lg-11">
+                <h1><i class="fa fa-truck"></i> ESTRUCTURA PROYECTO</h1>
+            </div>
+            <div class="col-lg-1">
+                <h2><a id="informacion" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>
+            </div>
+        </div>
+    </div>
     
     
     
@@ -90,6 +99,56 @@
             <SortedDescendingHeaderStyle BackColor="#242121"></SortedDescendingHeaderStyle>
         </asp:GridView>
     </div>
+
+   <%-- modal SPRINT--%>
+    <div class="modal fade" id="modalSprint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i> Gestion de Sprints</h4>
+                </div>
+                <div class="modal-body">
+                    <div class =" col-sm-6">
+                    <asp:Label ID="lbSprints" runat="server" Text="Lista de Sprints"></asp:Label>
+                    <asp:DropDownList ID="cmbSprints" runat="server"></asp:DropDownList>
+                    </div>
+                    <div class =" col-sm-12">
+                        <div class =" form-group">
+                                <asp:Label ID="lbNomSprint" runat="server" Text="Nombre:"></asp:Label>
+                                <input id="txtNombre" type="text" />
+                                <asp:Label ID="lbDescripcion" runat="server" Text="Descripción:"></asp:Label>
+                                <textarea id="txtDescripcion" cols="20" rows="2"></textarea>
+                         </div>
+                    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                     <button runat="server" id="btnAceptar" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                    <button runat="server" id="btnCancelar" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                <div class="col-lg-8">
+                    <div class="form-group">
+                        <label for="textProyectos" class="col-sm-3 control-label">Proyectos: </label>
+                        <div class="dropdown-toggle">
+                            <div class="help-block with-error">
+
+                                <asp:DropDownList ID="cmbProyecto" runat="server">
+                                </asp:DropDownList>
+
+
+
+                                <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+        
+
 
 
 </asp:Content>
