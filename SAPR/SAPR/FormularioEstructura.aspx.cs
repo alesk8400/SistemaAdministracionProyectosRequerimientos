@@ -18,7 +18,8 @@ namespace SAPR
         private static ControladoraEstructura controladora = new ControladoraEstructura();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            llenarCmbSprint();
+            llenarCmbProy();
             if (!IsPostBack)
             {
                 gridSprints.DataSource = getSprints();  // Toma todos........ Falta agregar eso
@@ -69,15 +70,33 @@ namespace SAPR
 
 
          private void llenarCmbProy() {
+            cmbProyecto.DataSource = controladora.getNombresProyectos();
+            cmbProyecto.DataTextField = "Nombre";
+            cmbProyecto.DataValueField = "idProyecto";
+            cmbProyecto.DataBind();
+         }
 
+         private void llenarCmbSprint()
+         {
+             cmbSprints.DataSource = controladora.getNombresSprint(96);
+             cmbSprints.DataTextField = "Nombre";
+             cmbSprints.DataValueField = "idSprint";
+             cmbSprints.DataBind();
+             this.Label1.Text = cmbSprints.SelectedItem.Value.ToString();
              //string[] nombres = controladora.getProyectos();
              //cmbProyecto.DataSource = nombres;
          }
 
 
+         public void combo(object sender, EventArgs e) {
+             llenarCmbSprint();
+         
+         }
 
-
-
+         protected void cmbSprints_SelectedIndexChanged(object sender, EventArgs e)
+         {
+             string hola = cmbSprints.SelectedItem.ToString();
+         }
 
 
     }

@@ -133,5 +133,115 @@ namespace SAPR.App_Code.Controladoras
         {
             //controladoraProyecto.geNombreProyectos();
         }*/
+
+        public DataTable getNombresSprint(int p)
+        {
+
+            
+            DataTable resultado = crearTablaSprint();
+
+            Object[] datos = new Object[2];
+            //string basura;
+            try
+            {
+                DataTable consulta = controladoraBDEstructura.getSprints();
+                if (consulta.Rows.Count > 0)
+                {
+                    foreach (DataRow fila in consulta.Rows)
+                    {
+                        //basura = fila[1].ToString();
+                        datos[0] = fila[1].ToString(); // Van los Nombres
+                        datos[1] = fila[0].ToString(); // Van los ids del sprint
+                        resultado.Rows.Add(datos);// cargar en la tabla los datos de cada usuario
+                    }
+                }
+                else // en cualquier otro caso se pone vacía la tabla
+                {
+                    datos[0] = "-";
+                    resultado.Rows.Add(datos);
+                }
+            }
+            catch (Exception e)
+            {
+                resultado = null;
+            }
+
+            return resultado;
+        }
+
+        protected DataTable crearTablaSprint()
+        {
+            DataTable tabla = new DataTable();
+            DataColumn columna;
+            //se agrega el campo de Nombre
+            columna = new DataColumn();
+            columna.DataType = System.Type.GetType("System.String");
+            columna.ColumnName = "Nombre";
+            tabla.Columns.Add(columna);
+
+            columna = new DataColumn();
+            columna.DataType = System.Type.GetType("System.String");
+            columna.ColumnName = "idSprint";
+            tabla.Columns.Add(columna);
+
+
+            return tabla;
+        }
+
+
+
+        protected DataTable crearTablaProyecto()
+        {
+            DataTable tabla = new DataTable();
+            DataColumn columna;
+            //se agrega el campo de Nombre
+            columna = new DataColumn();
+            columna.DataType = System.Type.GetType("System.String");
+            columna.ColumnName = "Nombre";
+            tabla.Columns.Add(columna);
+
+            columna = new DataColumn();
+            columna.DataType = System.Type.GetType("System.String");
+            columna.ColumnName = "idProyecto";
+            tabla.Columns.Add(columna);
+
+
+            return tabla;
+        }
+
+
+        public DataTable getNombresProyectos()
+        {
+
+            DataTable resultado = crearTablaProyecto();
+
+            Object[] datos = new Object[2];
+            //string basura;
+            try
+            {
+                DataTable consulta = controladoraProyecto.getProyectos();
+                if (consulta.Rows.Count > 0)
+                {
+                    foreach (DataRow fila in consulta.Rows)
+                    {
+                        //basura = fila[1].ToString();
+                        datos[0] = fila[1].ToString(); // Van los Nombres
+                        datos[1] = fila[0].ToString(); // Van los ids del sprint
+                        resultado.Rows.Add(datos);// cargar en la tabla los datos de cada usuario
+                    }
+                }
+                else // en cualquier otro caso se pone vacía la tabla
+                {
+                    datos[0] = "-";
+                    resultado.Rows.Add(datos);
+                }
+            }
+            catch (Exception e)
+            {
+                resultado = null;
+            }
+
+            return resultado;
+        }
     }
 }

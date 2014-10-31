@@ -159,5 +159,12 @@ namespace SAPR.App_Code.Controladoras {
         {
             adapUsuaProyecto.eliminarUsuarioProyecto(cedula, idProy);
         }
+
+
+
+        public DataTable getProyectos()
+        {
+            return adapProyecto.getProyectos();
+        }
     }
 }

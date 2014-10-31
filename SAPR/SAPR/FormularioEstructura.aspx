@@ -108,10 +108,13 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i> Gestion de Sprints</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body col-lg-12">
+                    <button runat="server"  id="btnAgregarSprint" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
+                    <button runat="server"  id="btnModificarSprint" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
+                    <button runat="server"  id="btnEliminarSprint" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Eliminar</button>
                     <div class =" col-sm-6">
                     <asp:Label ID="lbSprints" runat="server" Text="Lista de Sprints"></asp:Label>
-                    <asp:DropDownList ID="cmbSprints" runat="server"></asp:DropDownList>
+
                     </div>
                     <div class =" col-sm-12">
                         <div class =" form-group">
@@ -124,7 +127,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                     <button runat="server" id="btnAceptar" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                     <button runat="server" id="btnAceptar" onserverclick ="combo" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
                     <button runat="server" id="btnCancelar" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
                 </div>
             </div>
@@ -139,11 +142,12 @@
 
                                 <asp:DropDownList ID="cmbProyecto" runat="server">
                                 </asp:DropDownList>
-
-
+                                <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged"></asp:DropDownList>
+                                
 
                                 <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
-                            </div>
+                                </div>
+                            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                         </div>
                     </div>
                     </div>
