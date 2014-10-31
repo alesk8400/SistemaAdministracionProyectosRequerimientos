@@ -59,10 +59,8 @@ namespace SAPR
          {
              if (e.Row.RowType == DataControlRowType.DataRow)
              {
-                 //GridView gridModulo = e.Row.FindControl("gridModulos") as GridView;  //Obtengo el gridModulos
                  string moduloId = e.Row.Cells[1].Text.ToString();
                  GridView gridRequerimientos = e.Row.FindControl("gridReq") as GridView;
-                 //gridRequerimientos.DataSource = getRequerimiento(1);
                  gridRequerimientos.DataSource = getRequerimiento(Convert.ToInt32(moduloId));
                  gridRequerimientos.DataBind();
              }
