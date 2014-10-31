@@ -25,9 +25,8 @@
                 <asp:TemplateField>
                     <ItemTemplate>
                         <img alt = "" style="cursor: pointer" src="Images/plus.png" />
-                        <asp:Panel ID="pnlOrders" runat="server" Style="display: none">
-                            <asp:GridView ID="gridModulos" runat="server" OnRowDataBound="OnRowDataBound2" DataKeyNames="idSprint">
-                           
+                        <asp:Panel ID="pnlModulos" runat="server" Style="display: none">
+                            <asp:GridView ID="gridModulos" runat="server" OnRowDataBound="OnRowDataBound2" DataKeyNames="idModulo">
                                             <Columns>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
@@ -39,9 +38,6 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
-                                
-                                
-                                
                             </asp:GridView>
                          </asp:Panel>
                     </ItemTemplate>

@@ -12,10 +12,11 @@ namespace SAPR.App_Code.Controladoras
     public class ControladoraBDEstructura{
         AdaptSprint adaptS;
         AdaptModulo adaptM;
-
+        RequerimientoTableAdapter adapAux;  // Desaparecera
         public ControladoraBDEstructura() {
             adaptS = new AdaptSprint();
             adaptM = new AdaptModulo();
+            adapAux = new RequerimientoTableAdapter();
         }
 
         public String[] insertarSprint(EntidadSprint sprintNuevo,int idProyecto)
@@ -198,6 +199,34 @@ namespace SAPR.App_Code.Controladoras
                 resultado = adaptS.getSprints(); //se llama al dataSet de Estructura para consultar el Sprint
             }
             catch (Exception e) { }
+            return resultado;
+        }
+
+        public DataTable getModulo(int sprintId)
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = adaptM.getModulo(sprintId); //se llama al dataSet de Estructura para consultar el Sprint
+            }
+            catch (Exception e) { }
+            return resultado;
+        }
+
+
+        // RECORDAR QUE ESTE METODO LLEGARA A DESAPARECER CUANDO IMPLEMENTEMOS EL MODULO REQUERIMIENTO
+        public DataTable getRequerimientos(int moduloId)
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = adapAux.getReqs(moduloId); //se llama al dataSet de Estructura para consultar el Sprint
+            }
+            catch (Exception e) {
+                resultado = null;
+            }
             return resultado;
         }
     }

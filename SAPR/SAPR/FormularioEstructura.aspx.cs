@@ -30,32 +30,45 @@ namespace SAPR
 
              return controladora.getSprints();
          }
-         private static DataTable getModulo()  // pruebilla
+         private static DataTable getModulo(int sprintId)  // pruebilla
          {
 
-             return controladora.getSprints();
+             return controladora.getModulo(sprintId);
          }
 
-         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+         private static DataTable getRequerimiento(int moduloId)  // pruebilla
+         {
+
+             return controladora.getRequerimientos(moduloId);
+         }
+
+        //Método para cargar el grid de Modulos 
+        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
          {
              if (e.Row.RowType == DataControlRowType.DataRow)
              {
+                 string sprintId = gridSprints.DataKeys[e.Row.RowIndex].Value.ToString();
                  GridView gridModulo = e.Row.FindControl("gridModulos") as GridView;
-                 gridModulo.DataSource = getModulo();
+                 gridModulo.DataSource = getModulo(Convert.ToInt32(sprintId));
                  gridModulo.DataBind();
              }
          }
 
-
+        //Método para cargar el grid de Requerimientos
          protected void OnRowDataBound2(object sender, GridViewRowEventArgs e)
          {
              if (e.Row.RowType == DataControlRowType.DataRow)
              {
-                 GridView gridModulo = e.Row.FindControl("gridReq") as GridView;
-                 gridModulo.DataSource = getModulo();
-                 gridModulo.DataBind();
+                 //GridView gridModulo = e.Row.FindControl("gridModulos") as GridView;  //Obtengo el gridModulos
+                 string moduloId = e.Row.Cells[1].Text.ToString();
+                 GridView gridRequerimientos = e.Row.FindControl("gridReq") as GridView;
+                 //gridRequerimientos.DataSource = getRequerimiento(1);
+                 gridRequerimientos.DataSource = getRequerimiento(Convert.ToInt32(moduloId));
+                 gridRequerimientos.DataBind();
              }
          }
+
+
 
 
 
