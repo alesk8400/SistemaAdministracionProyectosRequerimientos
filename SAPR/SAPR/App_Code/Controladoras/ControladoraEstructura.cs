@@ -111,5 +111,12 @@ namespace SAPR.App_Code.Controladoras
             }
             return modulo;
         }
+
+        public DataTable getSprints()
+        {
+            return controladoraBDEstructura.getSprints();
+        }
+
+
     }
 }

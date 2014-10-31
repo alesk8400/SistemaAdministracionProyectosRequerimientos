@@ -188,5 +188,17 @@ namespace SAPR.App_Code.Controladoras
             catch (Exception e) { }
             return resultado;
         }
+
+        public DataTable getSprints()  // METODO DE CALI PARA PRUEBAS
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = adaptS.getSprints(); //se llama al dataSet de Estructura para consultar el Sprint
+            }
+            catch (Exception e) { }
+            return resultado;
+        }
     }
 }

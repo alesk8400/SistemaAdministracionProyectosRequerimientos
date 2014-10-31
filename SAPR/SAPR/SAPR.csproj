@@ -152,7 +152,7 @@
     <Compile Include="App_Code\Entidades\EntidadCliente.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Content Include="Contact.aspx" />
+    <Content Include="FormularioEstructura.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker3.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
@@ -438,12 +438,12 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="FormularioEstructura.aspx.cs">
+      <DependentUpon>FormularioEstructura.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="FormularioEstructura.aspx.designer.cs">
+      <DependentUpon>FormularioEstructura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

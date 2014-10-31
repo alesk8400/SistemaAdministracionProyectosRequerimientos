@@ -61,7 +61,7 @@
                     <a href="FormularioUsuario">Usuarios</a>
                 </li>
                 <li>
-                    <a href="#">Consultas</a>
+                    <a href="FormularioEstructura">Estructura</a>
                 </li>
                 <li>
                     <a href="#">Requerimientos</a>
