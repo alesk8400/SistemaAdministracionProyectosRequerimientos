@@ -26,7 +26,22 @@
                     <ItemTemplate>
                         <img alt = "" style="cursor: pointer" src="Images/plus.png" />
                         <asp:Panel ID="pnlOrders" runat="server" Style="display: none">
-                            <asp:GridView ID="gridModulos" runat="server">
+                            <asp:GridView ID="gridModulos" runat="server" OnRowDataBound="OnRowDataBound2" DataKeyNames="idSprint">
+                           
+                                            <Columns>
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                 <img alt = "" style="cursor: pointer" src="Images/plus.png" />
+                                                 <asp:Panel ID="pnlReq" runat="server" Style="display: none">
+                                                  <asp:GridView ID="gridReq" runat="server">
+                                                    </asp:GridView>
+                                                </asp:Panel>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                
+                                
+                                
                             </asp:GridView>
                          </asp:Panel>
                     </ItemTemplate>

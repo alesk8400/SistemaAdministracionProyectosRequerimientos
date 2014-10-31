@@ -46,6 +46,25 @@ namespace SAPR
              }
          }
 
+
+         protected void OnRowDataBound2(object sender, GridViewRowEventArgs e)
+         {
+             if (e.Row.RowType == DataControlRowType.DataRow)
+             {
+                 GridView gridModulo = e.Row.FindControl("gridReq") as GridView;
+                 gridModulo.DataSource = getModulo();
+                 gridModulo.DataBind();
+             }
+         }
+
+
+
+
+
+
+
+
+
     }
 
 
