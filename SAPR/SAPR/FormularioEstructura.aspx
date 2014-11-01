@@ -14,6 +14,9 @@
         $(this).closest("tr").next().remove();
     });
 </script>
+
+
+
     
         <div class="page-header">
         <div class="row">
@@ -115,19 +118,14 @@
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i> Gestion de Sprints</h4>
                 </div>
                 <div class="modal-body col-lg-12">
-                    <button runat="server"  id="btnAgregarSprint" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
                     <button runat="server"  id="btnModificarSprint" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
                     <button runat="server"  id="btnEliminarSprint" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Eliminar</button>
                     <div class =" col-sm-6">
-                    <asp:Label ID="lbSprints" runat="server" Text="Lista de Sprints"></asp:Label>
 
                     </div>
                     <div class =" col-sm-12">
                         <div class =" form-group">
-                                <asp:Label ID="lbNomSprint" runat="server" Text="Nombre:"></asp:Label>
-                                <input id="txtNombre" type="text" />
-                                <asp:Label ID="lbDescripcion" runat="server" Text="Descripción:"></asp:Label>
-                                <textarea id="txtDescripcion" cols="20" rows="2"></textarea>
+
                          </div>
                     
                     </div>
@@ -141,17 +139,36 @@
     </div>
 
     <div class="col-lg-8">
-        <div class="form-group">
-            <div class="dropdown-toggle">
-                <div class="help-block with-error">
-                    <asp:Label ID="lbSprint" runat="server" Text="SPRINT"></asp:Label>
+        <div class="well bs-component">
+            <fieldset>
+                <div class="form-group">
+                    <asp:Label ID="lbSprint" runat="server" Text="SPRINTS"></asp:Label>
                     <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-                    <asp:Label ID="lbModulo" runat="server" Text="MODULO"></asp:Label>
-                    <asp:DropDownList ID="cmbModulo" runat="server"  AutoPostBack="True"></asp:DropDownList>
-                    <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
+                    <asp:Label ID="lbNomSprint" runat="server" Text="Nombre:"></asp:Label>
+                    <input id="txtNombreSprint" type="text" />
+                    <asp:Label ID="lbDescripcion" runat="server" Text="Descripción:"></asp:Label>
+                    <textarea id="txtDescripcionSprint" cols="20" rows="2"></textarea>
+                    <button runat="server"  id="btnAgregarSprint" onserverclick="btnAgregarSprint_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
                 </div>
-            </div>
+                <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
+            </fieldset>
         </div>
+        <div class="well bs-component">
+            <fieldset>
+                <div class="form-group">
+                    <asp:Label ID="lbModulo" runat="server" Text="MODULO"></asp:Label>
+                    <asp:DropDownList ID="cmbModulo" runat="server" AutoPostBack="True"></asp:DropDownList>
+                    <asp:Label ID="lbNombreModulo" runat="server" Text="Nombre:"></asp:Label>
+                    <input id="txtNombreModulo" type="text" />
+                    <asp:Label ID="lbDescripModulo" runat="server" Text="Descripción:"></asp:Label>
+                    <textarea id="txtDescripcionModulo" cols="20" rows="2"></textarea>
+                </div>
+                <a id="A1" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
+            </fieldset>
+        </div>
+
+
+
     </div>
         
 

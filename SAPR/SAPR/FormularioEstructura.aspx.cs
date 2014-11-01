@@ -22,9 +22,9 @@ namespace SAPR
 
             if (!IsPostBack)
             {
-                llenarCmbSprint();
                 llenarCmbProy();
                 idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
+                llenarCmbSprint();
                 gridSprints.DataSource = getSprints(idProyecto);
                 gridSprints.DataBind();
             }
@@ -81,7 +81,7 @@ namespace SAPR
 
          private void llenarCmbSprint()
          {
-             cmbSprints.DataSource = controladora.getNombresSprint(96);
+             cmbSprints.DataSource = controladora.getNombresSprint(idProyecto);
              cmbSprints.DataTextField = "Nombre";
              cmbSprints.DataValueField = "idSprint";
              cmbSprints.DataBind();
@@ -89,6 +89,23 @@ namespace SAPR
              //string[] nombres = controladora.getProyectos();
              //cmbProyecto.DataSource = nombres;
          }
+
+
+
+         protected void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
+         {
+             idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
+             gridSprints.DataSource = getSprints(idProyecto);
+             gridSprints.DataBind();
+             llenarCmbSprint();
+
+         }
+
+         protected void cmbSprints_SelectedIndexChanged(object sender, EventArgs e)
+         {
+             llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+         }
+
 
          private void llenarCmbModulo(int idSprint)
          {
@@ -98,20 +115,12 @@ namespace SAPR
              cmbModulo.DataBind();
          }
 
-
-
-         protected void cmbSprints_SelectedIndexChanged(object sender, EventArgs e)
+         protected void btnAgregarSprint_Click(object sender, EventArgs e)
          {
-             llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+             
+             controladora.insertarSprint(txtNombreSprint.Value.Te);
          }
 
-         protected void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
-         {
-             idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
-             gridSprints.DataSource = getSprints(idProyecto);  
-             gridSprints.DataBind();
-
-         }
 
 
     }

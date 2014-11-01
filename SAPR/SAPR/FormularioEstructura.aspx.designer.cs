@@ -31,15 +31,6 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.GridView gridSprints;
         
         /// <summary>
-        /// Control btnAgregarSprint.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnAgregarSprint;
-        
-        /// <summary>
         /// Control btnModificarSprint.
         /// </summary>
         /// <remarks>
@@ -56,33 +47,6 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnEliminarSprint;
-        
-        /// <summary>
-        /// Control lbSprints.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbSprints;
-        
-        /// <summary>
-        /// Control lbNomSprint.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbNomSprint;
-        
-        /// <summary>
-        /// Control lbDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbDescripcion;
         
         /// <summary>
         /// Control btnAceptar.
@@ -121,6 +85,42 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.DropDownList cmbSprints;
         
         /// <summary>
+        /// Control lbNomSprint.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbNomSprint;
+        
+        /// <summary>
+        /// Control lbDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDescripcion;
+        
+        /// <summary>
+        /// Control btnAgregarSprint.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnAgregarSprint;
+        
+        /// <summary>
+        /// Control btnSprint.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnSprint;
+        
+        /// <summary>
         /// Control lbModulo.
         /// </summary>
         /// <remarks>
@@ -139,12 +139,30 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.DropDownList cmbModulo;
         
         /// <summary>
-        /// Control btnSprint.
+        /// Control lbNombreModulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnSprint;
+        protected global::System.Web.UI.WebControls.Label lbNombreModulo;
+        
+        /// <summary>
+        /// Control lbDescripModulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDescripModulo;
+        
+        /// <summary>
+        /// Control A1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
     }
 }
