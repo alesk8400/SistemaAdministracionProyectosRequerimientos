@@ -16,20 +16,22 @@ namespace SAPR
     {
 
         private static ControladoraEstructura controladora = new ControladoraEstructura();
+        private static int idProyecto = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            llenarCmbSprint();
-            llenarCmbProy();
+
             if (!IsPostBack)
             {
-                gridSprints.DataSource = getSprints();  // Toma todos........ Falta agregar eso
+                gridSprints.DataSource = getSprints(96);  // Toma todos........ Falta agregar eso
                 gridSprints.DataBind();
+                llenarCmbSprint();
+                llenarCmbProy();
             }
         }
 
-         private static DataTable getSprints (){
+         private static DataTable getSprints (int proyecto){
 
-             return controladora.getSprints();
+             return controladora.getSprints(proyecto);
          }
          private static DataTable getModulo(int sprintId)  // pruebilla
          {
@@ -74,6 +76,7 @@ namespace SAPR
             cmbProyecto.DataTextField = "Nombre";
             cmbProyecto.DataValueField = "idProyecto";
             cmbProyecto.DataBind();
+            this.Label1.Text = cmbProyecto.SelectedItem.Value.ToString();
          }
 
          private void llenarCmbSprint()
@@ -96,6 +99,19 @@ namespace SAPR
          protected void cmbSprints_SelectedIndexChanged(object sender, EventArgs e)
          {
              string hola = cmbSprints.SelectedItem.ToString();
+             this.Label1.Text = hola;
+         }
+
+         protected void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
+         {
+             string hola  = cmbProyecto.SelectedItem.Value.ToString();
+             idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
+             this.Label1.Text = idProyecto.ToString();
+             gridSprints.DataSource = getSprints(idProyecto);  // Toma todos........ Falta agregar eso
+             gridSprints.DataBind();
+
+
+
          }
 
 

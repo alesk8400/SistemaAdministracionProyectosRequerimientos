@@ -20,13 +20,19 @@
             <div class="col-lg-11">
                 <h1><i class="fa fa-truck"></i> ESTRUCTURA PROYECTO</h1>
             </div>
-            <div class="col-lg-1">
-                <h2><a id="informacion" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>
-            </div>
         </div>
     </div>
     
-    
+                    <div class="col-lg-8">
+                    <div class="form-group">
+                        <label for="textProyectos" class="col-sm-3 control-label">Proyectos: </label>
+                        <div class="dropdown-toggle">
+                            <div class="help-block with-error">
+                                <asp:DropDownList ID="cmbProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbProyecto_SelectedIndexChanged"></asp:DropDownList>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
     
     <div >
         <asp:GridView ID="gridSprints" runat="server" OnRowDataBound="OnRowDataBound" DataKeyNames="idSprint" CssClass=" table table-hover" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
@@ -134,23 +140,17 @@
         </div>
     </div>
 
-                <div class="col-lg-8">
-                    <div class="form-group">
-                        <label for="textProyectos" class="col-sm-3 control-label">Proyectos: </label>
-                        <div class="dropdown-toggle">
-                            <div class="help-block with-error">
-
-                                <asp:DropDownList ID="cmbProyecto" runat="server">
-                                </asp:DropDownList>
-                                <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged"></asp:DropDownList>
-                                
-
-                                <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
-                                </div>
-                            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                        </div>
-                    </div>
-                    </div>
+    <div class="col-lg-8">
+        <div class="form-group">
+            <div class="dropdown-toggle">
+                <div class="help-block with-error">
+                    <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                    <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
+                </div>
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            </div>
+        </div>
+    </div>
         
 
 

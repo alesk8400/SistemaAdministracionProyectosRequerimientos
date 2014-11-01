@@ -191,20 +191,13 @@ namespace SAPR.App_Code.Controladoras
         }
 
 
-
-
-
-
-
-
-
-        public DataTable getSprints()  // METODO DE CALI PARA PRUEBAS
+        public DataTable getSprints(int proyecto)  // METODO DE CALI PARA PRUEBAS
         {
             DataTable resultado = new DataTable();
 
             try
             {
-                resultado = adaptS.getSprints(); //se llama al dataSet de Estructura para consultar el Sprint
+                resultado = adaptS.getSprints(proyecto); //se llama al dataSet de Estructura para consultar el Sprint
             }
             catch (Exception e) { }
             return resultado;

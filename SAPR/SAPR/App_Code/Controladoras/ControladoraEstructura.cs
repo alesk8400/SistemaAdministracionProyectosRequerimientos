@@ -112,9 +112,9 @@ namespace SAPR.App_Code.Controladoras
             return modulo;
         }
 
-        public DataTable getSprints()
+        public DataTable getSprints(int proyecto)
         {
-            return controladoraBDEstructura.getSprints();
+            return controladoraBDEstructura.getSprints(proyecto);
         }
 
 
@@ -134,7 +134,7 @@ namespace SAPR.App_Code.Controladoras
             //controladoraProyecto.geNombreProyectos();
         }*/
 
-        public DataTable getNombresSprint(int p)
+        public DataTable getNombresSprint(int proyecto)
         {
 
             
@@ -144,7 +144,7 @@ namespace SAPR.App_Code.Controladoras
             //string basura;
             try
             {
-                DataTable consulta = controladoraBDEstructura.getSprints();
+                DataTable consulta = controladoraBDEstructura.getSprints(proyecto);
                 if (consulta.Rows.Count > 0)
                 {
                     foreach (DataRow fila in consulta.Rows)

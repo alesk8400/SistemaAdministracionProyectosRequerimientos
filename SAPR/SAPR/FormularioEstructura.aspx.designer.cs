@@ -13,13 +13,13 @@ namespace SAPR {
     public partial class Contact {
         
         /// <summary>
-        /// Control informacion.
+        /// Control cmbProyecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor informacion;
+        protected global::System.Web.UI.WebControls.DropDownList cmbProyecto;
         
         /// <summary>
         /// Control gridSprints.
@@ -101,15 +101,6 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnCancelar;
-        
-        /// <summary>
-        /// Control cmbProyecto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbProyecto;
         
         /// <summary>
         /// Control cmbSprints.

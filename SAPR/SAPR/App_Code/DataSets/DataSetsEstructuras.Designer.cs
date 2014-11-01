@@ -1915,8 +1915,10 @@ namespace SAPR.App_Code.DataSets.DataSetsEstructurasTableAdapters {
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idProyecto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idProyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT        idSprint, Nombre, Descripcion, idProyecto\r\nFROM            Sprint";
+            this._commandCollection[5].CommandText = "SELECT        idSprint, Nombre, Descripcion, idProyecto\r\nFROM            Sprint\r\n" +
+                "WHERE        (idProyecto = @id)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idProyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
             this._commandCollection[6].CommandText = "INSERT INTO [dbo].[Sprint] ([Nombre], [Descripcion],[idProyecto]) VALUES (@Nombre" +
@@ -1972,8 +1974,9 @@ namespace SAPR.App_Code.DataSets.DataSetsEstructurasTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetsEstructuras.SprintDataTable getSprints() {
+        public virtual DataSetsEstructuras.SprintDataTable getSprints(int id) {
             this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(id));
             DataSetsEstructuras.SprintDataTable dataTable = new DataSetsEstructuras.SprintDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
