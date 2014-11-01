@@ -117,8 +117,10 @@ namespace SAPR
 
          protected void btnAgregarSprint_Click(object sender, EventArgs e)
          {
-             
-             controladora.insertarSprint(txtNombreSprint.Value.Te);
+
+             controladora.insertarSprint(txtNombreSprint.Value.ToString(), txtDescripcionSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
+             gridSprints.DataSource = getSprints(idProyecto);
+             gridSprints.DataBind();
          }
 
 

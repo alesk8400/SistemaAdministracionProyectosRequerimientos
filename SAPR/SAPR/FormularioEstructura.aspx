@@ -145,9 +145,9 @@
                     <asp:Label ID="lbSprint" runat="server" Text="SPRINTS"></asp:Label>
                     <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
                     <asp:Label ID="lbNomSprint" runat="server" Text="Nombre:"></asp:Label>
-                    <input id="txtNombreSprint" type="text" />
+                    <input id="txtNombreSprint" type="text" runat="server"/>
                     <asp:Label ID="lbDescripcion" runat="server" Text="Descripción:"></asp:Label>
-                    <textarea id="txtDescripcionSprint" cols="20" rows="2"></textarea>
+                    <textarea id="txtDescripcionSprint" cols="20" rows="2" runat="server"></textarea>
                     <button runat="server"  id="btnAgregarSprint" onserverclick="btnAgregarSprint_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
                 </div>
                 <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>

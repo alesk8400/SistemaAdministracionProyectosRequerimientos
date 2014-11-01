@@ -94,6 +94,15 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.Label lbNomSprint;
         
         /// <summary>
+        /// Control txtNombreSprint.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNombreSprint;
+        
+        /// <summary>
         /// Control lbDescripcion.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDescripcion;
+        
+        /// <summary>
+        /// Control txtDescripcionSprint.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescripcionSprint;
         
         /// <summary>
         /// Control btnAgregarSprint.
