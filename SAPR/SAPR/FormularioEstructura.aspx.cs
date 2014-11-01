@@ -22,10 +22,11 @@ namespace SAPR
 
             if (!IsPostBack)
             {
-                gridSprints.DataSource = getSprints(96);  // Toma todos........ Falta agregar eso
-                gridSprints.DataBind();
                 llenarCmbSprint();
                 llenarCmbProy();
+                idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
+                gridSprints.DataSource = getSprints(idProyecto);
+                gridSprints.DataBind();
             }
         }
 
@@ -76,7 +77,6 @@ namespace SAPR
             cmbProyecto.DataTextField = "Nombre";
             cmbProyecto.DataValueField = "idProyecto";
             cmbProyecto.DataBind();
-            this.Label1.Text = cmbProyecto.SelectedItem.Value.ToString();
          }
 
          private void llenarCmbSprint()
@@ -85,32 +85,31 @@ namespace SAPR
              cmbSprints.DataTextField = "Nombre";
              cmbSprints.DataValueField = "idSprint";
              cmbSprints.DataBind();
-             this.Label1.Text = cmbSprints.SelectedItem.Value.ToString();
+             llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
              //string[] nombres = controladora.getProyectos();
              //cmbProyecto.DataSource = nombres;
          }
 
-
-         public void combo(object sender, EventArgs e) {
-             llenarCmbSprint();
-         
+         private void llenarCmbModulo(int idSprint)
+         {
+             cmbModulo.DataSource = controladora.getNombresModulo(idSprint);
+             cmbModulo.DataTextField = "Nombre";
+             cmbModulo.DataValueField = "idModulo";
+             cmbModulo.DataBind();
          }
+
+
 
          protected void cmbSprints_SelectedIndexChanged(object sender, EventArgs e)
          {
-             string hola = cmbSprints.SelectedItem.ToString();
-             this.Label1.Text = hola;
+             llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
          }
 
          protected void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
          {
-             string hola  = cmbProyecto.SelectedItem.Value.ToString();
              idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
-             this.Label1.Text = idProyecto.ToString();
-             gridSprints.DataSource = getSprints(idProyecto);  // Toma todos........ Falta agregar eso
+             gridSprints.DataSource = getSprints(idProyecto);  
              gridSprints.DataBind();
-
-
 
          }
 

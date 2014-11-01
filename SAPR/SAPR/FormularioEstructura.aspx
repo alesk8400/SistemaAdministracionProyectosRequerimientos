@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                     <button runat="server" id="btnAceptar" onserverclick ="combo" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                     <button runat="server" id="btnAceptar" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
                     <button runat="server" id="btnCancelar" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
                 </div>
             </div>
@@ -144,10 +144,12 @@
         <div class="form-group">
             <div class="dropdown-toggle">
                 <div class="help-block with-error">
+                    <asp:Label ID="lbSprint" runat="server" Text="SPRINT"></asp:Label>
                     <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                    <asp:Label ID="lbModulo" runat="server" Text="MODULO"></asp:Label>
+                    <asp:DropDownList ID="cmbModulo" runat="server"  AutoPostBack="True"></asp:DropDownList>
                     <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
                 </div>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </div>
         </div>
     </div>

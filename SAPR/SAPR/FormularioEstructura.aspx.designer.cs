@@ -103,6 +103,15 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlButton btnCancelar;
         
         /// <summary>
+        /// Control lbSprint.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbSprint;
+        
+        /// <summary>
         /// Control cmbSprints.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,24 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.DropDownList cmbSprints;
         
         /// <summary>
+        /// Control lbModulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbModulo;
+        
+        /// <summary>
+        /// Control cmbModulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbModulo;
+        
+        /// <summary>
         /// Control btnSprint.
         /// </summary>
         /// <remarks>
@@ -119,14 +146,5 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor btnSprint;
-        
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }

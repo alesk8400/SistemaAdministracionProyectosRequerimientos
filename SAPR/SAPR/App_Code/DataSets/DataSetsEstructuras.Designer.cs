@@ -2917,7 +2917,7 @@ namespace SAPR.App_Code.DataSets.DataSetsEstructurasTableAdapters {
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT idRequerimiento, Nombre, Descripcion, Prioridad, Estado, Cantidad,  Medida" +
-                ",  idModulo FROM dbo.Requerimiento\r\nWHERE        (idModulo = @id)";
+                ", idModulo FROM dbo.Requerimiento\r\nWHERE        (idModulo = @id)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idModulo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

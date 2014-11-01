@@ -243,5 +243,10 @@ namespace SAPR.App_Code.Controladoras
 
             return resultado;
         }
+
+        public DataTable getNombresModulo(int idSprint)
+        {
+            return controladoraBDEstructura.getModulo(idSprint);
+        }
     }
 }

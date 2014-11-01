@@ -203,7 +203,7 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
-        public DataTable getModulo(int sprintId)
+        public DataTable getModulo(int sprintId)  //Retorna los modulos de un sprint
         {
             DataTable resultado = new DataTable();
 
@@ -230,5 +230,6 @@ namespace SAPR.App_Code.Controladoras
             }
             return resultado;
         }
+
     }
 }
