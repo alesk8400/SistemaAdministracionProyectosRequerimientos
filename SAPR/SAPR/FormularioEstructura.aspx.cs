@@ -16,7 +16,10 @@ namespace SAPR
     {
 
         private static ControladoraEstructura controladora = new ControladoraEstructura();
+        private static EntidadSprint entidadS;
         private static int idProyecto = 0;
+        private static int modoS = 0;  //modo 1 in modo 2 mod modo 3 eli
+        private static int modoM = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -27,6 +30,12 @@ namespace SAPR
                 llenarCmbSprint();
                 gridSprints.DataSource = getSprints(idProyecto);
                 gridSprints.DataBind();
+                this.txtNombreSprint.Disabled = true;
+                this.txtDescripcionSprint.Disabled = true;
+                entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                this.txtNombreSprint.Value = entidadS.Nombre;
+                this.txtDescripcionSprint.Value = entidadS.Descripcion;
+               
             }
         }
 
@@ -103,7 +112,10 @@ namespace SAPR
 
          protected void cmbSprints_SelectedIndexChanged(object sender, EventArgs e)
          {
+             entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
              llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+             this.txtNombreSprint.Value = entidadS.Nombre;
+             this.txtDescripcionSprint.Value = entidadS.Descripcion;
          }
 
 
@@ -117,14 +129,45 @@ namespace SAPR
 
          protected void btnAgregarSprint_Click(object sender, EventArgs e)
          {
-
-             controladora.insertarSprint(txtNombreSprint.Value.ToString(), txtDescripcionSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
-             gridSprints.DataSource = getSprints(idProyecto);
-             gridSprints.DataBind();
+             this.txtNombreSprint.Disabled = false;
+             this.txtDescripcionSprint.Disabled = false;
+             modoS = 1;
          }
 
+         protected void btnModificarSprint_Click(object sender, EventArgs e)
+         {             
+             
+             this.txtNombreSprint.Disabled = false;
+             this.txtDescripcionSprint.Disabled = false;
+             modoS = 2;
+         }
 
+            protected void btnEliminarSprint_Click(object sender, EventArgs e)
+         {
+             
+             modoS = 3;
+         }
+         protected void btnAceptar1(object sender, EventArgs e){
+             
 
+             if(modoS == 1){
+                 controladora.insertarSprint(txtNombreSprint.Value.ToString(), txtDescripcionSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
+                 gridSprints.DataSource = getSprints(idProyecto);
+                 gridSprints.DataBind();
+             }
+             if (modoS == 2)
+             {
+                 controladora.modificarSprint(txtNombreSprint.Value.ToString(), txtDescripcionSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString(),entidadS);              
+                 gridSprints.DataSource = getSprints(idProyecto);
+                 gridSprints.DataBind();
+             }
+             if (modoS == 3)
+             {
+                 controladora.eliminarSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
+                 gridSprints.DataSource = getSprints(idProyecto);
+                 gridSprints.DataBind();
+             }
+         }
     }
 
 

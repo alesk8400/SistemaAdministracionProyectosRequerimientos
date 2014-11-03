@@ -37,16 +37,20 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDEstructura.modificarSprint(sprintNuevo, idProyecto, sprintViejo.Nombre);
         }
 
-        public String[] eliminarSprint(String nombreSprint)
-        { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! VER (debería recibir también el nombre del proyecto)
-            return controladoraBDEstructura.eliminarSprint(nombreSprint);
+        public String[] eliminarSprint(String nombreSprint, String nombreProyecto)
+        { 
+            int idProyecto = 0;
+            idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
+            return controladoraBDEstructura.eliminarSprint(nombreSprint,idProyecto);
         }
 
-        public EntidadSprint consultarSprint(String nombreSprint)
-        {   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! VER (debería recibir también el nombre del proyecto)
+        public EntidadSprint consultarSprint(String nombreSprint,String nombreProyecto)
+        {  
             EntidadSprint sprint = null; //para encapsular los datos consultados.
             Object[] datosConsultados = new Object[2]; //para guardar los datos obtenidos de la consulta temporalmente
-            DataTable filaSprint = controladoraBDEstructura.consultarSprint(nombreSprint);
+            int idProyecto = 0;
+            idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
+            DataTable filaSprint = controladoraBDEstructura.consultarSprint(nombreSprint,idProyecto);
 
             if (filaSprint.Rows.Count == 1)
             { //se recorre el dataTable de estructura tomando los datos de los sprint

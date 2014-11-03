@@ -66,13 +66,13 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
-        public String[] eliminarSprint(String nombreSprint)
+        public String[] eliminarSprint(String nombreSprint,int idProyecto)
         {
             String[] resultado = new String[1];
 
             try
             {
-                this.adaptS.eliminarSprint(nombreSprint); //se llama al dataSet de Estructura para eliminar el Sprint
+                this.adaptS.eliminarSprint(nombreSprint,idProyecto); //se llama al dataSet de Estructura para eliminar el Sprint
                 resultado[0] = "Exito";
             }
             catch (SqlException e)
@@ -90,13 +90,13 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
-        public DataTable consultarSprint(String nombreSprint)
+        public DataTable consultarSprint(String nombreSprint,int idProyecto)
         {
             DataTable resultado = new DataTable();
 
             try
             {
-                resultado = adaptS.ConsultarSprint(nombreSprint); //se llama al dataSet de Estructura para consultar el Sprint
+                resultado = adaptS.ConsultarSprint(nombreSprint,idProyecto); //se llama al dataSet de Estructura para consultar el Sprint
             }
             catch (Exception e) { }
             return resultado;

@@ -108,7 +108,7 @@
             <SortedDescendingHeaderStyle BackColor="#242121"></SortedDescendingHeaderStyle>
         </asp:GridView>
     </div>
-
+    
    <%-- modal SPRINT--%>
     <div class="modal fade" id="modalSprint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -118,8 +118,7 @@
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i> Gestion de Sprints</h4>
                 </div>
                 <div class="modal-body col-lg-12">
-                    <button runat="server"  id="btnModificarSprint" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Modificar</button>
-                    <button runat="server"  id="btnEliminarSprint" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Eliminar</button>
+                    
                     <div class =" col-sm-6">
 
                     </div>
@@ -145,10 +144,16 @@
                     <asp:Label ID="lbSprint" runat="server" Text="SPRINTS"></asp:Label>
                     <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
                     <asp:Label ID="lbNomSprint" runat="server" Text="Nombre:"></asp:Label>
-                    <input id="txtNombreSprint" type="text" runat="server"/>
+                    <input id="txtNombreSprint" type="text" runat="server" enabled = "false"/>
                     <asp:Label ID="lbDescripcion" runat="server" Text="Descripción:"></asp:Label>
                     <textarea id="txtDescripcionSprint" cols="20" rows="2" runat="server"></textarea>
-                    <button runat="server"  id="btnAgregarSprint" onserverclick="btnAgregarSprint_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
+                    <button runat="server" id="btnAgregarSprint" onserverclick="btnAgregarSprint_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
+                    <button runat="server"  id="btnModificarSprint" class="btn btn-primary" type="button" onserverclick="btnModificarSprint_Click"><i class="fa fa-pencil-square-o"></i>Modificar</button>
+                    <button runat="server"  id="btnEliminarSprint" class="btn btn-primary" type="button" onserverclick="btnEliminarSprint_Click"><i class="fa fa-pencil-square-o"></i>Eliminar</button>
+                    <div>
+                    <button runat="server" id="Button1" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnAceptar1"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                    <button runat="server" id="Button2" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
+                    </div>
                 </div>
                 <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
             </fieldset>
