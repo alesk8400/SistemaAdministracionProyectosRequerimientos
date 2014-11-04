@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using SAPR.App_Code.Controladoras;
 using SAPR.App_Code.Entidades;
 using System.Data;
+using System.Web.UI.HtmlControls;
 
 namespace SAPR
 {
@@ -38,7 +39,8 @@ namespace SAPR
             if(modo != 1 && modo != 2){
                 restaurarPantallaSinLimpiar();
             }
-                
+
+
         }
 
 		/*
@@ -161,7 +163,7 @@ namespace SAPR
         {
             try
             {
-                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
+                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[0].Text.ToString());
                 textNombre.Value = entidadConsultada.Nombre.ToString();
                 textObjetivo.Value = entidadConsultada.Objetivos.ToString();
                 textFechaA.Value = entidadConsultada.FechaAsig.ToString();
@@ -258,11 +260,20 @@ namespace SAPR
         {
             String[] result = new String[1];
             result = controladora.eliminarProyecto(entidadConsultada.Nombre); //Habla con la controladora de proyecto para eliminar un proyecto, según su nombre.
-            this.gridUsuariosAsignados.Visible = false; 
-            this.gridProyecto.Enabled = true;
-            llenarGridUsuarios();
-            limpiarCampos();
-            gridProyecto.DataBind();      
+
+            if (result[0] == "Exito") {
+                mostrarMensaje("Success", "Éxito!!!", "El Proyecto fue eliminado correctamente");
+                this.gridUsuariosAsignados.Visible = false;
+                this.gridProyecto.Enabled = true;
+                llenarGridUsuarios();
+                limpiarCampos();
+                gridProyecto.DataBind();
+            }
+            else if (result[0] == "Error") {
+                mostrarMensaje("Danger", "Error", "Se produjo un error al intentar borrar el Proyecto");
+            
+            } 
+    
         }
 
 			/*
@@ -355,13 +366,25 @@ namespace SAPR
                 {
                     r = controladora.insertarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider,
                                                         this.textRepresentante.Value.ToString(), this.textTelRepresentante.Value.ToString(), this.textTelSecundario.Value.ToString(), this.TextOficina.Value.ToString(), this.textEmailRepresentante.Value.ToString());
-                    int k = 0;
-                    int idP = 0;
-                    while (gridUsuarios.Rows[k].Cells[2].Text != null){ //Del grid de usuarios, agarra los marcados con Check, para insertarlos en su proyecto asignado.
-                        idP = controladora.getIdProyecto(this.textNombre.Value.ToString());
-                        controladora.insertarUsuarioProyecto(idP,miembros[k]);
-                        k++;
+
+                    if (r[0] == "Exito")
+                    {
+                        mostrarMensaje("Success", "Éxito!!!", "El Proyecto fue insertado correctamente");
+                        int k = 0;
+                        int idP = 0;
+                        while (gridUsuarios.Rows[k].Cells[2].Text != null)
+                        { //Del grid de usuarios, agarra los marcados con Check, para insertarlos en su proyecto asignado.
+                            idP = controladora.getIdProyecto(this.textNombre.Value.ToString());
+                            controladora.insertarUsuarioProyecto(idP, miembros[k]);
+                            k++;
+                        }
                     }
+                    else if (r[0] == "Error")
+                    {
+                        mostrarMensaje("Danger", "Error", "El nombre de Proyecto seleccionado ya existe");
+                        this.textNombre.Value = "";
+                    }
+
                 }
                 catch (Exception jh)
                 {}
@@ -406,7 +429,16 @@ namespace SAPR
                     k++;
                 }
                     String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider, entidadConsultada);
-                    llenarUsuariosAsignados();
+
+
+                    if (result[0] == "Exito")
+                    {
+                        mostrarMensaje("Success", "Éxito!!!", "El Proyecto fue modificado correctamente");
+                        llenarUsuariosAsignados();
+                    }
+                    else if (result[0] == "Error") { 
+                        mostrarMensaje("Danger", "Error", "El nombre de Proyecto seleccionado ya existe");                            
+                    }
             }         
                 modo = 0;
                 restaurarPantalla();
@@ -577,6 +609,22 @@ namespace SAPR
 
             }
 
+        }
+
+        protected void ocultarMensaje()
+        {
+            alertAlerta.Attributes.Add("hidden", "hidden");
+        }
+
+        /*
+        * Muestra mensaje de exito o error.
+        */
+        protected void mostrarMensaje(String tipoAlerta, String alerta, String mensaje)
+        {
+            alertAlerta.Attributes["class"] = "alert alert-" + tipoAlerta + " alert-dismissable fade in";
+            labelTipoAlerta.Text = alerta + " ";
+            labelAlerta.Text = mensaje;
+            alertAlerta.Attributes.Remove("hidden");
         }
     }
 }
