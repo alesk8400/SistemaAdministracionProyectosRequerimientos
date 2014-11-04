@@ -21,7 +21,7 @@
         <div class="page-header">
         <div class="row">
             <div class="col-lg-11">
-                <h1><i class="fa fa-truck"></i> ESTRUCTURA PROYECTO</h1>
+                <h1><i class="fa fa-truck"></i> Estructura Proyecto</h1>
             </div>
         </div>
     </div>
