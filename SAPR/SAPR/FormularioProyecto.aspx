@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioProyecto.aspx.cs" Inherits="SAPR.FormularioProyecto" %>
+<%@ MasterType  virtualPath="~/Neo.Master"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <div class="page-header">
         <div class="row">
@@ -85,14 +86,14 @@
                         
                         <div class="col-md-4">
                             <label for="textFechaA">Fecha de Asignación:</label>
-                            <input runat="server" id="textFechaA" type="text" class="datepicker" placeholder="Clic Aquí" required="required"/>
+                            <input runat="server" id="textFechaA" type="text" class="datepicker form-control" placeholder="Clic Aquí" required="required"/>
                             <div class="help-block with-errors"></div>
                         </div>
 
                          <div class="col-md-4">
                             <label for="textFechaI">Fecha de Inicio: </label>
                         
-                            <input runat="server" id="textFechaI" type="text" class="datepicker" placeholder="Clic Aquí"/>
+                            <input runat="server" id="textFechaI" type="text" class="datepicker form-control" placeholder="Clic Aquí"/>
                             <asp:CompareValidator ID="CompareValidator1" ControlToCompare="textFechaA" 
                                         ControlToValidate="textFechaI" Type="Date" Operator="GreaterThanEqual"   
                                         ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
@@ -101,7 +102,7 @@
 
                         <div class="col-md-4">
                             <label for="textFechaF">Fecha de Finalización:</label>
-                                <input runat="server" id="textFechaF" type="text" class="datepicker" placeholder="Clic Aquí"/>
+                                <input runat="server" id="textFechaF" type="text" class="datepicker form-control" placeholder="Clic Aquí"/>
                                 <%-- <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
                                             ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   Display="Dynamic" SetFocusOnError="true" CultureInvariantValues="true"
                                             ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>--%>
@@ -114,83 +115,73 @@
             </div>
             </div>
     <!--Datos de contacto-->
-    <div class="col-lg-12">
+    <div class="col-lg-12 text-center">
             <div class="well bs-component">
                 <fieldset>
                     <legend>Información de Contacto</legend>
-
-                    <div class="col-md-7">
-                    <div class="form-group">
-                        <label for="textRepresentante" class="col-sm-4 control-label">Representante: </label>
-                        <div class="col-sm-5">
-                            <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="textRepresentante" class="form-control" type="text" placeholder="Nombre de Representante" title="Representante" required="required" />
-                                <asp:RegularExpressionValidator runat=server 
-            ControlToValidate="textRepresentante" 
-            ErrorMessage="Nombre Representante Inválido. Debe tener entre 5 y 44 caracteres" 
-            ValidationExpression="^[a-zA-Z\s]{5,50}$" />
-                            <asp:requiredfieldvalidator id="RequiredFieldValidator2" runat="server" errormessage="" forecolor="red" controltovalidate="textRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator> 
-                            </div>
-                            <div class="help-block with-errors"></div>
-                        </div></div>
-
-
-                    <div class="form-group">
-                        <label for="textTelRepresentanre" class="col-sm-4 control-label">Teléfono de Representante: </label>
-                        <div class="col-sm-5">
-                            <div class=" input-group margin-bottom-sm">
-                                <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante"  title="Telefono" required="required"/>
-                                <asp:RegularExpressionValidator runat=server 
-            ControlToValidate="textTelRepresentante" 
-            ErrorMessage="Teléfono incorrecto. Debe tener 8 números. Sin espacios." 
-            ValidationExpression="[0-9]{8}" />
-                            <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="red" controltovalidate="textTelRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
-                            </div>
-                            <div class="help-block with-errors"></div>
+                    <div class="row">
+                        <div class="col-md-4">                   
+                            <label for="textRepresentante">Representante: </label>                                                    
+                                    <input runat="server" id="textRepresentante" class="form-control" type="text" placeholder="Nombre de Representante" title="Representante" required="required" />
+                                    <asp:RegularExpressionValidator runat="server" 
+                                    ControlToValidate="textRepresentante" 
+                                    ErrorMessage="Nombre Representante Inválido. Debe tener entre 5 y 44 caracteres" 
+                                    ValidationExpression="^[a-zA-Z\s]{5,50}$" />
+                                <asp:requiredfieldvalidator id="RequiredFieldValidator2" runat="server" errormessage="" forecolor="red" controltovalidate="textRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">El campo no puede ser vacío.</asp:requiredfieldvalidator>                             
+                                <div class="help-block with-errors"></div>
                         </div>
-                    </div>
 
-                        
-                    <div class="form-group">
-                        <label for="textEmailRepresentante" class="col-sm-4 control-label">E-mail: </label>
-                        <div class="col-sm-5">
-                            <input runat="server" id="textEmailRepresentante" class="form-control" type="email" placeholder="E-mail" />
-                            <asp:RegularExpressionValidator runat=server 
-            ControlToValidate="textEmailRepresentante" 
-            ErrorMessage="Email incorrecto. Debe tener este formato : ejemplo@correo.com" 
-            ValidationExpression="^[a-zA-Z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
-                            <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="red" controltovalidate="textEmailRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
-                            <div class="help-block with-errors"></div>
+                        <div class="col-md-4">
+                            <label for="textEmailRepresentante" >E-mail: </label>                        
+                                <input runat="server" id="textEmailRepresentante" class="form-control" type="email" placeholder="E-mail" />
+                                <asp:RegularExpressionValidator runat="server" 
+                                    ControlToValidate="textEmailRepresentante" 
+                                    ErrorMessage="Email incorrecto. Debe tener este formato : ejemplo@correo.com" 
+                                    ValidationExpression="^[a-zA-Z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
+                                <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="red" controltovalidate="textEmailRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+                                <div class="help-block with-errors"></div>                        
                         </div>
-                    </div>
-                    
-                       </div>
 
-                 <div class="col-md-5">
-                    <div class="form-group">
-                        <label for="textOficina" class="col-sm-5 control-label">Oficina: </label>
-                        <div class="col-sm-4">
+                    <div class="col-md-4">
+                        <label for="textOficina">Oficina: </label>                        
                             <input runat="server" id="TextOficina" class="form-control" type="tel" placeholder="Oficina" title="Oficina"/>
-                            <asp:RegularExpressionValidator runat=server 
-            ControlToValidate="TextOficina" 
-            ErrorMessage="Oficina incorrecta. Debe tener un largo de 5-15 caracteres." 
-            ValidationExpression="[a-zA-Z0-9\-\s]{5,15}$" />
+                            <asp:RegularExpressionValidator runat="server" 
+                                ControlToValidate="TextOficina" 
+                                ErrorMessage="Oficina incorrecta. Debe tener un largo de 5-15 caracteres." 
+                                ValidationExpression="[a-zA-Z0-9\-\s]{5,15}$" />
                             <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="red" controltovalidate="TextOficina" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
-                            <div class="help-block with-errors"></div>
-                        </div>
+                            <div class="help-block with-errors"></div>                        
                     </div>
-                    <div class="form-group">
-                        <label for="textTelSecundario" class="col-sm-5 control-label">Teléfono Secundario: </label>
-                        <div class="col-sm-4">
-                            <input runat="server" id="textTelSecundario" class="form-control" type="tel" placeholder="Teléfono Secundario" title="Telefono secundario"/>
-                             <asp:RegularExpressionValidator runat=server 
-            ControlToValidate="textTelSecundario" 
-            ErrorMessage="Teléfono incorrecto. Debe tener 8 números. Sin espacios." 
-            ValidationExpression="[0-9]{8}$" />
-                            <div class="help-block with-errors"></div>
-                        </div>
+
                     </div>
+                    </fieldset>
+                
+                    &nbsp;
+                    <fieldset>
+
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-2">
+                            <label for="textTelRepresentanre">Teléfono de Representante: </label>                                                    
+                                <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante"  title="Telefono" required="required"/>
+                                <asp:RegularExpressionValidator runat="server" 
+                                    ControlToValidate="textTelRepresentante" 
+                                    ErrorMessage="Teléfono incorrecto. Debe tener 8 números. Sin espacios." 
+                                    ValidationExpression="[0-9]{8}" />
+                                <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="red" controltovalidate="textTelRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>                            
+                                <div class="help-block with-errors"></div>                        
                         </div>
+
+                        <div class="col-md-4">
+                            <label for="textTelSecundario">Teléfono Secundario: </label>                        
+                                <input runat="server" id="textTelSecundario" class="form-control" type="tel" placeholder="Teléfono Secundario" title="Telefono secundario"/>
+                                 <asp:RegularExpressionValidator runat="server" 
+                                    ControlToValidate="textTelSecundario" 
+                                    ErrorMessage="Teléfono incorrecto. Debe tener 8 números. Sin espacios." 
+                                    ValidationExpression="[0-9]{8}$" />
+                                <div class="help-block with-errors"></div>                        
+                        </div>
+
+                    </div>
                         
                 </fieldset>
             </div>
@@ -198,7 +189,7 @@
         </div>
 
       <!--Información del equipo-->
-            <div class="col-lg-12">
+            <div class="col-lg-12 text-center">
             <div class="well bs-component">
                 <fieldset>
                     <legend>Información del Equipo</legend>
@@ -278,7 +269,7 @@
                 
                 <div class = " col-lg-7">    
                                       
-                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
+<%--                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
                     <Columns>
                         <asp:CommandField ShowSelectButton="True" ButtonType="Button" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
@@ -296,7 +287,7 @@
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                 </asp:GridView>
                                 
-                <asp:SqlDataSource ID="ListaProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT P.Nombre, P.Estado, U.Nombre AS Lider FROM Proyecto AS P INNER JOIN Usuarios AS U ON P.Lider = U.Cedula"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="ListaProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT P.Nombre, P.Estado, U.Nombre AS Lider FROM Proyecto AS P INNER JOIN Usuarios AS U ON P.Lider = U.Cedula"></asp:SqlDataSource>--%>
 
             </div>
 

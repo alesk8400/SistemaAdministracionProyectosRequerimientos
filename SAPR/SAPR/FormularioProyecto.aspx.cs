@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using SAPR.App_Code.Controladoras;
 using SAPR.App_Code.Entidades;
 using System.Data;
+using System.Web.UI.HtmlControls;
 
 namespace SAPR
 {
@@ -32,13 +33,14 @@ namespace SAPR
         protected void Page_Load(object sender, EventArgs e)
         {
                 if(!IsPostBack){
-                    llenarGridUsuarios();
+                    //llenarGridUsuarios();
                 }
 
             if(modo != 1 && modo != 2){
                 restaurarPantallaSinLimpiar();
             }
-                
+
+
         }
 
 		/*
@@ -161,7 +163,7 @@ namespace SAPR
         {
             try
             {
-                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
+                //entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
                 textNombre.Value = entidadConsultada.Nombre.ToString();
                 textObjetivo.Value = entidadConsultada.Objetivos.ToString();
                 textFechaA.Value = entidadConsultada.FechaAsig.ToString();
@@ -180,7 +182,7 @@ namespace SAPR
                 btnModificarProyecto.Disabled = false;
                 btnEliminarProyecto.Disabled = false;
                 this.gridUsuariosAsignados.Visible = true;
-                gridProyecto.DataBind();
+                //gridProyecto.DataBind();
                 llenarUsuariosAsignados();
                 llenarGridUsuarios();
                 }
@@ -203,7 +205,7 @@ namespace SAPR
             this.gridUsuariosAsignados.Visible = false; //Desaparece el grid de usuarios asignados.
             btnModificarProyecto.Disabled = true; //Deshabilita boton de modificar proyecto.
             btnEliminarProyecto.Disabled = true; //Deshabilita boton de eliminar proyecto.
-            this.gridProyecto.Enabled = false; //Deshabilita la selección de proyectos.
+            //this.gridProyecto.Enabled = false; //Deshabilita la selección de proyectos.
             btnAgregarProyecto.Disabled = true; //Deshabilita el botón de agregar, hasta que se cancele el proceso o se acepte.
 			
 			//Se habilitan los checkboxes de usuarios disponibles.
@@ -232,7 +234,7 @@ namespace SAPR
             this.cmbEstado.Enabled =true;
             this.gridUsuarios.Enabled = true;
             this.gridUsuariosAsignados.Enabled = true;
-            this.gridProyecto.Enabled = false;
+            //this.gridProyecto.Enabled = false;
             btnAgregarProyecto.Disabled = true;
             botonAceptar.Disabled = false;
             botonCancelar.Disabled = false;
@@ -259,10 +261,10 @@ namespace SAPR
             String[] result = new String[1];
             result = controladora.eliminarProyecto(entidadConsultada.Nombre); //Habla con la controladora de proyecto para eliminar un proyecto, según su nombre.
             this.gridUsuariosAsignados.Visible = false; 
-            this.gridProyecto.Enabled = true;
+            //this.gridProyecto.Enabled = true;
             llenarGridUsuarios();
             limpiarCampos();
-            gridProyecto.DataBind();      
+            //gridProyecto.DataBind();      
         }
 
 			/*
@@ -279,7 +281,7 @@ namespace SAPR
 
             if (modo == 2) //En modificar, todo vuelve a su estado inicial de consulta.
             {
-                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
+                //entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
                 textNombre.Value = entidadConsultada.Nombre.ToString();
                 textObjetivo.Value = entidadConsultada.Objetivos.ToString();
                 textFechaA.Value = entidadConsultada.FechaAsig.ToString();
@@ -297,7 +299,7 @@ namespace SAPR
                 TextOficina.Value = clienteConsultado.Oficina.ToString();
                 textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
                 btnModificarProyecto.Disabled = true;
-                gridProyecto.DataBind();
+                //gridProyecto.DataBind();
                 this.gridUsuariosAsignados.Visible = true;
                 llenarGridUsuarios();
                 llenarUsuariosAsignados();
@@ -308,7 +310,7 @@ namespace SAPR
             modo = 0; //Se devuelve a modo consulta luego de cancelar.
             botonAceptar.Disabled = true;
             botonCancelar.Disabled = true;
-            this.gridProyecto.Enabled = true;
+            //this.gridProyecto.Enabled = true;
             btnAgregarProyecto.Disabled = false;
          
 
@@ -410,10 +412,10 @@ namespace SAPR
             }         
                 modo = 0;
                 restaurarPantalla();
-                gridProyecto.DataBind();
+                //gridProyecto.DataBind();
                 llenarGridUsuarios();
                 this.gridUsuariosAsignados.Visible = false;
-                this.gridProyecto.Enabled = true;          
+                //this.gridProyecto.Enabled = true;          
         }
     /*
      * METODOS INTERFAZ ##################################################################################################### 
