@@ -10,12 +10,14 @@ using SAPR.App_Code.Entidades;
 namespace SAPR.App_Code.Controladoras {
     public class ControladoraBDUsuario {
         UsuariosTableAdapter adaptUsuario;   //Este es el adapter
+        UsuarioProyectoTableAdapter adaptUsuProy;
         //falta constructor
         /*
          Constructor de la clase ControladoraBDUsuario que incializa el adapter
          */
         public ControladoraBDUsuario() {
             adaptUsuario = new UsuariosTableAdapter();
+            adaptUsuProy = new UsuarioProyectoTableAdapter();
         }
 
         /*
@@ -151,9 +153,20 @@ namespace SAPR.App_Code.Controladoras {
          Método que recibe la cédula de un Usuario, manda al adapter de Usuario a validar ese Usuario, deja la validación en un int resutado y lo retorna. 
          y lo retorna. 
          */
-        public int validarUsuario(string cedulaUsuario)
+        public int validarUsuario(String cedulaUsuario)
         {
             int resultado = (int)this.adaptUsuario.validarUsuario(cedulaUsuario);
+            return resultado;
+        }
+
+        public String getProyectoUsuario(String cedula) {
+            String resultado;
+         
+                resultado = this.adaptUsuProy.getProyectoUsuario(cedula);
+           if(resultado == null){
+               resultado = "Ninguno";
+           }
+        
             return resultado;
         }
     }     

@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioUsuario.aspx.cs" Inherits="SAPR.FormularioUsuario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     
-  
-    
-  
+    <div></div>
+
     
     <div class="page-header">
         <div class="row">
@@ -53,8 +53,8 @@
                                 <input runat="server" id="txtNombreUsuario" placeholder= "Nombre completo" class="form-control" type="text" title="Nombre" required="required" />
                                 <asp:RegularExpressionValidator runat=server 
             ControlToValidate="txtNombreUsuario" 
-            ErrorMessage="Nombre Incorrecto. Debe tener entre 5 y 50 caracteres" 
-            ValidationExpression="[a-zA-Z\s]{5,50}$" />
+            ErrorMessage="Nombre Incorrecto. Debe tener entre 3 y 50 caracteres" 
+            ValidationExpression="[a-zA-Z\s]{3,50}$" />
                                 <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="black" controltovalidate="txtNombreUsuario" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                                 <div class="help-block with-errors"></div>
                                   
@@ -64,11 +64,11 @@
                    
                         <label for="txtCedula">Cédula <font color='red'>*</font> </label>
                          
-                                <input runat="server" placeholder= "X XXX XXX" id ="txtCedula" class="form-control" type="text" required="required" title="cedula"/>
+                                <input runat="server" placeholder= "XXXXXXXXX" id ="txtCedula" class="form-control" type="text" required="required" title="cedula"/>
                                 <asp:RegularExpressionValidator runat=server 
             ControlToValidate="txtCedula" 
-            ErrorMessage="Cédula inválida. Formato con números X XXXX XXXX" 
-            ValidationExpression="[1-9]\s[0-9]{4}\s[0-9]{4}$" />
+            ErrorMessage="Cédula inválida. Formato con números XXXXXXXXX. Sin espacios" 
+            ValidationExpression="[1-9][0-9]{4}[0-9]{4}$" />
                                <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="black" controltovalidate="txtCedula" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                                 <asp:Label ID="errorCedulaRepetida" runat="server" Text=""></asp:Label>
                                  <div class="help-block with-errors">
@@ -97,12 +97,12 @@
                    <div class ="col-md-2">
                         <label for="textCelular">Teléfono Secundario </label>
                         
-                            <input runat="server" id="textCelular" class="form-control" type="tel" placeholder="Celular" title="Celular"/>
+                            <input runat="server" id="textCelular" class="form-control" type="tel" placeholder="Teléfono Sec" title="TeléfonoSec"/>
                             <asp:RegularExpressionValidator runat=server 
             ControlToValidate="textCelular" 
             ErrorMessage="Teléfono incorrecto. Debe tener 8 números.  Sin espacios." 
             ValidationExpression="[0-9]{8}" />
-                            <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="black" controltovalidate="textCelular" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="black" controltovalidate="textCelular" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>
                       </div>
               
@@ -245,7 +245,7 @@
                 <asp:BoundField DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                 <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
-                <asp:CommandField ShowSelectButton="True" />
+                <asp:CommandField HeaderText="Seleccion" SelectText="Consultar" ShowSelectButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -298,9 +298,6 @@
             </div>
         </div>
     </div>
-
-
-   
 
 </asp:Content>
 

@@ -25,6 +25,13 @@ namespace SAPR
 		* Carga de página que deshabilita botones.
 		*/
         protected void Page_Load(object sender, EventArgs e){
+            if (cmbProyecto.Items.Contains(new ListItem("Ninguno")))
+            {
+            }
+            else
+            {
+                cmbProyecto.Items.Add("Ninguno");
+            }
             if (modo != 1 && modo != 2)
             {
                 restaurarPantallaSinLimpiar();
@@ -60,6 +67,7 @@ namespace SAPR
                 textCelular.Value = entidadConsultada.Celular;
                 textEmail.Value = entidadConsultada.Correo;
                 cmbRoles.Text = controladora.getRolUsuario(entidadConsultada.Cedula);
+                cmbProyecto.Text = controladora.getProyectoUsuario(entidadConsultada.Cedula);
             }
             catch {
                 entidadConsultada = null;
@@ -134,7 +142,7 @@ namespace SAPR
                 cmbRoles.Text = controladora.getRolUsuario(entidadConsultada.Cedula);
             
             }
-
+            restaurarPantalla();
         }
 		
 		/*
