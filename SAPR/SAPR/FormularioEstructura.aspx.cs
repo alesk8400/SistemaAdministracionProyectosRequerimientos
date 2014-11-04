@@ -27,7 +27,11 @@ namespace SAPR
             if (!IsPostBack)
             {
                 llenarCmbProy();
-                idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
+                try {
+                    idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
+                }
+                catch { }
+                
                 llenarCmbSprint();
                 gridSprints.DataSource = getSprints(idProyecto);
                 gridSprints.DataBind();
@@ -108,7 +112,30 @@ namespace SAPR
              cmbSprints.DataTextField = "Nombre";
              cmbSprints.DataValueField = "idSprint";
              cmbSprints.DataBind();
-             llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+             if (cmbSprints.Text == "")
+             {
+                 this.btnModificarSprint.Disabled = true;
+                 this.btnEliminarSprint.Disabled = true;
+                 this.txtNombreSprint.Value = "";
+                 this.txtDescripcionSprint.Value = "";
+                 this.btnAgregarModulo.Disabled = true;
+                 this.btnModificarModulo.Disabled = true;
+                 this.modaleliminarModulo.Disabled = true;
+                 this.txtNombreModulo.Value = "";
+                 this.txtDescripcionModulo.Value = "";
+             }
+             try
+             {
+                 llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+                
+             }
+             catch { }
+             if (cmbSprints.Text == "")
+             {
+                 cmbModulo.Items.Add(new ListItem("", ""));
+                 cmbModulo.Text = "";
+             }
+             
          }
 
 
@@ -125,7 +152,7 @@ namespace SAPR
          protected void cmbSprints_SelectedIndexChanged(object sender, EventArgs e)
          {
              entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
-             llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+             llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));         
              this.txtNombreSprint.Value = entidadS.Nombre;
              this.txtDescripcionSprint.Value = entidadS.Descripcion;
          }
@@ -137,6 +164,13 @@ namespace SAPR
              cmbModulo.DataTextField = "Nombre";
              cmbModulo.DataValueField = "idModulo";
              cmbModulo.DataBind();
+             if (cmbModulo.Text == "")
+             {
+                 this.btnModificarModulo.Disabled = true;
+                 this.modaleliminarModulo.Disabled = true;
+                 this.txtNombreModulo.Value = "";
+                 this.txtDescripcionModulo.Value = "";
+             }
          }
          protected void cmbModulo_SelectedIndexChanged(object sender, EventArgs e)
          {
@@ -157,6 +191,9 @@ namespace SAPR
              this.btnAgregarSprint.Disabled = true;
              this.btnModificarSprint.Disabled = true;
              this.btnEliminarSprint.Disabled = true;
+             this.btnModificarModulo.Disabled = true;
+             this.btnAgregarModulo.Disabled = true;
+             this.modaleliminarModulo.Disabled = true;
          }
 
          protected void btnModificarSprint_Click(object sender, EventArgs e)
@@ -169,6 +206,9 @@ namespace SAPR
              this.btnCancelarS.Disabled = false;
              this.btnAgregarSprint.Disabled = true;
              this.btnEliminarSprint.Disabled = true;
+             this.btnModificarModulo.Disabled = true;
+             this.btnAgregarModulo.Disabled = true;
+             this.modaleliminarModulo.Disabled = true;
          }
 
          protected void clickAceptarEliminarSprint(object sender, EventArgs e)
@@ -210,8 +250,8 @@ namespace SAPR
                  this.txtNombreSprint.Disabled = true;
                  this.txtDescripcionSprint.Disabled = true;
              }
-             this.btnAceptarS.Disabled = false;
-             this.btnCancelarS.Disabled = false;
+             this.btnAceptarS.Disabled = true;
+             this.btnCancelarS.Disabled = true;
              this.txtNombreSprint.Disabled = true;
              this.txtDescripcionSprint.Disabled = true;
              this.btnAgregarSprint.Disabled = false;
@@ -219,7 +259,12 @@ namespace SAPR
              this.btnEliminarSprint.Disabled = false;
              int idSprint = controladora.getIdSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
              this.cmbSprints.Text = idSprint.ToString();
-
+             this.btnAgregarModulo.Disabled = false;
+             if(cmbModulo.Text !=""){
+                 this.btnModificarModulo.Disabled = false;
+                 this.modaleliminarModulo.Disabled = false;
+             }
+             
          }
 
 
@@ -234,28 +279,41 @@ namespace SAPR
                  this.btnAgregarSprint.Disabled = false;
                  this.btnModificarSprint.Disabled = false;
                  this.btnEliminarSprint.Disabled = false;
+                 this.btnModificarModulo.Disabled = false;
+                 this.btnAgregarModulo.Disabled = false;
+                 this.modaleliminarModulo.Disabled = false;
+                 this.btnAceptarS.Disabled = true;
+                 this.btnCancelarS.Disabled = true;
          }
          protected void btnAgregarModulo_Click(object sender, EventArgs e)
          {
              this.txtNombreModulo.Disabled = false;
              this.txtDescripcionModulo.Disabled = false;
              modoM = 1;
-             this.btnAceptarS.Disabled = false;
-             this.btnCancelarS.Disabled = false;
+             this.btnAceptarM.Disabled = false;
+             this.btnCancelarM.Disabled = false;
              this.txtNombreModulo.Value = "";
              this.txtDescripcionModulo.Value = "";
+             this.btnAgregarModulo.Disabled = true;
              this.btnModificarModulo.Disabled = true;
              this.modaleliminarModulo.Disabled = true;
+             this.btnAgregarSprint.Disabled = true;
+             this.btnModificarSprint.Disabled = true;
+             this.btnEliminarSprint.Disabled = true;
          }
          protected void btnModificarModulo_Click(object sender, EventArgs e)
          {
              this.txtNombreModulo.Disabled = false;
              this.txtDescripcionModulo.Disabled = false;
              modoM = 2;
-             this.btnAceptarS.Disabled = false;
-             this.btnCancelarS.Disabled = false;
+             this.btnAceptarM.Disabled = false;
+             this.btnCancelarM.Disabled = false;
              this.btnAgregarModulo.Disabled = true;
+             this.btnModificarModulo.Disabled = true;
              this.modaleliminarModulo.Disabled = true;
+             this.btnAgregarSprint.Disabled = true;
+             this.btnModificarSprint.Disabled = true;
+             this.btnEliminarSprint.Disabled = true;
          }
 
          protected void clickAceptarEliminarModulo(object sender, EventArgs e)
@@ -301,8 +359,13 @@ namespace SAPR
              this.btnModificarModulo.Disabled = false;
              this.btnAgregarModulo.Disabled = false;
              this.modaleliminarModulo.Disabled = false;
-             //int idModulo = controladora.getIdModulo(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
-            // this.cmbSprints.Text = idModulo.ToString();
+             this.btnAgregarSprint.Disabled = false;
+             this.btnModificarSprint.Disabled = false;
+             this.btnEliminarSprint.Disabled = false;
+             this.btnAceptarS.Disabled = true;
+             this.btnCancelarS.Disabled = true;
+             this.btnAceptarM.Disabled = true;
+             this.btnCancelarM.Disabled = true;
          }
 
          protected void btnCancelar2(object sender, EventArgs e)
@@ -315,6 +378,12 @@ namespace SAPR
              this.btnModificarModulo.Disabled = false;
              this.btnAgregarModulo.Disabled = false;
              this.modaleliminarModulo.Disabled = false;
+             this.btnAgregarSprint.Disabled = false;
+             this.btnModificarSprint.Disabled = false;
+             this.btnEliminarSprint.Disabled = false;
+             this.btnAceptarM.Disabled = true;
+             this.btnCancelarM.Disabled = true;
+
          }
     }
 }

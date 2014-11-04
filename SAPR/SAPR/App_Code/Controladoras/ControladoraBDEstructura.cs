@@ -105,7 +105,10 @@ namespace SAPR.App_Code.Controladoras
         public int getIdSprint(String nombreSprint, int idProyecto)
         {
             int idSprint;
-            idSprint = Int32.Parse(this.adaptS.getIdSprint(nombreSprint, idProyecto).ToString());
+        
+                idSprint = Int32.Parse(this.adaptS.getIdSprint(nombreSprint, idProyecto).ToString());
+         
+            
             return idSprint;
         }
 

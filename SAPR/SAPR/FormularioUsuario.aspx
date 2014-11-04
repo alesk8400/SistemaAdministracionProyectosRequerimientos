@@ -225,7 +225,7 @@
 
     <div class="row">
             <div class="col-lg-11">
-                <h1><i class="fa fa-truck"></i>Usuarios Registrados</h1>
+                <h3><i class="fa fa-truck"></i>Usuarios Registrados</h3>
             </div>
             <div class="col-lg-1">
                 <h2><a id="A1" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>

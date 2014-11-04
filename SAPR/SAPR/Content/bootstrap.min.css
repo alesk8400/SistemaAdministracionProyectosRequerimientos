@@ -174,8 +174,12 @@ legend {
     border: 0;
 }
 
+
+
+
 textarea {
     overflow: auto;
+    resize:none;
 }
 
 optgroup {
@@ -6665,5 +6669,7 @@ button.close {
         display: none !important;
     }
 
-
+#txtDescripcionModulo {
+    resize: none;
+}
 }

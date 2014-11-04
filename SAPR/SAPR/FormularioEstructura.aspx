@@ -178,62 +178,97 @@
         </div>
     </div>
 
-    <div class="row">
-            <div class="col-lg-11">
-                <h1><i class="fa fa-truck"></i>Sprints</h1>
-            </div>
-            <div class="col-lg-1">
-                <h2><a id="informacion" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>
-            </div>
+    <div class="col-lg-12">
+   
+        
+        <div class ="col-lg-6">           
+        <div class="well bs-component">
+         <div class="row  text-center">
+             <legend>Sprints</legend>
         </div>
 
-    <div class="col-lg-8">
-        <div class="well bs-component">
+        
             <fieldset>
-                <div class="form-group">
-                    <asp:Label ID="lbSprint" runat="server" Text="SPRINTS"></asp:Label>
-                    <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-                    <asp:Label ID="lbNomSprint" runat="server" Text="Nombre:"></asp:Label>
-                    <input id="txtNombreSprint" type="text" runat="server" enabled = "false"/>
-                    <asp:Label ID="lbDescripcion" runat="server" Text="Descripción:"></asp:Label>
-                    <textarea id="txtDescripcionSprint" cols="20" rows="2" runat="server"></textarea>
+                <div class="row">
                     <button runat="server" id="btnAgregarSprint" onserverclick="btnAgregarSprint_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
                     <button runat="server"  id="btnModificarSprint" class="btn btn-primary" type="button" onserverclick="btnModificarSprint_Click"><i class="fa fa-pencil-square-o"></i>Modificar</button>
                     <a id="btnEliminarSprint" href="#modalEliminarSprint" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
-                    <div>
-                    <button runat="server" id="btnAceptarS" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnAceptar1"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
-                    <button runat="server" id="btnCancelarS" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnCancelar1"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
-                    </div>
+
                 </div>
+                <br />
+                
+                    <div class="row text-center">
+                    <div class="col-md-3">
+                    <label for="Sprints">Sprints</label>
+                    <div class="dropdown-toggle">
+                    <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    <label for="txtNombreS">Nombre <font color='red'>*</font> </label>
+                    <input id="txtNombreSprint" type="text" runat="server" enabled = "false"/>
+                    </div>
+                    <div class="col-md-5">
+                    <label for="txtDescripcionS">Descripción  <font color='red'>*</font> </label>
+                    <textarea id="txtDescripcionSprint" cols="30" rows="3" runat="server"></textarea> 
+                     </div>   
+                     </div>
+                <br />          
+                    <div class ="text-center">
+                    <button runat="server" id="btnAceptarS" class="btn btn-success" type="button" validationgroup="B" xmlns:asp="#unknown" onserverclick="btnAceptar1"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                    <button runat="server" id="btnCancelarS" class="btn btn-danger" type="button" xmlns:asp="#unknown" onserverclick="btnCancelar1"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
+                    </div>
+                
             </fieldset>
+            <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="black" controltovalidate="txtNombreSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+            <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="black" controltovalidate="txtDescripcionSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+
+        </div>       
+ </div>
+
+        <div class =" col-lg-6">
+            <div class="well bs-component">
+        <div class="row text-center">
+
+            <legend>Módulos</legend>          
         </div>
-        <div class="row">
-            <div class="col-lg-11">
-                <h1><i class="fa fa-truck"></i>Modulos</h1>
-            </div>
-            <div class="col-lg-1">
-                <h2><a id="A1" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>
-            </div>
-        </div>
-        <div class="well bs-component">
+
+        
             <fieldset>
-                <div class="form-group">
-                    <asp:Label ID="lbModulo" runat="server" Text="MODULO"></asp:Label>
-                    <asp:DropDownList ID="cmbModulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbModulo_SelectedIndexChanged"></asp:DropDownList>
-                    <asp:Label ID="lbNombreModulo" runat="server" Text="Nombre:"></asp:Label>
-                    <input id="txtNombreModulo" runat ="server" type="text" />
-                    <asp:Label ID="lbDescripModulo" runat="server" Text="Descripción:"></asp:Label>
-                    <textarea id="txtDescripcionModulo" runat ="server" cols="20" rows="2"></textarea>
-                    <button runat="server" id="btnAgregarModulo" onserverclick="btnAgregarModulo_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
+                <div class="row">
+                 <button runat="server" id="btnAgregarModulo" onserverclick="btnAgregarModulo_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
                     <button runat="server"  id="btnModificarModulo" class="btn btn-primary" type="button" onserverclick="btnModificarModulo_Click"><i class="fa fa-pencil-square-o"></i>Modificar</button>
                     <a id="modaleliminarModulo" href="#modalEliminarModulo" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
-                    <div>
-                    <button runat="server" id="btnAceptarM" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnAceptar2"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
-                    <button runat="server" id="btnCancelarM" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnCancelar2"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
-                    </div>
                 </div>
+                <br />
+                <div class="row text-center">
+                    <div class="col-md-3">
+                    <label for="Modulos">Módulos</label>
+                    <div class="dropdown-toggle">
+                    <asp:DropDownList ID="cmbModulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbModulo_SelectedIndexChanged"></asp:DropDownList>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    <label for="txtNombreM">Nombre <font color='red'>*</font> </label>
+                    <input id="txtNombreModulo" runat ="server" type="text" />
+                    </div>
+                    <div class="col-md-4">
+                    <label for="txtDescripcionM">Descripción  <font color='red'>*</font> </label>
+                    <textarea id="txtDescripcionModulo" runat ="server" cols="30" rows="3"></textarea>
+                    </div>
+                    </div>
+
+                    <br />
+                    <div class="text-center">
+                    <button runat="server" id="btnAceptarM" class="btn btn-success" type="button" validationgroup="C" xmlns:asp="#unknown" onserverclick="btnAceptar2"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                    <button runat="server" id="btnCancelarM" class="btn btn-danger" type="button"  xmlns:asp="#unknown" onserverclick="btnCancelar2"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
+                    </div>
+                
             </fieldset>
+             <asp:requiredfieldvalidator id="RequiredFieldValidator2" runat="server" errormessage="" forecolor="black" controltovalidate="txtNombreModulo" validationgroup="C" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+            <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="black" controltovalidate="txtDescripcionModulo" validationgroup="C" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
         </div>
+            </div>
 
 
 

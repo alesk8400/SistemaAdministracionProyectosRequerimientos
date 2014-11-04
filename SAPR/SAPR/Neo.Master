@@ -70,16 +70,13 @@
                 <li>
                     <a href="#">Requerimientos</a>
                 </li>
-                <li>
-                    <a href="#">Seguridad</a>
-                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <a href="#menu-toggle" class= "btn btn-primary btn-lg toggle" id="menu-toggle"> Menú </a>
+            <a href="#menu-toggle" class= "btn btn-primary btn-lg toggle" id="menu-toggle"> Mostrar/Ocultar </a>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
