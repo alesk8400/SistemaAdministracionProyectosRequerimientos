@@ -31,7 +31,9 @@ namespace SAPR
             else
             {
                 cmbProyecto.Items.Add("Ninguno");
+                
             }
+            
             if (modo != 1 && modo != 2)
             {
                 restaurarPantallaSinLimpiar();
@@ -140,9 +142,10 @@ namespace SAPR
                 textCelular.Value = entidadConsultada.Celular;
                 textEmail.Value = entidadConsultada.Correo;
                 cmbRoles.Text = controladora.getRolUsuario(entidadConsultada.Cedula);
-            
+                cmbProyecto.Text = controladora.getProyectoUsuario(entidadConsultada.Cedula);
             }
-            restaurarPantalla();
+            restaurarPantallaSinLimpiar();
+            modo = 0;
         }
 		
 		/*
