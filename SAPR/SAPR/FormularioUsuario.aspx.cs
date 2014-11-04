@@ -25,7 +25,19 @@ namespace SAPR
 		* Carga de página que deshabilita botones.
 		*/
         protected void Page_Load(object sender, EventArgs e){
-            restaurarPantallaSinLimpiar();
+            if (cmbProyecto.Items.Contains(new ListItem("Ninguno")))
+            {
+            }
+            else
+            {
+                cmbProyecto.Items.Add("Ninguno");
+                
+            }
+            
+            if (modo != 1 && modo != 2)
+            {
+                restaurarPantallaSinLimpiar();
+            }
         }
 
 		/*
@@ -57,6 +69,7 @@ namespace SAPR
                 textCelular.Value = entidadConsultada.Celular;
                 textEmail.Value = entidadConsultada.Correo;
                 cmbRoles.Text = controladora.getRolUsuario(entidadConsultada.Cedula);
+                cmbProyecto.Text = controladora.getProyectoUsuario(entidadConsultada.Cedula);
             }
             catch {
                 entidadConsultada = null;
@@ -78,6 +91,8 @@ namespace SAPR
 
                     if (resultado[0] == "Exito")
                     { // si inserto el proveedor : va a modo consultar con ese proveedor
+                        mostrarMensaje("success", "Exito!!!", "El usuario se ha ingresado correctamente");
+                       
                         String proyecto = cmbProyecto.SelectedValue.ToString();
                         if (!proyecto.Equals("Ninguno"))
                         {
@@ -85,7 +100,12 @@ namespace SAPR
                             controladora.insertarUsuarioProyecto(IdProy, this.txtCedula.Value.ToString());
                         }
                         gridUsuarios.DataBind();
-                        restaurarPantalla();
+                        gridUsuarios.SelectRow(0);
+                        restaurarPantallaSinLimpiar();
+                    }
+                    else {
+                        mostrarMensaje("danger","Error","La cédula ingresada ya existe");
+                        this.txtCedula.Value = "";
                     } // si no lo inserto no debe cambiar de modo ni limpiar la pantalla.
                 }
                 else if (modo == 2)//si se quiere modificar
@@ -122,9 +142,10 @@ namespace SAPR
                 textCelular.Value = entidadConsultada.Celular;
                 textEmail.Value = entidadConsultada.Correo;
                 cmbRoles.Text = controladora.getRolUsuario(entidadConsultada.Cedula);
-            
+                cmbProyecto.Text = controladora.getProyectoUsuario(entidadConsultada.Cedula);
             }
-
+            restaurarPantallaSinLimpiar();
+            modo = 0;
         }
 		
 		/*
@@ -179,10 +200,11 @@ namespace SAPR
         protected void clickAceptarEliminar(object sender, EventArgs e) {
             String[] result = new String[1];
             result = controladora.eliminarUsuario(entidadConsultada.Cedula); //Obtiene la cedula para elimianr al usuario.
-            mostrarMensaje(result[0], result[0], result[0]); // se muestra el resultado
+            
             //Si encontró la cédula, result[0] guarda EXITO.
 			if (result[0].Contains("Exito"))// si fue exitoso
             {
+                mostrarMensaje("success", "Exito:", "Se eliminó el usuario correctamente"); // se muestra el resultado
                 limpiarCampos();
                 gridUsuarios.DataBind();
             }
@@ -193,6 +215,7 @@ namespace SAPR
 		*/
         protected void btnModificarUsuario_Click(object sender, EventArgs e){
             this.txtNombreUsuario.Disabled = false;
+            this.txtCedula.Disabled = false;
             this.textEmail.Disabled = false;
             this.textTelefono.Disabled = false;
             this.textCelular.Disabled = false;

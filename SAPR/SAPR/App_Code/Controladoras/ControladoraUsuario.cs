@@ -135,5 +135,9 @@ namespace SAPR.App_Code.Controladoras
             ControladoraProyecto controlProyecto = new ControladoraProyecto();
             controlProyecto.eliminarUsuarioProyecto(IdProy, ced);
         }
+
+        public String getProyectoUsuario(String cedula) {
+            return controladoraBDUsuario.getProyectoUsuario(cedula);
+        }
     }
 }
