@@ -39,33 +39,33 @@
                     <div class="row">
 
                             <div class="col-md-4">
-                                <label for="textNombre" >Nombre  <font color='red'>*</font></label>
+                                <label for="textNombre" >Nombre del Proyecto  <font color='red'>*</font></label>
 
-                                    <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" title="Nombre" required="required" />
+                                    <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Debe tener entre 5 y 44 caracteres" title="Nombre" required="required" />
                                     <asp:RegularExpressionValidator runat="server" 
                                         ControlToValidate="textNombre" 
                                         ErrorMessage="Nombre Proyecto Inválido. Debe tener entre 5 y 44 caracteres" 
                                         ValidationExpression="^[a-zA-Z0-9\s]{5,44}$" />
-                                    <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="red" controltovalidate="textNombre" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="black" controltovalidate="textNombre" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
 
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="textObjetivo">Objetivo  <font color='red'>*</font></label>
+                                <label for="textObjetivo">Objetivo del Proyecto  <font color='red'>*</font></label>
 
-                                    <input runat="server" id="textObjetivo" class="form-control" type="text" placeholder="Objetivo de Proyecto"  title="Objetivos" required="required" />
+                                    <textarea runat="server" id="textObjetivo" class="form-control" type="text" placeholder="Debe tener entre 5 y 300 caracteres"  title="Objetivos" required="required" />
                                     <asp:RegularExpressionValidator runat="server" 
                                      ControlToValidate="textObjetivo" 
                                      ErrorMessage="Objetivos Inválidos. Debe tener entre 5 y 300 caracteres" 
                                      ValidationExpression="^[a-zA-Z0-9\s]{5,300}$" />
-                                    <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="red" controltovalidate="textObjetivo" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="black" controltovalidate="textObjetivo" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
 
                                 <div class="help-block with-errors"></div>
                             </div>
 
                         <div class="col-md-4">
-                            <label for="text" >Estado  <font color='red'>*</font></label>
+                            <label for="text" >Estado del Proyecto <font color='red'>*</font></label>
                             <div class="dropdown-toggle"> 
                                     <asp:DropDownList ID="cmbEstado" runat="server">
                                         <asp:ListItem>Sin Iniciar</asp:ListItem>
@@ -121,39 +121,40 @@
                     <legend>Información de Contacto</legend>
                     <div class="row">
                         <div class="col-md-4">                   
-                            <label for="textRepresentante">Representante  <font color='red'>*</font></label>                                                    
-                                    <input runat="server" id="textRepresentante" class="form-control" type="text" placeholder="Nombre de Representante" title="Representante" required="required" />
+                            <label for="textRepresentante">Nombre del Representante  <font color='red'>*</font></label>                                                    
+                                    <input runat="server" id="textRepresentante" class="form-control" type="text" placeholder="Debe tener entre 5 y 44 caracteres" title="Representante" required="required" />
                                     <asp:RegularExpressionValidator runat="server" 
                                     ControlToValidate="textRepresentante" 
-                                    ErrorMessage="Nombre Representante Inválido. Debe tener entre 5 y 44 caracteres" 
-                                    ValidationExpression="^[a-zA-Z\s]{5,50}$" />
-                                <asp:requiredfieldvalidator id="RequiredFieldValidator2" runat="server" errormessage="" forecolor="red" controltovalidate="textRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">El campo no puede ser vacío.</asp:requiredfieldvalidator>                             
+                                    ErrorMessage="Nombre Representante Inválido. Debe tener entre 3 y 44 caracteres" 
+                                    ValidationExpression="^[a-zA-Z\s]{3,50}$" />
+                                
                                 <div class="help-block with-errors"></div>
                         </div>
 
                         <div class="col-md-4">
-                            <label for="textEmailRepresentante" >E-mail  <font color='red'>*</font></label>                        
-                                <input runat="server" id="textEmailRepresentante" class="form-control" type="email" placeholder="E-mail" />
+                            <label for="textEmailRepresentante" >E-mail del Representante <font color='red'>*</font></label>                        
+                                <input runat="server" id="textEmailRepresentante" class="form-control" type="email" placeholder="Debe tener este formato : ejemplo@correo.com" />
                                 <asp:RegularExpressionValidator runat="server" 
                                     ControlToValidate="textEmailRepresentante" 
                                     ErrorMessage="Email incorrecto. Debe tener este formato : ejemplo@correo.com" 
                                     ValidationExpression="^[a-zA-Z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$" />
-                                <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="red" controltovalidate="textEmailRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+                                <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="black" controltovalidate="textEmailRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
                                 <div class="help-block with-errors"></div>                        
                         </div>
 
                     <div class="col-md-4">
-                        <label for="textOficina">Oficina  <font color='red'>*</font></label>                        
-                            <input runat="server" id="TextOficina" class="form-control" type="tel" placeholder="Oficina" title="Oficina"/>
+                        <label for="textOficina">Oficina del Representante <font color='red'>*</font></label>                        
+                            <input runat="server" id="TextOficina" class="form-control" type="tel" placeholder="Debe tener un largo de 5-15 caracteres." title="Oficina"/>
                             <asp:RegularExpressionValidator runat="server" 
                                 ControlToValidate="TextOficina" 
                                 ErrorMessage="Oficina incorrecta. Debe tener un largo de 5-15 caracteres." 
                                 ValidationExpression="[a-zA-Z0-9\-\s]{5,15}$" />
-                            <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="red" controltovalidate="TextOficina" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>
+                            <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="black" controltovalidate="TextOficina" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
                             <div class="help-block with-errors"></div>                        
                     </div>
 
                     </div>
+
                     </fieldset>
                 
                     &nbsp;
@@ -161,25 +162,30 @@
 
                     <div class="row">
                         <div class="col-md-4 col-md-offset-2">
-                            <label for="textTelRepresentanre">Teléfono de Representante  <font color='red'>*</font></label>                                                    
-                                <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante"  title="Telefono" required="required"/>
+                            <label for="textTelRepresentanre">Teléfono Principal del Representante  <font color='red'>*</font></label>                                                    
+                                <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Debe tener 8 números. Sin espacios."  title="Telefono" required="required"/>
                                 <asp:RegularExpressionValidator runat="server" 
                                     ControlToValidate="textTelRepresentante" 
-                                    ErrorMessage="Teléfono incorrecto. Debe tener 8 números. Sin espacios." 
-                                    ValidationExpression="[0-9]{8}" />
-                                <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="red" controltovalidate="textTelRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown">Vacío</asp:requiredfieldvalidator>                            
+                                    ErrorMessage="Teléfono incorrecto. Debe tener 8-16 números. Sin espacios." 
+                                    ValidationExpression="[0-9]{8,16}" />
+                                <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="black" controltovalidate="textTelRepresentante" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>                            
                                 <div class="help-block with-errors"></div>                        
                         </div>
 
                         <div class="col-md-4">
-                            <label for="textTelSecundario">Teléfono Secundario </label>                        
-                                <input runat="server" id="textTelSecundario" class="form-control" type="tel" placeholder="Teléfono Secundario" title="Telefono secundario"/>
+                            <label for="textTelSecundario">Teléfono Secundario del Representante </label>                        
+                                <input runat="server" id="textTelSecundario" class="form-control" type="tel" placeholder="Debe tener 8 números. Sin espacios." title="Telefono secundario"/>
                                  <asp:RegularExpressionValidator runat="server" 
                                     ControlToValidate="textTelSecundario" 
-                                    ErrorMessage="Teléfono incorrecto. Debe tener 8 números. Sin espacios." 
-                                    ValidationExpression="[0-9]{8}$" />
+                                    ErrorMessage="Teléfono incorrecto. Debe tener 8-16 números. Sin espacios." 
+                                    ValidationExpression="[0-9]{8,16}$" />
                                 <div class="help-block with-errors"></div>                        
                         </div>
+
+                    </div>
+
+                    <div class="row">
+
 
                     </div>
                         
@@ -187,7 +193,7 @@
             </div>
 
         </div>
-
+                            <label for="textObligatorio"><font color = "red"><i>Los campos con (*) son obligatorios</i> </font></label>
       <!--Información del equipo-->
             <div class="col-lg-12 text-center">
             <div class="well bs-component">
@@ -197,7 +203,7 @@
                     <div class="col-sm-6">
 
 
-                                <asp:GridView ID="gridUsuarios" Caption='<table width="100%" class="TestCssStyle"><tr><td class="text_Title">Usuarios Disponibles</td></tr></table>' cssClass="table" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black"  AllowPaging="True">
+                        <asp:GridView ID="gridUsuarios" Caption='<table width="100%" class="TestCssStyle"><tr><td class="text_Title">Usuarios Disponibles</td></tr></table>' cssClass="table" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black"  AllowPaging="True">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>
@@ -220,8 +226,10 @@
                                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                     <SortedDescendingHeaderStyle BackColor="#383838" />
                                 </asp:GridView>
+       
                                 </div>
 
+                    
 
                                 <div class="col-sm-6">
                                 <asp:GridView ID="gridUsuariosAsignados" Caption='<table width="100%" class="TestCssStyle"><tr><td class="text_Title">Usuarios Asignados</td></tr></table>' CssClass ="table" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" AllowPaging="True" >
@@ -261,7 +269,6 @@
                 <button runat="server" id="botonAceptar" onserverclick="btnAceptar_Click" class="btn btn-success" type="submit" validationgroup="A" xmlns:asp="#unknown">Aceptar</button>
                 <%--<button runat="server" id="botonCancelar" class="btn btn-danger" type="reset">Cancelar</button>--%>
                 <a id="botonCancelar" href="#modalCancelar" class="btn btn-danger" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Cancelar</a>
-                        <label for="textObligatorio"><font color = "red"><i>Los campos con (*) son obligatorios</i> </font></label>
                         </div></div>
               
             </div>
