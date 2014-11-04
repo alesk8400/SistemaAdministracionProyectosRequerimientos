@@ -2207,8 +2207,8 @@ namespace SAPR.App_Code.DataSets.DataSetsEstructurasTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT idModulo, Nombre, Descripcion FROM dbo.Modulo \r\nWHERE ((Nombre = @Nombre) " +
-                "AND (idSprint = @idSprint))";
+            this._commandCollection[1].CommandText = "SELECT        idModulo, Nombre, Descripcion, idSprint\r\nFROM            Modulo\r\nWH" +
+                "ERE        (Nombre = @Nombre) AND (idSprint = @idSprint)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idSprint", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idSprint", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

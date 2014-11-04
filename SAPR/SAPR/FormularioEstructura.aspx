@@ -162,11 +162,18 @@
             <fieldset>
                 <div class="form-group">
                     <asp:Label ID="lbModulo" runat="server" Text="MODULO"></asp:Label>
-                    <asp:DropDownList ID="cmbModulo" runat="server" AutoPostBack="True"></asp:DropDownList>
+                    <asp:DropDownList ID="cmbModulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbModulo_SelectedIndexChanged"></asp:DropDownList>
                     <asp:Label ID="lbNombreModulo" runat="server" Text="Nombre:"></asp:Label>
-                    <input id="txtNombreModulo" type="text" />
+                    <input id="txtNombreModulo" runat ="server" type="text" />
                     <asp:Label ID="lbDescripModulo" runat="server" Text="Descripción:"></asp:Label>
-                    <textarea id="txtDescripcionModulo" cols="20" rows="2"></textarea>
+                    <textarea id="txtDescripcionModulo" runat ="server" cols="20" rows="2"></textarea>
+                    <button runat="server" id="btnAgregarModulo" onserverclick="btnAgregarModulo_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
+                    <button runat="server"  id="btnModificarModulo" class="btn btn-primary" type="button" onserverclick="btnModificarModulo_Click"><i class="fa fa-pencil-square-o"></i>Modificar</button>
+                    <button runat="server"  id="btnEliminarModulo" class="btn btn-primary" type="button" onserverclick="btnEliminarModulo_Click"><i class="fa fa-pencil-square-o"></i>Eliminar</button>
+                    <div>
+                    <button runat="server" id="Button6" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnAceptar2"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                    <button runat="server" id="Button7" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
+                    </div>
                 </div>
                 <a id="A1" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
             </fieldset>
