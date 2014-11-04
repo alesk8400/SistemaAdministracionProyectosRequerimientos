@@ -39,7 +39,7 @@
                     <div class="row">
 
                             <div class="col-md-4">
-                                <label for="textNombre" >Nombre: </label>
+                                <label for="textNombre" >Nombre  <font color='red'>*</font></label>
 
                                     <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Nombre de Proyecto" title="Nombre" required="required" />
                                     <asp:RegularExpressionValidator runat="server" 
@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="textObjetivo">Objetivo: </label>
+                                <label for="textObjetivo">Objetivo  <font color='red'>*</font></label>
 
                                     <input runat="server" id="textObjetivo" class="form-control" type="text" placeholder="Objetivo de Proyecto"  title="Objetivos" required="required" />
                                     <asp:RegularExpressionValidator runat="server" 
@@ -65,7 +65,7 @@
                             </div>
 
                         <div class="col-md-4">
-                            <label for="text" >Estado: </label>
+                            <label for="text" >Estado  <font color='red'>*</font></label>
                             <div class="dropdown-toggle"> 
                                     <asp:DropDownList ID="cmbEstado" runat="server">
                                         <asp:ListItem>Sin Iniciar</asp:ListItem>
@@ -85,13 +85,13 @@
 
                         
                         <div class="col-md-4">
-                            <label for="textFechaA">Fecha de Asignación:</label>
+                            <label for="textFechaA">Fecha de Asignación  <font color='red'>*</font></label>
                             <input runat="server" id="textFechaA" type="text" class="datepicker form-control" placeholder="Clic Aquí" required="required"/>
                             <div class="help-block with-errors"></div>
                         </div>
 
                          <div class="col-md-4">
-                            <label for="textFechaI">Fecha de Inicio: </label>
+                            <label for="textFechaI">Fecha de Inicio </label>
                         
                             <input runat="server" id="textFechaI" type="text" class="datepicker form-control" placeholder="Clic Aquí"/>
                             <asp:CompareValidator ID="CompareValidator1" ControlToCompare="textFechaA" 
@@ -101,7 +101,7 @@
                          </div>
 
                         <div class="col-md-4">
-                            <label for="textFechaF">Fecha de Finalización:</label>
+                            <label for="textFechaF">Fecha de Finalización</label>
                                 <input runat="server" id="textFechaF" type="text" class="datepicker form-control" placeholder="Clic Aquí"/>
                                 <%-- <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
                                             ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   Display="Dynamic" SetFocusOnError="true" CultureInvariantValues="true"
@@ -121,7 +121,7 @@
                     <legend>Información de Contacto</legend>
                     <div class="row">
                         <div class="col-md-4">                   
-                            <label for="textRepresentante">Representante: </label>                                                    
+                            <label for="textRepresentante">Representante  <font color='red'>*</font></label>                                                    
                                     <input runat="server" id="textRepresentante" class="form-control" type="text" placeholder="Nombre de Representante" title="Representante" required="required" />
                                     <asp:RegularExpressionValidator runat="server" 
                                     ControlToValidate="textRepresentante" 
@@ -132,7 +132,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label for="textEmailRepresentante" >E-mail: </label>                        
+                            <label for="textEmailRepresentante" >E-mail  <font color='red'>*</font></label>                        
                                 <input runat="server" id="textEmailRepresentante" class="form-control" type="email" placeholder="E-mail" />
                                 <asp:RegularExpressionValidator runat="server" 
                                     ControlToValidate="textEmailRepresentante" 
@@ -143,7 +143,7 @@
                         </div>
 
                     <div class="col-md-4">
-                        <label for="textOficina">Oficina: </label>                        
+                        <label for="textOficina">Oficina  <font color='red'>*</font></label>                        
                             <input runat="server" id="TextOficina" class="form-control" type="tel" placeholder="Oficina" title="Oficina"/>
                             <asp:RegularExpressionValidator runat="server" 
                                 ControlToValidate="TextOficina" 
@@ -161,7 +161,7 @@
 
                     <div class="row">
                         <div class="col-md-4 col-md-offset-2">
-                            <label for="textTelRepresentanre">Teléfono de Representante: </label>                                                    
+                            <label for="textTelRepresentanre">Teléfono de Representante  <font color='red'>*</font></label>                                                    
                                 <input runat="server" id="textTelRepresentante" class="form-control" type="text" placeholder="Teléfono de Representante"  title="Telefono" required="required"/>
                                 <asp:RegularExpressionValidator runat="server" 
                                     ControlToValidate="textTelRepresentante" 
@@ -172,7 +172,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label for="textTelSecundario">Teléfono Secundario: </label>                        
+                            <label for="textTelSecundario">Teléfono Secundario </label>                        
                                 <input runat="server" id="textTelSecundario" class="form-control" type="tel" placeholder="Teléfono Secundario" title="Telefono secundario"/>
                                  <asp:RegularExpressionValidator runat="server" 
                                     ControlToValidate="textTelSecundario" 
@@ -261,6 +261,7 @@
                 <button runat="server" id="botonAceptar" onserverclick="btnAceptar_Click" class="btn btn-success" type="submit" validationgroup="A" xmlns:asp="#unknown">Aceptar</button>
                 <%--<button runat="server" id="botonCancelar" class="btn btn-danger" type="reset">Cancelar</button>--%>
                 <a id="botonCancelar" href="#modalCancelar" class="btn btn-danger" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Cancelar</a>
+                        <label for="textObligatorio"><font color = "red"><i>Los campos con (*) son obligatorios</i> </font></label>
                         </div></div>
               
             </div>
@@ -269,12 +270,12 @@
                 
                 <div class = " col-lg-7">    
                                       
-<%--                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
+                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
                     <Columns>
-                        <asp:CommandField ShowSelectButton="True" ButtonType="Button" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                         <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                         <asp:BoundField DataField="Lider" HeaderText="Lider" SortExpression="Lider" />
+                        <asp:CommandField HeaderText="Seleccion" SelectText="Consultar" ShowSelectButton="True" />
                     </Columns>
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -287,7 +288,7 @@
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                 </asp:GridView>
                                 
-                <asp:SqlDataSource ID="ListaProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT P.Nombre, P.Estado, U.Nombre AS Lider FROM Proyecto AS P INNER JOIN Usuarios AS U ON P.Lider = U.Cedula"></asp:SqlDataSource>--%>
+                <asp:SqlDataSource ID="ListaProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT P.Nombre, P.Estado, U.Nombre AS Lider FROM Proyecto AS P INNER JOIN Usuarios AS U ON P.Lider = U.Cedula"></asp:SqlDataSource>
 
             </div>
 

@@ -22,8 +22,8 @@
     <form runat="server">
     
     <div id="wrapper" runat="server">
-        <label id="toggleador" hidden="hidden" runat="server"></label>
-        <asp:Button ID="botonFalso" Visible="false" OnClick="botonFalso_Click" runat="server" />
+<%--        <label id="toggleador" hidden="hidden" runat="server"></label>
+        <asp:Button ID="botonFalso" Visible="false" OnClick="botonFalso_Click" runat="server" />--%>
 
 
 <%--        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -65,7 +65,7 @@
                     <a href="FormularioUsuario">Usuarios</a>
                 </li>
                 <li>
-                    <a href="WebForm1">Consultas</a>
+                    <a href="#">Consultas</a>
                 </li>
                 <li>
                     <a href="#">Requerimientos</a>
@@ -109,7 +109,6 @@
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
-            //PageMethods.BotonFalsoCli();
     });
 
     $('.datepicker').datepicker().on('changeDate', function (e) {
