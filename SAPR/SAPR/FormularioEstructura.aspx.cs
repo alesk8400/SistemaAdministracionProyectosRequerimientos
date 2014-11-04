@@ -187,7 +187,8 @@ namespace SAPR
          }
          protected void btnModificarModulo_Click(object sender, EventArgs e)
          {
-
+             this.txtNombreModulo.Disabled = false;
+             this.txtDescripcionModulo.Disabled = false;
              modoM = 2;
          }
 
@@ -204,18 +205,22 @@ namespace SAPR
                  controladora.insertarModulo(txtNombreModulo.Value.ToString(), txtDescripcionModulo.Value.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
                  gridSprints.DataSource = getSprints(idProyecto);
                  gridSprints.DataBind();
+                 llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
              }
              if (modoM == 2)
              {
-                 //controladora.modificarSprint(txtNombreSprint.Value.ToString(), txtDescripcionSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString(), entidadS);
-                 //gridSprints.DataSource = getSprints(idProyecto);
-                 //gridSprints.DataBind();
+                 entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                 controladora.modificarModulo(txtNombreModulo.Value.ToString(), txtDescripcionModulo.Value.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString(), entidadM);
+                 gridSprints.DataSource = getSprints(idProyecto);
+                 gridSprints.DataBind();
+                 llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
              }
              if (modoM == 3)
              {
-                 //controladora.eliminarSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
-                 //gridSprints.DataSource = getSprints(idProyecto);
-                 //gridSprints.DataBind();
+                 controladora.eliminarModulo(txtNombreModulo.Value.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                 gridSprints.DataSource = getSprints(idProyecto);
+                 gridSprints.DataBind();
+                 llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
              }
          }
     }
