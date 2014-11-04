@@ -33,11 +33,23 @@ namespace SAPR
                 gridSprints.DataBind();
                 this.txtNombreSprint.Disabled = true;
                 this.txtDescripcionSprint.Disabled = true;
-                entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
-                this.txtNombreSprint.Value = entidadS.Nombre;
-                this.txtDescripcionSprint.Value = entidadS.Descripcion;
+                try{
+                    entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                    this.txtNombreSprint.Value = entidadS.Nombre;
+                    this.txtDescripcionSprint.Value = entidadS.Descripcion;
+                    entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                    this.txtNombreModulo.Value = entidadM.Nombre;
+                    this.txtDescripcionModulo.Value = entidadM.Descripcion;
+                }
+                catch (Exception a) { 
+                
+                }               
                 this.txtNombreModulo.Disabled = true;
                 this.txtDescripcionModulo.Disabled = true;
+                this.btnAceptarS.Disabled = true;
+                this.btnCancelarS.Disabled = true;
+                this.btnAceptarM.Disabled = true;
+                this.btnCancelarM.Disabled = true;
             }
         }
 
@@ -97,8 +109,6 @@ namespace SAPR
              cmbSprints.DataValueField = "idSprint";
              cmbSprints.DataBind();
              llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
-             //string[] nombres = controladora.getProyectos();
-             //cmbProyecto.DataSource = nombres;
          }
 
 
@@ -140,6 +150,13 @@ namespace SAPR
              this.txtNombreSprint.Disabled = false;
              this.txtDescripcionSprint.Disabled = false;
              modoS = 1;
+             this.btnAceptarS.Disabled = false;
+             this.btnCancelarS.Disabled = false;
+             this.txtNombreSprint.Value = "";
+             this.txtDescripcionSprint.Value = "";
+             this.btnAgregarSprint.Disabled = true;
+             this.btnModificarSprint.Disabled = true;
+             this.btnEliminarSprint.Disabled = true;
          }
 
          protected void btnModificarSprint_Click(object sender, EventArgs e)
@@ -148,13 +165,33 @@ namespace SAPR
              this.txtNombreSprint.Disabled = false;
              this.txtDescripcionSprint.Disabled = false;
              modoS = 2;
+             this.btnAceptarS.Disabled = false;
+             this.btnCancelarS.Disabled = false;
+             this.btnAgregarSprint.Disabled = true;
+             this.btnEliminarSprint.Disabled = true;
          }
 
-            protected void btnEliminarSprint_Click(object sender, EventArgs e)
+         protected void clickAceptarEliminarSprint(object sender, EventArgs e)
          {
-             
-             modoS = 3;
+
+             controladora.eliminarSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
+             gridSprints.DataSource = getSprints(idProyecto);
+             gridSprints.DataBind();
+             llenarCmbSprint();
+             this.txtNombreSprint.Value = "";
+             this.txtDescripcionSprint.Value = "";
+             try
+             {
+                 entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                 this.txtNombreSprint.Value = entidadS.Nombre;
+                 this.txtDescripcionSprint.Value = entidadS.Descripcion;
+             }
+             catch (Exception a)
+             {
+
+             } 
          }
+
          protected void btnAceptar1(object sender, EventArgs e){
              
 
@@ -170,32 +207,74 @@ namespace SAPR
                  gridSprints.DataSource = getSprints(idProyecto);
                  gridSprints.DataBind();
                  llenarCmbSprint();
+                 this.txtNombreSprint.Disabled = true;
+                 this.txtDescripcionSprint.Disabled = true;
              }
-             if (modoS == 3)
-             {
-                 controladora.eliminarSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
-                 gridSprints.DataSource = getSprints(idProyecto);
-                 gridSprints.DataBind();
-                 llenarCmbSprint();
-             }
+             this.btnAceptarS.Disabled = false;
+             this.btnCancelarS.Disabled = false;
+             this.txtNombreSprint.Disabled = true;
+             this.txtDescripcionSprint.Disabled = true;
+             this.btnAgregarSprint.Disabled = false;
+             this.btnModificarSprint.Disabled = false;
+             this.btnEliminarSprint.Disabled = false;
+             int idSprint = controladora.getIdSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
+             this.cmbSprints.Text = idSprint.ToString();
+
+         }
+
+
+
+         protected void btnCancelar1(object sender, EventArgs e)
+         {             
+                 entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                 this.txtNombreSprint.Value = entidadS.Nombre;
+                 this.txtDescripcionSprint.Value = entidadS.Descripcion;
+                 this.txtNombreSprint.Disabled = true;
+                 this.txtDescripcionSprint.Disabled = true;
+                 this.btnAgregarSprint.Disabled = false;
+                 this.btnModificarSprint.Disabled = false;
+                 this.btnEliminarSprint.Disabled = false;
          }
          protected void btnAgregarModulo_Click(object sender, EventArgs e)
          {
              this.txtNombreModulo.Disabled = false;
              this.txtDescripcionModulo.Disabled = false;
              modoM = 1;
+             this.btnAceptarS.Disabled = false;
+             this.btnCancelarS.Disabled = false;
+             this.txtNombreModulo.Value = "";
+             this.txtDescripcionModulo.Value = "";
+             this.btnModificarModulo.Disabled = true;
+             this.modaleliminarModulo.Disabled = true;
          }
          protected void btnModificarModulo_Click(object sender, EventArgs e)
          {
              this.txtNombreModulo.Disabled = false;
              this.txtDescripcionModulo.Disabled = false;
              modoM = 2;
+             this.btnAceptarS.Disabled = false;
+             this.btnCancelarS.Disabled = false;
+             this.btnAgregarModulo.Disabled = true;
+             this.modaleliminarModulo.Disabled = true;
          }
 
-         protected void btnEliminarModulo_Click(object sender, EventArgs e)
+         protected void clickAceptarEliminarModulo(object sender, EventArgs e)
          {
 
-             modoM = 3;
+             controladora.eliminarModulo(txtNombreModulo.Value.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+             gridSprints.DataSource = getSprints(idProyecto);
+             gridSprints.DataBind();
+             llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+             try
+             {
+                 entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                 this.txtNombreModulo.Value = entidadM.Nombre;
+                 this.txtDescripcionModulo.Value = entidadM.Descripcion;
+             }
+             catch (Exception a)
+             {
+
+             } 
          }
          protected void btnAceptar2(object sender, EventArgs e)
          {
@@ -215,25 +294,27 @@ namespace SAPR
                  gridSprints.DataBind();
                  llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
              }
-             if (modoM == 3)
-             {
-                 controladora.eliminarModulo(txtNombreModulo.Value.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
-                 gridSprints.DataSource = getSprints(idProyecto);
-                 gridSprints.DataBind();
-                 llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
-             }
+             this.btnAceptarS.Disabled = false;
+             this.btnCancelarS.Disabled = false;
+             this.txtNombreModulo.Disabled = true;
+             this.txtDescripcionModulo.Disabled = true;
+             this.btnModificarModulo.Disabled = false;
+             this.btnAgregarModulo.Disabled = false;
+             this.modaleliminarModulo.Disabled = false;
+             //int idModulo = controladora.getIdModulo(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
+            // this.cmbSprints.Text = idModulo.ToString();
+         }
+
+         protected void btnCancelar2(object sender, EventArgs e)
+         {
+             entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+             this.txtNombreModulo.Value = entidadM.Nombre;
+             this.txtDescripcionModulo.Value = entidadM.Descripcion;
+             this.txtNombreModulo.Disabled = true;
+             this.txtDescripcionModulo.Disabled = true;
+             this.btnModificarModulo.Disabled = false;
+             this.btnAgregarModulo.Disabled = false;
+             this.modaleliminarModulo.Disabled = false;
          }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

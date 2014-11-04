@@ -37,6 +37,9 @@
                     </div>
                     </div>
     
+
+    
+
     <div >
         <asp:GridView ID="gridSprints" runat="server" OnRowDataBound="OnRowDataBound" DataKeyNames="idSprint" CssClass=" table table-hover" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
             <Columns>
@@ -137,6 +140,53 @@
         </div>
     </div>
 
+    <!--Modal EliminarSprint-->
+    <div class="modal fade" id="modalEliminarSprint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modalEliSprint"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i>Confirmar eliminación</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea eliminar el sprint seleccionado?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonCancelarModal" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="botonAceptarModal" class="btn btn-primary" runat="server" onserverclick="clickAceptarEliminarSprint">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal EliminarModulo-->
+    <div class="modal fade" id="modalEliminarModulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modalEliModulo"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i>Confirmar eliminación</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea eliminar el modulo seleccionado?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonCancelarModalModulo" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="Button3" class="btn btn-primary" runat="server" onserverclick="clickAceptarEliminarModulo">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="col-lg-11">
+                <h1><i class="fa fa-truck"></i>Sprints</h1>
+            </div>
+            <div class="col-lg-1">
+                <h2><a id="informacion" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>
+            </div>
+        </div>
+
     <div class="col-lg-8">
         <div class="well bs-component">
             <fieldset>
@@ -149,14 +199,21 @@
                     <textarea id="txtDescripcionSprint" cols="20" rows="2" runat="server"></textarea>
                     <button runat="server" id="btnAgregarSprint" onserverclick="btnAgregarSprint_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
                     <button runat="server"  id="btnModificarSprint" class="btn btn-primary" type="button" onserverclick="btnModificarSprint_Click"><i class="fa fa-pencil-square-o"></i>Modificar</button>
-                    <button runat="server"  id="btnEliminarSprint" class="btn btn-primary" type="button" onserverclick="btnEliminarSprint_Click"><i class="fa fa-pencil-square-o"></i>Eliminar</button>
+                    <a id="btnEliminarSprint" href="#modalEliminarSprint" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
                     <div>
-                    <button runat="server" id="Button1" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnAceptar1"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
-                    <button runat="server" id="Button2" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
+                    <button runat="server" id="btnAceptarS" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnAceptar1"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                    <button runat="server" id="btnCancelarS" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnCancelar1"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
                     </div>
                 </div>
-                <a id="btnSprint" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
             </fieldset>
+        </div>
+        <div class="row">
+            <div class="col-lg-11">
+                <h1><i class="fa fa-truck"></i>Modulos</h1>
+            </div>
+            <div class="col-lg-1">
+                <h2><a id="A1" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>
+            </div>
         </div>
         <div class="well bs-component">
             <fieldset>
@@ -169,13 +226,12 @@
                     <textarea id="txtDescripcionModulo" runat ="server" cols="20" rows="2"></textarea>
                     <button runat="server" id="btnAgregarModulo" onserverclick="btnAgregarModulo_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
                     <button runat="server"  id="btnModificarModulo" class="btn btn-primary" type="button" onserverclick="btnModificarModulo_Click"><i class="fa fa-pencil-square-o"></i>Modificar</button>
-                    <button runat="server"  id="btnEliminarModulo" class="btn btn-primary" type="button" onserverclick="btnEliminarModulo_Click"><i class="fa fa-pencil-square-o"></i>Eliminar</button>
+                    <a id="modaleliminarModulo" href="#modalEliminarModulo" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
                     <div>
-                    <button runat="server" id="Button6" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnAceptar2"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
-                    <button runat="server" id="Button7" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
+                    <button runat="server" id="btnAceptarM" class="btn btn-success" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnAceptar2"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
+                    <button runat="server" id="btnCancelarM" class="btn btn-danger" type="button" validationgroup="A" xmlns:asp="#unknown" onserverclick="btnCancelar2"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
                     </div>
                 </div>
-                <a id="A1" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Manejo Sprint</a>
             </fieldset>
         </div>
 
