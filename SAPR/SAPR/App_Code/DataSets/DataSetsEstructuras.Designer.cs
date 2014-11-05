@@ -30,8 +30,6 @@ namespace SAPR.App_Code.DataSets {
         
         private RequerimientoDataTable tableRequerimiento;
         
-        private global::System.Data.DataRelation relationFK_dbo_Modulo_1;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -244,7 +242,6 @@ namespace SAPR.App_Code.DataSets {
                     this.tableRequerimiento.InitVars();
                 }
             }
-            this.relationFK_dbo_Modulo_1 = this.Relations["FK_dbo_Modulo_1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -261,10 +258,6 @@ namespace SAPR.App_Code.DataSets {
             base.Tables.Add(this.tableModulo);
             this.tableRequerimiento = new RequerimientoDataTable();
             base.Tables.Add(this.tableRequerimiento);
-            this.relationFK_dbo_Modulo_1 = new global::System.Data.DataRelation("FK_dbo_Modulo_1", new global::System.Data.DataColumn[] {
-                        this.tableSprint.idSprintColumn}, new global::System.Data.DataColumn[] {
-                        this.tableModulo.idSprintColumn}, false);
-            this.Relations.Add(this.relationFK_dbo_Modulo_1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -656,8 +649,6 @@ namespace SAPR.App_Code.DataSets {
             
             private global::System.Data.DataColumn columnDescripcion;
             
-            private global::System.Data.DataColumn columnidSprint;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ModuloDataTable() {
@@ -717,14 +708,6 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn idSprintColumn {
-                get {
-                    return this.columnidSprint;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -760,16 +743,12 @@ namespace SAPR.App_Code.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ModuloRow AddModuloRow(string Nombre, string Descripcion, SprintRow parentSprintRowByFK_dbo_Modulo_1) {
+            public ModuloRow AddModuloRow(string Nombre, string Descripcion) {
                 ModuloRow rowModuloRow = ((ModuloRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Nombre,
-                        Descripcion,
-                        null};
-                if ((parentSprintRowByFK_dbo_Modulo_1 != null)) {
-                    columnValuesArray[3] = parentSprintRowByFK_dbo_Modulo_1[0];
-                }
+                        Descripcion};
                 rowModuloRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowModuloRow);
                 return rowModuloRow;
@@ -802,7 +781,6 @@ namespace SAPR.App_Code.DataSets {
                 this.columnidModulo = base.Columns["idModulo"];
                 this.columnNombre = base.Columns["Nombre"];
                 this.columnDescripcion = base.Columns["Descripcion"];
-                this.columnidSprint = base.Columns["idSprint"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -814,8 +792,6 @@ namespace SAPR.App_Code.DataSets {
                 base.Columns.Add(this.columnNombre);
                 this.columnDescripcion = new global::System.Data.DataColumn("Descripcion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescripcion);
-                this.columnidSprint = new global::System.Data.DataColumn("idSprint", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnidSprint);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnidModulo}, true));
                 this.columnidModulo.AutoIncrement = true;
@@ -828,7 +804,6 @@ namespace SAPR.App_Code.DataSets {
                 this.columnNombre.MaxLength = 30;
                 this.columnDescripcion.AllowDBNull = false;
                 this.columnDescripcion.MaxLength = 100;
-                this.columnidSprint.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1310,17 +1285,6 @@ namespace SAPR.App_Code.DataSets {
                     this[this.tableSprint.DescripcionColumn] = value;
                 }
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ModuloRow[] GetModuloRows() {
-                if ((this.Table.ChildRelations["FK_dbo_Modulo_1"] == null)) {
-                    return new ModuloRow[0];
-                }
-                else {
-                    return ((ModuloRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo_Modulo_1"])));
-                }
-            }
         }
         
         /// <summary>
@@ -1367,28 +1331,6 @@ namespace SAPR.App_Code.DataSets {
                 }
                 set {
                     this[this.tableModulo.DescripcionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int idSprint {
-                get {
-                    return ((int)(this[this.tableModulo.idSprintColumn]));
-                }
-                set {
-                    this[this.tableModulo.idSprintColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SprintRow SprintRow {
-                get {
-                    return ((SprintRow)(this.GetParentRow(this.Table.ParentRelations["FK_dbo_Modulo_1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_dbo_Modulo_1"]);
                 }
             }
         }
@@ -2164,29 +2106,19 @@ namespace SAPR.App_Code.DataSets.DataSetsEstructurasTableAdapters {
             tableMapping.ColumnMappings.Add("idModulo", "idModulo");
             tableMapping.ColumnMappings.Add("Nombre", "Nombre");
             tableMapping.ColumnMappings.Add("Descripcion", "Descripcion");
-            tableMapping.ColumnMappings.Add("idSprint", "idSprint");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Modulo] WHERE (([idModulo] = @Original_idModulo))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idModulo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idModulo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Modulo] ([Nombre], [Descripcion], [idSprint]) VALUES (@Nombre," +
-                " @Descripcion, @idSprint)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idSprint", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idSprint", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Modulo] SET [Nombre] = @Nombre, [Descripcion] = @Descripcion, [idSp" +
-                "rint] = @idSprint WHERE (([idModulo] = @Original_idModulo))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Modulo] SET [Nombre] = @Nombre, [Descripcion] = @Descripcion WHERE " +
+                "(([idModulo] = @Original_idModulo))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idSprint", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idSprint", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idModulo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idModulo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -2203,12 +2135,12 @@ namespace SAPR.App_Code.DataSets.DataSetsEstructurasTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT idModulo, Nombre, Descripcion, idSprint FROM dbo.Modulo";
+            this._commandCollection[0].CommandText = "SELECT idModulo, Nombre, Descripcion FROM dbo.Modulo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        idModulo, Nombre, Descripcion, idSprint\r\nFROM            Modulo\r\nWH" +
-                "ERE        (Nombre = @Nombre) AND (idSprint = @idSprint)";
+            this._commandCollection[1].CommandText = "SELECT Descripcion, Nombre, idModulo FROM Modulo WHERE (Nombre = @Nombre) AND (id" +
+                "Sprint = @idSprint)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idSprint", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idSprint", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2221,8 +2153,7 @@ namespace SAPR.App_Code.DataSets.DataSetsEstructurasTableAdapters {
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idSprint", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idSprint", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        idModulo, Nombre, Descripcion, idSprint\r\nFROM            Modulo\r\nWH" +
-                "ERE        (idSprint = @id)";
+            this._commandCollection[3].CommandText = "SELECT Descripcion, Nombre, idModulo FROM Modulo WHERE (idSprint = @id)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idSprint", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
@@ -2352,42 +2283,8 @@ namespace SAPR.App_Code.DataSets.DataSetsEstructurasTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Nombre, string Descripcion, int idSprint) {
-            if ((Nombre == null)) {
-                throw new global::System.ArgumentNullException("Nombre");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Nombre));
-            }
-            if ((Descripcion == null)) {
-                throw new global::System.ArgumentNullException("Descripcion");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Descripcion));
-            }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(idSprint));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nombre, string Descripcion, int idSprint, int Original_idModulo) {
+        public virtual int Update(string Nombre, string Descripcion, int Original_idModulo) {
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -2400,8 +2297,7 @@ namespace SAPR.App_Code.DataSets.DataSetsEstructurasTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Descripcion));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(idSprint));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_idModulo));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_idModulo));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

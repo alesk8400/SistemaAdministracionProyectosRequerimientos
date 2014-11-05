@@ -88,30 +88,45 @@
                         
                         <div class="col-md-4">
                             <label for="textFechaA">Fecha de Asignación  <font color='red'>*</font></label>
-                            <input runat="server" id="textFechaA" type="date" class="" placeholder="Clic Aquí" required="required"/>
-                            <div class="help-block with-errors"></div>
-                        </div>
+                            </div>
+                            
+                        
 
                          <div class="col-md-4">
                             <label for="textFechaI">Fecha de Inicio </label>
-                        
-                            <input runat="server" id="textFechaI" type="date" class="" placeholder="Clic Aquí"/>
-                            <asp:CompareValidator ID="CompareValidator1" ControlToCompare="textFechaA" 
-                                        ControlToValidate="textFechaI" Type="Date" Operator="GreaterThanEqual"   
-                                        ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
-                            &nbsp;<div class="help-block with-errors"></div>
                          </div>
+                            
+                        
 
                         <div class="col-md-4">
                             <label for="textFechaF">Fecha de Finalización</label>
-                                <input runat="server" id="textFechaF" type="date" class="" placeholder="Clic Aquí"/>
+                              </div> 
+                         </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input runat="server" id="textFechaA" type="date" class="" placeholder="Clic Aquí" required="required"/>
+                            <div class="help-block with-errors"></div>
+                                </div>
+                            <div class="col-md-5">
+                                <input runat="server" id="textFechaI" type="date" class="" placeholder="Clic Aquí"/>
+                            <asp:CompareValidator ID="CompareValidator1" ControlToCompare="textFechaA" 
+                                        ControlToValidate="textFechaI" Type="Date" Operator="GreaterThanEqual"   
+                                        ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
+                            <div class="help-block with-errors"></div>
+                                </div>
+                            <div class="col-md-2">
+                                 <input runat="server" id="textFechaF" type="date" class="" placeholder="Clic Aquí"/>
                                 <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
                                             ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   Display="Dynamic" SetFocusOnError="true" CultureInvariantValues="true"
                                             ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
                                 <div class="help-block with-errors"></div>
-                        </div>              
+                                </div>
+                            </div>
+                               
+                                   
 
-                    </div>
+                   
 
                     </fieldset>
             </div>
