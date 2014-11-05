@@ -223,7 +223,7 @@
                     <div class ="text-center">
                     <button runat="server" id="btnAceptarS" class="btn btn-success" type="button" validationgroup="B" xmlns:asp="#unknown" onserverclick="btnAceptar1"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
                     <button runat="server" id="btnCancelarS" class="btn btn-danger" type="button" xmlns:asp="#unknown" onserverclick="btnCancelar1"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
-                    </div>
+                         </div>
                 
             </fieldset>
             <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="black" controltovalidate="txtNombreSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
@@ -278,6 +278,9 @@
 
 
 
+    </div>
+    <div class ="text-center">
+        <label for="textObligatorio"><font color = "red"><i>Los campos con (*) son obligatorios</i> </font></label>
     </div>
         
 

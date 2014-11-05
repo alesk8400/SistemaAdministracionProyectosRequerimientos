@@ -244,7 +244,6 @@ namespace SAPR
                  controladora.insertarSprint(txtNombreSprint.Value.ToString(), txtDescripcionSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
                  gridSprints.DataSource = getSprints(idProyecto);
                  gridSprints.DataBind();
-                 llenarCmbSprint();
                  mostrarMensaje("success", "Éxito", "Sprint ingresado correctamente");
              }
              if (modoS == 2)
@@ -252,11 +251,11 @@ namespace SAPR
                  controladora.modificarSprint(txtNombreSprint.Value.ToString(), txtDescripcionSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString(),entidadS);              
                  gridSprints.DataSource = getSprints(idProyecto);
                  gridSprints.DataBind();
-                 llenarCmbSprint();
                  this.txtNombreSprint.Disabled = true;
                  this.txtDescripcionSprint.Disabled = true;
                  mostrarMensaje("success", "Éxito", "Sprint modificado correctamente");
              }
+             llenarCmbSprint();
              this.btnAceptarS.Disabled = true;
              this.btnCancelarS.Disabled = true;
              this.txtNombreSprint.Disabled = true;
@@ -271,7 +270,7 @@ namespace SAPR
                  this.btnModificarModulo.Disabled = false;
                  this.modaleliminarModulo.Disabled = false;
              }
-             
+             llenarCmbSprint();
          }
 
 

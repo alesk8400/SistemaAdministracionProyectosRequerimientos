@@ -377,7 +377,7 @@ namespace SAPR
 
                     if (r[0] == "Exito")
                     {
-                        mostrarMensaje("Success", "Éxito!!!", "El Proyecto fue insertado correctamente");
+                        mostrarMensaje("success", "Éxito!!!", "El Proyecto fue insertado correctamente");
                         int k = 0;
                         int idP = 0;
                         while (gridUsuarios.Rows[k].Cells[2].Text != null)
@@ -389,7 +389,7 @@ namespace SAPR
                     }
                     else if (r[0] == "Error")
                     {
-                        mostrarMensaje("Danger", "Error", "El nombre de Proyecto seleccionado ya existe");
+                        mostrarMensaje("danger", "Error", "El nombre de Proyecto seleccionado ya existe");
                         this.textNombre.Value = "";
                     }
 
@@ -458,12 +458,12 @@ namespace SAPR
 
                     if (result[0] == "Exito")
                     {
-                        mostrarMensaje("Success", "Éxito!!!", "El Proyecto fue modificado correctamente");
+                        mostrarMensaje("success", "Éxito!!!", "El Proyecto fue modificado correctamente");
                         llenarUsuariosAsignados();
                     }
                     else if (result[0] == "Error")
                     {
-                        mostrarMensaje("Danger", "Error", "El nombre de Proyecto seleccionado ya existe");
+                        mostrarMensaje("danger", "Error", "El nombre de Proyecto seleccionado ya existe");
                     }
                 
                 
