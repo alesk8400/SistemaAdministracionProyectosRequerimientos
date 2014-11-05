@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioProyecto.aspx.cs" Inherits="SAPR.FormularioProyecto" %>
 <%@ MasterType  virtualPath="~/Neo.Master"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+
     <div class="page-header">
         <div class="row">
             <div class="col-lg-11">
@@ -219,17 +223,26 @@
 
                     <div class="col-sm-6">
 
-
+                        
                         <asp:GridView ID="gridUsuarios" Caption='<table width="100%" class="TestCssStyle"><tr><td class="text_Title">Usuarios Disponibles</td></tr></table>' cssClass="table" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black"  AllowPaging="True">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
-                                            <ItemTemplate>
-                                                <asp:CheckBox ID="cbLider" runat="server"  AutoPostBack="True" OnCheckedChanged="cbLider_CheckedChanged1" />
+                                            <ItemTemplate>    
+                                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always" ChildrenAsTriggers="True">
+                                                    <ContentTemplate>  
+                                                        <asp:CheckBox ID="cbLider" runat="server" OnCheckedChanged="cbLider_CheckedChanged1" AutoPostBack="True" />  
+                                                             </ContentTemplate>                                                 
+                                                        <Triggers>      
+                                                       <asp:AsyncPostBackTrigger ControlID="cbLider" EventName="CheckedChanged" /> 
+                                                                    
+                                                         </Triggers>       
+                                                                                                       
+                                                        </asp:UpdatePanel>                                                                                                                                                  
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Miembro">
                                             <ItemTemplate>
-                                                <asp:CheckBox ID="cbMiembros" runat="server" />
+                                                <asp:CheckBox ID="cbMiembros" runat="server"/>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -243,7 +256,7 @@
                                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                     <SortedDescendingHeaderStyle BackColor="#383838" />
                                 </asp:GridView>
-       
+                               
                                 </div>
 
                     
@@ -354,5 +367,5 @@
         </div>
     </div>
 
-
+    
 </asp:Content>

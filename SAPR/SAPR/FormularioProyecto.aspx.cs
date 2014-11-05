@@ -351,12 +351,15 @@ namespace SAPR
             {
                 GridViewRow row = gridUsuarios.Rows[i];
                 bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLider")).Checked;
-                bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembros")).Checked;
+                
 
                 if (estaSeleccionadoLider)
                 {
                     cedulaLider = gridUsuarios.Rows[i].Cells[2].Text.ToString(); //Obtiene cedula del lider marcado.
+                    
                 }
+
+                bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembros")).Checked;
 
                 if (estaSeleccionadoMiembro)
                 {
@@ -424,13 +427,15 @@ namespace SAPR
                     {
                         GridViewRow row = gridUsuariosAsignados.Rows[i];
                         bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLiderAsignado")).Checked;
-                        bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembrosAsignados")).Checked;
+                       
 
                         if (estaSeleccionadoLider)
                         {
                             cedulaLider = gridUsuariosAsignados.Rows[i].Cells[2].Text.ToString();
+                           
                         }
 
+                        bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembrosAsignados")).Checked;
                         if (estaSeleccionadoMiembro)
                         {
                             String nuevoMiembro = gridUsuariosAsignados.Rows[i].Cells[2].Text.ToString();
