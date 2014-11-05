@@ -222,6 +222,7 @@ namespace SAPR
              gridSprints.DataSource = getSprints(idProyecto);
              gridSprints.DataBind();
              llenarCmbSprint();
+             mostrarMensaje("success", "Éxito", "Sprint eliminado correctamente");
              this.txtNombreSprint.Value = "";
              this.txtDescripcionSprint.Value = "";
              try
@@ -244,6 +245,7 @@ namespace SAPR
                  gridSprints.DataSource = getSprints(idProyecto);
                  gridSprints.DataBind();
                  llenarCmbSprint();
+                 mostrarMensaje("success", "Éxito", "Sprint ingresado correctamente");
              }
              if (modoS == 2)
              {
@@ -253,6 +255,7 @@ namespace SAPR
                  llenarCmbSprint();
                  this.txtNombreSprint.Disabled = true;
                  this.txtDescripcionSprint.Disabled = true;
+                 mostrarMensaje("success", "Éxito", "Sprint modificado correctamente");
              }
              this.btnAceptarS.Disabled = true;
              this.btnCancelarS.Disabled = true;
@@ -327,6 +330,7 @@ namespace SAPR
              gridSprints.DataSource = getSprints(idProyecto);
              gridSprints.DataBind();
              llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+             mostrarMensaje("success", "Éxito", "Módulo eliminado correctamente");
              try
              {
                  entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
@@ -347,6 +351,7 @@ namespace SAPR
                  gridSprints.DataSource = getSprints(idProyecto);
                  gridSprints.DataBind();
                  llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+                 mostrarMensaje("success", "Éxito", "Módulo ingresado correctamente");
              }
              if (modoM == 2)
              {
@@ -355,6 +360,7 @@ namespace SAPR
                  gridSprints.DataSource = getSprints(idProyecto);
                  gridSprints.DataBind();
                  llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+                 mostrarMensaje("success", "Éxito", "Módulo modificado correctamente");
              }
              this.btnAceptarS.Disabled = false;
              this.btnCancelarS.Disabled = false;
@@ -388,6 +394,24 @@ namespace SAPR
              this.btnAceptarM.Disabled = true;
              this.btnCancelarM.Disabled = true;
 
+         }
+         /*
+         * Ocultar el mensaje de exito o error.
+         */
+         protected void ocultarMensaje()
+         {
+             alertAlerta.Attributes.Add("hidden", "hidden");
+         }
+
+         /*
+         * Muestra mensaje de exito o error.
+         */
+         protected void mostrarMensaje(String tipoAlerta, String alerta, String mensaje)
+         {
+             alertAlerta.Attributes["class"] = "alert alert-" + tipoAlerta + " alert-dismissable fade in";
+             labelTipoAlerta.Text = alerta + " ";
+             labelAlerta.Text = mensaje;
+             alertAlerta.Attributes.Remove("hidden");
          }
     }
 }

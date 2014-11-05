@@ -22,6 +22,33 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.DropDownList cmbProyecto;
         
         /// <summary>
+        /// Control alertAlerta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertAlerta;
+        
+        /// <summary>
+        /// Control labelTipoAlerta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelTipoAlerta;
+        
+        /// <summary>
+        /// Control labelAlerta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelAlerta;
+        
+        /// <summary>
         /// Control gridSprints.
         /// </summary>
         /// <remarks>
