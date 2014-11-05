@@ -298,7 +298,7 @@ namespace SAPR
 
             if (modo == 2) //En modificar, todo vuelve a su estado inicial de consulta.
             {
-                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[1].Text.ToString());
+                entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[0].Text.ToString());
                 textNombre.Value = entidadConsultada.Nombre.ToString();
                 textObjetivo.Value = entidadConsultada.Objetivos.ToString();
                 textFechaA.Value = entidadConsultada.FechaAsig.ToString();

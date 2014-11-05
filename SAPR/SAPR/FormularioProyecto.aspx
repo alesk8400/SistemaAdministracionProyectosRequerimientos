@@ -44,8 +44,8 @@
                                     <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Debe tener entre 5 y 44 caracteres" title="Nombre" required="required" />
                                     <asp:RegularExpressionValidator runat="server" 
                                         ControlToValidate="textNombre" 
-                                        ErrorMessage="Nombre Proyecto Inválido. Debe tener entre 5 y 44 caracteres" 
-                                        ValidationExpression="^[a-zA-Z0-9\s]{5,44}$" />
+                                        ErrorMessage="Nombre Proyecto Inválido. Debe tener entre 2 y 44 caracteres" 
+                                        ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
                                     <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="black" controltovalidate="textNombre" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
 
                                 <div class="help-block with-errors"></div>
