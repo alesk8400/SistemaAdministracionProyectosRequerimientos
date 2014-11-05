@@ -161,6 +161,7 @@ namespace SAPR
 		*/
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            String estado;
             try
             {
                 entidadConsultada = controladora.consultarProyecto(gridProyecto.SelectedRow.Cells[0].Text.ToString());
@@ -170,7 +171,14 @@ namespace SAPR
                 textFechaF.Value = entidadConsultada.FechaFin.ToString();
                 textFechaI.Value = entidadConsultada.FechaIni.ToString();
                 cmbEstado.SelectedValue = entidadConsultada.Estado.ToString();
-
+                estado = cmbEstado.SelectedValue;
+                if (estado == "Finalizado")
+                {
+                    btnEliminarProyecto.Disabled = true;
+                }
+                else {
+                    btnEliminarProyecto.Disabled = false;
+                }
                 idProy = controladora.getIdProyecto(entidadConsultada.Nombre.ToString()); //ID Estático
 
                 clienteConsultado = controladora.consultarCliente(idProy);
@@ -180,7 +188,7 @@ namespace SAPR
                 TextOficina.Value = clienteConsultado.Oficina.ToString();
                 textEmailRepresentante.Value = clienteConsultado.Correo.ToString();
                 btnModificarProyecto.Disabled = false;
-                btnEliminarProyecto.Disabled = false;
+               
                 this.gridUsuariosAsignados.Visible = true;
                 gridProyecto.DataBind();
                 llenarUsuariosAsignados();
@@ -392,42 +400,9 @@ namespace SAPR
             else if (modo == 2) //Si se quiere modificar un proyecto.
             {
 
-                // --------------------------Se llena con los Usuarios Originales (gridUsuariosAsignados)
-                String[] miembrosOriginales = new String[gridUsuariosAsignados.Rows.Count];
-                contador = 0;
-                for (int i = 0; i < gridUsuariosAsignados.Rows.Count; i++)
+                if (cmbEstado.SelectedValue == "Cerrado")
                 {
-                    GridViewRow row = gridUsuariosAsignados.Rows[i];
-                    bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLiderAsignado")).Checked;
-                    bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembrosAsignados")).Checked;
-
-                    if (estaSeleccionadoLider)
-                    {
-                        cedulaLider = gridUsuariosAsignados.Rows[i].Cells[2].Text.ToString();
-                    }
-
-                    if (estaSeleccionadoMiembro)
-                    {
-                        String nuevoMiembro = gridUsuariosAsignados.Rows[i].Cells[2].Text.ToString();
-                        miembrosOriginales[contador] = nuevoMiembro;
-                        contador++;
-                    }
-
-                }
-               //--------------------------------------------------------------------------- 
-                controladora.eliminarMiembros(idProy);  // Elimina los usuarios del proyecto perfecto
-                int k = 0;
-                for (int u = 0; u < gridUsuarios.Rows.Count && miembros[k] != null && miembros[k] != "-"; u++)  // Inserción de los nuevos miembros
-                { 
-                        controladora.insertarUsuarioProyecto(idProy, miembros[k]);
-                        k++;
-                }   
-                k = 0;
-                for (int u = 0; u < gridUsuariosAsignados.Rows.Count && miembrosOriginales[k] != null && miembrosOriginales[k] != "-"; u++)
-                {
-                    controladora.insertarUsuarioProyecto(idProy, miembrosOriginales[k]); // RE-Inserción de los miembros originales
-                    k++;
-                }
+                   /* controladora.eliminarMiembros(idProy);
                     String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider, entidadConsultada);
 
 
@@ -436,9 +411,64 @@ namespace SAPR
                         mostrarMensaje("Success", "Éxito!!!", "El Proyecto fue modificado correctamente");
                         llenarUsuariosAsignados();
                     }
-                    else if (result[0] == "Error") { 
-                        mostrarMensaje("Danger", "Error", "El nombre de Proyecto seleccionado ya existe");                            
+                    else if (result[0] == "Error")
+                    {
+                        mostrarMensaje("Danger", "Error", "El nombre de Proyecto seleccionado ya existe");
+                    }*/
+                }
+                else {
+                    // --------------------------Se llena con los Usuarios Originales (gridUsuariosAsignados)
+                    String[] miembrosOriginales = new String[gridUsuariosAsignados.Rows.Count];
+                    contador = 0;
+                    for (int i = 0; i < gridUsuariosAsignados.Rows.Count; i++)
+                    {
+                        GridViewRow row = gridUsuariosAsignados.Rows[i];
+                        bool estaSeleccionadoLider = ((CheckBox)row.FindControl("cbLiderAsignado")).Checked;
+                        bool estaSeleccionadoMiembro = ((CheckBox)row.FindControl("cbMiembrosAsignados")).Checked;
+
+                        if (estaSeleccionadoLider)
+                        {
+                            cedulaLider = gridUsuariosAsignados.Rows[i].Cells[2].Text.ToString();
+                        }
+
+                        if (estaSeleccionadoMiembro)
+                        {
+                            String nuevoMiembro = gridUsuariosAsignados.Rows[i].Cells[2].Text.ToString();
+                            miembrosOriginales[contador] = nuevoMiembro;
+                            contador++;
+                        }
+
                     }
+                    //--------------------------------------------------------------------------- 
+                    controladora.eliminarMiembros(idProy);  // Elimina los usuarios del proyecto perfecto
+                    int k = 0;
+                    for (int u = 0; u < gridUsuarios.Rows.Count && miembros[k] != null && miembros[k] != "-"; u++)  // Inserción de los nuevos miembros
+                    {
+                        controladora.insertarUsuarioProyecto(idProy, miembros[k]);
+                        k++;
+                    }
+                    k = 0;
+                    for (int u = 0; u < gridUsuariosAsignados.Rows.Count && miembrosOriginales[k] != null && miembrosOriginales[k] != "-"; u++)
+                    {
+                        controladora.insertarUsuarioProyecto(idProy, miembrosOriginales[k]); // RE-Inserción de los miembros originales
+                        k++;
+                    }
+                    String[] result = controladora.modificarProyecto(this.textNombre.Value.ToString(), this.textObjetivo.Value.ToString(), this.cmbEstado.SelectedItem.ToString(), this.textFechaI.Value.ToString(), this.textFechaF.Value.ToString(), this.textFechaA.Value.ToString(), cedulaLider, entidadConsultada);
+
+
+                    if (result[0] == "Exito")
+                    {
+                        mostrarMensaje("Success", "Éxito!!!", "El Proyecto fue modificado correctamente");
+                        llenarUsuariosAsignados();
+                    }
+                    else if (result[0] == "Error")
+                    {
+                        mostrarMensaje("Danger", "Error", "El nombre de Proyecto seleccionado ya existe");
+                    }
+                
+                
+                }
+              
             }         
                 modo = 0;
                 restaurarPantalla();
@@ -467,7 +497,7 @@ namespace SAPR
                 this.textTelSecundario.Value = "";
                 this.TextOficina.Value = "";
                 this.textEmailRepresentante.Value = "";
-                this.cmbEstado.Text = "Sin Iniciar";
+                this.cmbEstado.Text = "Pendiente de Asignación";
         }
 	
 	

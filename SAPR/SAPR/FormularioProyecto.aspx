@@ -68,9 +68,11 @@
                             <label for="text" >Estado del Proyecto <font color='red'>*</font></label>
                             <div class="dropdown-toggle"> 
                                     <asp:DropDownList ID="cmbEstado" runat="server">
-                                        <asp:ListItem>Sin Iniciar</asp:ListItem>
-                                        <asp:ListItem>En proceso</asp:ListItem>
+                                        <asp:ListItem>Pendiente de Asignación</asp:ListItem>
+                                         <asp:ListItem>Asignado</asp:ListItem>
+                                        <asp:ListItem>En ejecución</asp:ListItem>
                                         <asp:ListItem>Finalizado</asp:ListItem>
+                                        <asp:ListItem>Cerrado</asp:ListItem>
                                     </asp:DropDownList>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -86,14 +88,14 @@
                         
                         <div class="col-md-4">
                             <label for="textFechaA">Fecha de Asignación  <font color='red'>*</font></label>
-                            <input runat="server" id="textFechaA" type="text" class="datepicker form-control" placeholder="Clic Aquí" required="required"/>
+                            <input runat="server" id="textFechaA" type="date" class="" placeholder="Clic Aquí" required="required"/>
                             <div class="help-block with-errors"></div>
                         </div>
 
                          <div class="col-md-4">
                             <label for="textFechaI">Fecha de Inicio </label>
                         
-                            <input runat="server" id="textFechaI" type="text" class="datepicker form-control" placeholder="Clic Aquí"/>
+                            <input runat="server" id="textFechaI" type="date" class="" placeholder="Clic Aquí"/>
                             <asp:CompareValidator ID="CompareValidator1" ControlToCompare="textFechaA" 
                                         ControlToValidate="textFechaI" Type="Date" Operator="GreaterThanEqual"   
                                         ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
@@ -102,10 +104,10 @@
 
                         <div class="col-md-4">
                             <label for="textFechaF">Fecha de Finalización</label>
-                                <input runat="server" id="textFechaF" type="text" class="datepicker form-control" placeholder="Clic Aquí"/>
-                                <%-- <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
+                                <input runat="server" id="textFechaF" type="date" class="" placeholder="Clic Aquí"/>
+                                <asp:CompareValidator ID="CompareValidator0" ControlToCompare="textFechaI" 
                                             ControlToValidate="textFechaF" Type="Date" Operator="GreaterThanEqual"   Display="Dynamic" SetFocusOnError="true" CultureInvariantValues="true"
-                                            ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>--%>
+                                            ErrorMessage="Fecha inválida." runat="server"></asp:CompareValidator>
                                 <div class="help-block with-errors"></div>
                         </div>              
 

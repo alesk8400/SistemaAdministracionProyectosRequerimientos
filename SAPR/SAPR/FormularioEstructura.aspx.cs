@@ -27,6 +27,11 @@ namespace SAPR
             if (!IsPostBack)
             {
                 llenarCmbProy();
+                if(cmbProyecto.Text==""){
+                    btnAgregarSprint.Disabled = true;
+                } else{
+                    btnAgregarSprint.Disabled = false;
+                }
                 try {
                     idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
                 }
@@ -132,8 +137,7 @@ namespace SAPR
              catch { }
              if (cmbSprints.Text == "")
              {
-                 cmbModulo.Items.Add(new ListItem("", ""));
-                 cmbModulo.Text = "";
+                 this.cmbModulo.Items.Clear();
              }
              
          }
