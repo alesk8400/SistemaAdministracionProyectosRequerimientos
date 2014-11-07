@@ -273,9 +273,9 @@ namespace SAPR
                 mostrarMensaje("Success", "Éxito!!!", "El Proyecto fue eliminado correctamente");
                 this.gridUsuariosAsignados.Visible = false;
                 this.gridProyecto.Enabled = true;
-                llenarGridUsuarios();
-                limpiarCampos();
+                llenarGridUsuarios();        
                 gridProyecto.DataBind();
+                restaurarPantallaSinLimpiar();
             }
             else if (result[0] == "Error") {
                 mostrarMensaje("Danger", "Error", "Se produjo un error al intentar borrar el Proyecto");
@@ -502,7 +502,7 @@ namespace SAPR
                 this.textTelSecundario.Value = "";
                 this.TextOficina.Value = "";
                 this.textEmailRepresentante.Value = "";
-                this.cmbEstado.Text = "Pendiente de Asignación";
+                this.cmbEstado.Text = "Sin Asignar";
         }
 	
 	

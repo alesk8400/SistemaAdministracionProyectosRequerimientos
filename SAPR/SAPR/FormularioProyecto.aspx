@@ -72,9 +72,9 @@
                             <label for="text" >Estado del Proyecto <font color='red'>*</font></label>
                             <div class="dropdown-toggle"> 
                                     <asp:DropDownList ID="cmbEstado" runat="server">
-                                        <asp:ListItem>Pendiente de Asignación</asp:ListItem>
+                                        <asp:ListItem>Sin Asignar</asp:ListItem>
                                          <asp:ListItem>Asignado</asp:ListItem>
-                                        <asp:ListItem>En ejecución</asp:ListItem>
+                                        <asp:ListItem>En ejecucion</asp:ListItem>
                                         <asp:ListItem>Finalizado</asp:ListItem>
                                         <asp:ListItem>Cerrado</asp:ListItem>
                                     </asp:DropDownList>

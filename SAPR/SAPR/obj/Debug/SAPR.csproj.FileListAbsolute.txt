@@ -73,7 +73,6 @@ C:\Users\b12450\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SA
 C:\Users\b12450\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
 C:\Users\b12450\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.dll
 C:\Users\b12450\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.pdb
-C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\EntityFramework.dll
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll.config
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.pdb
@@ -85,6 +84,7 @@ C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SA
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\DotNetOpenAuth.OAuth.dll
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\DotNetOpenAuth.OpenId.dll
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\EntityFramework.dll
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\Microsoft.AspNet.FriendlyUrls.dll
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\Microsoft.AspNet.Membership.OpenAuth.dll
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
