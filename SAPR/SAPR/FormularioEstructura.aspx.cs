@@ -21,6 +21,8 @@ namespace SAPR
         private static int idProyecto = 0;
         private static int modoS = 0;  //modo 1 in modo 2 mod modo 3 eli
         private static int modoM = 0;
+
+        //Este metodo se encarga de inicializar los comboBoxes del formulario, además de cargar el frid con los datos de sprints y modulos del proyecto seleccionado ademas de deshabilitar y habilitar botones 
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -62,17 +64,21 @@ namespace SAPR
             }
         }
 
+        //Este metodo devuelve todos los ID de los sprints que pertenecen al proyecto que recibe como parametro
          private static DataTable getSprints (int proyecto){
 
              return controladora.getSprints(proyecto);
          }
-         private static DataTable getModulo(int sprintId)  // pruebilla
+
+         //Retorna los modulos de un sprint, recibe el id del sprint 
+         private static DataTable getModulo(int sprintId)  
          {
 
              return controladora.getModulo(sprintId);
          }
 
-         private static DataTable getRequerimiento(int moduloId)  // pruebilla
+         //Metodo Temporal que para tomar requerimientos y cargarlos (se borrara posteriormente)
+         private static DataTable getRequerimiento(int moduloId)  
          {
 
              return controladora.getRequerimientos(moduloId);
@@ -103,7 +109,7 @@ namespace SAPR
          }
 
 
-
+        //Llena el comboBox de Proyectos
          private void llenarCmbProy() {
             cmbProyecto.DataSource = controladora.getNombresProyectos();
             cmbProyecto.DataTextField = "Nombre";
@@ -111,6 +117,7 @@ namespace SAPR
             cmbProyecto.DataBind();
          }
 
+         //Llena el comboBox de Sprints
          private void llenarCmbSprint()
          {
              cmbSprints.DataSource = controladora.getNombresSprint(idProyecto);
@@ -143,7 +150,7 @@ namespace SAPR
          }
 
 
-
+        //Actualiza el grid con la informacion de proyecto seleccionado y el comboBox de los Sprints
          protected void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
          {
              idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
@@ -153,6 +160,7 @@ namespace SAPR
 
          }
 
+         //Actualiza el comboBox de los modulos de acuerdo al sprint seleccionado
          protected void cmbSprints_SelectedIndexChanged(object sender, EventArgs e)
          {
              entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
@@ -161,7 +169,7 @@ namespace SAPR
              this.txtDescripcionSprint.Value = entidadS.Descripcion;
          }
 
-
+        //Llena el comboBox de modulos
          private void llenarCmbModulo(int idSprint)
          {
              cmbModulo.DataSource = controladora.getNombresModulo(idSprint);
@@ -179,6 +187,8 @@ namespace SAPR
                  this.txtDescripcionModulo.Value = "";
              }
          }
+
+         //Actualiza los campos de nombre y descripcion de acuerdo al modulo seleccionado
          protected void cmbModulo_SelectedIndexChanged(object sender, EventArgs e)
          {
              entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
@@ -186,6 +196,7 @@ namespace SAPR
              this.txtDescripcionModulo.Value = entidadM.Descripcion;
          }
 
+        //Controla el despliegue de los elementos de la interfaz al presionar el boton agregar (sprint)
          protected void btnAgregarSprint_Click(object sender, EventArgs e)
          {
              this.txtNombreSprint.Disabled = false;
@@ -203,6 +214,7 @@ namespace SAPR
              this.modaleliminarModulo.Disabled = true;
          }
 
+         //Controla el despliegue de los elementos de la interfaz al presionar el boton modificar (sprint)
          protected void btnModificarSprint_Click(object sender, EventArgs e)
          {             
              
@@ -218,6 +230,7 @@ namespace SAPR
              this.modaleliminarModulo.Disabled = true;
          }
 
+         //Controla el despliegue de los elementos de la interfaz al presionar el boton eliminar (sprint)
          protected void clickAceptarEliminarSprint(object sender, EventArgs e)
          {
 
@@ -240,6 +253,7 @@ namespace SAPR
              } 
          }
 
+        //Al presionar el boton Aceptar valora los casos si esta insertando o modificando y hace las acciones respectivas en cada caso (sprints)
          protected void btnAceptar1(object sender, EventArgs e){
              
 
@@ -277,7 +291,7 @@ namespace SAPR
          }
 
 
-
+        //Al presionar el boton Cancelar limpia los campos y vuelve a restaurar los valores que tenian previamente (sprints)
          protected void btnCancelar1(object sender, EventArgs e)
          {             
                  entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
@@ -294,6 +308,8 @@ namespace SAPR
                  this.btnAceptarS.Disabled = true;
                  this.btnCancelarS.Disabled = true;
          }
+
+         //Controla el despliegue de los elementos de la interfaz al presionar el boton agregar (modulo)
          protected void btnAgregarModulo_Click(object sender, EventArgs e)
          {
              this.txtNombreModulo.Disabled = false;
@@ -310,6 +326,8 @@ namespace SAPR
              this.btnModificarSprint.Disabled = true;
              this.btnEliminarSprint.Disabled = true;
          }
+
+         //Controla el despliegue de los elementos de la interfaz al presionar el boton modificar (modulo)
          protected void btnModificarModulo_Click(object sender, EventArgs e)
          {
              this.txtNombreModulo.Disabled = false;
@@ -325,6 +343,7 @@ namespace SAPR
              this.btnEliminarSprint.Disabled = true;
          }
 
+         //Controla el despliegue de los elementos de la interfaz al presionar el boton eliminar (modulo)
          protected void clickAceptarEliminarModulo(object sender, EventArgs e)
          {
 
@@ -344,6 +363,8 @@ namespace SAPR
 
              } 
          }
+
+         //Al presionar el boton Aceptar valora los casos si esta insertando o modificando y hace las acciones respectivas en cada caso (modulos)
          protected void btnAceptar2(object sender, EventArgs e)
          {
 
@@ -380,6 +401,7 @@ namespace SAPR
              this.btnCancelarM.Disabled = true;
          }
 
+         //Al presionar el boton Cancelar limpia los campos y vuelve a restaurar los valores que tenian previamente (modulos)
          protected void btnCancelar2(object sender, EventArgs e)
          {
              entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
@@ -397,17 +419,14 @@ namespace SAPR
              this.btnCancelarM.Disabled = true;
 
          }
-         /*
-         * Ocultar el mensaje de exito o error.
-         */
+
+         //Ocultar el mensaje de exito o error.
          protected void ocultarMensaje()
          {
              alertAlerta.Attributes.Add("hidden", "hidden");
          }
 
-         /*
-         * Muestra mensaje de exito o error.
-         */
+         //Muestra mensaje de exito o error.
          protected void mostrarMensaje(String tipoAlerta, String alerta, String mensaje)
          {
              alertAlerta.Attributes["class"] = "alert alert-" + tipoAlerta + " alert-dismissable fade in";

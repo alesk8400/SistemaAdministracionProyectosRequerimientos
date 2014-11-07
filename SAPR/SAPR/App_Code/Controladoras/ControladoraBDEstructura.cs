@@ -9,16 +9,20 @@ using SAPR.App_Code.Entidades;
 
 namespace SAPR.App_Code.Controladoras
 {
+    //Esta clase se encarga de conectar la clase controladora Estructura con la Base de Datos. Cotiene métodos para IMEC de Sprint y Modulos
     public class ControladoraBDEstructura{
         AdaptSprint adaptS;
         AdaptModulo adaptM;
         RequerimientoTableAdapter adapAux;  // Desaparecera
+
+        //Constructor de la clase se encarga de inicilizar los adaptadores de los distintos DataSets
         public ControladoraBDEstructura() {
             adaptS = new AdaptSprint();
             adaptM = new AdaptModulo();
             adapAux = new RequerimientoTableAdapter();
         }
 
+        //Este método se encarga de insertar un sprint. recibe como parámetro una entidad Sprint y el id de Proyecto donde insertarlo
         public String[] insertarSprint(EntidadSprint sprintNuevo,int idProyecto)
         {
             String[] resultado = new String[1];
@@ -42,6 +46,7 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
+        //Este método se encarga de modificar un sprint. recibe como parámetro una entidad SprintNueva con los nuevos datos y el id de Proyecto donde modificarlo y el nombre viejo del sprint
         public String[] modificarSprint(EntidadSprint sprintNuevo,int idProyecto,String nombreViejo)
         {
             String[] resultado = new String[1];
@@ -66,6 +71,7 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
+        //Este método se encarga de eliminar un sprint. recibe como parámetro el nombre del Sprint y el id de Proyecto donde eliminarlo
         public String[] eliminarSprint(String nombreSprint,int idProyecto)
         {
             String[] resultado = new String[1];
@@ -90,6 +96,7 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
+        //Este metodo se encarga de devolver un datatable con los datos de un sprint, se requiere como parámetro el nombre del sprint y el id del proyecto
         public DataTable consultarSprint(String nombreSprint,int idProyecto)
         {
             DataTable resultado = new DataTable();
@@ -102,6 +109,7 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
+        //Este método se encarga de devolver el id del sprint, requiere el nombre del sprint y id del proyecto
         public int getIdSprint(String nombreSprint, int idProyecto)
         {
             int idSprint;
@@ -112,6 +120,7 @@ namespace SAPR.App_Code.Controladoras
             return idSprint;
         }
 
+        //Este método se encarga de insertar un modulo. recibe como parámetro una entidad moduloy el id del sprint donde insertarlo
         public String[] insertarModulo(EntidadModulo moduloNuevo, int idSprint)
         {
             String[] resultado = new String[1];
@@ -135,6 +144,7 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
+        //Este método se encarga de modificar un modulo. recibe como parámetro una entidad moduloNueva con los nuevos datos y el id de sprint donde modificarlo y el nombre viejo del modulo
         public String[] modificarModulo(EntidadModulo moduloNuevo, int idSprint, String nombreViejo)
         {
             String[] resultado = new String[1];
@@ -158,6 +168,8 @@ namespace SAPR.App_Code.Controladoras
             }
             return resultado;
         }
+
+        //Este método se encarga de eliminar un modulo. recibe como parámetro el nombre del modulo y el id de Sprint donde eliminarlo
         public String[] eliminarModulo(String nombreModulo, int idSprint)
         {
             String[] resultado = new String[1];
@@ -181,6 +193,8 @@ namespace SAPR.App_Code.Controladoras
             }
             return resultado;
         }
+
+        //Este metodo se encarga de devolver un datatable con los datos de un modulo, se requiere como parámetro el nombre del modulo y el id del sprint
         public DataTable consultarModulo(String nombreModulo, int idSprint)
         {
             DataTable resultado = new DataTable();
@@ -193,8 +207,8 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
-
-        public DataTable getSprints(int proyecto)  // METODO DE CALI PARA PRUEBAS
+        //Este metodo devuelve todos los ID de los sprints que pertenecen al proyecto que recibe como parametro
+        public DataTable getSprints(int proyecto)  
         {
             DataTable resultado = new DataTable();
 
@@ -206,7 +220,9 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
-        public DataTable getModulo(int sprintId)  //Retorna los modulos de un sprint
+
+        //Retorna los modulos de un sprint, recibe el id del sprint 
+        public DataTable getModulo(int sprintId)  
         {
             DataTable resultado = new DataTable();
 
@@ -219,7 +235,7 @@ namespace SAPR.App_Code.Controladoras
         }
 
 
-        // RECORDAR QUE ESTE METODO LLEGARA A DESAPARECER CUANDO IMPLEMENTEMOS EL MODULO REQUERIMIENTO
+        //Metodo Temporal que para tomar requerimientos y cargarlos (se borrara posteriormente)
         public DataTable getRequerimientos(int moduloId)
         {
             DataTable resultado = new DataTable();
