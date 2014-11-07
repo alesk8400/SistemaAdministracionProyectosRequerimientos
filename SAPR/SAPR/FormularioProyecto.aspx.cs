@@ -273,9 +273,10 @@ namespace SAPR
                 mostrarMensaje("Success", "Éxito!!!", "El Proyecto fue eliminado correctamente");
                 this.gridUsuariosAsignados.Visible = false;
                 this.gridProyecto.Enabled = true;
-                llenarGridUsuarios();        
+                llenarGridUsuarios();
+                limpiarCampos();
                 gridProyecto.DataBind();
-                restaurarPantallaSinLimpiar();
+                
             }
             else if (result[0] == "Error") {
                 mostrarMensaje("Danger", "Error", "Se produjo un error al intentar borrar el Proyecto");
@@ -476,7 +477,7 @@ namespace SAPR
               
             }         
                 modo = 0;
-                restaurarPantalla();
+                restaurarPantallaSinLimpiar();
                 gridProyecto.DataBind();
                 llenarGridUsuarios();
                 this.gridUsuariosAsignados.Visible = false;
