@@ -168,6 +168,9 @@ namespace SAPR
              cmbModulo.DataTextField = "Nombre";
              cmbModulo.DataValueField = "idModulo";
              cmbModulo.DataBind();
+             entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+             this.txtNombreModulo.Value = entidadM.Nombre;
+             this.txtDescripcionModulo.Value = entidadM.Descripcion;
              if (cmbModulo.Text == "")
              {
                  this.btnModificarModulo.Disabled = true;

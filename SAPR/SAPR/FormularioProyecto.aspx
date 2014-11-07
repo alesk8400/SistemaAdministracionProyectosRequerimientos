@@ -1,9 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioProyecto.aspx.cs" Inherits="SAPR.FormularioProyecto" %>
 <%@ MasterType  virtualPath="~/Neo.Master"%>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat ="server" >
+   </asp:ScriptManager>
+    
 
     <div class="page-header">
         <div class="row">
@@ -46,7 +48,7 @@
                                 <label for="textNombre" >Nombre del Proyecto  <font color='red'>*</font></label>
 
                                     <input runat="server" id="textNombre" class="form-control" type="text" placeholder="Debe tener entre 5 y 44 caracteres" title="Nombre" required="required" />
-                                    <asp:RegularExpressionValidator runat="server" 
+                                    <asp:RegularExpressionValidator runat=server 
                                         ControlToValidate="textNombre" 
                                         ErrorMessage="Nombre Proyecto Inválido. Debe tener entre 2 y 44 caracteres" 
                                         ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
@@ -228,17 +230,19 @@
                                     <Columns>
                                         <asp:TemplateField HeaderText="Lider">
                                             <ItemTemplate>    
+                                                
                                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always" ChildrenAsTriggers="True">
                                                     <ContentTemplate>  
-                                                        <asp:CheckBox ID="cbLider" runat="server" OnCheckedChanged="cbLider_CheckedChanged1" AutoPostBack="True" />  
+                                                         <asp:CheckBox ID="cbLider" runat="server" OnCheckedChanged="cbLider_CheckedChanged1" AutoPostBack="True" /> 
                                                              </ContentTemplate>                                                 
                                                         <Triggers>      
                                                        <asp:AsyncPostBackTrigger ControlID="cbLider" EventName="CheckedChanged" /> 
                                                                     
                                                          </Triggers>       
                                                                                                        
-                                                        </asp:UpdatePanel>                                                                                                                                                  
+                                                        </asp:UpdatePanel>                                                                                                                                                 
                                             </ItemTemplate>
+                                            
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Miembro">
                                             <ItemTemplate>
@@ -366,6 +370,16 @@
             </div>
         </div>
     </div>
+
+    
+</div>
+         
+</div>
+
+    
+</div>
+</div>
+</div>
 
     
 </asp:Content>
