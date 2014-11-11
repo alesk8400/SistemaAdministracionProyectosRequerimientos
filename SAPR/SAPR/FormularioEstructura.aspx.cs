@@ -310,9 +310,9 @@ namespace SAPR
                  this.btnAgregarSprint.Disabled = false;
                  this.btnModificarSprint.Disabled = false;
                  this.btnEliminarSprint.Disabled = false;
-                 //this.btnModificarModulo.Disabled = false;
-                 //this.btnAgregarModulo.Disabled = false;
-                 //this.modaleliminarModulo.Disabled = false;
+                 this.btnModificarModulo.Disabled = false;
+                 this.btnAgregarModulo.Disabled = false;
+                 this.modaleliminarModulo.Disabled = false;
                  this.btnAceptarS.Disabled = true;
                  this.btnCancelarS.Disabled = true;
          }
