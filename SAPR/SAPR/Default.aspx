@@ -12,4 +12,6 @@
         </div>
     </div>
 
+    <img alt="HTML5 Icon" src="../Images/bowsah3.gif" width="100" height="100" />
+
 </asp:Content>
