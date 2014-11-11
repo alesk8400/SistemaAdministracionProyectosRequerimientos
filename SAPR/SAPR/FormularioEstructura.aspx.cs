@@ -176,9 +176,13 @@ namespace SAPR
              cmbModulo.DataTextField = "Nombre";
              cmbModulo.DataValueField = "idModulo";
              cmbModulo.DataBind();
-             entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
-             this.txtNombreModulo.Value = entidadM.Nombre;
-             this.txtDescripcionModulo.Value = entidadM.Descripcion;
+             try {
+                 entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                 this.txtNombreModulo.Value = entidadM.Nombre;
+                 this.txtDescripcionModulo.Value = entidadM.Descripcion;
+             }
+             catch { }
+            
              if (cmbModulo.Text == "")
              {
                  this.btnModificarModulo.Disabled = true;
@@ -293,18 +297,22 @@ namespace SAPR
 
         //Al presionar el boton Cancelar limpia los campos y vuelve a restaurar los valores que tenian previamente (sprints)
          protected void btnCancelar1(object sender, EventArgs e)
-         {             
+         {
+             try {
                  entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
                  this.txtNombreSprint.Value = entidadS.Nombre;
                  this.txtDescripcionSprint.Value = entidadS.Descripcion;
+             }
+             catch { }
+                 
                  this.txtNombreSprint.Disabled = true;
                  this.txtDescripcionSprint.Disabled = true;
                  this.btnAgregarSprint.Disabled = false;
                  this.btnModificarSprint.Disabled = false;
                  this.btnEliminarSprint.Disabled = false;
-                 this.btnModificarModulo.Disabled = false;
-                 this.btnAgregarModulo.Disabled = false;
-                 this.modaleliminarModulo.Disabled = false;
+                 //this.btnModificarModulo.Disabled = false;
+                 //this.btnAgregarModulo.Disabled = false;
+                 //this.modaleliminarModulo.Disabled = false;
                  this.btnAceptarS.Disabled = true;
                  this.btnCancelarS.Disabled = true;
          }
@@ -404,9 +412,13 @@ namespace SAPR
          //Al presionar el boton Cancelar limpia los campos y vuelve a restaurar los valores que tenian previamente (modulos)
          protected void btnCancelar2(object sender, EventArgs e)
          {
-             entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
-             this.txtNombreModulo.Value = entidadM.Nombre;
-             this.txtDescripcionModulo.Value = entidadM.Descripcion;
+             try
+             {
+                 entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
+                 this.txtNombreModulo.Value = entidadM.Nombre;
+                 this.txtDescripcionModulo.Value = entidadM.Descripcion;
+             }
+             catch { }
              this.txtNombreModulo.Disabled = true;
              this.txtDescripcionModulo.Disabled = true;
              this.btnModificarModulo.Disabled = false;
