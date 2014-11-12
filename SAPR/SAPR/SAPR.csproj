@@ -136,6 +136,13 @@
     <Content Include="App_Code\Entidades\EntidadRequerimientos.cs" />
     <Compile Include="App_Code\Entidades\EntidadSprint.cs" />
     <Compile Include="App_Code\Entidades\EntidadModulo.cs" />
+    <Compile Include="FormularioRequerimientos.aspx.cs">
+      <DependentUpon>FormularioRequerimientos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormularioRequerimientos.aspx.designer.cs">
+      <DependentUpon>FormularioRequerimientos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -219,6 +226,7 @@
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FormularioProyecto.aspx" />
+    <Content Include="FormularioRequerimientos.aspx" />
     <Content Include="FormularioUsuario.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />

@@ -68,7 +68,7 @@
                     <a href="FormularioEstructura">Estructura Proyectos</a>
                 </li>
                 <li>
-                    <a href="#">Requerimientos</a>
+                    <a href="FormularioRequerimientos">Requerimientos</a>
                 </li>
             </ul>
         </div>
