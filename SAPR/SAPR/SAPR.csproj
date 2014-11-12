@@ -126,14 +126,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Controladoras\ControladoraBDRequerimiento.cs" />
     <Compile Include="App_Code\Controladoras\ControladoraEstructura.cs" />
     <Compile Include="App_Code\Controladoras\ControladoraBDEstructura.cs" />
+    <Compile Include="App_Code\Controladoras\ControladoraRequerimiento.cs" />
+    <Compile Include="App_Code\DataSets\DataSetRequerimiento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetRequerimiento.xsd</DependentUpon>
+    </Compile>
     <Compile Include="App_Code\DataSets\DataSetsEstructuras.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetsEstructuras.xsd</DependentUpon>
     </Compile>
-    <Content Include="App_Code\Entidades\EntidadRequerimientos.cs" />
+    <Compile Include="App_Code\Entidades\EntidadRequerimientos.cs" />
     <Compile Include="App_Code\Entidades\EntidadSprint.cs" />
     <Compile Include="App_Code\Entidades\EntidadModulo.cs" />
     <Compile Include="FormularioRequerimientos.aspx.cs">
@@ -261,6 +268,17 @@
     </Content>
     <Content Include="App_Code\DataSets\DataSetsEstructuras.xsc">
       <DependentUpon>DataSetsEstructuras.xsd</DependentUpon>
+    </Content>
+    <Content Include="App_Code\DataSets\DataSetRequerimiento.xsc">
+      <DependentUpon>DataSetRequerimiento.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Code\DataSets\DataSetRequerimiento.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetRequerimiento.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Code\DataSets\DataSetRequerimiento.xss">
+      <DependentUpon>DataSetRequerimiento.xsd</DependentUpon>
     </Content>
     <None Include="App_Code\DataSets\DataSetsEstructuras.xsd">
       <SubType>Designer</SubType>

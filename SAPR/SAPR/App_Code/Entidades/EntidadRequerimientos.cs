@@ -6,20 +6,36 @@ using System.Web;
 namespace SAPR.App_Code.Entidades
 {
     public class EntidadRequerimientos{
+        private int idModulo;
+        private int idProyecto;
         private String nombre;
         private String descripcion;
-        private String prioridad;
+        private int prioridad;
         private String estado;
-        private String cantidad;
+        private int cantidad;
         private String medida;
 
         public EntidadRequerimientos(Object[] datos) {
-            this.nombre = datos[0].ToString();
-            this.descripcion = datos[1].ToString();
-            this.prioridad = datos[2].ToString();
-            this.estado = datos[3].ToString();
-            this.cantidad = datos[4].ToString();
-            this.medida = datos[5].ToString();
+            this.idModulo = (int)datos[0];
+            this.idProyecto = (int)datos[0];
+            this.nombre = datos[2].ToString();
+            this.descripcion = datos[3].ToString();
+            this.prioridad = (int)datos[4];
+            this.estado = datos[5].ToString();
+            this.cantidad = (int)datos[6];
+            this.medida = datos[7].ToString();
+        }
+
+        public int IdModulo
+        {
+            get { return idModulo; }
+            set { idModulo = value; }
+        }
+
+        public int IdProyecto
+        {
+            get { return idProyecto; }
+            set { idProyecto = value; }
         }
 
         public String Nombre
@@ -33,7 +49,7 @@ namespace SAPR.App_Code.Entidades
             get { return descripcion; }
             set { descripcion = value; }
         }
-        public String Prioridad
+        public int Prioridad
         {
             get { return prioridad; }
             set { prioridad = value; }
@@ -45,7 +61,7 @@ namespace SAPR.App_Code.Entidades
             set { estado = value; }
         }
 
-        public String Cantidad
+        public int Cantidad
         {
             get { return cantidad; }
             set { cantidad = value; }
