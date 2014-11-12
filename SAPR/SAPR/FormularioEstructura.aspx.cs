@@ -101,7 +101,7 @@ namespace SAPR
          {
              if (e.Row.RowType == DataControlRowType.DataRow)
              {
-                 string moduloId = e.Row.Cells[1].Text.ToString();
+                 string moduloId = e.Row.Cells[3].Text.ToString();
                  GridView gridRequerimientos = e.Row.FindControl("gridReq") as GridView;
                  gridRequerimientos.DataSource = getRequerimiento(Convert.ToInt32(moduloId));
                  gridRequerimientos.DataBind();
@@ -174,7 +174,7 @@ namespace SAPR
          {
              cmbModulo.DataSource = controladora.getNombresModulo(idSprint);
              cmbModulo.DataTextField = "Nombre";
-             cmbModulo.DataValueField = "idModulo";
+             cmbModulo.DataValueField = "Identificador";
              cmbModulo.DataBind();
              try {
                  entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
@@ -284,8 +284,8 @@ namespace SAPR
              this.btnAgregarSprint.Disabled = false;
              this.btnModificarSprint.Disabled = false;
              this.btnEliminarSprint.Disabled = false;
-             //int idSprint = controladora.getIdSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
-            // this.cmbSprints.Text = idSprint.ToString();
+             int idSprint = controladora.getIdSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
+             this.cmbSprints.Text = idSprint.ToString();
              this.btnAgregarModulo.Disabled = false;
              if(cmbModulo.Text !=""){
                  this.btnModificarModulo.Disabled = false;

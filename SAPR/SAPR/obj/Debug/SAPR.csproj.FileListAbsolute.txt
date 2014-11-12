@@ -111,7 +111,6 @@ C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SA
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.dll
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.pdb
 C:\Users\b14876\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.csprojResolveAssemblyReference.cache
-C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll.config
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.dll
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\SAPR.pdb
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\Antlr3.Runtime.dll
@@ -148,4 +147,3 @@ C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SA
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.dll
 C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.pdb
-C:\Users\b16406\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.csprojResolveAssemblyReference.cache

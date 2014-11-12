@@ -53,7 +53,7 @@
                     <ItemTemplate>
                         <img alt="" style="cursor: pointer" src="Images/plus.png" />
                         <asp:Panel ID="pnlModulos" runat="server" Style="display: none">
-                            <asp:GridView ID="gridModulos" runat="server" OnRowDataBound="OnRowDataBound2" DataKeyNames="idModulo" CssClass="table table-hover " BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+                            <asp:GridView ID="gridModulos" runat="server" OnRowDataBound="OnRowDataBound2" DataKeyNames="Identificador" CssClass="table table-hover " BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>

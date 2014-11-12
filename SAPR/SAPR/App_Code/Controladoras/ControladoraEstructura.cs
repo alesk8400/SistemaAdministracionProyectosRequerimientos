@@ -76,9 +76,9 @@ namespace SAPR.App_Code.Controladoras
 
             if (filaSprint.Rows.Count == 1)
             { //se recorre el dataTable de estructura tomando los datos de los sprint
-                for (int i = 1; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
-                    datosConsultados[i - 1] = filaSprint.Rows[0][i].ToString();
+                    datosConsultados[i] = filaSprint.Rows[0][i].ToString();
                 }
                 sprint = new EntidadSprint(datosConsultados); //se encapsulan los datos del sprint
             }
@@ -150,9 +150,9 @@ namespace SAPR.App_Code.Controladoras
 
             if (filaModulo.Rows.Count == 1)
             { //se recorre el dataTable de estructura tomando los datos del módulo
-                for (int i = 1; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
-                    datosConsultados[i - 1] = filaModulo.Rows[0][i].ToString();
+                    datosConsultados[i] = filaModulo.Rows[0][i].ToString();
                 }
                 modulo = new EntidadModulo(datosConsultados); //se encapsulan los datos del modulo
             }
