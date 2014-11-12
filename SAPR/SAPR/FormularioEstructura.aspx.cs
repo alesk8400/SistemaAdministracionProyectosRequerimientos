@@ -122,7 +122,7 @@ namespace SAPR
          {
              cmbSprints.DataSource = controladora.getNombresSprint(idProyecto);
              cmbSprints.DataTextField = "Nombre";
-             cmbSprints.DataValueField = "idSprint";
+             cmbSprints.DataValueField = "Identificador";
              cmbSprints.DataBind();
              if (cmbSprints.Text == "")
              {
@@ -284,8 +284,8 @@ namespace SAPR
              this.btnAgregarSprint.Disabled = false;
              this.btnModificarSprint.Disabled = false;
              this.btnEliminarSprint.Disabled = false;
-             int idSprint = controladora.getIdSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
-             this.cmbSprints.Text = idSprint.ToString();
+             //int idSprint = controladora.getIdSprint(txtNombreSprint.Value.ToString(), cmbProyecto.SelectedItem.ToString());
+            // this.cmbSprints.Text = idSprint.ToString();
              this.btnAgregarModulo.Disabled = false;
              if(cmbModulo.Text !=""){
                  this.btnModificarModulo.Disabled = false;

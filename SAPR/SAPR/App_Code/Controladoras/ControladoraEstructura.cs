@@ -198,8 +198,8 @@ namespace SAPR.App_Code.Controladoras
                 {
                     foreach (DataRow fila in consulta.Rows)
                     {
-                        datos[0] = fila[1].ToString(); // Van los Nombres
-                        datos[1] = fila[0].ToString(); // Van los ids del sprint
+                        datos[0] = fila[0].ToString(); // Van los Nombres
+                        datos[1] = fila[2].ToString(); // Van los ids del sprint
                         resultado.Rows.Add(datos);// cargar en la tabla los datos de cada usuario
                     }
                 }
@@ -231,7 +231,7 @@ namespace SAPR.App_Code.Controladoras
 
             columna = new DataColumn();
             columna.DataType = System.Type.GetType("System.String");
-            columna.ColumnName = "idSprint";
+            columna.ColumnName = "Identificador";
             tabla.Columns.Add(columna);
 
 
