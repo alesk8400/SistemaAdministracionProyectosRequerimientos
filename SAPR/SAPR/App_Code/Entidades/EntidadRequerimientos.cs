@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
 
 namespace SAPR.App_Code.Entidades
@@ -14,6 +16,7 @@ namespace SAPR.App_Code.Entidades
         private String estado;
         private int cantidad;
         private String medida;
+        private byte[] archivo;
 
         public EntidadRequerimientos(Object[] datos) {
             this.idModulo = (int)datos[0];
@@ -24,6 +27,7 @@ namespace SAPR.App_Code.Entidades
             this.estado = datos[5].ToString();
             this.cantidad = (int)datos[6];
             this.medida = datos[7].ToString();
+            this.archivo = ObjectToByteArray(datos[8]);
         }
 
         public int IdModulo
@@ -71,6 +75,25 @@ namespace SAPR.App_Code.Entidades
         {
             get { return medida; }
             set { medida = value; }
+        }
+
+        public byte[] Archivo 
+        {
+            get { return archivo; }
+            set { archivo = value; }
+        
+        }
+
+        private byte[] ObjectToByteArray(Object obj)
+        {
+            if (obj == null)
+                return null;
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bf.Serialize(ms, obj);
+                return ms.ToArray();
+            }
         }
     }
 }
