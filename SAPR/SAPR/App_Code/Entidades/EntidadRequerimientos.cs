@@ -19,13 +19,13 @@ namespace SAPR.App_Code.Entidades
         private byte[] archivo;
 
         public EntidadRequerimientos(Object[] datos) {
-            this.idModulo = (int)datos[0];
-            this.idProyecto = (int)datos[0];
+            this.idModulo = Int32.Parse(datos[0].ToString());
+            this.idProyecto = Int32.Parse(datos[0].ToString());
             this.nombre = datos[2].ToString();
             this.descripcion = datos[3].ToString();
-            this.prioridad = (int)datos[4];
+            this.prioridad = Int32.Parse(datos[4].ToString());
             this.estado = datos[5].ToString();
-            this.cantidad = (int)datos[6];
+            this.cantidad = Int32.Parse(datos[6].ToString());
             this.medida = datos[7].ToString();
             this.archivo = ObjectToByteArray(datos[8]);
         }

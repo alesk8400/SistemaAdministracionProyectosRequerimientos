@@ -140,6 +140,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetsEstructuras.xsd</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\Entidades\EntidadCriterio.cs" />
     <Compile Include="App_Code\Entidades\EntidadRequerimientos.cs" />
     <Compile Include="App_Code\Entidades\EntidadSprint.cs" />
     <Compile Include="App_Code\Entidades\EntidadModulo.cs" />

@@ -159,5 +159,23 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
 
         }
+
+        public String[] insertarCriterio(EntidadCriterio criterio) {
+
+            String[] resultado = new String[1];
+
+            try {
+
+                //this.requerimientoTableAdapter.insertarCriterio(criterio.NombreCriterio, criterio.Escenario, criterio.Contexto, 
+                //    criterio.Resultado, criterio.IdRequerimiento);
+            
+            } catch (Exception ex){
+            
+            
+            }
+
+
+            return resultado;
+        }
     }
 }

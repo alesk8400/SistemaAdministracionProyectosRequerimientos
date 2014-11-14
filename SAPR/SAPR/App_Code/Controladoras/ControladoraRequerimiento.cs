@@ -192,6 +192,25 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDRequerimiento.getRequerimientos();
         }
 
+        public String[] insertarCriterio(String nombreCriterio, String escenario, String contexto, String resultado, String nombreRequerimiento, String nombreProyecto, String nombreModulo)
+        {            
+            int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
+            int idModulo = 0;
+            //int idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************
+            int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
+            Object[] datosCriterio = new Object[5];
+            datosCriterio[0] = nombreCriterio;
+            datosCriterio[1] = escenario;
+            datosCriterio[2] = contexto;
+            datosCriterio[3] = resultado;
+            datosCriterio[4] = idRequerimiento;
+
+            EntidadCriterio criterio = new EntidadCriterio(datosCriterio);
+            return controladoraBDRequerimiento.insertarCriterio(criterio);
+
+        }
+
+
         private byte[] ObjectToByteArray(Object obj)
         {
             if (obj == null)
