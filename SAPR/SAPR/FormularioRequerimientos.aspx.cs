@@ -13,5 +13,36 @@ namespace SAPR
         {
 
         }
+<<<<<<< HEAD
+=======
+
+        protected void btnAgregarReque_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnModificarReque_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        protected void GridViewReque_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        protected void btnAceptarR_Click(object sender, EventArgs e)
+        {
+
+
+        }
+>>>>>>> origin/InterfazBienvenida
     }
 }
