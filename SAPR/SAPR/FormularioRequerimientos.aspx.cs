@@ -13,8 +13,6 @@ namespace SAPR
         {
 
         }
-<<<<<<< HEAD
-=======
 
         protected void btnAgregarReque_Click(object sender, EventArgs e)
         {
@@ -43,6 +41,5 @@ namespace SAPR
 
 
         }
->>>>>>> origin/InterfazBienvenida
     }
 }

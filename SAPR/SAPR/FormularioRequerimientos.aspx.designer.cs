@@ -11,8 +11,7 @@ namespace SAPR {
     
     
     public partial class FormularioRequerimientos {
-<<<<<<< HEAD
-=======
+
         
         /// <summary>
         /// Control informacion.
@@ -211,6 +210,5 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridRequerimientos;
->>>>>>> origin/InterfazBienvenida
-    }
+ }
 }
