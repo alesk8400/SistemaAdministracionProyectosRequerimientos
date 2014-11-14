@@ -221,8 +221,8 @@
 
         <div class="row">
     <div class="col-lg-7">                                        
-                    <asp:GridView ID="gridRequerimientos" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridViewReque_SelectedIndexChanged" AllowPaging="True">
-                </asp:GridView>
+        
+                    <asp:GridView ID= "gridRequerimientos" runat="server"></asp:GridView>
     </div>
         </div>
 

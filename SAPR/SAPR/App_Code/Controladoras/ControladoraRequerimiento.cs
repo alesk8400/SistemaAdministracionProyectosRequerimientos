@@ -223,5 +223,10 @@ namespace SAPR.App_Code.Controladoras
             }
         }
 
+
+        internal DataTable getRequerimientosGrid()
+        {
+            return controladoraBDRequerimiento.getRequerimientosGrid();
+        }
     }
 }

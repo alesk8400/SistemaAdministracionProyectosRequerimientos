@@ -177,5 +177,20 @@ namespace SAPR.App_Code.Controladoras
 
             return resultado;
         }
+
+        internal DataTable getRequerimientosGrid()
+        {
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = requerimientoTableAdapter.getRequerimientosDeProyecto(115); //se llama al dataSet de Estructura para consultar el Sprint
+            }
+            catch (Exception e)
+            {
+                resultado = null;
+            }
+            return resultado;
+        }
     }
 }

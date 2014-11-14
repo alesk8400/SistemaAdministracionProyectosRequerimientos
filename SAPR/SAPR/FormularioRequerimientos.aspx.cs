@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Data;
 using System.Web.UI.WebControls;
 
 namespace SAPR
@@ -16,6 +17,8 @@ namespace SAPR
 
 
         protected void Page_Load(object sender, EventArgs e) {
+            
+
             if (modo != 1 && modo != 2)
             {
                 restaurarPantallaSinLimpiar();
@@ -26,6 +29,9 @@ namespace SAPR
         {
             modo = 1;
             habilitarCampos(true);
+            DataTable grid = controladora.getRequerimientosGrid();  // Falta que reciba el idProy
+            gridRequerimientos.DataSource = grid;
+            gridRequerimientos.DataBind();
         }
 
         protected void btnModificarReque_Click(object sender, EventArgs e)
@@ -50,7 +56,7 @@ namespace SAPR
         {
             String[] resultado = new String[1];
             if(modo == 1){                
-                resultado = controladora.insertarRequerimiento(60, "Salvar el mundo2", this.textNombreR.Value.ToString(), this.textD.Value.ToString(), Int32.Parse(this.cmbPrioridad.SelectedItem.ToString()), this.cmbEstado.SelectedItem.ToString(), Int32.Parse(this.txtCantidadR.Value.ToString()), this.cmbMedida.SelectedItem.ToString(), null);
+                resultado = controladora.insertarRequerimiento(65, "Salvar al mundo2", this.textNombreR.Value.ToString(), this.textD.Value.ToString(), Int32.Parse(this.cmbPrioridad.SelectedItem.ToString()), this.cmbEstado.SelectedItem.ToString(), Int32.Parse(this.txtCantidadR.Value.ToString()), this.cmbMedida.SelectedItem.ToString(), null);
             }
 
         }
