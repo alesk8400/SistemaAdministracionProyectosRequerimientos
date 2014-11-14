@@ -179,7 +179,5 @@
                 </asp:GridView>
     </div>
         </div>
->>>>>>> origin/InterfazBienvenida
-
 
 </asp:Content>

@@ -20,7 +20,7 @@ namespace SAPR.App_Code.Entidades
 
         public EntidadRequerimientos(Object[] datos) {
             this.idModulo = Int32.Parse(datos[0].ToString());
-            this.idProyecto = Int32.Parse(datos[0].ToString());
+            this.idProyecto = Int32.Parse(datos[1].ToString());
             this.nombre = datos[2].ToString();
             this.descripcion = datos[3].ToString();
             this.prioridad = Int32.Parse(datos[4].ToString());

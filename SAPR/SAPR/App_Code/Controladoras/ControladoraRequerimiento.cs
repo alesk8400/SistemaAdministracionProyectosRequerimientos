@@ -29,10 +29,10 @@ namespace SAPR.App_Code.Controladoras
          * y pasa a la controladora de BD para su posterior insercion.                   
          */
 
-        public String[] insertarRequerimiento(int idModulo, int idProyecto, String nombre, String descripcion, String prioridad, String estado,
+        public String[] insertarRequerimiento(int idModulo, String nombreProyecto, String nombre, String descripcion, int prioridad, String estado,
         int cantidad, String medida, byte[]archivo)
-        { 
-
+        {
+            int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
             Object[] datosRequerimiento = new Object[9];
             datosRequerimiento[0] = idModulo;
             datosRequerimiento[1] = idProyecto;

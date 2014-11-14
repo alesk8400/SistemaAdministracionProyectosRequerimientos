@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAPR.App_Code.Controladoras;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,19 +10,28 @@ namespace SAPR
 {
     public partial class FormularioRequerimientos : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
 
+        ControladoraRequerimiento controladora = new ControladoraRequerimiento();
+        private static int modo = 0;
+
+
+        protected void Page_Load(object sender, EventArgs e) {
+            if (modo != 1 && modo != 2)
+            {
+                restaurarPantallaSinLimpiar();
+            }
         }
 
         protected void btnAgregarReque_Click(object sender, EventArgs e)
         {
-
+            modo = 1;
+            habilitarCampos(true);
         }
 
         protected void btnModificarReque_Click(object sender, EventArgs e)
         {
-
+            modo = 2;
+            habilitarCampos(true);
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,8 +48,32 @@ namespace SAPR
 
         protected void btnAceptarR_Click(object sender, EventArgs e)
         {
+            String[] resultado = new String[1];
+            if(modo == 1){                
+                resultado = controladora.insertarRequerimiento(60, "Salvar el mundo2", this.textNombreR.Value.ToString(), this.textD.Value.ToString(), Int32.Parse(this.cmbPrioridad.SelectedItem.ToString()), this.cmbEstado.SelectedItem.ToString(), Int32.Parse(this.txtCantidadR.Value.ToString()), this.cmbMedida.SelectedItem.ToString(), null);
+            }
 
+        }
 
+        protected void restaurarPantallaSinLimpiar()
+        {
+            habilitarCampos(false);
+            botonAceptarR.Disabled = true;
+            btnModificarReque.Disabled = true;
+            btnEliminarReque.Disabled = true;
+            botonCancelar.Disabled = true;
+        }
+
+        protected void habilitarCampos(Boolean habilitar)
+        {
+            this.textNombreR.Disabled = !habilitar;
+            this.textD.Disabled = !habilitar;
+            this.cmbPrioridad.Enabled = habilitar;
+            this.cmbEstado.Enabled = habilitar;
+            this.txtCantidadR.Disabled = !habilitar;
+            this.cmbMedida.Enabled = habilitar;
+            this.botonAceptarR.Disabled = !habilitar;
+            this.botonCancelar.Disabled = !habilitar;
         }
     }
 }
