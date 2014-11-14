@@ -101,7 +101,7 @@ namespace SAPR
          {
              if (e.Row.RowType == DataControlRowType.DataRow)
              {
-                 string moduloId = e.Row.Cells[3].Text.ToString();
+                 string moduloId = e.Row.Cells[4].Text.ToString();
                  GridView gridRequerimientos = e.Row.FindControl("gridReq") as GridView;
                  gridRequerimientos.DataSource = getRequerimiento(Convert.ToInt32(moduloId));
                  gridRequerimientos.DataBind();

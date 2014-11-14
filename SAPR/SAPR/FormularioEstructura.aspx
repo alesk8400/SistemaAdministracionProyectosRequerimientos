@@ -79,6 +79,7 @@
                                             </asp:Panel>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:ButtonField Text="Manejar" HeaderText="Manejo"></asp:ButtonField>
                                 </Columns>
                                 <FooterStyle BackColor="#CCCC99" ForeColor="Black"></FooterStyle>
 
@@ -99,6 +100,7 @@
                         </asp:Panel>
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:ButtonField Text="Manejar" HeaderText="Manejo"></asp:ButtonField>
             </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black"></FooterStyle>
 
