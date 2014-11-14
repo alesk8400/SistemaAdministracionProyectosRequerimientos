@@ -173,6 +173,52 @@
             </div>
     </div>
 
+    
+      <div class="col-lg-12 text-center">
+            <div class="well bs-component">
+                <fieldset>
+                    <legend>Criterios de Aceptación</legend>
+                     <div class="row">
+                           <div class="col-md-4">
+                                <label for="txtNombreCri" >Nombre del Criterio  <font color='red'>*</font></label>
+                                <input runat="server" id="nombreCriterio" class="form-control" type="text" placeholder="Debe tener entre 5 y 44 caracteres" title="NombreC" required="required" />
+                                    <asp:RegularExpressionValidator runat=server 
+                                        ControlToValidate="nombreCriterio" 
+                                        ErrorMessage="Nombre Criterio Inválido. Debe tener entre 2 y 44 caracteres" 
+                                        ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="black" controltovalidate="nombreCriterio" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                         <div class="col-md-4">
+                                <label for="txtEscena" >Escenario  <font color='red'>*</font></label>
+                                <input runat="server" id="txtEscenario" class="form-control" type="text" placeholder="Digitos" title="Escenario" required="required" />
+                                    <asp:RegularExpressionValidator runat=server 
+                                        ControlToValidate="txtEscenario" 
+                                        ErrorMessage="Escenario Inválido" 
+                                        ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="black" controltovalidate="txtEscenario" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                         <div class="col-md-4">
+                                <label for="textContexto" >Contexto  <font color='red'>*</font></label>
+                                <textarea runat="server" id="txtContexto" class="form-control" type="text" placeholder="Debe tener entre 5 y 300 caracteres"  title="Descripcion" required="required" />
+                                    <asp:RegularExpressionValidator runat=server 
+                                        ControlToValidate="txtContexto" 
+                                        ErrorMessage="Contexto Inválido." 
+                                        ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="black" controltovalidate="txtContexto" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+                            </div>
+
+                             
+                     </div>
+                </fieldset>
+            </div>
+      </div>
+
         <div class="row">
     <div class="col-lg-7">                                        
                     <asp:GridView ID="gridRequerimientos" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridViewReque_SelectedIndexChanged" AllowPaging="True">
