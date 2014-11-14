@@ -101,7 +101,7 @@ namespace SAPR
          {
              if (e.Row.RowType == DataControlRowType.DataRow)
              {
-                 string moduloId = e.Row.Cells[1].Text.ToString();
+                 string moduloId = e.Row.Cells[3].Text.ToString();
                  GridView gridRequerimientos = e.Row.FindControl("gridReq") as GridView;
                  gridRequerimientos.DataSource = getRequerimiento(Convert.ToInt32(moduloId));
                  gridRequerimientos.DataBind();
@@ -122,7 +122,7 @@ namespace SAPR
          {
              cmbSprints.DataSource = controladora.getNombresSprint(idProyecto);
              cmbSprints.DataTextField = "Nombre";
-             cmbSprints.DataValueField = "idSprint";
+             cmbSprints.DataValueField = "Identificador";
              cmbSprints.DataBind();
              if (cmbSprints.Text == "")
              {
@@ -174,7 +174,7 @@ namespace SAPR
          {
              cmbModulo.DataSource = controladora.getNombresModulo(idSprint);
              cmbModulo.DataTextField = "Nombre";
-             cmbModulo.DataValueField = "idModulo";
+             cmbModulo.DataValueField = "Identificador";
              cmbModulo.DataBind();
              try {
                  entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), cmbProyecto.SelectedItem.ToString());
