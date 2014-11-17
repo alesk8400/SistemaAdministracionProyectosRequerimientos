@@ -29,10 +29,26 @@ namespace SAPR.App_Code.Controladoras
          * y pasa a la controladora de BD para su posterior insercion.                   
          */
 
-        public String[] insertarRequerimiento(int idModulo, String nombreProyecto, String nombre, String descripcion, int prioridad, String estado,
-        int cantidad, String medida, byte[]archivo)
+        //public String[] insertarRequerimiento(String nombreModulo, String nombreSprint, String nombreProyecto, String nombre, String descripcion, int prioridad, String estado,
+        //int cantidad, String medida, byte[]archivo)
+        //{
+        //    int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);            
+        //    int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
+        //    int idModulo;///*********
+
+        //    if (nombreModulo == "Ninguno")/////******PUEDE CAMBIAR********
+        //    {
+        //        idModulo = -1;
+        //    }
+        //    else {
+        //        idModulo = 0;
+        //        //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
+        //    }     
+
+        public String[] insertarRequerimiento(int idModulo, int idSprint, int idProyecto, String nombre, String descripcion, int prioridad, String estado,
+        int cantidad, String medida, byte[] archivo)
         {
-            int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
+            
             Object[] datosRequerimiento = new Object[9];
             datosRequerimiento[0] = idModulo;
             datosRequerimiento[1] = idProyecto;
@@ -49,14 +65,27 @@ namespace SAPR.App_Code.Controladoras
 
         }
 
-        public String[] modificarRequerimiento(String nombreModulo, String nombreSprint, String nombreProyecto, String nombre, String descripcion, String prioridad, String estado,
+        //public String[] modificarRequerimiento(String nombreModulo, String nombreSprint, String nombreProyecto, String nombre, String descripcion, String prioridad, String estado,
+        //int cantidad, String medida, byte[] archivo, EntidadRequerimientos requerimientoViejo)
+        //{
+        //    int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
+        //    int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
+        //    int idModulo;
+
+        //    if (nombreModulo == "Ninguno")/////******PUEDE CAMBIAR********
+        //    {
+        //        idModulo = -1;
+        //    }
+        //    else
+        //    {
+        //        idModulo = 0;
+        //        //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
+        //    }                
+
+        public String[] modificarRequerimiento(int idModulo, int idSprint, int idProyecto, String nombre, String descripcion, String prioridad, String estado,
         int cantidad, String medida, byte[] archivo, EntidadRequerimientos requerimientoViejo)
         {
-            int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
-            int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);            
-            //int idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************
-            int idModulo = 0;
-            int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(requerimientoViejo.Nombre, requerimientoViejo.IdModulo, requerimientoViejo.IdProyecto);
+            int idRequerimientoViejo = controladoraBDRequerimiento.getIdRequerimiento(requerimientoViejo.Nombre, requerimientoViejo.IdModulo, requerimientoViejo.IdProyecto);
             Object[] datosRequerimiento = new Object[9];
             datosRequerimiento[0] = idModulo;
             datosRequerimiento[1] = idProyecto;
@@ -70,7 +99,7 @@ namespace SAPR.App_Code.Controladoras
 
             EntidadRequerimientos requerimientoNuevo = new EntidadRequerimientos(datosRequerimiento);
 
-            return controladoraBDRequerimiento.modificarRequerimiento(idRequerimiento, requerimientoNuevo);
+            return controladoraBDRequerimiento.modificarRequerimiento(idRequerimientoViejo, requerimientoNuevo);
         }
 
         public String[] eliminarRequerimiento(String nombreRequerimiento, int idModulo, int idProyecto)
@@ -80,19 +109,30 @@ namespace SAPR.App_Code.Controladoras
         }
 
         ///Bacon
-        public EntidadRequerimientos getRequerimiento(String nombreRequerimiento, String nombreModulo, String nombreProyecto) {
+        public EntidadRequerimientos getRequerimiento(String nombreRequerimiento, String nombreModulo, String nombreSprint, 
+            String nombreProyecto) {
 
             EntidadRequerimientos resultado = null;
             Object[] entidadTemporal = new Object[9];
             DataTable resultadoT = new DataTable();
+            int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);      
+            int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
             //int idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************
-            int idModulo = 0;
-            int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);            
+            int idModulo;
+
+            if (nombreModulo == "Ninguno")/////******PUEDE CAMBIAR********
+            {
+                idModulo = -1;
+            }
+            else
+            {
+                idModulo = 0;
+                //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
+            }   
 
 
             try {
                 resultadoT = controladoraBDRequerimiento.getRequerimiento(nombreRequerimiento, idModulo, idProyecto);   
-            //**********Revisar casteo de int y de byte[] aqui y en la entidad****************
                 if(resultadoT.Rows.Count == 1){
                     entidadTemporal[0] = resultadoT.Rows[0][0];
                     entidadTemporal[1] = resultadoT.Rows[0][1];
@@ -104,18 +144,7 @@ namespace SAPR.App_Code.Controladoras
                     entidadTemporal[7] = resultadoT.Rows[0][7];
                     entidadTemporal[8] = resultadoT.Rows[0][8];
 
-                    resultado = new EntidadRequerimientos(entidadTemporal);
-
-                    //resultado.IdModulo = (int)resultadoT.Rows[0][0];
-                    //resultado.IdProyecto = (int)resultadoT.Rows[0][1];
-                    //resultado.Nombre = resultadoT.Rows[0][2].ToString();
-                    //resultado.Descripcion = resultadoT.Rows[0][3].ToString();
-                    //resultado.Prioridad = (int)resultadoT.Rows[0][4];
-                    //resultado.Estado = resultadoT.Rows[0][5].ToString();
-                    //resultado.Cantidad = (int)resultadoT.Rows[0][6];
-                    //resultado.Medida = resultadoT.Rows[0][7].ToString();
-                    //resultado.Archivo = ObjectToByteArray(resultadoT.Rows[0][8]);
-                   
+                    resultado = new EntidadRequerimientos(entidadTemporal);                   
                 }
 
             } catch (Exception ex){
@@ -192,12 +221,30 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDRequerimiento.getRequerimientos();
         }
 
-        public String[] insertarCriterio(String nombreCriterio, String escenario, String contexto, String resultado, String nombreRequerimiento, String nombreProyecto, String nombreModulo)
-        {            
-            int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
-            int idModulo = 0;
-            //int idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************
-            int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
+        //public String[] insertarCriterio(String nombreCriterio, String escenario, String contexto, String resultado, 
+        //    String nombreRequerimiento, String nombreProyecto, String nombreSprint, String nombreModulo)
+        //{            
+        //    int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
+        //    int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
+        //    int idModulo;
+
+        //    if (nombreModulo == "Ninguno")/////******PUEDE CAMBIAR********
+        //    {
+        //        idModulo = -1;
+        //    }
+        //    else
+        //    {
+        //        idModulo = 0;
+        //        //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
+        //    }   
+        //int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
+
+        public String[] insertarCriterio(String nombreCriterio, String escenario, String contexto, String resultado,
+            int idRequerimiento, int idProyecto, int idSprint, int idModulo)
+        {
+
+            
+
             Object[] datosCriterio = new Object[5];
             datosCriterio[0] = nombreCriterio;
             datosCriterio[1] = escenario;
@@ -208,6 +255,57 @@ namespace SAPR.App_Code.Controladoras
             EntidadCriterio criterio = new EntidadCriterio(datosCriterio);
             return controladoraBDRequerimiento.insertarCriterio(criterio);
 
+        }
+
+        //public String[] modificarCriterio(String nombreCriterio, String escenario, String contexto, String resultado, 
+        //String nombreRequerimiento, String nombreProyecto, String nombreSprint, String nombreModulo, EntidadCriterio criterioViejo){
+
+        //    int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
+        //    int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
+        //    int idModulo;
+
+        //    if (nombreModulo == "Ninguno")/////******PUEDE CAMBIAR********
+        //    {
+        //        idModulo = -1;
+        //    }
+        //    else
+        //    {
+        //        idModulo = 0;
+        //        //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
+        //    }   
+
+        //    int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
+
+        public String[] modificarCriterio(String nombreCriterio, String escenario, String contexto, String resultado,
+        int idRequerimiento, int idProyecto, int idSprint, int idModulo, EntidadCriterio criterioViejo)
+        {
+
+
+            int idCriterioViejo = controladoraBDRequerimiento.getIdCriterio(criterioViejo.NombreCriterio, idRequerimiento);
+
+            Object[] datosCriterio = new Object[5];
+            datosCriterio[0] = nombreCriterio;
+            datosCriterio[1] = escenario;
+            datosCriterio[2] = contexto;
+            datosCriterio[3] = resultado;
+            datosCriterio[4] = idRequerimiento;
+
+            EntidadCriterio criterioNuevo = new EntidadCriterio(datosCriterio);
+            return controladoraBDRequerimiento.modificarCriterio(idCriterioViejo, criterioNuevo);
+        }
+
+        public String[] eliminarCriterio(String nombreCriterio, int idRequerimiento) {
+
+            int idCriterio = controladoraBDRequerimiento.getIdCriterio(nombreCriterio, idRequerimiento);
+            return controladoraBDRequerimiento.eliminarCriterio(idCriterio);               
+        }
+
+        public DataTable getCriteriosDeRequerimiento(int idRequerimiento) {
+            return controladoraBDRequerimiento.getCriteriosDeRequerimiento(idRequerimiento);        
+        }
+
+        public DataTable getCriteriosDeProyecto(int idProyecto){
+            return controladoraBDRequerimiento.getCriteriosDeProyecto(idProyecto);
         }
 
 
