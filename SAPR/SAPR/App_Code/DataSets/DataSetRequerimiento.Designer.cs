@@ -1634,11 +1634,7 @@ namespace SAPR.App_Code.DataSets.DataSetRequerimientoTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-<<<<<<< HEAD
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
-=======
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[8];
->>>>>>> origin/ImplementacionRequerimientosCriterios
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        idRequerimiento, idModulo, idProyecto, Nombre, Descripcion, Priorid" +
@@ -1666,18 +1662,6 @@ namespace SAPR.App_Code.DataSets.DataSetRequerimientoTableAdapters {
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = "SELECT        idRequerimiento, idModulo, idProyecto, Nombre, Descripcion, Priorid" +
-<<<<<<< HEAD
-                "ad, Estado, Cantidad, Medida, Archivo\r\nFROM            Requerimiento\r\nWHERE     " +
-                "   (idProyecto = @idProyecto)";
-            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idProyecto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idProyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "INSERT INTO Requerimiento\r\n                         (idModulo, idProyecto, Nombre" +
-                ", Descripcion, Prioridad, Estado, Cantidad, Medida, Archivo)\r\nVALUES        (@id" +
-                "Modulo,@idProyecto,@Nombre,@Descripcion,@Prioridad,@Estado,@Cantidad,@Medida,@Ar" +
-                "chivo)";
-=======
                 "ad, Estado, Cantidad, Medida, Archivo\r\nFROM            Requerimiento\r\nWHERE Nomb" +
                 "re = @nombre AND idModulo = @idModulo AND idProyecto = @idProyecto";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
@@ -1689,30 +1673,14 @@ namespace SAPR.App_Code.DataSets.DataSetRequerimientoTableAdapters {
             this._commandCollection[5].CommandText = "SELECT        idRequerimiento, idModulo, idProyecto, Nombre, Descripcion, Priorid" +
                 "ad, Estado, Cantidad, Medida, Archivo\r\nFROM            dbo.Requerimiento\r\nWHERE " +
                 "       (idProyecto = @idProyecto)";
->>>>>>> origin/ImplementacionRequerimientosCriterios
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idProyecto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idProyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-<<<<<<< HEAD
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 75, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prioridad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Prioridad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Medida", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Medida", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Archivo", global::System.Data.SqlDbType.VarBinary, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Archivo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = @"UPDATE       Requerimiento
-SET                idModulo = @idModulo, idProyecto = @idProyecto, Nombre = @Nombre, Descripcion = @Descripcion, Prioridad = @Prioridad, Estado = @Estado, Cantidad = @Cantidad, Medida = @Medida, Archivo = @Archivo
-WHERE        (idRequerimiento = @Original_idRequerimiento)";
-=======
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
             this._commandCollection[6].CommandText = "INSERT INTO Requerimiento\r\n                         (idModulo, idProyecto, Nombre" +
                 ", Descripcion, Prioridad, Estado, Cantidad, Medida, Archivo)\r\nVALUES        (@id" +
                 "Modulo,@idProyecto,@Nombre,@Descripcion,@Prioridad,@Estado,@Cantidad,@Medida,@Ar" +
                 "chivo)";
->>>>>>> origin/ImplementacionRequerimientosCriterios
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idModulo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idModulo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idProyecto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idProyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1723,9 +1691,6 @@ WHERE        (idRequerimiento = @Original_idRequerimiento)";
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cantidad", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cantidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Medida", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Medida", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Archivo", global::System.Data.SqlDbType.VarBinary, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Archivo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-<<<<<<< HEAD
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idRequerimiento", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idRequerimiento", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-=======
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
             this._commandCollection[7].CommandText = @"UPDATE       Requerimiento
@@ -1742,7 +1707,6 @@ WHERE        (idRequerimiento = @Original_idRequerimiento)";
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Medida", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Medida", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Archivo", global::System.Data.SqlDbType.VarBinary, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Archivo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idRequerimiento", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idRequerimiento", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
->>>>>>> origin/ImplementacionRequerimientosCriterios
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1798,11 +1762,7 @@ WHERE        (idRequerimiento = @Original_idRequerimiento)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetRequerimiento.RequerimientoDataTable getRequerimientosDeProyecto(int idProyecto) {
-<<<<<<< HEAD
-            this.Adapter.SelectCommand = this.CommandCollection[4];
-=======
             this.Adapter.SelectCommand = this.CommandCollection[5];
->>>>>>> origin/ImplementacionRequerimientosCriterios
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idProyecto));
             DataSetRequerimiento.RequerimientoDataTable dataTable = new DataSetRequerimiento.RequerimientoDataTable();
             this.Adapter.Fill(dataTable);
@@ -2075,11 +2035,7 @@ WHERE        (idRequerimiento = @Original_idRequerimiento)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int insertarRequerimiento(global::System.Nullable<int> idModulo, int idProyecto, string Nombre, string Descripcion, int Prioridad, string Estado, int Cantidad, string Medida, byte[] Archivo) {
-<<<<<<< HEAD
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
-=======
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
->>>>>>> origin/ImplementacionRequerimientosCriterios
             if ((idModulo.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(idModulo.Value));
             }
@@ -2141,11 +2097,7 @@ WHERE        (idRequerimiento = @Original_idRequerimiento)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int modificarRequerimiento(global::System.Nullable<int> idModulo, int idProyecto, string Nombre, string Descripcion, int Prioridad, string Estado, int Cantidad, string Medida, byte[] Archivo, int Original_idRequerimiento) {
-<<<<<<< HEAD
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
-=======
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
->>>>>>> origin/ImplementacionRequerimientosCriterios
             if ((idModulo.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(idModulo.Value));
             }

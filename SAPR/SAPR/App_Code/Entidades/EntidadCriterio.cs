@@ -16,7 +16,7 @@ namespace SAPR.App_Code.Entidades
 
         public EntidadCriterio(Object[] datos) {
             this.nombreCriterio = datos[0].ToString();
-            this.escenario = datos[1].ToString();
+            this.escenario = Int32.Parse(datos[1].ToString());
             this.contexto = datos[2].ToString();
             this.resultado = datos[3].ToString();
             this.idRequerimiento = Int32.Parse(datos[4].ToString());

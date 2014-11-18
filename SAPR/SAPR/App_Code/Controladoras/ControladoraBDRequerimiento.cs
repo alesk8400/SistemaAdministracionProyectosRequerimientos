@@ -267,9 +267,6 @@ namespace SAPR.App_Code.Controladoras
             }
             return resultado;
         }
-
-<<<<<<< HEAD
-=======
         public int getIdCriterio(string nombreCriterio, int idRequerimiento)
         {
             int idCriterio = -1;
@@ -346,7 +343,5 @@ namespace SAPR.App_Code.Controladoras
 
         }
 
-
->>>>>>> origin/ImplementacionRequerimientosCriterios
     }
 }

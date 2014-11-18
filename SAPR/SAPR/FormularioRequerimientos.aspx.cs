@@ -56,7 +56,7 @@ namespace SAPR
         {
             String[] resultado = new String[1];
             if(modo == 1){                
-                resultado = controladora.insertarRequerimiento(65, "Salvar al mundo2", this.textNombreR.Value.ToString(), this.textD.Value.ToString(), Int32.Parse(this.cmbPrioridad.SelectedItem.ToString()), this.cmbEstado.SelectedItem.ToString(), Int32.Parse(this.txtCantidadR.Value.ToString()), this.cmbMedida.SelectedItem.ToString(), null);
+               // resultado = controladora.insertarRequerimiento(65, "Salvar al mundo2", this.textNombreR.Value.ToString(), this.textD.Value.ToString(), Int32.Parse(this.cmbPrioridad.SelectedItem.ToString()), this.cmbEstado.SelectedItem.ToString(), Int32.Parse(this.txtCantidadR.Value.ToString()), this.cmbMedida.SelectedItem.ToString(), null);
             }
 
         }
