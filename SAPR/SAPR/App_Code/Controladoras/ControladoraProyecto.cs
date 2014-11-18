@@ -50,7 +50,7 @@ namespace SAPR.App_Code.Controladoras
             ControladoraRequerimiento controladoraRequerimiento = new ControladoraRequerimiento();
             int idProyecto;
             idProyecto = this.getIdProyecto(nombre);
-           // controladoraRequerimiento.eliminarRequerimientosDeProyecto(idProyecto);
+            controladoraRequerimiento.eliminarRequerimientosDeProyecto(idProyecto);
             return controladoraBDProyecto.eliminarProyecto(nombre);
         }
 
