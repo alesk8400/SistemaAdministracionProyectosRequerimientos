@@ -19,7 +19,7 @@ namespace SAPR.App_Code.Controladoras
         {
 
             controladoraBDRequerimiento = new ControladoraBDRequerimiento();
-            controladoraProyecto = new ControladoraProyecto();
+           // controladoraProyecto = new ControladoraProyecto();
             controladoraEstructura = new ControladoraEstructura();
 
         }

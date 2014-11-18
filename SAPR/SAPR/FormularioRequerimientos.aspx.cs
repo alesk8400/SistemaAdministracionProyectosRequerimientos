@@ -65,9 +65,9 @@ namespace SAPR
         {
             modo = 1;
             habilitarCampos(true);
-            DataTable grid = controladora.getRequerimientosGrid();  // Falta que reciba el idProy
-            gridRequerimientos.DataSource = grid;
-            gridRequerimientos.DataBind();
+           // DataTable grid = controladora.getRequerimientosGrid();  // Falta que reciba el idProy
+           // gridRequerimientos.DataSource = grid;
+         //   gridRequerimientos.DataBind();
         }
 
         protected void restaurarPantallaSinLimpiar()

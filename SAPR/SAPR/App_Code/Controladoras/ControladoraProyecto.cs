@@ -12,12 +12,13 @@ namespace SAPR.App_Code.Controladoras
     public class ControladoraProyecto {
         ControladoraBDProyecto controladoraBDProyecto;
         ControladoraUsuario controladoraUsuario;
-        ControladoraRequerimiento controladoraRequerimiento;
+        
+        
         /*Este es el constructor de la clase. Se encarga de crear una nueva instancia de la controladora de bases de datos proyecto y de controladora usuario.*/
         public ControladoraProyecto() {
             controladoraBDProyecto = new ControladoraBDProyecto();
             controladoraUsuario = new ControladoraUsuario();
-            controladoraRequerimiento = new ControladoraRequerimiento();
+            
         }
         /*Este método se encarga de la inserción de un proyecto, recibe como parámetro los datos que va a tener el proyecto, además de los datos del cliente. Retorna un resultado de éxito en caso
          de realizar una inserción correcta, o un mensaje error en caso de una inserción incorrecta*/
@@ -46,9 +47,10 @@ namespace SAPR.App_Code.Controladoras
         /*Este método se encarga de la eliminación de un proyecto, recibe como parámetro el nombre del proyecto a eliminar. Retorna un resultado de éxito en caso
          de realizar una eliminación correcta, o un mensaje error en caso de una eliminación incorrecta*/
         public String[] eliminarProyecto(String nombre){
+            ControladoraRequerimiento controladoraRequerimiento = new ControladoraRequerimiento();
             int idProyecto;
             idProyecto = this.getIdProyecto(nombre);
-            controladoraRequerimiento.eliminarRequerimientosDeProyecto(idProyecto);
+           // controladoraRequerimiento.eliminarRequerimientosDeProyecto(idProyecto);
             return controladoraBDProyecto.eliminarProyecto(nombre);
         }
 
