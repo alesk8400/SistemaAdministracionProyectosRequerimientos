@@ -8,7 +8,7 @@ namespace SAPR.App_Code.Entidades
     public class EntidadCriterio
     {
         private String nombreCriterio;
-        private String escenario;
+        private int escenario;
         private String contexto;
         private String resultado;
         private int idRequerimiento;
@@ -27,7 +27,7 @@ namespace SAPR.App_Code.Entidades
             get { return nombreCriterio; }
             set { nombreCriterio = value; }
         }
-        public String Escenario
+        public int Escenario
         {
             get { return escenario; }
             set { escenario = value; }
