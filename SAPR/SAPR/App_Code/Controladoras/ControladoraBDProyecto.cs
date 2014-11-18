@@ -83,6 +83,8 @@ namespace SAPR.App_Code.Controladoras {
 
             try
             {
+                
+                
                 this.adapProyecto.BorrarProyecto(nombre); //se llama al dataSet de proyectos para eliminar el proyecto
                 resultado[0] = "Exito";
             }
