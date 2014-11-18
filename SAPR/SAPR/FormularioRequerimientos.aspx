@@ -95,7 +95,7 @@
                                     <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="black" controltovalidate="textD" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
                             </div>
                             
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                   <label for="textPrio" >Prioridad:</font></label>
                                   <div class="dropdown-toggle"> 
                                     <asp:DropDownList ID="cmbPrioridad" runat="server">
@@ -115,10 +115,7 @@
                                   </asp:DropDownList>
                             </div>
 
-                          </div>
-
-                           <div class="row">
-                               <div class="col-md-4">
+                         <div class="col-md-2">
                                   <label for="textPrio" >Estado:</font></label>
                                   <div class="dropdown-toggle"> 
                                     <asp:DropDownList ID="cmbEstado" runat="server">
@@ -133,6 +130,9 @@
                                   </asp:DropDownList>
                             </div>
 
+                          </div>
+
+                           <div class="row">
                                <div class="col-md-4">
                                     <label for="textCantidadR" >Cantidad Estimada: <font color='red'>*</font></label>
                                     <input runat="server" id="txtCantidadR" class="form-control" type="text" placeholder="Estime una cantidad" title="CantidadR" required="required" />
@@ -155,9 +155,28 @@
                                     </asp:DropDownList>
                                   <div class="help-block with-errors"></div>
                                   </div>
-                                  </asp:DropDownList>
 
                               </div>
+
+                               <div class="col-md-2">
+                                  <label for="textSprint" >Sprint:</font></label>
+                                  <div class="dropdown-toggle"> 
+                                    <asp:DropDownList ID="cmbSprint" runat="server">
+                                    </asp:DropDownList>
+                                  <div class="help-block with-errors"></div>
+                                 </div>
+                                  </asp:DropDownList>
+                            </div>
+
+                               <div class="col-md-2">
+                                  <label for="textModulo" >Módulo:</font></label>
+                                  <div class="dropdown-toggle"> 
+                                    <asp:DropDownList ID="cmbModulo" runat="server">
+                                    </asp:DropDownList>
+                                  <div class="help-block with-errors"></div>
+                                 </div>
+                                  </asp:DropDownList>
+                            </div>
                      </div>
 
                     <div class="row">
@@ -173,11 +192,138 @@
             </div>
     </div>
 
-        <div class="row">
+
+     <legend>Grid de Requerimientos</legend>
+
+    <div class="row">
     <div class="col-lg-7">                                        
-                    <asp:GridView ID="gridRequerimientos" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridViewReque_SelectedIndexChanged" AllowPaging="True">
-                </asp:GridView>
+        
+        <asp:GridView ID="gridRequerimientos" runat="server" cssClass="table table-bordered" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+            <Columns>
+                <asp:ButtonField CommandName="Select" Text="Consultar" ShowHeader="True" HeaderText="Consultar"></asp:ButtonField>
+            </Columns>
+
+            <FooterStyle BackColor="#CCCC99" ForeColor="Black"></FooterStyle>
+
+            <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+            <PagerStyle HorizontalAlign="Right" BackColor="White" ForeColor="Black"></PagerStyle>
+
+            <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+            <SortedAscendingCellStyle BackColor="#F7F7F7"></SortedAscendingCellStyle>
+
+            <SortedAscendingHeaderStyle BackColor="#4B4B4B"></SortedAscendingHeaderStyle>
+
+            <SortedDescendingCellStyle BackColor="#E5E5E5"></SortedDescendingCellStyle>
+
+            <SortedDescendingHeaderStyle BackColor="#242121"></SortedDescendingHeaderStyle>
+        </asp:GridView>
     </div>
         </div>
+
+    
+      <div class="col-lg-12 text-center">
+            <div class="well bs-component">
+                <fieldset>
+                    <legend>Criterios de Aceptación</legend>
+                     <div class="row">
+                           <div class="col-md-4">
+                                <label for="txtNombreCri" >Nombre del Criterio  <font color='red'>*</font></label>
+                                <input runat="server" id="nombreCriterio" class="form-control" type="text" placeholder="Debe tener entre 5 y 44 caracteres" title="NombreC" required="required" />
+                                    <asp:RegularExpressionValidator runat=server 
+                                        ControlToValidate="nombreCriterio" 
+                                        ErrorMessage="Nombre Criterio Inválido. Debe tener entre 2 y 44 caracteres" 
+                                        ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="black" controltovalidate="nombreCriterio" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                         <div class="col-md-4">
+                                <label for="txtEscena" >Escenario  <font color='red'>*</font></label>
+                                <input runat="server" id="txtEscenario" class="form-control" type="text" placeholder="Digitos" title="Escenario" required="required" />
+                                    <asp:RegularExpressionValidator runat=server 
+                                        ControlToValidate="txtEscenario" 
+                                        ErrorMessage="Escenario Inválido" 
+                                        ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="black" controltovalidate="txtEscenario" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                         <div class="col-md-4">
+                                <label for="textContexto" >Contexto  <font color='red'>*</font></label>
+                                <textarea runat="server" id="txtContexto" class="form-control" type="text" placeholder="Debe tener entre 5 y 300 caracteres"  title="Descripcion" required="required" />
+                                    <asp:RegularExpressionValidator runat=server 
+                                        ControlToValidate="txtContexto" 
+                                        ErrorMessage="Contexto Inválido." 
+                                        ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="black" controltovalidate="txtContexto" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+                            </div>
+                     <div class="row">
+                           <div class="col-md-4">
+                                <label for="textResultado" >Resultado  <font color='red'>*</font></label>
+                                <textarea runat="server" id="txtRes" class="form-control" type="text" placeholder="Debe tener entre 5 y 300 caracteres"  title="Resultado" required="required" />
+                                    <asp:RegularExpressionValidator runat=server 
+                                        ControlToValidate="txtRes" 
+                                        ErrorMessage="Contexto Inválido." 
+                                        ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator7" runat="server" errormessage="" forecolor="black" controltovalidate="txtRes" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+                            </div>
+
+                            <div class="col-md-4">
+                                    <label for="textReque" >Lista de Requerimientos:</font></label>
+                                    <div class="dropdown-toggle"> 
+                                    <asp:DropDownList ID="cmbListR" runat="server">
+                                    
+                                    </asp:DropDownList>
+                                    </div>
+                              </div>
+                     </div>  
+                         <div class="row">
+                        <div class="col-lg-12">
+                            <div class="text-center">
+                                <button runat="server" id="btnAcepCri" onserverclick="btnAceptarC_Click" class="btn btn-success" type="submit" validationgroup="A" xmlns:asp="#unknown">Aceptar</button>
+                                <a id="btnCanCri" href="#modalCancelar" class="btn btn-danger" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Cancelar</a>
+                            </div>
+                        </div>              
+                    </div>
+                          
+                     </div>
+                </fieldset>
+
+
+            </div>
+      </div>
+     <legend>Grid de Criterios</legend>
+                         
+     <div class="row">
+    <div class="col-lg-7">                                        
+        
+        <asp:GridView ID="gridCriterios" runat="server" cssClass="table table-bordered" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+            <Columns>
+                <asp:ButtonField CommandName="Select" Text="Consultar" ShowHeader="True" HeaderText="Consultar"></asp:ButtonField>
+            </Columns>
+
+            <FooterStyle BackColor="#CCCC99" ForeColor="Black"></FooterStyle>
+
+            <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+            <PagerStyle HorizontalAlign="Right" BackColor="White" ForeColor="Black"></PagerStyle>
+
+            <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+            <SortedAscendingCellStyle BackColor="#F7F7F7"></SortedAscendingCellStyle>
+
+            <SortedAscendingHeaderStyle BackColor="#4B4B4B"></SortedAscendingHeaderStyle>
+
+            <SortedDescendingCellStyle BackColor="#E5E5E5"></SortedDescendingCellStyle>
+
+            <SortedDescendingHeaderStyle BackColor="#242121"></SortedDescendingHeaderStyle>
+        </asp:GridView>
+    </div>
+        </div> 
+        
 
 </asp:Content>
