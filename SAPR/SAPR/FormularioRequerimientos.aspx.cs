@@ -29,9 +29,9 @@ namespace SAPR
         {
             modo = 1;
             habilitarCampos(true);
-            DataTable grid = controladora.getRequerimientosGrid();  // Falta que reciba el idProy
-            gridRequerimientos.DataSource = grid;
-            gridRequerimientos.DataBind();
+            ///DataTable grid = controladora.getRequerimientosGrid();  // Falta que reciba el idProy
+           // gridRequerimientos.DataSource = grid;
+           // gridRequerimientos.DataBind();
         }
 
         protected void btnModificarReque_Click(object sender, EventArgs e)
@@ -59,6 +59,15 @@ namespace SAPR
                 resultado = controladora.insertarRequerimiento(65, "Salvar al mundo2", this.textNombreR.Value.ToString(), this.textD.Value.ToString(), Int32.Parse(this.cmbPrioridad.SelectedItem.ToString()), this.cmbEstado.SelectedItem.ToString(), Int32.Parse(this.txtCantidadR.Value.ToString()), this.cmbMedida.SelectedItem.ToString(), null);
             }
 
+        }
+
+        protected void btnAceptarC_Click(object sender, EventArgs e)
+        {
+            modo = 1;
+            habilitarCampos(true);
+            DataTable grid = controladora.getRequerimientosGrid();  // Falta que reciba el idProy
+            gridRequerimientos.DataSource = grid;
+            gridRequerimientos.DataBind();
         }
 
         protected void restaurarPantallaSinLimpiar()

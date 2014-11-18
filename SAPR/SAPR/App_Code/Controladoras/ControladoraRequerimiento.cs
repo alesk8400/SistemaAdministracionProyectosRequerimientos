@@ -222,11 +222,5 @@ namespace SAPR.App_Code.Controladoras
                 return ms.ToArray();
             }
         }
-
-
-        internal DataTable getRequerimientosGrid()
-        {
-            return controladoraBDRequerimiento.getRequerimientosGrid();
-        }
     }
 }

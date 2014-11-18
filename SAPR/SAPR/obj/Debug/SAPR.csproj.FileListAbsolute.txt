@@ -73,3 +73,4 @@ C:\Users\b12450\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SA
 C:\Users\b12450\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
 C:\Users\b12450\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.dll
 C:\Users\b12450\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.pdb
+C:\Users\b12450\Documents\GitHub\SistemaAdministracionProyectosRequerimientos\SAPR\SAPR\obj\Debug\SAPR.csprojResolveAssemblyReference.cache
