@@ -14,6 +14,7 @@ namespace SAPR.App_Code.Controladoras
         ControladoraBDRequerimiento controladoraBDRequerimiento;
         ControladoraProyecto controladoraProyecto;
         ControladoraEstructura controladoraEstructura;
+        public static int idRequerimiento = 0;
 
         public ControladoraRequerimiento()
         {
@@ -85,7 +86,7 @@ namespace SAPR.App_Code.Controladoras
         public String[] modificarRequerimiento(int idModulo, int idSprint, int idProyecto, String nombre, String descripcion, String prioridad, String estado,
         int cantidad, String medida, byte[] archivo, EntidadRequerimientos requerimientoViejo)
         {
-            int idRequerimientoViejo = controladoraBDRequerimiento.getIdRequerimiento(requerimientoViejo.Nombre, requerimientoViejo.IdModulo, requerimientoViejo.IdProyecto);
+            //int idRequerimientoViejo = controladoraBDRequerimiento.getIdRequerimiento(requerimientoViejo.Nombre, requerimientoViejo.IdModulo, requerimientoViejo.IdProyecto);
             Object[] datosRequerimiento = new Object[9];
             datosRequerimiento[0] = idModulo;
             datosRequerimiento[1] = idProyecto;
@@ -99,13 +100,26 @@ namespace SAPR.App_Code.Controladoras
 
             EntidadRequerimientos requerimientoNuevo = new EntidadRequerimientos(datosRequerimiento);
 
-            return controladoraBDRequerimiento.modificarRequerimiento(idRequerimientoViejo, requerimientoNuevo);
+            return controladoraBDRequerimiento.modificarRequerimiento(idRequerimiento, requerimientoNuevo);
         }
 
         public String[] eliminarRequerimiento(String nombreRequerimiento, int idModulo, int idProyecto)
         {
-            int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
+            //idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
             return controladoraBDRequerimiento.eliminarRequerimiento(idRequerimiento);
+        }
+
+        public String[] eliminarRequerimientosDeProyecto(int idProyecto)
+        {
+            return controladoraBDRequerimiento.eliminarRequerimientosDeProyecto(idProyecto);
+        }
+
+        public int getIdRequerimiento(String nombreRequerimiento, int idModulo, int idProyecto)
+        {
+
+            idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
+            return idRequerimiento;
+        
         }
 
         ///Bacon
@@ -120,15 +134,8 @@ namespace SAPR.App_Code.Controladoras
             //int idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************
             int idModulo;
 
-            if (nombreModulo == "Ninguno")/////******PUEDE CAMBIAR********
-            {
-                idModulo = -1;
-            }
-            else
-            {
-                idModulo = 0;
-                //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
-            }   
+            idModulo = 0;
+            //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
 
 
             try {
@@ -239,7 +246,7 @@ namespace SAPR.App_Code.Controladoras
         //    }   
         //int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
 
-        public String[] insertarCriterio(String nombreCriterio, String escenario, String contexto, String resultado,
+        public String[] insertarCriterio(String nombreCriterio, int escenario, String contexto, String resultado,
             int idRequerimiento, int idProyecto, int idSprint, int idModulo)
         {
 
@@ -276,7 +283,7 @@ namespace SAPR.App_Code.Controladoras
 
         //    int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
 
-        public String[] modificarCriterio(String nombreCriterio, String escenario, String contexto, String resultado,
+        public String[] modificarCriterio(String nombreCriterio, int escenario, String contexto, String resultado,
         int idRequerimiento, int idProyecto, int idSprint, int idModulo, EntidadCriterio criterioViejo)
         {
 

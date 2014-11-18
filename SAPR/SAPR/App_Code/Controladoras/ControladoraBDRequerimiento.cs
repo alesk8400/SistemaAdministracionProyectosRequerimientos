@@ -113,6 +113,32 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
+        public string[] eliminarRequerimientosDeProyecto(int idProyecto)
+        {
+            String[] resultado = new String[1];
+
+            try
+            {
+                this.requerimientoTableAdapter.eliminarRequerimientosDeProyecto(idProyecto);
+                resultado[0] = "Éxito";
+            }
+            catch (SqlException ex)
+            {
+
+                int n = ex.Number;
+                if (n == 2627)
+                {
+                    resultado[0] = "Error";
+                }
+                else
+                {
+                    resultado[0] = "Error";
+                }
+
+            }
+            return resultado;
+        }
+
         public DataTable getRequerimiento(String nombreRequerimiento, int idModulo, int idProyecto)
         {
             DataTable resultado = new DataTable();
@@ -133,8 +159,8 @@ namespace SAPR.App_Code.Controladoras
         public int getIdRequerimiento(String nombreRequerimiento, int idModulo, int idProyecto) {
 
             int idRequerimiento = -1;
-            try{//**********Revisar casteo****************
-                idRequerimiento = (int)this.requerimientoTableAdapter.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
+            try{
+                idRequerimiento = Int32.Parse(this.requerimientoTableAdapter.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto).ToString());
             }
             catch (Exception ex) {
                 
@@ -166,8 +192,8 @@ namespace SAPR.App_Code.Controladoras
 
             try {
 
-                //this.criteriosTableAdapter.insertarCriterio(criterio.NombreCriterio, criterio.Escenario, criterio.Contexto, 
-                //criterio.Resultado, criterio.IdRequerimiento);
+                this.criteriosTableAdapter.insertarCriterio(criterio.NombreCriterio, criterio.Escenario, criterio.Contexto, 
+                criterio.Resultado, criterio.IdRequerimiento);
                 resultado[0] = "Éxito";
             }
             catch (SqlException ex)
@@ -194,8 +220,8 @@ namespace SAPR.App_Code.Controladoras
             try
             {
 
-                //this.criteriosTableAdapter.modificarCriterio(criterioNuevo.NombreCriterio, criterioNuevo.Escenario, 
-                //criterioNuevo.Contexto, criterioNuevo.Resultado, criterioNuevo.IdRequerimiento, idCriterioViejo);
+                this.criteriosTableAdapter.modificarCriterio(criterioNuevo.NombreCriterio, criterioNuevo.Escenario, 
+                criterioNuevo.Contexto, criterioNuevo.Resultado, criterioNuevo.IdRequerimiento, idCriterioViejo);
             
                 resultado[0] = "Éxito";
             }
@@ -246,8 +272,8 @@ namespace SAPR.App_Code.Controladoras
         {
             int idCriterio = -1;
             try
-            {//**********Revisar casteo****************
-                //idCriterio = (int)this.requerimientoTableAdapter.getIdCriterio(nombreCriterio, idRequerimiento);
+            {
+                idCriterio = Int32.Parse(this.criteriosTableAdapter.getIdCriterio(nombreCriterio, idRequerimiento).ToString());
             }
             catch (Exception ex)
             {
@@ -304,7 +330,7 @@ namespace SAPR.App_Code.Controladoras
 
             try
             {
-                //resultado = this.criteriosTableAdapter.getCriterio(String nombreCriterio, int idRequerimiento);
+                resultado = this.criteriosTableAdapter.getCriterio(nombreCriterio, idRequerimiento);
 
             }
             catch (Exception ex)
