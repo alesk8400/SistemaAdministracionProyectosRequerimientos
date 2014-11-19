@@ -216,6 +216,7 @@ namespace SAPR
              this.btnModificarModulo.Disabled = true;
              this.btnAgregarModulo.Disabled = true;
              this.modaleliminarModulo.Disabled = true;
+             //this.modalSprint.
          }
 
          //Controla el despliegue de los elementos de la interfaz al presionar el boton modificar (sprint)
