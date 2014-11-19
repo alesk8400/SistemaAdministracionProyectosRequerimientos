@@ -16,22 +16,17 @@
         <div class="col-md-4">
             <label for="text" > <font size ="6">Proyectos: </font> </label>
                 
-                         <asp:DropDownList ID="cmbProyecto" runat="server">
+                         <asp:DropDownList ID="cmbProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbProyecto_SelectedIndexChanged" AppendDataBoundItems="True">
+                             <asp:ListItem>niniasjd</asp:ListItem>
                          </asp:DropDownList>
-                         <div class="help-block with-errors"></div>
+                         <%--<div class="help-block with-errors"></div>--%>
                   
         </div>
     </div>
 
     <div class="row">
     <div class="col-lg-7">                                        
-                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="False" CssClass ="table"  DataSourceID="ListaProyectos" ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
-                    <Columns>
-                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                        <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
-                        <asp:BoundField DataField="Lider" HeaderText="Lider" SortExpression="Lider" />
-                        <asp:CommandField HeaderText="Seleccion" SelectText="Consultar" ShowSelectButton="True" />
-                    </Columns>
+                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="true" CssClass ="table"  ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
@@ -43,7 +38,6 @@
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                 </asp:GridView>
                                 
-                <asp:SqlDataSource ID="ListaProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ingegscarlosConnectionString %>" SelectCommand="SELECT P.Nombre, P.Estado, U.Nombre AS Lider FROM Proyecto AS P INNER JOIN Usuarios AS U ON P.Lider = U.Cedula"></asp:SqlDataSource>
 
     </div>
         </div>
@@ -198,7 +192,7 @@
     <div class="row">
     <div class="col-lg-7">                                        
         
-        <asp:GridView ID="gridRequerimientos" runat="server" cssClass="table table-bordered" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+        <asp:GridView ID="gridRequerimientos" runat="server" cssClass="table table-bordered" BackColor="White" OnSelectedIndexChanged="GridRequerimientos_SelectedIndexChanged" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
             <Columns>
                 <asp:ButtonField CommandName="Select" Text="Consultar" ShowHeader="True" HeaderText="Consultar"></asp:ButtonField>
             </Columns>

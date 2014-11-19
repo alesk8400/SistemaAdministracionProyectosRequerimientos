@@ -46,6 +46,8 @@ namespace SAPR.App_Code.Controladoras
         //        //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
         //    }     
 
+        
+
         public String[] insertarRequerimiento(int idModulo, int idSprint, int idProyecto, String nombre, String descripcion, int prioridad, String estado,
         int cantidad, String medida, byte[] archivo)
         {
@@ -123,33 +125,32 @@ namespace SAPR.App_Code.Controladoras
         }
 
         ///Bacon
-        public EntidadRequerimientos getRequerimiento(String nombreRequerimiento, String nombreModulo, String nombreSprint, 
-            String nombreProyecto) {
+        public EntidadRequerimientos getRequerimiento(int idReq) {
 
             EntidadRequerimientos resultado = null;
             Object[] entidadTemporal = new Object[9];
             DataTable resultadoT = new DataTable();
-            int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);      
-            int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
+            //int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);      
+            //int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
             //int idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************
-            int idModulo;
+            //int idModulo;
 
-            idModulo = 0;
+    //        idModulo = 0;
             //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
 
 
             try {
-                resultadoT = controladoraBDRequerimiento.getRequerimiento(nombreRequerimiento, idModulo, idProyecto);   
+                resultadoT = controladoraBDRequerimiento.getRequerimiento(idReq);   
                 if(resultadoT.Rows.Count == 1){
-                    entidadTemporal[0] = resultadoT.Rows[0][0];
-                    entidadTemporal[1] = resultadoT.Rows[0][1];
-                    entidadTemporal[2] = resultadoT.Rows[0][2];
-                    entidadTemporal[3] = resultadoT.Rows[0][3];
-                    entidadTemporal[4] = resultadoT.Rows[0][4];
-                    entidadTemporal[5] = resultadoT.Rows[0][5];
-                    entidadTemporal[6] = resultadoT.Rows[0][6];
-                    entidadTemporal[7] = resultadoT.Rows[0][7];
-                    entidadTemporal[8] = resultadoT.Rows[0][8];
+                    entidadTemporal[0] = resultadoT.Rows[0][1];
+                    entidadTemporal[1] = resultadoT.Rows[0][2];
+                    entidadTemporal[2] = resultadoT.Rows[0][3];
+                    entidadTemporal[3] = resultadoT.Rows[0][4];
+                    entidadTemporal[4] = resultadoT.Rows[0][5];
+                    entidadTemporal[5] = resultadoT.Rows[0][6];
+                    entidadTemporal[6] = resultadoT.Rows[0][7];
+                    entidadTemporal[7] = resultadoT.Rows[0][8];
+                    entidadTemporal[8] = resultadoT.Rows[0][9];
 
                     resultado = new EntidadRequerimientos(entidadTemporal);                   
                 }
@@ -183,10 +184,34 @@ namespace SAPR.App_Code.Controladoras
             return tabla;
         }
 
+        protected DataTable crearTablaInfoProyecto()
+        {
+            DataTable tabla = new DataTable();
+            DataColumn columna;
+            //se agrega el campo de Nombre
+            columna = new DataColumn();
+            columna.DataType = System.Type.GetType("System.String");
+            columna.ColumnName = "Nombre";
+            tabla.Columns.Add(columna);
+
+            columna = new DataColumn();
+            columna.DataType = System.Type.GetType("System.String");
+            columna.ColumnName = "Estado";
+            tabla.Columns.Add(columna);
+
+            columna = new DataColumn();
+            columna.DataType = System.Type.GetType("System.String");
+            columna.ColumnName = "Lider";
+            tabla.Columns.Add(columna);
+
+
+            return tabla;
+        }
+
         public DataTable getNombresProyectos()
         {
             DataTable resultado = crearTablaProyecto(); //Este método crea la tabla
-
+            ControladoraProyecto controladoraProyecto = new ControladoraProyecto();
             Object[] datos = new Object[2];
             try
             {
@@ -213,6 +238,40 @@ namespace SAPR.App_Code.Controladoras
 
             return resultado;
         }
+
+
+        public DataTable getInfoProyecto(string nombre)
+        {
+            DataTable resultado = crearTablaInfoProyecto(); //Este método crea la tabla
+            ControladoraProyecto controladoraProyecto = new ControladoraProyecto();
+            Object[] datos = new Object[3];
+            try
+            {
+                DataTable consulta = controladoraProyecto.getInfoProyecto(nombre);
+                if (consulta.Rows.Count > 0)
+                {
+                    foreach (DataRow fila in consulta.Rows)
+                    {
+                        datos[0] = fila[1].ToString(); // Van los Nombres
+                        datos[1] = fila[2].ToString(); // Van los ids del Proyecto
+                        datos[2] = fila[3].ToString(); // Van los ids del Proyecto
+                        resultado.Rows.Add(datos);// cargar en la tabla los datos de cada Proyecto
+                    }
+                }
+                else // en cualquier otro caso se pone vacía la tabla
+                {
+                    datos[0] = "-";
+                    resultado.Rows.Add(datos);
+                }
+            }
+            catch (Exception e)
+            {
+                resultado = null;
+            }
+
+            return resultado;
+        }
+
 
         public DataTable getNombresSprints(int idProyecto) {
             return controladoraEstructura.getNombresSprint(idProyecto);
@@ -326,6 +385,11 @@ namespace SAPR.App_Code.Controladoras
                 bf.Serialize(ms, obj);
                 return ms.ToArray();
             }
+        }
+
+
+        public DataTable getRequerimientosDeProyecto(int idProyecto) { 
+            return controladoraBDRequerimiento.getRequerimientosDeProyecto(idProyecto);
         }
     }
 }

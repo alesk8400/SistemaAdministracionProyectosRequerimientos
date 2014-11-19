@@ -13,12 +13,14 @@ namespace SAPR.App_Code.Controladoras {
         adap adapProyecto;
         adapCliente adapClient;
         AdapterUsuarioProyecto adapUsuaProyecto;
+        adapAux adapA;
 
         /*Este es el constructor de la clase. Se encarga de inicializar los adaptores de los dataSets.*/
         public ControladoraBDProyecto() {
             adapProyecto = new adap();
             adapClient = new adapCliente();
             adapUsuaProyecto = new AdapterUsuarioProyecto();
+            adapA = new adapAux();
         }
 
         /*Este método se encarga de la inserción de un proyecto, recibe como parámetro una entidad de proyecto y una entidad de cliente. Retorna un resultado de éxito en caso
@@ -167,6 +169,11 @@ namespace SAPR.App_Code.Controladoras {
         public DataTable getProyectos()
         {
             return adapProyecto.getProyectos();
+        }
+
+        public DataTable getInfoProyecto(string nombre) {
+            return adapA.getInfoproyecto(nombre);
+        
         }
     }
 }

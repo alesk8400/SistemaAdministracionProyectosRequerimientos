@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Data;
 using System.Web.UI.WebControls;
+using SAPR.App_Code.Entidades;
 
 namespace SAPR
 {
@@ -14,11 +15,11 @@ namespace SAPR
 
         ControladoraRequerimiento controladora = new ControladoraRequerimiento();
         private static int modo = 0;
-
+        private static EntidadRequerimientos consultado; 
 
         protected void Page_Load(object sender, EventArgs e) {
-            
 
+            llenarCmbProy();
             if (modo != 1 && modo != 2)
             {
                 restaurarPantallaSinLimpiar();
@@ -46,9 +47,21 @@ namespace SAPR
 
         }
 
-        protected void GridViewReque_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GridRequerimientos_SelectedIndexChanged(object sender, EventArgs e)  // consultar
+        {
+            consultado = controladora.getRequerimiento(Int32.Parse(gridRequerimientos.SelectedRow.Cells[1].Text.ToString()));
+            int x = 9;
+
+        }
+
+        private void llenarCmbProy()
         {
 
+            DataTable datos_proyecto = controladora.getNombresProyectos();
+            cmbProyecto.DataSource = datos_proyecto;
+            cmbProyecto.DataTextField = "Nombre";
+            cmbProyecto.DataValueField = "idProyecto";
+            cmbProyecto.DataBind();
 
         }
 
@@ -89,6 +102,16 @@ namespace SAPR
             this.cmbMedida.Enabled = habilitar;
             this.botonAceptarR.Disabled = !habilitar;
             this.botonCancelar.Disabled = !habilitar;
+        }
+
+        protected void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable datos_proyecto = controladora.getInfoProyecto(cmbProyecto.SelectedItem.ToString());
+            gridProyecto.DataSource = datos_proyecto;
+            gridProyecto.DataBind();
+            DataTable datos_reque = controladora.getRequerimientosDeProyecto(Int32.Parse(cmbProyecto.SelectedItem.Value));
+            gridRequerimientos.DataSource = datos_reque; // Cargar el grid de los requerimientos
+            gridRequerimientos.DataBind();
         }
     }
 }

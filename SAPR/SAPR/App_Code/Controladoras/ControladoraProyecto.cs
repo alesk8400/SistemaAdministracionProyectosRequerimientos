@@ -144,5 +144,11 @@ namespace SAPR.App_Code.Controladoras
         {
             return controladoraBDProyecto.getProyectos();
         }
+
+
+        public DataTable getInfoProyecto(string nombre)
+        {
+            return controladoraBDProyecto.getInfoProyecto(nombre);
+        }
     }
 }

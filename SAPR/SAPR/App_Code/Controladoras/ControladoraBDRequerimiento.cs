@@ -139,12 +139,12 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
-        public DataTable getRequerimiento(String nombreRequerimiento, int idModulo, int idProyecto)
+        public DataTable getRequerimiento(int idReq)
         {
             DataTable resultado = new DataTable();
             try{
 
-                resultado = this.requerimientoTableAdapter.getRequerimiento(nombreRequerimiento, idModulo, idProyecto);
+                resultado = this.requerimientoTableAdapter.getRequerimiento(idReq);
 
 
             } catch(Exception ex){
@@ -311,6 +311,26 @@ namespace SAPR.App_Code.Controladoras
             try
             {
                 //resultado = this.criteriosTableAdapter.getCriteriosDeProyecto(idProyecto);
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+            return resultado;
+
+        }
+
+        public DataTable getRequerimientosDeProyecto(int idProyecto)
+        {
+
+            DataTable resultado = new DataTable();
+
+            try
+            {
+                resultado = this.requerimientoTableAdapter.getRequerimientosDeProyecto(idProyecto);
 
             }
             catch (Exception ex)
