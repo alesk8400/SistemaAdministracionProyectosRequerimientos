@@ -101,7 +101,7 @@ namespace SAPR
          {
              if (e.Row.RowType == DataControlRowType.DataRow)
              {
-                 string moduloId = e.Row.Cells[4].Text.ToString();
+                 string moduloId = e.Row.Cells[3].Text.ToString();
                  GridView gridRequerimientos = e.Row.FindControl("gridReq") as GridView;
                  gridRequerimientos.DataSource = getRequerimiento(Convert.ToInt32(moduloId));
                  gridRequerimientos.DataBind();
@@ -216,7 +216,6 @@ namespace SAPR
              this.btnModificarModulo.Disabled = true;
              this.btnAgregarModulo.Disabled = true;
              this.modaleliminarModulo.Disabled = true;
-             //this.modalSprint.
          }
 
          //Controla el despliegue de los elementos de la interfaz al presionar el boton modificar (sprint)
