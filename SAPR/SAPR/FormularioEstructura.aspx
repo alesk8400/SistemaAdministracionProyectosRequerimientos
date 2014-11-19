@@ -34,6 +34,7 @@
                                 <asp:DropDownList ID="cmbProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbProyecto_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                         </div>
+                        <button runat="server" id="Button1" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar Sprint</button>
                     </div>
                     </div>
     
@@ -53,6 +54,7 @@
                     <ItemTemplate>
                         <img alt="" style="cursor: pointer" src="Images/plus.png" />
                         <asp:Panel ID="pnlModulos" runat="server" Style="display: none">
+                             <button runat="server" id="Button1" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar Módulo</button>
                             <asp:GridView ID="gridModulos" runat="server" OnRowDataBound="OnRowDataBound2" DataKeyNames="Identificador" CssClass="table table-hover " BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                                 <Columns>
                                     <asp:TemplateField>
