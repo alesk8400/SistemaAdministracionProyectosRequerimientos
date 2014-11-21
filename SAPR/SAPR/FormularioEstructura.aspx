@@ -36,7 +36,8 @@
                                 <asp:DropDownList ID="cmbProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbProyecto_SelectedIndexChanged"></asp:DropDownList>
                                 </div>
                         </div>
-                       <a id="ModalManejarS" href="#modalSprint" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Manejar Sprints</a>
+                      <%-- <a id="ModalManejarS" href="FormSprint.aspx" class="btn btn-primary" role="button" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Manejar Sprints</a>--%>
+                        <asp:Button ID="btnManejarS" PostBackUrl="~/FormSprint.aspx" CssClass="btn btn-primary" runat="server" Text="Manejar Sprints" />
                     </div>
                     </div>
     
@@ -50,14 +51,15 @@
     </div>
 
     <div >
-        <asp:GridView ID="gridSprints" runat="server" OnRowDataBound="OnRowDataBound" DataKeyNames="Identificador" CssClass=" table table-hover" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+        <asp:GridView ID="gridSprints" runat="server" OnSelectedIndexChanged="gridSprints_SelectedIndexChanged" OnSelectedIndexChanging="gridSprints_SelectedIndexChanging" OnRowDataBound  ="OnRowDataBound" DataKeyNames="Identificador" CssClass=" table table-hover" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
                         <img alt="" style="cursor: pointer" src="Images/plus.png" />
                         <asp:Panel ID="pnlModulos" runat="server" Style="display: none">
-                            <a id="ModalAgregarM" href="#modalModulo" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Agregar Módulo</a>
-                            <asp:GridView ID="gridModulos" runat="server" OnRowDataBound="OnRowDataBound2" href="#modalModulo" DataKeyNames="Identificador" CssClass="table table-hover " BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+                             <asp:Button ID="btnManejarM" PostBackUrl="~/FormModulo.aspx" CssClass="btn btn-primary" runat="server" Text="Manejar Módulo" />
+                            <%--<a id="ModalAgregarM" href="FormModulo.aspx" class="btn btn-primary" role="button"runat ="server"><i class="fa fa-trash-o fa-lg"></i>Agregar Módulo</a>--%>
+                            <asp:GridView ID="gridModulos" runat="server" OnRowDataBound="OnRowDataBound2" DataKeyNames="Identificador" CssClass="table table-hover " BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>
@@ -122,12 +124,12 @@
         </asp:GridView>
     </div>
 
-       <%-- modal SPRINTcon todo bloquedo--%>
-    <div class="modal fade" id= "modalSprint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <%--    <%-- modal SPRINTcon todo bloquedo--%>
+    <%--<div class="modal fade" id= "modalSprint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content">--%>
     
-                <div class="col-lg-14">
+                <%--<div class="col-lg-14">
                     <div class="well bs-component">
                         <div class="row  text-center">
                             <legend>Sprints</legend>
@@ -167,113 +169,13 @@
                         <asp:requiredfieldvalidator id="RequiredFieldValidator6" runat="server" errormessage="" forecolor="black" controltovalidate="txtNombreSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
                         <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="black" controltovalidate="txtDescripcionSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
                     </div>
-                </div>
+                </div>--%>
        
-         </div>
+<%--         </div>
         </div>
-    </div>
-       <%-- modal SPRINT para agregar--%>
-    <div class="modal fade" id= "modalSprint1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-    
-                <div class="col-lg-14">
-                    <div class="well bs-component">
-                        <div class="row  text-center">
-                            <legend>Sprints</legend>
-                        </div>
-                        <fieldset>
-                            <div class="row">
-                                <button runat="server" id="btnAgregarSprint1" onserverclick="btnAgregarSprint_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
-                                <button runat="server" id="btnModificarSprint1" class="btn btn-primary" type="button" onserverclick="btnModificarSprint_Click"><i class="fa fa-pencil-square-o"></i>Modificar</button>
-                                <a id="btnEliminarSprint1" href="#modalEliminarSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
-
-                            </div>
-                            <br />
-
-                            <div class="row text-center">
-                                <div class="col-md-3">
-                                    <label for="Sprints">Sprints</label>
-                                    <div class="dropdown-toggle">
-                                        <asp:DropDownList ID="cmbSprints1" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="txtNombreS">Nombre Hola <font color='red'>*</font></label>
-                                    <input id="txtNombreS1" type="text" runat="server" enabled="false" />
-                                </div>
-                                <div class="col-md-5">
-                                    <label for="txtDescripcionS">Descripción  <font color='red'>*</font></label>
-                                    <textarea id="txtDescripcionS1" cols="30" rows="3" runat="server"></textarea>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="text-center">
-                                <button runat="server" id="btnAceptarS1" class="btn btn-success" type="button" validationgroup="B" xmlns:asp="#unknown" onserverclick="btnAceptar1"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
-                                <button runat="server" id="btnCancelarS1" class="btn btn-danger" type="button" xmlns:asp="#unknown" onserverclick="btnCancelar1"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
-                            </div>
-
-                        </fieldset>
-                        <asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" errormessage="" forecolor="black" controltovalidate="txtNombreSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
-                        <asp:requiredfieldvalidator id="RequiredFieldValidator5" runat="server" errormessage="" forecolor="black" controltovalidate="txtDescripcionSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
-                    </div>
-                </div>
-       
-         </div>
-        </div>
-    </div>
-       <%-- modal SPRINT para modificar--%>
-    <div class="modal fade" id= "modalSprint2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-    
-                <div class="col-lg-14">
-                    <div class="well bs-component">
-                        <div class="row  text-center">
-                            <legend>Sprints</legend>
-                        </div>
-                        <fieldset>
-                            <div class="row">
-                                <button runat="server" id="btnAgregarSprint2" onserverclick="btnAgregarSprint_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
-                                <button runat="server" id="btnModificarSprint2" class="btn btn-primary" type="button" onserverclick="btnModificarSprint_Click"><i class="fa fa-pencil-square-o"></i>Modificar</button>
-                                <a id="btnEliminarSprint2" href="#modalEliminarSprint" class="btn btn-primary" role="button" data-toggle="modal" runat="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
-
-                            </div>
-                            <br />
-
-                            <div class="row text-center">
-                                <div class="col-md-3">
-                                    <label for="Sprints">Sprints</label>
-                                    <div class="dropdown-toggle">
-                                        <asp:DropDownList ID="cmbSprints2" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="txtNombreS">Nombre <font color='red'>*</font></label>
-                                    <input id="Text2" type="text" runat="server" enabled="false" />
-                                </div>
-                                <div class="col-md-5">
-                                    <label for="txtDescripcionS">Descripción  <font color='red'>*</font></label>
-                                    <textarea id="Textarea2" cols="30" rows="3" runat="server"></textarea>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="text-center">
-                                <button runat="server" id="btnAceptarS2" class="btn btn-success" type="button" validationgroup="B" xmlns:asp="#unknown" onserverclick="btnAceptar1"><i class="fa fa-pencil-square-o"></i>Aceptar</button>
-                                <button runat="server" id="btnCancelarS2" class="btn btn-danger" type="button" xmlns:asp="#unknown" onserverclick="btnCancelar1"><i class="fa fa-pencil-square-o"></i>Cancelar</button>
-                            </div>
-
-                        </fieldset>
-                        <asp:requiredfieldvalidator id="RequiredFieldValidator7" runat="server" errormessage="" forecolor="black" controltovalidate="txtNombreSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
-                        <asp:requiredfieldvalidator id="RequiredFieldValidator8" runat="server" errormessage="" forecolor="black" controltovalidate="txtDescripcionSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
-                    </div>
-                </div>
-       
-         </div>
-        </div>
-    </div>
+    </div>--%>
    <%-- modal MODULO --%>
-    <div class="modal fade" id="modalModulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%--<div class="modal fade" id="modalModulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="col-lg-14">
@@ -324,10 +226,10 @@
 
     </div>
         </div>
-    </div> 
+    </div> --%>
 
     <!--Modal EliminarSprint-->
-    <div class="modal fade" id="modalEliminarSprint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <%-- <div class="modal fade" id="modalEliminarSprint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -343,9 +245,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 
-    <!--Modal EliminarModulo-->
+    <%--<!--Modal EliminarModulo-->
     <div class="modal fade" id="modalEliminarModulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -362,9 +264,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 
-    <div class="col-lg-12">
+  <%--<div class="col-lg-12">--%>
    
         
        <%-- <div class ="col-lg-6">           
@@ -412,8 +314,8 @@
    <%--     </div>       
  </div>--%>
 
-        <div class =" col-lg-6">
-            <div class="well bs-component">
+       <%-- <div class =" col-lg-6">
+            <div class="well bs-component">--%>
         <%--<div class="row text-center">
 
             <legend>Módulos</legend>          
@@ -459,9 +361,9 @@
 
 
     </div>--%>
-    <div class ="text-center">
+   <%-- <div class ="text-center">
         <label for="textObligatorio"><font color = "red"><i>Los campos con (*) son obligatorios</i> </font></label>
-    </div>
+    </div>--%>
         
 
 
