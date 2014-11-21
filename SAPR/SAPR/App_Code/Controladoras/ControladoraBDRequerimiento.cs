@@ -23,6 +23,7 @@ namespace SAPR.App_Code.Controladoras
         //Adapters
         RequerimientoAdapter requerimientoTableAdapter;
         CriteriosTableAdapter criteriosTableAdapter;
+        Requerimiento1TableAdapter adpatadorAux;
         
 
 
@@ -30,7 +31,8 @@ namespace SAPR.App_Code.Controladoras
 
         public ControladoraBDRequerimiento() {
             requerimientoTableAdapter = new RequerimientoAdapter();
-            criteriosTableAdapter = new CriteriosTableAdapter();            
+            criteriosTableAdapter = new CriteriosTableAdapter();
+            adpatadorAux = new Requerimiento1TableAdapter();
         }
 
 
@@ -330,7 +332,7 @@ namespace SAPR.App_Code.Controladoras
 
             try
             {
-                resultado = this.requerimientoTableAdapter.getRequerimientosDeProyecto(idProyecto);
+                resultado = this.adpatadorAux.getRequerimientosDeProyecto(idProyecto);
 
             }
             catch (Exception ex)

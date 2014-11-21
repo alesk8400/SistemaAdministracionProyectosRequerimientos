@@ -193,6 +193,15 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.DropDownList cmbModulo;
         
         /// <summary>
+        /// Control subirArchivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload subirArchivo;
+        
+        /// <summary>
         /// Control botonAceptarR.
         /// </summary>
         /// <remarks>

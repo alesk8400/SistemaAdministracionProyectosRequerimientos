@@ -86,7 +86,7 @@
                                         ControlToValidate="textD" 
                                         ErrorMessage="Descripcion Requerimiento Inválido. Debe tener entre 2 y 44 caracteres" 
                                         ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
-                                    <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="black" controltovalidate="textD" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="dasd" forecolor="black" controltovalidate="textD" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
                             </div>
                             
                             <div class="col-md-2">
@@ -134,7 +134,7 @@
                                         ControlToValidate="txtCantidadR" 
                                         ErrorMessage="Inserte una cantidad. Solo números." 
                                         ValidationExpression="^[0-9]+$" />
-                                    <asp:requiredfieldvalidator id="RequiredFieldValidator2" runat="server" errormessage="" forecolor="black" controltovalidate="txtCantidadR" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
+                                    <asp:requiredfieldvalidator id="RequiredFieldValidator2" runat="server" errormessage="Digite cantidad" forecolor="black" controltovalidate="txtCantidadR" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
 
                                     <div class="help-block with-errors"></div>
                                </div>
@@ -172,11 +172,16 @@
                                   </asp:DropDownList>
                             </div>
                      </div>
+                    <div class="row">
+                        <asp:FileUpload ID="subirArchivo" runat="server" class= "btn btn-link" OnFileUploaded="UploadFile_FileUploaded"/>
+
+                    </div>
+
 
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <button runat="server" id="botonAceptarR" onserverclick="btnAceptarR_Click" class="btn btn-success" type="submit" validationgroup="A" xmlns:asp="#unknown">Aceptar</button>
+                                <button runat="server" id="botonAceptarR"  onserverclick="botonAceptarR_ServerClick" class="btn btn-success" type="submit"  xmlns:asp="#unknown">Aceptar</button>
                                 <a id="botonCancelar" href="#modalCancelar" class="btn btn-danger" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Cancelar</a>
                             </div>
                         </div>              

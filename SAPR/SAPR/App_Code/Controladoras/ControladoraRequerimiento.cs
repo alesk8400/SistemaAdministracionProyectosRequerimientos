@@ -48,7 +48,7 @@ namespace SAPR.App_Code.Controladoras
 
         
 
-        public String[] insertarRequerimiento(int idModulo, int idSprint, int idProyecto, String nombre, String descripcion, int prioridad, String estado,
+        public String[] insertarRequerimiento(int idModulo, int idProyecto, String nombre, String descripcion, int prioridad, String estado,
         int cantidad, String medida, byte[] archivo)
         {
             
