@@ -155,7 +155,7 @@
                                <div class="col-md-2">
                                   <label for="textSprint" >Sprint:</font></label>
                                   <div class="dropdown-toggle"> 
-                                    <asp:DropDownList ID="cmbSprint" runat="server">
+                                    <asp:DropDownList ID="cmbSprint" runat="server" AutoPostBack="True" OnSelectedIndexChanged ="cmbSprint_SelectedIndexChanged">
                                     </asp:DropDownList>
                                   <div class="help-block with-errors"></div>
                                  </div>

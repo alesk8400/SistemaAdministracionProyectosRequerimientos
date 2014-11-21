@@ -118,6 +118,11 @@ namespace SAPR
             gridRequerimientos.DataSource = datos_reque; // Cargar el grid de los requerimientos
             gridRequerimientos.DataBind();
             idProyecto = Int32.Parse(cmbProyecto.SelectedValue.ToString());
+            cmbSprint.DataSource = controladora.getNombresSprints(idProyecto);
+            cmbSprint.DataValueField = "Identificador";
+            cmbSprint.DataTextField = "Nombre";
+            cmbSprint.DataBind();
+
         }
 
         protected void botonAceptarR_ServerClick(object sender, EventArgs e)
@@ -159,6 +164,16 @@ namespace SAPR
 
             }
 
+        }
+
+
+        protected void cmbSprint_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idSprint = Int32.Parse(cmbSprint.SelectedValue.ToString());
+            cmbModulo.DataSource = controladora.getNombresModulos(idSprint);
+            cmbModulo.DataValueField = "Identificador";
+            cmbModulo.DataTextField = "Nombre";
+            cmbModulo.DataBind();
         }
 
 
