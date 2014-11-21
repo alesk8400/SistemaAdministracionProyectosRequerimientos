@@ -36,17 +36,14 @@ namespace SAPR
         protected void btnAgregarReque_Click(object sender, EventArgs e)
         {
             modo = 1;
-            habilitarCampos(true);
-            ///DataTable grid = controladora.getRequerimientosGrid();  // Falta que reciba el idProy
-           // gridRequerimientos.DataSource = grid;
-           // gridRequerimientos.DataBind();
-
+            habilitarCamposR(true);
+            limpiarCamposR();
         }
 
         protected void btnModificarReque_Click(object sender, EventArgs e)
         {
             modo = 2;
-            habilitarCampos(true);
+            habilitarCamposR(true);
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,8 +59,13 @@ namespace SAPR
             txtCantidadR.Value = consultado.Cantidad.ToString();
             textNombreR.Value = consultado.Nombre;
             textD.Value = consultado.Descripcion;
-
-           
+            cmbPrioridad.SelectedValue = consultado.Prioridad.ToString();
+            cmbEstado.SelectedValue = consultado.Estado.ToString();
+            cmbMedida.SelectedValue = consultado.Medida.ToString();
+            //cmbSprint.SelectedValue = consultado.
+            cmbModulo.SelectedValue = consultado.IdModulo.ToString();
+            btnModificarReque.Disabled = false;
+            btnEliminarReque.Disabled = false;         
         }
 
         private void llenarCmbProy()
@@ -82,22 +84,19 @@ namespace SAPR
         protected void btnAceptarC_Click(object sender, EventArgs e)
         {
             modo = 1;
-            habilitarCampos(true);
-           // DataTable grid = controladora.getRequerimientosGrid();  // Falta que reciba el idProy
-           // gridRequerimientos.DataSource = grid;
-         //   gridRequerimientos.DataBind();
+            //habilitarCampos(true);
         }
 
         protected void restaurarPantallaSinLimpiar()
         {
-            habilitarCampos(false);
+            habilitarCamposR(false);
             botonAceptarR.Disabled = true;
             btnModificarReque.Disabled = true;
             btnEliminarReque.Disabled = true;
             botonCancelar.Disabled = true;
         }
 
-        protected void habilitarCampos(Boolean habilitar)
+        protected void habilitarCamposR(Boolean habilitar)
         {
             this.textNombreR.Disabled = !habilitar;
             this.textD.Disabled = !habilitar;
@@ -125,44 +124,42 @@ namespace SAPR
 
         }
 
-        protected void botonAceptarR_ServerClick(object sender, EventArgs e)
-        {
+        protected void botonAceptarR_ServerClick(object sender, EventArgs e) {
             String[] resultado = new String[1];
             Stream strm;
             BinaryReader br;
             Byte[] filesize = null;
-            if (modo == 1)
+            if (subirArchivo.HasFile)
             {
-                if (subirArchivo.HasFile)
+                try
                 {
-                    try
-                    {
-                        string filename = Path.GetFileName(subirArchivo.PostedFile.FileName);
-                        strm = subirArchivo.PostedFile.InputStream;
-                        br = new BinaryReader(strm);
-                        filesize = br.ReadBytes((int)strm.Length);
-                        string filetype = subirArchivo.PostedFile.ContentType;
-
-                    }
-                    catch
-                    {
-
-
-                    }
+                    string filename = Path.GetFileName(subirArchivo.PostedFile.FileName);
+                    strm = subirArchivo.PostedFile.InputStream;
+                    br = new BinaryReader(strm);
+                    filesize = br.ReadBytes((int)strm.Length);
+                    string filetype = subirArchivo.PostedFile.ContentType;
 
                 }
-                int o = 9;
-                //int idModulo= Int32.Parse(cmbModulo.SelectedValue.ToString()) ;
-                int prioridad= Int32.Parse(cmbPrioridad.SelectedValue.ToString()) ;
-                int cantidad= Int32.Parse(txtCantidadR.Value.ToString()) ;
-                string estado= cmbEstado.SelectedValue.ToString() ;
-                string medida= cmbMedida.SelectedValue.ToString() ;
-                string nombre = textNombreR.Value.ToString();
-                string descrip = textD.Value.ToString();
-
-                resultado = controladora.insertarRequerimiento(69, idProyecto, nombre, descrip, prioridad, estado,cantidad, medida, filesize);
-
+                catch {
+                }
             }
+            int idModulo = Int32.Parse(cmbModulo.SelectedValue.ToString());
+            int prioridad = Int32.Parse(cmbPrioridad.SelectedValue.ToString());
+            int cantidad = Int32.Parse(txtCantidadR.Value.ToString());
+            string estado = cmbEstado.SelectedValue.ToString();
+            string medida = cmbMedida.SelectedValue.ToString();
+            string nombre = textNombreR.Value.ToString();
+            string descrip = textD.Value.ToString();
+            if (modo == 1) {
+                resultado = controladora.insertarRequerimiento(idModulo, idProyecto, nombre, descrip, prioridad, estado,cantidad, medida, filesize);             
+            }
+            if (modo == 2) {
+                resultado = controladora.modificarRequerimiento(idModulo,idProyecto,nombre,descrip,prioridad,estado,cantidad,medida,filesize,consultado);
+            }
+            restaurarPantallaSinLimpiar();
+            DataTable datos_reque = controladora.getRequerimientosDeProyecto(Int32.Parse(cmbProyecto.SelectedItem.Value));
+            gridRequerimientos.DataSource = datos_reque; 
+            gridRequerimientos.DataBind();
 
         }
 
@@ -176,6 +173,17 @@ namespace SAPR
             cmbModulo.DataBind();
         }
 
+        protected void botonAceptarModalReque_ServerClick(object sender, EventArgs e){
+            int idMod = Int32.Parse(cmbModulo.SelectedValue.ToString());
+            string nombre = textNombreR.Value.ToString();
+            //string resultado[];
+            //resultado = controladora.eliminarRequerimiento(consultado.Nombre, idMod, idProyecto);
+        }
 
+        protected void limpiarCamposR() {
+            this.textNombreR.Value = "";
+            this.textD.Value = "";
+            this.txtCantidadR.Value = "";
+        }
     }
 }

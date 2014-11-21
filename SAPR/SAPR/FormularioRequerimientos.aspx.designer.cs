@@ -40,6 +40,15 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.GridView gridProyecto;
         
         /// <summary>
+        /// Control gridRequerimientos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridRequerimientos;
+        
+        /// <summary>
         /// Control btnAgregarReque.
         /// </summary>
         /// <remarks>
@@ -220,15 +229,6 @@ namespace SAPR {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor botonCancelar;
         
         /// <summary>
-        /// Control gridRequerimientos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridRequerimientos;
-        
-        /// <summary>
         /// Control nombreCriterio.
         /// </summary>
         /// <remarks>
@@ -301,15 +301,6 @@ namespace SAPR {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
         
         /// <summary>
-        /// Control cmbListR.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbListR;
-        
-        /// <summary>
         /// Control btnAcepCri.
         /// </summary>
         /// <remarks>
@@ -335,5 +326,14 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridCriterios;
+        
+        /// <summary>
+        /// Control botonAceptarModal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton botonAceptarModal;
     }
 }

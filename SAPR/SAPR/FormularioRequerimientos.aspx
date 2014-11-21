@@ -17,18 +17,14 @@
             <label for="text" > <font size ="6">Proyectos: </font> </label>
                 
                          <asp:DropDownList ID="cmbProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbProyecto_SelectedIndexChanged" AppendDataBoundItems="True">
-                             <asp:ListItem>niniasjd</asp:ListItem>
-                         </asp:DropDownList>
-                         <%--<div class="help-block with-errors"></div>--%>
-                  
+                             <asp:ListItem>Seleccione...</asp:ListItem>
+                         </asp:DropDownList>                 
         </div>
-    </div>
-
-    <div class="row">
-    <div class="col-lg-7">                                        
+    <div class="col-lg-7">    
+        <legend>Información de Proyecto</legend>                                    
                     <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="true" CssClass ="table"  ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
                     <FooterStyle BackColor="#CCCCCC" />
-                    <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="Blue" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
                     <RowStyle BackColor="White" />
                     <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
@@ -36,9 +32,36 @@
                     <SortedAscendingHeaderStyle BackColor="#808080" />
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#383838" />
-                </asp:GridView>
-                                
+                </asp:GridView>                            
+    </div>
+        </div>
 
+    <legend>Grid de Requerimientos</legend>
+
+    <div class="row">
+    <div class="col-lg-7">                                        
+        
+        <asp:GridView ID="gridRequerimientos" runat="server" cssClass="table table-bordered" BackColor="White" OnSelectedIndexChanged="GridRequerimientos_SelectedIndexChanged" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+            <Columns>
+                <asp:ButtonField CommandName="Select" Text="Consultar" ShowHeader="True" HeaderText="Consultar"></asp:ButtonField>
+            </Columns>
+
+            <FooterStyle BackColor="#CCCC99" ForeColor="Black"></FooterStyle>
+
+            <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+            <PagerStyle HorizontalAlign="Right" BackColor="White" ForeColor="Black"></PagerStyle>
+
+            <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+            <SortedAscendingCellStyle BackColor="#F7F7F7"></SortedAscendingCellStyle>
+
+            <SortedAscendingHeaderStyle BackColor="#4B4B4B"></SortedAscendingHeaderStyle>
+
+            <SortedDescendingCellStyle BackColor="#E5E5E5"></SortedDescendingCellStyle>
+
+            <SortedDescendingHeaderStyle BackColor="#242121"></SortedDescendingHeaderStyle>
+        </asp:GridView>
     </div>
         </div>
 
@@ -190,37 +213,6 @@
                 </fieldset>
             </div>
     </div>
-
-
-     <legend>Grid de Requerimientos</legend>
-
-    <div class="row">
-    <div class="col-lg-7">                                        
-        
-        <asp:GridView ID="gridRequerimientos" runat="server" cssClass="table table-bordered" BackColor="White" OnSelectedIndexChanged="GridRequerimientos_SelectedIndexChanged" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
-            <Columns>
-                <asp:ButtonField CommandName="Select" Text="Consultar" ShowHeader="True" HeaderText="Consultar"></asp:ButtonField>
-            </Columns>
-
-            <FooterStyle BackColor="#CCCC99" ForeColor="Black"></FooterStyle>
-
-            <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White"></HeaderStyle>
-
-            <PagerStyle HorizontalAlign="Right" BackColor="White" ForeColor="Black"></PagerStyle>
-
-            <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
-
-            <SortedAscendingCellStyle BackColor="#F7F7F7"></SortedAscendingCellStyle>
-
-            <SortedAscendingHeaderStyle BackColor="#4B4B4B"></SortedAscendingHeaderStyle>
-
-            <SortedDescendingCellStyle BackColor="#E5E5E5"></SortedDescendingCellStyle>
-
-            <SortedDescendingHeaderStyle BackColor="#242121"></SortedDescendingHeaderStyle>
-        </asp:GridView>
-    </div>
-        </div>
-
     
       <div class="col-lg-12 text-center">
             <div class="well bs-component">
@@ -270,15 +262,6 @@
                                         ValidationExpression="^[a-zA-Z0-9\s]{2,44}$" />
                                     <asp:requiredfieldvalidator id="RequiredFieldValidator7" runat="server" errormessage="" forecolor="black" controltovalidate="txtRes" validationgroup="A" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
                             </div>
-
-                            <div class="col-md-4">
-                                    <label for="textReque" >Lista de Requerimientos:</font></label>
-                                    <div class="dropdown-toggle"> 
-                                    <asp:DropDownList ID="cmbListR" runat="server">
-                                    
-                                    </asp:DropDownList>
-                                    </div>
-                              </div>
                      </div>  
                          <div class="row">
                         <div class="col-lg-12">
@@ -323,6 +306,25 @@
         </asp:GridView>
     </div>
         </div> 
+
+     <!--Modal Eliminar-->
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i>Confirmar eliminación</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea eliminar el Requerimiento seleccionado?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonCancelarModal" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="botonAceptarModal" class="btn btn-primary" runat="server" onserverclick ="botonAceptarModalReque_ServerClick">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
         
 
 </asp:Content>
