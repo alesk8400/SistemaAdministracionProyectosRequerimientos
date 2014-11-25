@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Estructura" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioEstructura.aspx.cs" Inherits="SAPR.Contact" %>
+﻿<%@ Page Title="Estructura" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioEstructura.aspx.cs" Inherits="SAPR.FormularioEstructura" %>
 
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="head">
@@ -38,6 +38,8 @@
                         </div>
                       <%-- <a id="ModalManejarS" href="FormSprint.aspx" class="btn btn-primary" role="button" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Manejar Sprints</a>--%>
                         <asp:Button ID="btnManejarS" PostBackUrl="~/FormSprint.aspx" CssClass="btn btn-primary" runat="server" Text="Manejar Sprints" />
+                        <asp:Button ID="btnManejarM" PostBackUrl="~/FormModulo.aspx" CssClass="btn btn-primary" runat="server" Text="Manejar Módulo" />
+
                     </div>
                     </div>
     
@@ -51,14 +53,12 @@
     </div>
 
     <div >
-        <asp:GridView ID="gridSprints" runat="server" OnSelectedIndexChanged="gridSprints_SelectedIndexChanged" OnSelectedIndexChanging="gridSprints_SelectedIndexChanging" OnRowDataBound  ="OnRowDataBound" DataKeyNames="Identificador" CssClass=" table table-hover" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+        <asp:GridView ID="gridSprints" runat="server"  OnRowDataBound  ="OnRowDataBound" DataKeyNames="Identificador" CssClass=" table table-hover" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
                         <img alt="" style="cursor: pointer" src="Images/plus.png" />
                         <asp:Panel ID="pnlModulos" runat="server" Style="display: none">
-                             <asp:Button ID="btnManejarM" PostBackUrl="~/FormModulo.aspx" CssClass="btn btn-primary" runat="server" Text="Manejar Módulo" />
-                            <%--<a id="ModalAgregarM" href="FormModulo.aspx" class="btn btn-primary" role="button"runat ="server"><i class="fa fa-trash-o fa-lg"></i>Agregar Módulo</a>--%>
                             <asp:GridView ID="gridModulos" runat="server" OnRowDataBound="OnRowDataBound2" DataKeyNames="Identificador" CssClass="table table-hover " BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                                 <Columns>
                                     <asp:TemplateField>

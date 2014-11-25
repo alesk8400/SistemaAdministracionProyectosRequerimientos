@@ -10,7 +10,7 @@
 namespace SAPR {
     
     
-    public partial class Contact {
+    public partial class FormularioEstructura {
         
         /// <summary>
         /// Control cmbProyecto.
@@ -29,6 +29,15 @@ namespace SAPR {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnManejarS;
+        
+        /// <summary>
+        /// Control btnManejarM.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnManejarM;
         
         /// <summary>
         /// Control alertAlerta.

@@ -12,7 +12,7 @@ using SAPR.App_Code.Entidades;
 
 namespace SAPR
 {
-    public partial class Contact : Page
+    public partial class FormularioEstructura : System.Web.UI.Page
     {
 
         private static ControladoraEstructura controladora = new ControladoraEstructura();
@@ -21,6 +21,7 @@ namespace SAPR
         private static int modoS = 0;  //modo 1 in modo 2 mod modo 3 eli
         private static int modoM = 0;
         public static int idProyecto = 0;
+        public static  String NombreProyecto = "";
         public static int idSprint = 0;
         //Este metodo se encarga de inicializar los comboBoxes del formulario, además de cargar el frid con los datos de sprints y modulos del proyecto seleccionado ademas de deshabilitar y habilitar botones 
         protected void Page_Load(object sender, EventArgs e)
@@ -36,6 +37,7 @@ namespace SAPR
                 }
                 try {
                     idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
+                    NombreProyecto = cmbProyecto.SelectedItem.Text;
                 }
                 catch { }
                 
@@ -63,7 +65,10 @@ namespace SAPR
                 //this.btnCancelarM.Disabled = true;
             }
         }
-
+        public int IdProyecto
+        {
+            get { return idProyecto; }
+        }
         //Este metodo devuelve todos los ID de los sprints que pertenecen al proyecto que recibe como parametro
          private static DataTable getSprints (int proyecto){
 
