@@ -457,5 +457,15 @@ namespace SAPR.App_Code.Controladoras
         public DataTable getRequerimientosDeProyecto(int idProyecto) { 
             return controladoraBDRequerimiento.getRequerimientosDeProyecto(idProyecto);
         }
+
+        public String getNombreModulo(int idModulo)
+        {
+            return controladoraEstructura.getNombreModulo(idModulo);
+        }
+
+        public int getidS(int idModulo)
+        {
+            return controladoraEstructura.getidS(idModulo);
+        }
     }
 }

@@ -325,6 +325,26 @@
             </div>
         </div>
     </div>
+
+
+    <!--Modal Cancelar-->
+    <div class="modal fade" id="modalCancelar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myOtherModal"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i>Confirmar cancelación</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea cancelar los cambios? Perdería todos los datos ingresados hasta el momento.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonCancelarModal1" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="botonAceptarCancelar" class="btn btn-primary" runat="server" onserverclick="botonAceptarCancelar_ServerClick">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
         
 
 </asp:Content>

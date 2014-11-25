@@ -250,5 +250,16 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
+        public String getNombreModulo(int idModulo)
+        {
+            return adaptM.getNombreModulo(idModulo);
+        }
+
+
+        public int getidS(int idModulo)
+        {
+            return Int32.Parse(adaptM.getidS(idModulo).ToString());
+        }
+
     }
 }

@@ -56,6 +56,7 @@ namespace SAPR
 
         protected void GridRequerimientos_SelectedIndexChanged(object sender, EventArgs e)  // consultar
         {
+
             idRequerimiento = Int32.Parse(gridRequerimientos.SelectedRow.Cells[4].Text.ToString());
             consultado = controladora.getRequerimiento(idRequerimiento);
             txtCantidadR.Value = consultado.Cantidad.ToString();
@@ -64,10 +65,15 @@ namespace SAPR
             cmbPrioridad.SelectedValue = consultado.Prioridad.ToString();
             cmbEstado.SelectedValue = consultado.Estado.ToString();
             cmbMedida.SelectedValue = consultado.Medida.ToString();
-            //cmbSprint.SelectedValue = consultado.
+            int idSprint = controladora.getidS(consultado.IdModulo);
+            cmbModulo.DataSource = controladora.getNombresModulos(idSprint);
+            cmbModulo.DataValueField = "Identificador";
+            cmbModulo.DataTextField = "Nombre";
+            cmbModulo.DataBind();
+            String nombreM = controladora.getNombreModulo(consultado.IdModulo);
             cmbModulo.SelectedValue = consultado.IdModulo.ToString();
             btnModificarReque.Disabled = false;
-            btnEliminarReque.Disabled = false;
+            btnEliminarReque.Disabled = false;     
             DataTable criterios = controladora.getCriteriosDeRequerimiento(idRequerimiento);
             gridCriterios.DataSource = criterios;
             gridCriterios.DataBind();
@@ -109,6 +115,8 @@ namespace SAPR
             this.cmbEstado.Enabled = habilitar;
             this.txtCantidadR.Disabled = !habilitar;
             this.cmbMedida.Enabled = habilitar;
+            this.cmbSprint.Enabled = habilitar;
+            this.cmbModulo.Enabled = habilitar;
             this.botonAceptarR.Disabled = !habilitar;
             this.botonCancelar.Disabled = !habilitar;
         }
@@ -181,8 +189,13 @@ namespace SAPR
         protected void botonAceptarModalReque_ServerClick(object sender, EventArgs e){
             int idMod = Int32.Parse(cmbModulo.SelectedValue.ToString());
             string nombre = textNombreR.Value.ToString();
-            //string resultado[];
-            //resultado = controladora.eliminarRequerimiento(consultado.Nombre, idMod, idProyecto);
+            String[] resultado = new String[1];
+            resultado = controladora.eliminarRequerimiento(consultado.Nombre, idMod, idProyecto);
+            restaurarPantallaSinLimpiar();
+            DataTable datos_reque = controladora.getRequerimientosDeProyecto(Int32.Parse(cmbProyecto.SelectedItem.Value));
+            gridRequerimientos.DataSource = datos_reque;
+            gridRequerimientos.DataBind();
+            limpiarCamposR();
         }
 
         protected void limpiarCamposR() {
@@ -200,6 +213,12 @@ namespace SAPR
             this.txtContexto.Value = criterioConsultado.Contexto;
             this.txtRes.Value = criterioConsultado.Resultado;
 
+        }
+
+        protected void botonAceptarCancelar_ServerClick(object sender, EventArgs e)
+        {
+            limpiarCamposR();
+            restaurarPantallaSinLimpiar();
         }
     }
 }

@@ -302,5 +302,15 @@ namespace SAPR.App_Code.Controladoras
         {
             return controladoraBDEstructura.getModulo(idSprint);
         }
+
+        public String getNombreModulo(int idModulo)
+        {
+            return controladoraBDEstructura.getNombreModulo(idModulo);
+        }
+
+        public int getidS(int idModulo)
+        {
+            return controladoraBDEstructura.getidS(idModulo);
+        }
     }
 }
