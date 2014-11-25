@@ -27,7 +27,7 @@ namespace SAPR
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!IsPostBack)
+           if (!IsPostBack)
             {
                 llenarCmbProy();
                 if(cmbProyecto.Text==""){

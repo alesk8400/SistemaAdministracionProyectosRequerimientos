@@ -14,11 +14,47 @@ namespace SAPR
 
         private static ControladoraEstructura controladora = new ControladoraEstructura();
         private static EntidadModulo entidadM;
-        int idProyecto = 0;
         private static int modoM = 0;
-        int idSprints = 0;
+        private static int idSprints = 0;
+        private static int IdProyecto = 0;
+        private static String NombreProyecto;
+        private static String NombreSprint;
         protected void Page_Load(object sender, EventArgs e)
         {
+            NombreProyecto = FormularioEstructura.NombreProyecto;
+            IdProyecto = FormularioEstructura.idProyecto;
+           
+            if (!IsPostBack)
+            {
+             
+
+                llenarCmbSprint();
+                llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
+               
+                try
+                {
+                    entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), cmbSprints.SelectedItem.ToString(), NombreProyecto);
+                    this.txtNombreModulo.Value = entidadM.Nombre;
+                    this.txtDescripcionModulo.Value = entidadM.Descripcion;
+                }
+                catch (Exception a)
+                {
+
+                }
+                NombreSprint = cmbSprints.SelectedItem.Text;
+                this.txtNombreModulo.Disabled = true;
+                this.txtDescripcionModulo.Disabled = true;
+                this.btnAceptarM.Disabled = true;
+                this.btnCancelarM.Disabled = true;
+            }
+        }
+
+        private void llenarCmbSprint()
+        {
+            cmbSprints.DataSource = controladora.getNombresSprint(IdProyecto);
+            cmbSprints.DataTextField = "Nombre";
+            cmbSprints.DataValueField = "Identificador";
+            cmbSprints.DataBind();
 
         }
         protected void btnAgregarModulo_Click(object sender, EventArgs e)
@@ -53,9 +89,15 @@ namespace SAPR
         }
         protected void cmbModulo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), idSprints.ToString(), idProyecto.ToString());
+            entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), NombreSprint, NombreProyecto);
             this.txtNombreModulo.Value = entidadM.Nombre;
             this.txtDescripcionModulo.Value = entidadM.Descripcion;
+        }
+
+        protected void cmbSprints_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), NombreProyecto);
+            llenarCmbModulo(Convert.ToInt32(cmbSprints.SelectedItem.Value.ToString()));
         }
         private void llenarCmbModulo(int idSprint)
         {
@@ -65,7 +107,7 @@ namespace SAPR
             cmbModulo.DataBind();
             try
             {
-                entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), idSprints.ToString(), idProyecto.ToString());
+                entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), NombreSprint, NombreProyecto);
                 this.txtNombreModulo.Value = entidadM.Nombre;
                 this.txtDescripcionModulo.Value = entidadM.Descripcion;
             }
@@ -82,14 +124,14 @@ namespace SAPR
         protected void clickAceptarEliminarModulo(object sender, EventArgs e)
         {
 
-            controladora.eliminarModulo(txtNombreModulo.Value.ToString(), idSprints.ToString(), idProyecto.ToString());
+            controladora.eliminarModulo(txtNombreModulo.Value.ToString(), NombreSprint, NombreProyecto);
             //gridSprints.DataSource = getSprints(idProyecto);
             //gridSprints.DataBind();
             llenarCmbModulo(idSprints);
             mostrarMensaje("success", "Éxito", "Módulo eliminado correctamente");
             try
             {
-                entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), idSprints.ToString(), idProyecto.ToString());
+                entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), NombreSprint, NombreProyecto);
                 this.txtNombreModulo.Value = entidadM.Nombre;
                 this.txtDescripcionModulo.Value = entidadM.Descripcion;
             }
@@ -116,7 +158,7 @@ namespace SAPR
 
             if (modoM == 1)
             {
-                controladora.insertarModulo(txtNombreModulo.Value.ToString(), txtDescripcionModulo.Value.ToString(), idSprints.ToString(), idProyecto.ToString());
+                controladora.insertarModulo(txtNombreModulo.Value.ToString(), txtDescripcionModulo.Value.ToString(), NombreSprint, NombreProyecto);
                 //gridSprints.DataSource = getSprints(idProyecto);
                 //gridSprints.DataBind();
                 llenarCmbModulo(idSprints);
@@ -124,8 +166,8 @@ namespace SAPR
             }
             if (modoM == 2)
             {
-                entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), idSprints.ToString(), idProyecto.ToString());
-                controladora.modificarModulo(txtNombreModulo.Value.ToString(), txtDescripcionModulo.Value.ToString(), idSprints.ToString(), idProyecto.ToString(), entidadM);
+                entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), NombreSprint, NombreProyecto);
+                controladora.modificarModulo(txtNombreModulo.Value.ToString(), txtDescripcionModulo.Value.ToString(), NombreSprint, NombreProyecto, entidadM);
                 //gridSprints.DataSource = getSprints(idProyecto);
                 //gridSprints.DataBind();
                 llenarCmbModulo(idSprints);
@@ -152,7 +194,7 @@ namespace SAPR
         {
             try
             {
-                entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), idSprints.ToString(), idProyecto.ToString());
+                entidadM = controladora.consultarModulo(cmbModulo.SelectedItem.ToString(), NombreSprint, NombreProyecto);
                 this.txtNombreModulo.Value = entidadM.Nombre;
                 this.txtDescripcionModulo.Value = entidadM.Descripcion;
             }

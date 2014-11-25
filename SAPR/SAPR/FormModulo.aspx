@@ -26,6 +26,7 @@
                     <div class="col-md-3">
                     <label for="Modulos">Módulos</label>
                     <div class="dropdown-toggle">
+                    <asp:DropDownList ID="cmbSprints" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged"></asp:DropDownList>
                     <asp:DropDownList ID="cmbModulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbModulo_SelectedIndexChanged"></asp:DropDownList>
                     </div>
                     </div>
