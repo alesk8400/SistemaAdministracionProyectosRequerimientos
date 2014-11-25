@@ -213,6 +213,26 @@
                 </fieldset>
             </div>
     </div>
+
+     <div class="row row-botones">
+        <div class="col-lg-5">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button runat="server" id="btnAgregarCriterio" onserverclick="btnAgregarCriterio_ServerClick" class="btn btn-primary" type="button"><i class="fa fa-pencil-square-o"></i>Agregar</button>
+            <button runat="server" id="btnModificarCriterio" onserverclick="btnModificarCriterio_ServerClick" class="btn btn-primary" type="button" visible="True"><i class="fa fa-pencil-square-o"></i>Modificar</button>
+            <a id="btnEliminarCriterio" href="#modalEliminarCriterio" class="btn btn-primary" role="button" data-toggle="modal" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Eliminar</a>
+          
+    
+          
+        </div>
+        <div class="col-lg-7">
+            <div id="Div1" class="alert alert-danger fade in" runat="server" hidden="hidden">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>
+                    <asp:Label ID="label1" runat="server" Text="Alerta! "></asp:Label></strong><asp:Label ID="label2" runat="server" Text="Mensaje de alerta"></asp:Label>
+            </div>
+        </div>
+        <br/>
+    </div>
     
       <div class="col-lg-12 text-center">
             <div class="well bs-component">
@@ -341,6 +361,46 @@
                 <div class="modal-footer">
                     <button type="button" id="botonCancelarModal1" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button type="button" id="botonAceptarCancelar" class="btn btn-primary" runat="server" onserverclick="botonAceptarCancelar_ServerClick">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+         <!--Modal Eliminar Criterio-->
+    <div class="modal fade" id="modalEliminarCriterio" tabindex="-1" role="dialog" aria-labelledby="myModalLabelCriterio" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabelCriterio"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i>Confirmar eliminación</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea eliminar el Criterio de Aceptación seleccionado?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonCancelarModalCriterio" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="botonAceptarModalCriterio" class="btn btn-primary" runat="server" onserverclick="botonAceptarModalCriterio_ServerClick">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Modal Cancelar Criterio-->
+    <div class="modal fade" id="modalCancelarCriterio" tabindex="-1" role="dialog" aria-labelledby="myModalLabelCriterio" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myOtherModalCriterio"><i class="fa fa-exclamation-triangle text-danger fa-2x"></i>Confirmar cancelación</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea cancelar los cambios? Perdería todos los datos ingresados hasta el momento.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonCancelarModal1Criterio" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="botonAceptarCancelarCriterio" class="btn btn-primary" runat="server" onserverclick="botonAceptarCancelarCriterio_ServerClick">Aceptar</button>
                 </div>
             </div>
         </div>

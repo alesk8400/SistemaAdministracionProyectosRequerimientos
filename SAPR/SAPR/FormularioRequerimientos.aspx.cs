@@ -204,6 +204,14 @@ namespace SAPR
             this.txtCantidadR.Value = "";
         }
 
+        protected void limpiarCamposC()
+        {
+            this.nombreCriterio.Value = "";
+            this.txtEscenario.Value = "";
+            this.txtContexto.Value = "";
+            this.txtRes.Value = "";
+        }
+
         protected void gridCriterios_SelectedIndexChanged(object sender, EventArgs e)
         {
             idCriterio = Int32.Parse(gridCriterios.SelectedRow.Cells[1].Text.ToString());
@@ -219,6 +227,26 @@ namespace SAPR
         {
             limpiarCamposR();
             restaurarPantallaSinLimpiar();
+        }
+
+        protected void btnAgregarCriterio_ServerClick(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnModificarCriterio_ServerClick(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void botonAceptarModalCriterio_ServerClick(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void botonAceptarCancelarCriterio_ServerClick(object sender, EventArgs e)
+        {
+
         }
     }
 }
