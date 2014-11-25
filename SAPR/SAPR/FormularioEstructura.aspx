@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Estructura" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioEstructura.aspx.cs" Inherits="SAPR.Contact" %>
+﻿<%@ Page Title="Estructura" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioEstructura.aspx.cs" Inherits="SAPR.FormularioEstructura" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="head">
 

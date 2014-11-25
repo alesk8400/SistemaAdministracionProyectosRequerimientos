@@ -16,9 +16,11 @@ namespace SAPR
 
         ControladoraRequerimiento controladora = new ControladoraRequerimiento();
         private static int modo = 0;
-        private static EntidadRequerimientos consultado; 
+        private static EntidadRequerimientos consultado;
+        private static EntidadCriterio criterioConsultado; 
         private static int idProyecto = 0;
         private static int idRequerimiento = 0;
+        private static int idCriterio = 0;
 
         protected void Page_Load(object sender, EventArgs e) {
 
@@ -65,7 +67,10 @@ namespace SAPR
             //cmbSprint.SelectedValue = consultado.
             cmbModulo.SelectedValue = consultado.IdModulo.ToString();
             btnModificarReque.Disabled = false;
-            btnEliminarReque.Disabled = false;         
+            btnEliminarReque.Disabled = false;
+            DataTable criterios = controladora.getCriteriosDeRequerimiento(idRequerimiento);
+            gridCriterios.DataSource = criterios;
+            gridCriterios.DataBind();
         }
 
         private void llenarCmbProy()
@@ -184,6 +189,17 @@ namespace SAPR
             this.textNombreR.Value = "";
             this.textD.Value = "";
             this.txtCantidadR.Value = "";
+        }
+
+        protected void gridCriterios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idCriterio = Int32.Parse(gridCriterios.SelectedRow.Cells[1].Text.ToString());
+            criterioConsultado = controladora.getCriterio(idCriterio);
+            this.nombreCriterio.Value = criterioConsultado.NombreCriterio;
+            this.txtEscenario.Value = criterioConsultado.Escenario.ToString();
+            this.txtContexto.Value = criterioConsultado.Contexto;
+            this.txtRes.Value = criterioConsultado.Resultado;
+
         }
     }
 }

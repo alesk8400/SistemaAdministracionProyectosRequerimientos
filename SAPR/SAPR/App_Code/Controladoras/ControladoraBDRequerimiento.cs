@@ -24,6 +24,7 @@ namespace SAPR.App_Code.Controladoras
         RequerimientoAdapter requerimientoTableAdapter;
         CriteriosTableAdapter criteriosTableAdapter;
         Requerimiento1TableAdapter adpatadorAux;
+        Criterios1TableAdapter adapCriterios2;
         
 
 
@@ -33,6 +34,7 @@ namespace SAPR.App_Code.Controladoras
             requerimientoTableAdapter = new RequerimientoAdapter();
             criteriosTableAdapter = new CriteriosTableAdapter();
             adpatadorAux = new Requerimiento1TableAdapter();
+            adapCriterios2 = new Criterios1TableAdapter();
         }
 
 
@@ -292,7 +294,7 @@ namespace SAPR.App_Code.Controladoras
 
             try
             {
-                resultado = this.criteriosTableAdapter.getCriteriosDeRequerimiento(idRequerimiento);
+                resultado = this.adapCriterios2.getCriteriosDeRequerimiento(idRequerimiento);
 
             }
             catch (Exception ex)
@@ -345,13 +347,14 @@ namespace SAPR.App_Code.Controladoras
 
         }
 
-        public DataTable getCriterio(String nombreCriterio, int idRequerimiento) {
+        public DataTable getCriterio(int idCriterio)
+        {
 
             DataTable resultado = new DataTable();
 
             try
             {
-                resultado = this.criteriosTableAdapter.getCriterio(nombreCriterio, idRequerimiento);
+                resultado = this.criteriosTableAdapter.getCriterio(idCriterio);
 
             }
             catch (Exception ex)

@@ -12,7 +12,7 @@ using SAPR.App_Code.Entidades;
 
 namespace SAPR
 {
-    public partial class Contact : Page
+    public partial class FormularioEstructura : System.Web.UI.Page
     {
 
         private static ControladoraEstructura controladora = new ControladoraEstructura();

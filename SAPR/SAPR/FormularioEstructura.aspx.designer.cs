@@ -10,7 +10,7 @@
 namespace SAPR {
     
     
-    public partial class Contact {
+    public partial class FormularioEstructura {
         
         /// <summary>
         /// Control cmbProyecto.

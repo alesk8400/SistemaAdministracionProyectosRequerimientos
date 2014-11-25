@@ -283,7 +283,7 @@
      <div class="row">
     <div class="col-lg-7">                                        
         
-        <asp:GridView ID="gridCriterios" runat="server" cssClass="table table-bordered" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+        <asp:GridView ID="gridCriterios" runat="server" cssClass="table table-bordered" OnSelectedIndexChanged="gridCriterios_SelectedIndexChanged" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
             <Columns>
                 <asp:ButtonField CommandName="Select" Text="Consultar" ShowHeader="True" HeaderText="Consultar"></asp:ButtonField>
             </Columns>
