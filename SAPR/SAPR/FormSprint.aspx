@@ -1,9 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormSprint.aspx.cs" Inherits="SAPR.FormSprint" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-    <style type="text/css"> 
-        body {background-color: #B0C4DE ;} 
-</style>
+        <br />
     <div class="col-lg-7">
             <div id="alertAlerta" class="alert alert-danger fade in" runat="server" hidden="hidden">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -11,7 +8,11 @@
                     <asp:Label ID="labelTipoAlerta" runat="server" Text="Alerta! "></asp:Label></strong><asp:Label ID="labelAlerta" runat="server" Text="Mensaje de alerta"></asp:Label>
             </div>
     </div>
+        <br />
+        <br />
+    <div class ="row">
     <div class="col-lg-6">
+        <div style="width:100%; margin-right: 800px; margin-left: 400px; position:relative; float: left">         
                     <div class="well bs-component">
                         <div class="row  text-center">
                             <legend>Sprints</legend>
@@ -28,18 +29,33 @@
                             <div class="row text-center">
                                 <div class="col-md-3">
                                     <label for="Sprints">Sprints</label>
+                                   
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="txtNombreS">Nombre <font color='red'>*</font></label>
+                                    
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="txtDescripcionS">Descripción  <font color='red'>*</font></label>
+                                   
+                                </div>
+                            </div>
+                            <div class ="row text-center">
+                                <div class="col-md-3">
+                                    
                                     <div class="dropdown-toggle">
                                         <asp:DropDownList ID="cmbSprints" runat="server" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="txtNombreS">Nombre <font color='red'>*</font></label>
+                                    
                                     <input id="txtNombreSprint" type="text" runat="server" enabled="false" />
                                 </div>
                                 <div class="col-md-5">
-                                    <label for="txtDescripcionS">Descripción  <font color='red'>*</font></label>
+                                    
                                     <textarea id="txtDescripcionSprint" cols="30" rows="3" runat="server"></textarea>
                                 </div>
+
                             </div>
                             <br />
                             <div class="text-center">
@@ -53,9 +69,16 @@
                         <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="" forecolor="black" controltovalidate="txtDescripcionSprint" validationgroup="B" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
                     </div>
                 </div>
-     <div class ="text-center">
+            </div>
+        </div>
+
+    <div class ="row">
+        <div class ="text-center">
         <label for="textObligatorio"><font color = "red"><i>Los campos con (*) son obligatorios</i> </font></label>
     </div>
+
+    </div>
+     
     <%--Modal Eliminar--%>
      <div class="modal fade" id="modalEliminarSprint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

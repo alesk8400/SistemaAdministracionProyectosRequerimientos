@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormModulo.aspx.cs" Inherits="SAPR.FormModulo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <br />
     <div class="col-lg-7">
             <div id="alertAlerta" class="alert alert-danger fade in" runat="server" hidden="hidden">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -7,14 +8,17 @@
                     <asp:Label ID="labelTipoAlerta" runat="server" Text="Alerta! "></asp:Label></strong><asp:Label ID="labelAlerta" runat="server" Text="Mensaje de alerta"></asp:Label>
             </div>
     </div>
-    <div class="col-lg-14">
+        <br />
+        <br />
+
+    <div class ="row">
+    <div class="col-lg-6">
+        <div style="width:100%; margin-right: 800px; margin-left: 400px; position:relative; float: left">   
                     <div class="well bs-component">
                         <div class="row text-center">
 
             <legend>Módulos</legend>          
         </div>
-
-        
             <fieldset>
                 <div class="row">
                  <button runat="server" id="btnAgregarModulo" onserverclick="btnAgregarModulo_Click" class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Agregar</button>
@@ -23,22 +27,48 @@
                 </div>
                 <br />
                 <div class="row text-center">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
+                    <label for="Sprints">Sprints</label>              
+                    </div>
+
+                    <div class= "col-md-2">
                     <label for="Modulos">Módulos</label>
+                    
+                    </div>
+                    <div class="col-md-4">
+                    <label for="txtNombreM">Nombre <font color='red'>*</font> </label>
+                  
+                    </div>
+                    <div class="col-md-4">
+                    <label for="txtDescripcionM">Descripción  <font color='red'>*</font> </label>
+           
+                    </div>
+                    </div>
+
+                <div class="row text-center">
+                    <div class="col-md-2">
+                                
                     <div class="dropdown-toggle">
                     <asp:DropDownList ID="cmbSprints" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbSprints_SelectedIndexChanged"></asp:DropDownList>
+                    </div>
+                        </div>
+                  <div class="col-md-2">
+                    <div class="dropdown-toggle">
                     <asp:DropDownList ID="cmbModulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbModulo_SelectedIndexChanged"></asp:DropDownList>
                     </div>
                     </div>
                     <div class="col-md-4">
-                    <label for="txtNombreM">Nombre <font color='red'>*</font> </label>
+                 
                     <input id="txtNombreModulo" runat ="server" type="text" />
                     </div>
                     <div class="col-md-4">
-                    <label for="txtDescripcionM">Descripción  <font color='red'>*</font> </label>
+                   
                     <textarea id="txtDescripcionModulo" runat ="server" cols="30" rows="3"></textarea>
                     </div>
-                    </div>
+                
+                
+                
+                </div>
 
                     <br />
                     <div class="text-center">
@@ -53,9 +83,14 @@
             <asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" errormessage="" forecolor="black" controltovalidate="txtDescripcionModulo" validationgroup="C" initialvalue="" xmlns:asp="#unknown"></asp:requiredfieldvalidator>
         </div>
             </div>
+        </div>
+    </div>
+
+     <div class ="row">
      <div class ="text-center">
         <label for="textObligatorio"><font color = "red"><i>Los campos con (*) son obligatorios</i> </font></label>
     </div>
+         </div>
     <!--Modal EliminarModulo-->
     <div class="modal fade" id="modalEliminarModulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

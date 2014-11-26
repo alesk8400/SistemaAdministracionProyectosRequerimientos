@@ -161,6 +161,7 @@ namespace SAPR
              idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
              gridSprints.DataSource = getSprints(idProyecto);
              gridSprints.DataBind();
+             NombreProyecto = cmbProyecto.SelectedItem.Text;
             // llenarCmbSprint();
 
          }

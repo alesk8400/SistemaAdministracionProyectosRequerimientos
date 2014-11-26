@@ -25,6 +25,7 @@ namespace SAPR
             {
                 this.txtNombreSprint.Disabled = true;
                 this.txtDescripcionSprint.Disabled = true;
+                llenarCmbSprint();
                 try
                 {
                     entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), NombreProyecto);
@@ -35,7 +36,7 @@ namespace SAPR
                 {
 
                 }
-                llenarCmbSprint();
+     
                 this.btnAceptarS.Disabled = true;
                 this.btnCancelarS.Disabled = true;
             }
@@ -107,6 +108,16 @@ namespace SAPR
             this.cmbSprints.Text = idSprint.ToString();
             //this.btnAgregarModulo.Disabled = false;
             llenarCmbSprint();
+            try
+                {
+                    entidadS = controladora.consultarSprint(cmbSprints.SelectedItem.ToString(), NombreProyecto);
+                    this.txtNombreSprint.Value = entidadS.Nombre;
+                    this.txtDescripcionSprint.Value = entidadS.Descripcion;
+                }
+            catch (Exception a)
+            {
+
+            }
         }
 
 
