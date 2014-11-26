@@ -12,7 +12,8 @@
         <br />
     <div class ="row">
     <div class="col-lg-6">
-        <div style="width:100%; margin-right: 800px; margin-left: 400px; position:relative; float: left">         
+        <div style="width:100%; margin-right: 800px; margin-left: 400px; position:relative; float: left"> 
+                    <a id="AYUDA" href="#modalAyuda" class="btn alert-link" role="button" data-toggle="modal" runat="server"><h4>Ayuda</h4></a>        
                     <div class="well bs-component">
                         <div class="row  text-center">
                             <legend>Sprints</legend>
@@ -111,6 +112,35 @@
                 <div class="modal-footer">
                     <button type="button" id="botonCancelarModal1" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <asp:Button ID="btnAceptarC" PostBackUrl="~/FormularioEstructura.aspx" CssClass="btn btn-primary" runat="server" Text="Aceptar" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <%--Modal AYUDA--%>
+     <div class="modal fade" id="modalAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="modalAyudar"><i class="fa fa-exclamation-triangle text-danger fa-2x">Ayuda</i></h3>
+                </div>
+                <div class="modal-body">
+                    En esta página se encontrará con 3 botones: <font color="blue" size ="3px" >Agregar</font>, <font color="green" size ="3px" >Modificar</font> y <font color="brown" size ="3px">Eliminar</font>
+                    <br />
+                    El botón <font color="blue" >Agregar</font> sirve para insertar un nuevo Sprint al Proyecto seleccionado con anticipación. 
+                    <br />
+                    El botón <font color="green" >Modificar</font> sirve para hacer cambios en el Sprint seleccionado.
+                    <br />
+                    El botón <font color="brown" >Eliminar</font> sirve para borrar el Sprint seleccionado.
+                    <br />
+                    <br />
+                    NOTA: Los botones  <font color="green" >Modificar</font> y <font color="brown" >Eliminar</font>  estarán deshabilitados si no hay Sprints creados en el proyecto con anticipación. Además al dar click a <font color="blue" >Agregar</font> o <font color="green" >Modificar</font>
+                    se habilitan los espacios de Nombre y Descripción para asignarles los mismos a un Sprint.
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonSalir" class="btn btn-danger" data-dismiss="modal">Salir</button>
                 </div>
             </div>
         </div>

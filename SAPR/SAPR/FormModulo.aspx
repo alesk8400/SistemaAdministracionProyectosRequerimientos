@@ -134,4 +134,33 @@
             </div>
         </div>
     </div>
+
+    <%--Modal AYUDA--%>
+     <div class="modal fade" id="modalAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="modalAyudar"><i class="fa fa-exclamation-triangle text-danger fa-2x">Ayuda</i></h3>
+                </div>
+                <div class="modal-body">
+                    En esta página se encontrará con 3 botones: <font color="blue" size ="3px" >Agregar</font>, <font color="green" size ="3px" >Modificar</font> y <font color="brown" size ="3px">Eliminar</font>
+                    <br />
+                    El botón <font color="blue" >Agregar</font> sirve para insertar un nuevo Módulo al Sprint que está seleccionado. 
+                    <br />
+                    El botón <font color="green" >Modificar</font> sirve para hacer cambios en el Módulo que está seleccionado en ese Sprint.
+                    <br />
+                    El botón <font color="brown" >Eliminar</font> sirve para borrar el Módulo que está seleccionado en ese Sprint.
+                    <br />
+                    <br />
+                    NOTA: Los 3 botones estarán deshabilitados si no hay Sprints creados en el proyecto con anticipación. Además al dar click a <font color="blue" >Agregar</font> o <font color="green" >Modificar</font>
+                    se habilitan los espacios de Nombre y Descripción para asignarles los mismos a un Módulo.
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonSalir" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>

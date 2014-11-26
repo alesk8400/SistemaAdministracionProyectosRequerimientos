@@ -28,20 +28,25 @@
         </div>
     </div>
     
+            <div class ="row">
                     <div class="col-lg-8">
                     <div class="form-group">
-                        <label for="textProyectos" class="col-sm-3 control-label">Proyectos: </label>
-                        <div class="dropdown-toggle">
-                            <div class="help-block with-error">
-                                <asp:DropDownList ID="cmbProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbProyecto_SelectedIndexChanged"></asp:DropDownList>
-                                </div>
-                        </div>
-                      <%-- <a id="ModalManejarS" href="FormSprint.aspx" class="btn btn-primary" role="button" runat ="server"><i class="fa fa-trash-o fa-lg"></i>Manejar Sprints</a>--%>
-                        <asp:Button ID="btnManejarS" PostBackUrl="~/FormSprint.aspx" CssClass="btn btn-primary" runat="server" Text="Manejar Sprints" />
-                        <asp:Button ID="btnManejarM" PostBackUrl="~/FormModulo.aspx" CssClass="btn btn-primary" runat="server" Text="Manejar Módulo" />
-
+                        <label for="textProyectos" class="col-sm-3 control-label"><font size ="4px">Seleccione Proyecto:</font> </label>
+                       <div class="dropdown-toggle">
+                                <asp:DropDownList ID="cmbProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbProyecto_SelectedIndexChanged"></asp:DropDownList>           
+                       </div>
+                                       
                     </div>
                     </div>
+            </div>
+    <br />
+    <br />
+    <div class ="row">
+        <asp:Button ID="btnManejarS" PostBackUrl="~/FormSprint.aspx" CssClass="btn btn-primary" runat="server" Text="Manejar Sprints" />
+        <asp:Button ID="btnManejarM" PostBackUrl="~/FormModulo.aspx" CssClass="btn btn-primary" runat="server" Text="Manejar Módulo" />
+    </div>
+    <br />
+    <br />
     
 
     <div class="col-lg-7">
