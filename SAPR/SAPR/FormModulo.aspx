@@ -14,10 +14,15 @@
     <div class ="row">
     <div class="col-lg-6">
         <div style="width:100%; margin-right: 800px; margin-left: 400px; position:relative; float: left">   
+               <a id="AYUDA" href="#modalAyuda" class="btn alert-link" role="button" data-toggle="modal" runat="server"><h4>Ayuda</h4></a> 
                     <div class="well bs-component">
                         <div class="row text-center">
 
-            <legend>Módulos</legend>          
+            <legend>
+            Módulos                     
+                          
+            </legend>  
+                   
         </div>
             <fieldset>
                 <div class="row">
@@ -89,6 +94,7 @@
      <div class ="row">
      <div class ="text-center">
         <label for="textObligatorio"><font color = "red"><i>Los campos con (*) son obligatorios</i> </font></label>
+         
     </div>
          </div>
     <!--Modal EliminarModulo-->
