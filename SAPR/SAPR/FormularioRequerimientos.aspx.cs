@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Web.UI.WebControls;
 using SAPR.App_Code.Entidades;
+//using ASPNetFileUpDownLoad.Utilities;
 
 namespace SAPR
 {
@@ -16,6 +17,7 @@ namespace SAPR
 
         ControladoraRequerimiento controladora = new ControladoraRequerimiento();
         private static int modo = 0;
+        private static int modoC = 0;
         private static EntidadRequerimientos consultado;
         private static EntidadCriterio criterioConsultado; 
         private static int idProyecto = 0;
@@ -32,6 +34,7 @@ namespace SAPR
             if (modo != 1 && modo != 2)
             {
                 restaurarPantallaSinLimpiar();
+                habilitarCamposC(false);
             }
         }
 
@@ -62,6 +65,8 @@ namespace SAPR
             txtCantidadR.Value = consultado.Cantidad.ToString();
             textNombreR.Value = consultado.Nombre;
             textD.Value = consultado.Descripcion;
+            //File.WriteAllBytes(consultado.Nombre, consultado.Archivo);
+            //subirArchivo.Fil
             cmbPrioridad.SelectedValue = consultado.Prioridad.ToString();
             cmbEstado.SelectedValue = consultado.Estado.ToString();
             cmbMedida.SelectedValue = consultado.Medida.ToString();
@@ -77,6 +82,7 @@ namespace SAPR
             DataTable criterios = controladora.getCriteriosDeRequerimiento(idRequerimiento);
             gridCriterios.DataSource = criterios;
             gridCriterios.DataBind();
+            btnAgregarCriterio.Disabled = false;
         }
 
         private void llenarCmbProy()
@@ -94,8 +100,23 @@ namespace SAPR
 
         protected void btnAceptarC_Click(object sender, EventArgs e)
         {
-            modo = 1;
-            //habilitarCampos(true);
+            //aqui
+            String[] resultadoF = new String[1];
+            string nombreC = nombreCriterio.Value.ToString();
+            string contexto = txtContexto.Value.ToString();
+            int escenario = Int32.Parse(txtEscenario.Value.ToString());
+            string resultado = txtRes.Value.ToString();
+            if(modoC == 1){
+                resultadoF = controladora.insertarCriterio(nombreC,escenario,contexto,resultado,idRequerimiento);
+            } else if (modoC == 2){                
+                resultadoF = controladora.modificarCriterio(nombreC, escenario, contexto, resultado, idRequerimiento, criterioConsultado);            
+            
+            }
+            restaurarPantallaSinLimpiarC();
+            DataTable criterios = controladora.getCriteriosDeRequerimiento(idRequerimiento);
+            gridCriterios.DataSource = criterios;
+            gridCriterios.DataBind();
+            btnAgregarCriterio.Disabled = false;
         }
 
         protected void restaurarPantallaSinLimpiar()
@@ -105,6 +126,15 @@ namespace SAPR
             btnModificarReque.Disabled = true;
             btnEliminarReque.Disabled = true;
             botonCancelar.Disabled = true;
+        }
+
+        protected void restaurarPantallaSinLimpiarC()
+        {
+            habilitarCamposC(false);
+            btnModificarCriterio.Disabled = true;
+            btnEliminarCriterio.Disabled = true;
+            btnAcepCri.Disabled = true;
+            btnCanCri.Disabled = true;
         }
 
         protected void habilitarCamposR(Boolean habilitar)
@@ -119,6 +149,19 @@ namespace SAPR
             this.cmbModulo.Enabled = habilitar;
             this.botonAceptarR.Disabled = !habilitar;
             this.botonCancelar.Disabled = !habilitar;
+        }
+
+        protected void habilitarCamposC(Boolean habilitar)
+        {
+            this.btnAgregarCriterio.Disabled = !habilitar;
+            this.btnModificarCriterio.Disabled = !habilitar;
+            this.btnEliminarCriterio.Disabled = !habilitar;
+            this.txtContexto.Disabled = !habilitar;
+            this.txtEscenario.Disabled = !habilitar;
+            this.txtRes.Disabled = !habilitar;
+            this.nombreCriterio.Disabled = !habilitar;
+            this.btnAcepCri.Disabled = !habilitar;
+            this.btnCanCri.Disabled = !habilitar;
         }
 
         protected void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
@@ -220,6 +263,8 @@ namespace SAPR
             this.txtEscenario.Value = criterioConsultado.Escenario.ToString();
             this.txtContexto.Value = criterioConsultado.Contexto;
             this.txtRes.Value = criterioConsultado.Resultado;
+            btnModificarCriterio.Disabled = false;
+            btnEliminarCriterio.Disabled = false;
 
         }
 
@@ -231,22 +276,40 @@ namespace SAPR
 
         protected void btnAgregarCriterio_ServerClick(object sender, EventArgs e)
         {
-
+            btnAcepCri.Disabled = false;
+            btnCanCri.Disabled = false;
+            habilitarCamposC(true);
+            limpiarCamposC();
+            modoC = 1;
         }
 
         protected void btnModificarCriterio_ServerClick(object sender, EventArgs e)
         {
-
+            btnAcepCri.Disabled = false;
+            btnCanCri.Disabled = false;
+            habilitarCamposC(true);
+            modoC = 2;
         }
 
         protected void botonAceptarModalCriterio_ServerClick(object sender, EventArgs e)
         {
+            String[] resultado = new String[1];
+            btnAcepCri.Disabled = false;
+            btnCanCri.Disabled = false;
+            resultado = controladora.eliminarCriterio(idCriterio);
+            DataTable criterios = controladora.getCriteriosDeRequerimiento(idRequerimiento);
+            gridCriterios.DataSource = criterios;
+            gridCriterios.DataBind();
+            restaurarPantallaSinLimpiarC();
+            limpiarCamposC();
 
         }
 
         protected void botonAceptarCancelarCriterio_ServerClick(object sender, EventArgs e)
         {
-
+            restaurarPantallaSinLimpiarC();
+            btnModificarCriterio.Disabled = false;
+            btnEliminarCriterio.Disabled = false;
         }
     }
 }

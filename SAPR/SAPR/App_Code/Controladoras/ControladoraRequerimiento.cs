@@ -325,26 +325,8 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDRequerimiento.getRequerimientos();
         }
 
-        //public String[] insertarCriterio(String nombreCriterio, String escenario, String contexto, String resultado, 
-        //    String nombreRequerimiento, String nombreProyecto, String nombreSprint, String nombreModulo)
-        //{            
-        //    int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
-        //    int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
-        //    int idModulo;
-
-        //    if (nombreModulo == "Ninguno")/////******PUEDE CAMBIAR********
-        //    {
-        //        idModulo = -1;
-        //    }
-        //    else
-        //    {
-        //        idModulo = 0;
-        //        //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
-        //    }   
-        //int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
-
         public String[] insertarCriterio(String nombreCriterio, int escenario, String contexto, String resultado,
-            int idRequerimiento, int idProyecto, int idSprint, int idModulo)
+            int idRequerimiento)
         {
 
             
@@ -361,27 +343,8 @@ namespace SAPR.App_Code.Controladoras
 
         }
 
-        //public String[] modificarCriterio(String nombreCriterio, String escenario, String contexto, String resultado, 
-        //String nombreRequerimiento, String nombreProyecto, String nombreSprint, String nombreModulo, EntidadCriterio criterioViejo){
-
-        //    int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
-        //    int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
-        //    int idModulo;
-
-        //    if (nombreModulo == "Ninguno")/////******PUEDE CAMBIAR********
-        //    {
-        //        idModulo = -1;
-        //    }
-        //    else
-        //    {
-        //        idModulo = 0;
-        //        //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
-        //    }   
-
-        //    int idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
-
         public String[] modificarCriterio(String nombreCriterio, int escenario, String contexto, String resultado,
-        int idRequerimiento, int idProyecto, int idSprint, int idModulo, EntidadCriterio criterioViejo)
+        int idRequerimiento, EntidadCriterio criterioViejo)
         {
 
 
