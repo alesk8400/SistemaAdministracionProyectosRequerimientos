@@ -1,8 +1,4 @@
 ﻿<%@ Page Title="Estructura" Language="C#" MasterPageFile="~/Neo.Master" AutoEventWireup="true" CodeBehind="FormularioEstructura.aspx.cs" Inherits="SAPR.FormularioEstructura" %>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Sprint-2-Modales
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="head">
 

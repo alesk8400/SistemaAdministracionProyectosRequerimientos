@@ -30,10 +30,15 @@ namespace SAPR
            if (!IsPostBack)
             {
                 llenarCmbProy();
-                if(cmbProyecto.Text==""){
-                    //btnAgregarSprint.Disabled = true;
+
+                if (cmbProyecto.SelectedItem.Text == "-"){
+                    btnManejarS.Enabled = false;
+                    btnManejarM.Enabled = false;
+                    
                 } else{
-                    //btnAgregarSprint.Disabled = false;
+                    btnManejarS.Enabled = true;
+                    btnManejarM.Enabled = true;
+                   
                 }
                 try {
                     idProyecto = Convert.ToInt32(cmbProyecto.SelectedItem.Value.ToString());
