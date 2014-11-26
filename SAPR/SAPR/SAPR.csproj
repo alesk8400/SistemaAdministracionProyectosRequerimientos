@@ -144,6 +144,20 @@
     <Compile Include="App_Code\Entidades\EntidadRequerimientos.cs" />
     <Compile Include="App_Code\Entidades\EntidadSprint.cs" />
     <Compile Include="App_Code\Entidades\EntidadModulo.cs" />
+    <Compile Include="FormModulo.aspx.cs">
+      <DependentUpon>FormModulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormModulo.aspx.designer.cs">
+      <DependentUpon>FormModulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormSprint.aspx.cs">
+      <DependentUpon>FormSprint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormSprint.aspx.designer.cs">
+      <DependentUpon>FormSprint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormularioRequerimientos.aspx.cs">
       <DependentUpon>FormularioRequerimientos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -167,6 +181,8 @@
     <Compile Include="App_Code\Entidades\EntidadCliente.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Content Include="FormModulo.aspx" />
+    <Content Include="FormSprint.aspx" />
     <Content Include="FormularioEstructura.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker3.css" />

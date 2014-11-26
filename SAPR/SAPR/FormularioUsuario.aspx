@@ -2,9 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     
-    <div></div>
-
-    
     <div class="page-header">
         <div class="row">
             <div class="col-lg-11">
