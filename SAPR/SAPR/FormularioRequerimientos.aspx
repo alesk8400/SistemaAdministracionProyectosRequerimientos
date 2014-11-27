@@ -6,8 +6,8 @@
             <div class="col-lg-11">
                 <h1><i class="fa fa-truck"></i>Requerimientos</h1>
             </div>
-            <div class="col-lg-1">
-                <h2><a id="informacion" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>
+           <div class =" col-lg-1">
+                <a id="AYUDA" href="#modalAyuda" class="btn alert-link" role="button" data-toggle="modal" runat="server"><h4>Ayuda</h4></a> 
             </div>
         </div>
     </div>
@@ -404,6 +404,38 @@
                 <div class="modal-footer">
                     <button type="button" id="botonCancelarModal1Criterio" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button type="button" id="botonAceptarCancelarCriterio" class="btn btn-primary" runat="server" onserverclick="botonAceptarCancelarCriterio_ServerClick">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Modal AYUDA--%>
+     <div class="modal fade" id="modalAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="modalAyudar"><i class="fa fa-exclamation-triangle text-danger fa-2x">Ayuda</i></h3>
+                </div>
+                <div class="modal-body">
+                    En esta página se administran los requerimientos asociados a los módulos de un Proyecto.
+                    <br />
+                    <br />
+                    Aquí se pueden <font color="blue" >Agregar</font>, <font color="green" >Modificar</font>, <font color="brown" size ="3px">Eliminar</font> y <font color ="grey">Consultar</font> requerimientos. 
+                    También aquí se pueden <font color="blue" >Agregar</font>, <font color="green" >Modificar</font>, <font color="brown" size ="3px">Eliminar</font> los criterios de aceptación asociados a cada requerimiento. 
+                    <br />
+                    <br />
+                    Primero se selecciona el proyecto al cual se le quiere agregar los requerimientos. Aparecerá un cuadro con información de ese proyecto. Luego de eso se cargará un cuadro con la lista de requerimientos.  
+                    Se habilitará el botón de <font color="blue" >Agregar</font> requerimientos, y al presionarlo se habilitarán los campos para ingresar los datos y cuando se ingresan todos los datos se presiona Aceptar.
+                    Si se elije algún requerimiento del cuadro, se habilitarán los botones <font color="green" >Modificar</font> y <font color="brown" size ="3px">Eliminar</font>.
+                    <br />
+                    <br />
+                    Además si se elije algún requerimiento se habilitará el botón de <font color="blue" >Agregar</font> un criterio, y ahí se pueden ingresar los criterios de aceptación asociados a ese requerimiento.
+                    Aparecerá un cuadro con la lista de criterios y se elije uno se habilitan los botones de <font color="green" >Modificar</font> y <font color="brown" size ="3px">Eliminar criterios</font>.
+                                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonSalir" class="btn btn-danger" data-dismiss="modal">Salir</button>
                 </div>
             </div>
         </div>

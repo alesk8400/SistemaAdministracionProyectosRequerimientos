@@ -22,13 +22,13 @@ namespace SAPR {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// Control informacion.
+        /// Control AYUDA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor informacion;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor AYUDA;
         
         /// <summary>
         /// Control btnAgregarProyecto.

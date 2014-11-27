@@ -7,8 +7,8 @@
             <div class="col-lg-11">
                 <h1><i class="fa fa-truck"></i>Usuarios</h1>
             </div>
-            <div class="col-lg-1">
-                <h2><a id="informacion" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>
+            <div class =" col-lg-1">
+                <a id="AYUDA" href="#modalAyuda" class="btn alert-link" role="button" data-toggle="modal" runat="server"><h4>Ayuda</h4></a> 
             </div>
         </div>
     </div>
@@ -283,6 +283,35 @@
                 <div class="modal-footer">
                     <button type="button" id="botonCancelarModal1" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button type="button" id="botonAceptarModal2" class="btn btn-primary" runat="server" onserverclick="btnCancelar_Click">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <%--Modal AYUDA--%>
+     <div class="modal fade" id="modalAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="modalAyudar"><i class="fa fa-exclamation-triangle text-danger fa-2x">Ayuda</i></h3>
+                </div>
+                <div class="modal-body">
+                    En esta página se encuentra localizado el módulo de administración de Usuarios. En este módulo se pueden <font color="blue" >Agregar</font>, <font color="green" >Modificar</font>, <font color="brown" >Eliminar</font> y <font color ="grey">Consultar</font> los usuarios registrados.
+                    Esto se puede lograr con los 3 botones de <font color="blue" >Agregar</font>, <font color="green" >Modificar</font> y <font color="brown" >Eliminar</font>.
+                    <br />
+                    <br />
+                    Por ejemplo: Si se selecciona en la tabla de Usuario uno de ellos, se habilitan las opciones de <font color="green" >Modificar</font> y <font color="brown" >Eliminar</font>. Si no se selecciona ninguno
+                    solo se puede <font color="blue" >agregar</font> usuarios.
+                    <br />
+                    <br />
+                    El grid que se encuentra al final de la página es una <font color ="grey">consulta</font> general de los usuarios registrados en el sistema.
+                    <br />
+                    <br />
+                     Nota: El Rol por ahora en el sistema no importa por ahora.          
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonSalir" class="btn btn-danger" data-dismiss="modal">Salir</button>
                 </div>
             </div>
         </div>

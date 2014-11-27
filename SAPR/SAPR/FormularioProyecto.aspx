@@ -12,8 +12,8 @@
             <div class="col-lg-11">
                 <h1><i class="fa fa-truck"></i>Proyecto</h1>
             </div>
-            <div class="col-lg-1">
-                <h2><a id="informacion" href="#modalInformacion" data-toggle="modal" runat="server"><i class="fa fa-question-circle text-info"></i></a></h2>
+            <div class =" col-lg-1">
+                <a id="AYUDA" href="#modalAyuda" class="btn alert-link" role="button" data-toggle="modal" runat="server"><h4>Ayuda</h4></a> 
             </div>
         </div>
     </div>
@@ -372,14 +372,43 @@
     </div>
 
     
-</div>
-         
-</div>
-
-    
-</div>
-</div>
-</div>
+  <%--Modal AYUDA--%>
+     <div class="modal fade" id="modalAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="modalAyudar"><i class="fa fa-exclamation-triangle text-danger fa-2x">Ayuda</i></h3>
+                </div>
+                <div class="modal-body">
+                    En esta página esta localizado el área de administración de Proyectos. 
+                    <br />
+                    <br />
+                    Aquí se pueden <font color="blue" >Agregar</font>, <font color="green" >Modificar</font>, <font color="brown" size ="3px">Eliminar</font> y <font color ="grey">Consultar</font> proyectos. Como también asociar o desasociar usuarios a los mismos.
+                    <br />
+                    <br />
+                     Se encuentran 3 botones (<font color="blue" >Agregar</font>, <font color="green" >Modificar</font> y <font color="brown" size ="3px">Eliminar</font>) los cuales sirven para las características descritas anteriormente. 
+                    <br />
+                    <br />
+                    Para <font color ="grey">consultar</font> un proyecto se le da click a la opcion de <font color ="grey">Consultar</font> en la tabla de Proyectos creados al final de la página.
+                    Luego los botones <font color="green" >Modificar</font> y <font color="brown" size ="3px">Eliminar</font> serán habilitados.
+                    <br />
+                    <br />
+                    Al <font color="brown" size ="3px">eliminar</font> un proyecto se desasocian todos sus miembros asociados.
+                    <br />
+                    <br />
+                    Un proyecto "Finalizado" no se puede eliminar.
+                    <br />
+                    <br />
+                    Nota: Un proyecto siempre debe tener un líder asociado. (El lider debe ser marcado también como miembro).
+                       
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botonSalir" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     
 </asp:Content>

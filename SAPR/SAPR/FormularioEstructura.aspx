@@ -140,8 +140,15 @@
                     <h3 class="modal-title" id="modalAyudar"><i class="fa fa-exclamation-triangle text-danger fa-2x">Ayuda</i></h3>
                 </div>
                 <div class="modal-body">
-                    
-                    
+                    En esta página se podrá seleccionar el proyecto al que se le desea revisar su jerarquía, o crear la misma. Si no hubiesen proyectos creados
+                    con anticipación, entonces no podrían manejarse ni Sprints ni Módulos.
+                    <br />
+                    <br />
+                    Los dos botones que se observan son: Manejar Sprints y Manejar Módulos. Los cuales sirven para <font color="blue" >Agregar</font>, <font color="green" >Modificar</font> y <font color="brown" >Eliminar</font> los mismos de ese proyecto
+                    seleccionado.
+                    <br />
+                    <br />
+                    Abajo de los botones se observa un árbol con la jerarquía del proyecto: Sprints, dentro sus módulos y dentro sus requerimientos.                 
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="botonSalir" class="btn btn-danger" data-dismiss="modal">Salir</button>
