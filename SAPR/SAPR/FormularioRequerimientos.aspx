@@ -24,7 +24,7 @@
     <legend class="text-center">Información de Proyecto</legend> 
      <div class="col-lg-6" style="margin-left:25%">    
                                          
-                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="true" CssClass ="table  text-center"  ForeColor="Black" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
+                    <asp:GridView ID="gridProyecto" runat="server" AutoGenerateColumns="true" CssClass ="table  text-center"  ForeColor="Black" AllowPaging="True">
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Blue" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />

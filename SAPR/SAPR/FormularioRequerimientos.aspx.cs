@@ -12,9 +12,13 @@ using SAPR.App_Code.Entidades;
 
 namespace SAPR
 {
+    /*
+    * Clase para manejar la interfaz de Requerimientos.
+    */
     public partial class FormularioRequerimientos : System.Web.UI.Page
     {
 
+        //Creación de variables estaticas que permiten movernos entre métodos y creacion de las instancias que se necesitan
         ControladoraRequerimiento controladora = new ControladoraRequerimiento();
         private static int modo = 0;
         private static int modoC = 0;
@@ -24,6 +28,12 @@ namespace SAPR
         private static int idRequerimiento = 0;
         private static int idCriterio = 0;
 
+
+
+        /* Método que permite cargar la pagina, manejando la lógica de despliegue
+         * por ejemplo deshabilida botones a través del manejo de modos 
+         */
+
         protected void Page_Load(object sender, EventArgs e) {
 
             if (!IsPostBack)
@@ -31,13 +41,16 @@ namespace SAPR
                 llenarCmbProy();
             }
             
-            if (modo != 1 && modo != 2)
+            if (modo != 1 && modo != 2)  // Modos inserción y modificación
             {
                 restaurarPantallaSinLimpiar();
                 habilitarCamposC(false);
             }
         }
 
+        /* Método que maneja el evento del botón de Agregar Requerimiento  de forma que limpia y habilita
+         * los campos y limpiandolos, además asigna el modo agragar a la variable estática
+         */
         protected void btnAgregarReque_Click(object sender, EventArgs e)
         {
             modo = 1;
@@ -45,23 +58,24 @@ namespace SAPR
             limpiarCamposR();
         }
 
+        /* Método que maneja el evento del botón de Modificar el Requerimiento de forma que NO limpia 
+        * los campos pero los habilita, además asigna el modo modificación a la variable estática
+        */
         protected void btnModificarReque_Click(object sender, EventArgs e)
         {
             modo = 2;
             habilitarCamposR(true);
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-
-        }
-
+        /* Método que maneja el evento del link de consultar Requerimiento en el grid, por lo tanto se hace el llamado a la controladora
+         * para traer los datos del requerimiento seleccionado, con dichos datos se poblan los diferetentes campos de texto
+         * y se seleccionan las correspondientes opciones en los comboboxes
+        */
         protected void GridRequerimientos_SelectedIndexChanged(object sender, EventArgs e)  // consultar
         {
 
-            idRequerimiento = Int32.Parse(gridRequerimientos.SelectedRow.Cells[4].Text.ToString());
-            consultado = controladora.getRequerimiento(idRequerimiento);
+            idRequerimiento = Int32.Parse(gridRequerimientos.SelectedRow.Cells[4].Text.ToString());  //Se obtiene el id del requerimiento
+            consultado = controladora.getRequerimiento(idRequerimiento);  //Se trae la entidad de Requerimiento consultada con el id anterior
             txtCantidadR.Value = consultado.Cantidad.ToString();
             textNombreR.Value = consultado.Nombre;
             textD.Value = consultado.Descripcion;
@@ -79,15 +93,17 @@ namespace SAPR
             cmbModulo.SelectedValue = consultado.IdModulo.ToString();
             btnModificarReque.Disabled = false;
             btnEliminarReque.Disabled = false;     
-            DataTable criterios = controladora.getCriteriosDeRequerimiento(idRequerimiento);
+            DataTable criterios = controladora.getCriteriosDeRequerimiento(idRequerimiento);  // Tambien se pobla el grid de Criterios de Aceptación
             gridCriterios.DataSource = criterios;
             gridCriterios.DataBind();
             btnAgregarCriterio.Disabled = false;
         }
 
+        /* Método que permite llenar el combobox de proyecto, de forma que se cargha con los nombres de los poryectos pero
+         * el valor que se obtiene al seleccionarlo es el correspondiente id
+        */
         private void llenarCmbProy()
         {
-            //cmbProyecto.Items.Clear();
             DataTable datos_proyecto = controladora.getNombresProyectos();
             cmbProyecto.DataSource = datos_proyecto;
             cmbProyecto.DataTextField = "Nombre";
@@ -97,16 +113,17 @@ namespace SAPR
         }
 
 
-
+        /* Método que maneja el evento del boton aceptar Criterio, es decir es el evento que maneja la aprobación de las diferentes acciones
+         * siendo estas Agregra, Modificar, eliminar CRITERIO
+        */
         protected void btnAceptarC_Click(object sender, EventArgs e)
         {
-            //aqui
             String[] resultadoF = new String[1];
             string nombreC = nombreCriterio.Value.ToString();
             string contexto = txtContexto.Value.ToString();
             int escenario = Int32.Parse(txtEscenario.Value.ToString());
             string resultado = txtRes.Value.ToString();
-            if(modoC == 1){
+            if(modoC == 1){  // Modo de inserción 
                 resultadoF = controladora.insertarCriterio(nombreC,escenario,contexto,resultado,idRequerimiento);
             } else if (modoC == 2){                
                 resultadoF = controladora.modificarCriterio(nombreC, escenario, contexto, resultado, idRequerimiento, criterioConsultado);            
@@ -119,6 +136,10 @@ namespace SAPR
             btnAgregarCriterio.Disabled = false;
         }
 
+
+        /* Método que permite deshabilitar campos y no limpiar la pantalla requerimientos de forma que queda en modo consulta
+         * es decir la informacion de un requerimiento recien insertado
+        */
         protected void restaurarPantallaSinLimpiar()
         {
             habilitarCamposR(false);
@@ -128,6 +149,9 @@ namespace SAPR
             botonCancelar.Disabled = true;
         }
 
+        /* Método que permite deshabilitar campos y no limpiar la pantalla de Criterios de Aceptación de forma que queda en modo consulta
+         * es decir la informacion de un requerimiento recien insertado
+        */
         protected void restaurarPantallaSinLimpiarC()
         {
             habilitarCamposC(false);
@@ -137,6 +161,9 @@ namespace SAPR
             btnCanCri.Disabled = true;
         }
 
+        /* Método que permite habilitar campos de los requerimientos de forma que el usuario pueda agregar o
+         * modificar un requerimiento.
+        */
         protected void habilitarCamposR(Boolean habilitar)
         {
             this.textNombreR.Disabled = !habilitar;
@@ -150,7 +177,9 @@ namespace SAPR
             this.botonAceptarR.Disabled = !habilitar;
             this.botonCancelar.Disabled = !habilitar;
         }
-
+        /* Método que permite habilitar campos de los requerimientos de forma que el usuario pueda agregar o
+        * modificar un Criterio de Aceptación
+        */
         protected void habilitarCamposC(Boolean habilitar)
         {
             this.btnAgregarCriterio.Disabled = !habilitar;
@@ -163,6 +192,10 @@ namespace SAPR
             this.btnAcepCri.Disabled = !habilitar;
             this.btnCanCri.Disabled = !habilitar;
         }
+
+        /* Método que maneja el evento del boton aceptar Criterio, es decir es el evento que maneja la aprobación de las diferentes acciones
+        * siendo estas Agregra, Modificar, eliminar CRITERIO
+        */
 
         protected void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
