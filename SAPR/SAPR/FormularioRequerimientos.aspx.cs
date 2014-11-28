@@ -193,8 +193,8 @@ namespace SAPR
             this.btnCanCri.Disabled = !habilitar;
         }
 
-        /* Método que maneja el evento del boton aceptar Criterio, es decir es el evento que maneja la aprobación de las diferentes acciones
-        * siendo estas Agregra, Modificar, eliminar CRITERIO
+        /* Método que maneja el evento del combobox Proyecto, que permite cargar los datos básicos del proyecto
+         * además pobla los comboboxes de sus respectivos sprints
         */
 
         protected void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
@@ -213,12 +213,15 @@ namespace SAPR
 
         }
 
+        /* Método que maneja el evento del boton aceptar Requerimiento, es decir es el evento que maneja la aprobación de las diferentes acciones para requerimientos
+        * siendo estas Agregar, Modificar, eliminar Requerimiento
+        */
         protected void botonAceptarR_ServerClick(object sender, EventArgs e) {
             String[] resultado = new String[1];
             Stream strm;
             BinaryReader br;
             Byte[] filesize = null;
-            if (subirArchivo.HasFile)
+            if (subirArchivo.HasFile)   //Manejo del archivo, se necesita un procesamiento previo para poder guardar el archivo en la base de datos
             {
                 try
                 {
@@ -239,20 +242,23 @@ namespace SAPR
             string medida = cmbMedida.SelectedValue.ToString();
             string nombre = textNombreR.Value.ToString();
             string descrip = textD.Value.ToString();
-            if (modo == 1) {
-                resultado = controladora.insertarRequerimiento(idModulo, idProyecto, nombre, descrip, prioridad, estado,cantidad, medida, filesize);             
+            if (modo == 1) {  //Modo Insertar
+                resultado = controladora.insertarRequerimiento(idModulo, idProyecto, nombre, descrip, prioridad, estado,cantidad, medida, filesize);             // llamado a la controladora para hacer inserción
             }
             if (modo == 2) {
-                resultado = controladora.modificarRequerimiento(idModulo,idProyecto,nombre,descrip,prioridad,estado,cantidad,medida,filesize,consultado);
+                resultado = controladora.modificarRequerimiento(idModulo, idProyecto, nombre, descrip, prioridad, estado, cantidad, medida, filesize, consultado);  // llamado a la controladora para hacer la modificación
             }
             restaurarPantallaSinLimpiar();
-            DataTable datos_reque = controladora.getRequerimientosDeProyecto(Int32.Parse(cmbProyecto.SelectedItem.Value));
+            DataTable datos_reque = controladora.getRequerimientosDeProyecto(Int32.Parse(cmbProyecto.SelectedItem.Value));  //Se actualiza el grid
             gridRequerimientos.DataSource = datos_reque; 
             gridRequerimientos.DataBind();
 
         }
 
-
+        /* Método que maneja el evento del combobox Sprint, que permite cargar o poblar el combobox de modulos 
+         * al igual que los otros comboboxes se muestran los nombres de los modulos pero al seleccionarlo 
+         * se obtienen los ids de los modulos
+        */
         protected void cmbSprint_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idSprint = Int32.Parse(cmbSprint.SelectedValue.ToString());
@@ -262,6 +268,10 @@ namespace SAPR
             cmbModulo.DataBind();
         }
 
+        /* Método que maneja el evento del boton aceptar del modal (del caso en que se quiera eliminar un Requerimiento)
+         * es el encargado de comunicarse con la controladora para eliminar el requerimiento consultado
+         * además de limpiar el grid de requerimientos
+        */
         protected void botonAceptarModalReque_ServerClick(object sender, EventArgs e){
             int idMod = Int32.Parse(cmbModulo.SelectedValue.ToString());
             string nombre = textNombreR.Value.ToString();
@@ -274,12 +284,15 @@ namespace SAPR
             limpiarCamposR();
         }
 
+        /* Método que permite limpiar campos de los requerimientos
+        */
         protected void limpiarCamposR() {
             this.textNombreR.Value = "";
             this.textD.Value = "";
             this.txtCantidadR.Value = "";
         }
-
+        /* Método que permite limpiar campos de los requerimientos
+        */
         protected void limpiarCamposC()
         {
             this.nombreCriterio.Value = "";
@@ -288,6 +301,9 @@ namespace SAPR
             this.txtRes.Value = "";
         }
 
+        /* Método que maneja el evento del link de consultar en el grid Criterios, por lo tanto se hace el llamado a la controladora
+        * para traer los datos del criterio seleccionado, con dichos datos se poblan los diferetentes campos de texto
+        */
         protected void gridCriterios_SelectedIndexChanged(object sender, EventArgs e)
         {
             idCriterio = Int32.Parse(gridCriterios.SelectedRow.Cells[1].Text.ToString());
@@ -301,12 +317,19 @@ namespace SAPR
 
         }
 
+
+        /* Método que maneja el evento del boton Aceptar en el modal que se despliega al dar Cancelar una operación de Requerimiento, 
+         * esto limpia los campos de los requerimientos y restaura la pantalla a su estado incial
+        */
         protected void botonAceptarCancelar_ServerClick(object sender, EventArgs e)
         {
             limpiarCamposR();
             restaurarPantallaSinLimpiar();
         }
 
+        /* Método que maneja el evento del boton Agregar Criterio, activando dicho modo y habilidando  (además de limpiar)
+         * los campos de criterios para que el usuario pueda editarlos
+        */
         protected void btnAgregarCriterio_ServerClick(object sender, EventArgs e)
         {
             btnAcepCri.Disabled = false;
@@ -315,7 +338,10 @@ namespace SAPR
             limpiarCamposC();
             modoC = 1;
         }
-
+        /* Método que maneja el evento del boton Modificar Criterio, activando dicho modo y habilidando 
+        * los campos de criterios para que el usuario pueda editarlos, pero sin limpiar los campos por lo cual quedan los 
+         * datos del criterio consultado
+        */
         protected void btnModificarCriterio_ServerClick(object sender, EventArgs e)
         {
             btnAcepCri.Disabled = false;
@@ -324,6 +350,10 @@ namespace SAPR
             modoC = 2;
         }
 
+        /* Método que maneja el evento del boton aceptar del modal (del caso en que se quiera eliminar un Criterio)
+        * es el encargado de comunicarse con la controladora para eliminar el criterio consultado
+        * además de limpiar el grid de citerios
+        */
         protected void botonAceptarModalCriterio_ServerClick(object sender, EventArgs e)
         {
             String[] resultado = new String[1];
@@ -338,6 +368,9 @@ namespace SAPR
 
         }
 
+        /* Método que maneja el evento del boton Aceptar en el modal que se despliega al dar Cancelar una operación de Criterio, 
+        * esto no  limpia los campos de los criterios y restaura la pantalla a su estado incial
+        */
         protected void botonAceptarCancelarCriterio_ServerClick(object sender, EventArgs e)
         {
             restaurarPantallaSinLimpiarC();
