@@ -14,6 +14,11 @@ namespace SAPR.App_Code.Entidades
         private int idRequerimiento;
 
 
+        /* 
+         * Constructor de una Entidad Criterio (de Aceptación) con la
+         * información especificada en el vector de datos 
+         * que entra como parámetro.
+         */
         public EntidadCriterio(Object[] datos) {
             this.nombreCriterio = datos[0].ToString();
             this.escenario = Int32.Parse(datos[1].ToString());
@@ -22,6 +27,10 @@ namespace SAPR.App_Code.Entidades
             this.idRequerimiento = Int32.Parse(datos[4].ToString());
         }
 
+
+        /*
+         * Getters y Setters para cada atributo de la Entidad        
+         */
         public String NombreCriterio
         {
             get { return nombreCriterio; }

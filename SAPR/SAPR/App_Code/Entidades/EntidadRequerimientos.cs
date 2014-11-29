@@ -18,6 +18,12 @@ namespace SAPR.App_Code.Entidades
         private String medida;
         private byte[] archivo;
 
+
+        /* 
+         * Constructor de una Entidad Requerimiento con la
+         * información especificada en el vector de datos 
+         * que entra como parámetro.
+         */
         public EntidadRequerimientos(Object[] datos) {
             this.idModulo = Int32.Parse(datos[0].ToString());
             this.idProyecto = Int32.Parse(datos[1].ToString());
@@ -30,6 +36,10 @@ namespace SAPR.App_Code.Entidades
             this.archivo = ObjectToByteArray(datos[8]);
         }
 
+
+        /*
+         * Getters y Setters para cada atributo de la Entidad        
+         */
         public int IdModulo
         {
             get { return idModulo; }

@@ -11,6 +11,7 @@ namespace SAPR.App_Code.Controladoras
 {
     public class ControladoraRequerimiento
     {
+        //Creación de variables estaticas que permiten movernos entre métodos y creacion de las instancias que se necesitan
         ControladoraBDRequerimiento controladoraBDRequerimiento;
         ControladoraProyecto controladoraProyecto;
         ControladoraEstructura controladoraEstructura;
@@ -19,18 +20,16 @@ namespace SAPR.App_Code.Controladoras
         public ControladoraRequerimiento()
         {
 
-            controladoraBDRequerimiento = new ControladoraBDRequerimiento();
-           // controladoraProyecto = new ControladoraProyecto();
+            controladoraBDRequerimiento = new ControladoraBDRequerimiento();           
             controladoraEstructura = new ControladoraEstructura();
 
         }
 
         /*
-         * Metodo que recibe los datos para un nuevo requerimiento, los encapsula
-         * y pasa a la controladora de BD para su posterior insercion.                   
+         * Método que recibe los datos para un nuevo requerimiento, los encapsula
+         * y pasa a la controladora de BD para su posterior inserción. Retorna un 
+         * String[] con el estado de la transacción.               
          */
-       
-
         public String[] insertarRequerimiento(int idModulo, int idProyecto, String nombre, String descripcion, int prioridad, String estado,
         int cantidad, String medida, byte[] archivo)
         {
@@ -51,23 +50,11 @@ namespace SAPR.App_Code.Controladoras
 
         }
 
-        //public String[] modificarRequerimiento(String nombreModulo, String nombreSprint, String nombreProyecto, String nombre, String descripcion, String prioridad, String estado,
-        //int cantidad, String medida, byte[] archivo, EntidadRequerimientos requerimientoViejo)
-        //{
-        //    int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);
-        //    int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
-        //    int idModulo;
-
-        //    if (nombreModulo == "Ninguno")/////******PUEDE CAMBIAR********
-        //    {
-        //        idModulo = -1;
-        //    }
-        //    else
-        //    {
-        //        idModulo = 0;
-        //        //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
-        //    }                
-
+        /*
+         * Método que recibe la Entidad a modificar, además de los datos modificados de un requerimiento, 
+         * los cuales encapsula y pasa a la controladora de BD para realizar la actualización.    
+         * Retorna un String[] con el estado de la transacción.
+         */
         public String[] modificarRequerimiento(int idModulo, int idProyecto, String nombre, String descripcion, int prioridad, String estado,
         int cantidad, String medida, byte[] archivo, EntidadRequerimientos requerimientoViejo)
         {
@@ -88,17 +75,32 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDRequerimiento.modificarRequerimiento(idRequerimientoViejo, requerimientoNuevo);
         }
 
+
+        /*
+         * Método que a partir del nombre de un requerimiento, el identificador del módulo y proyecto
+         * al que pertenece, busca el identificador del requerimiento para que este sea eliminado 
+         * desde la controladora de BD. Se asume que no pueden haber 2 requerimientos con el mismo nombre
+         * pertenecientes al mismo proyecto y al mismo módulo. Retorna un String[] con el estado de la transacción.
+         */
         public String[] eliminarRequerimiento(String nombreRequerimiento, int idModulo, int idProyecto)
         {
             idRequerimiento = controladoraBDRequerimiento.getIdRequerimiento(nombreRequerimiento, idModulo, idProyecto);
             return controladoraBDRequerimiento.eliminarRequerimiento(idRequerimiento);
         }
 
+        /*
+         * Método que a partir del identificador de un proyecto, elimina todos los requerimientos asociados.
+         * Retorna un String[] con el estado de la transacción.
+         */
         public String[] eliminarRequerimientosDeProyecto(int idProyecto)
         {
             return controladoraBDRequerimiento.eliminarRequerimientosDeProyecto(idProyecto);
         }
 
+        /*
+         * Método que a partir del nombre de un requerimiento, el módulo al que está asociado y el proyecto
+         * al que pertenece, obtiene su identificador.
+         */
         public int getIdRequerimiento(String nombreRequerimiento, int idModulo, int idProyecto)
         {
 
@@ -107,21 +109,15 @@ namespace SAPR.App_Code.Controladoras
         
         }
 
-        ///Bacon
+        /*
+         * Método que a partir del identificador de un requerimiento, obtiene una entidad con la información 
+         * de este.
+         */
         public EntidadRequerimientos getRequerimiento(int idReq) {
 
             EntidadRequerimientos resultado = null;
             Object[] entidadTemporal = new Object[9];
             DataTable resultadoT = new DataTable();
-            //int idProyecto = controladoraProyecto.getIdProyecto(nombreProyecto);      
-            //int idSprint = controladoraEstructura.getIdSprint(nombreSprint, nombreProyecto);
-            //int idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************
-            //int idModulo;
-
-    //        idModulo = 0;
-            //idModulo = controladoraEstructura.getIdModulo(idSprint, nombreModulo);************IMPORTANTE***************                       
-
-
             try {
                 resultadoT = controladoraBDRequerimiento.getRequerimiento(idReq);   
                 if(resultadoT.Rows.Count == 1){
@@ -148,6 +144,11 @@ namespace SAPR.App_Code.Controladoras
         
         }
 
+
+        /*
+         * Procedimiento que crea una tabla con nombre e identificador de proyecto con el propósito de ser usada
+         * en la interfaz para llenar el combobox respectivo.
+         */
         protected DataTable crearTablaProyecto()
         {
             DataTable tabla = new DataTable();
@@ -167,6 +168,11 @@ namespace SAPR.App_Code.Controladoras
             return tabla;
         }
 
+
+        /*
+         * Procedimiento que crea una tabla con nombre, estado y lider de un proyecto con el propósito de ser usada
+         * en la interfaz para llenar la información del proyecto seleccionado. 
+         */
         protected DataTable crearTablaInfoProyecto()
         {
             DataTable tabla = new DataTable();
@@ -191,6 +197,10 @@ namespace SAPR.App_Code.Controladoras
             return tabla;
         }
 
+        /*
+         * Procedimiento que crea una tabla con nombre, estado y lider de un proyecto con el propósito de ser usada
+         * en la interfaz para llenar la información de los criterios de aceptación. 
+         */
         protected DataTable crearTablaCriterios()
         {
             DataTable tabla = new DataTable();
@@ -215,6 +225,10 @@ namespace SAPR.App_Code.Controladoras
             return tabla;
         }
 
+        /*
+         * Método que retorna un 'DataTable' con la información de los proyectos del Sistema con el propósito
+         * de llenar el combobox de Proyectos, utiliza el procedimiento especificado anteriormente.
+         */
         public DataTable getNombresProyectos()
         {
             DataTable resultado = crearTablaProyecto(); //Este método crea la tabla
@@ -247,6 +261,10 @@ namespace SAPR.App_Code.Controladoras
         }
 
 
+        /*
+         * Método que retorna un 'DataTable' con la información del Proyecto seleccionado en el combobox
+         * para que estos datos puedan ser mostrados al usuario.
+         */
         public DataTable getInfoProyecto(string nombre)
         {
             DataTable resultado = crearTablaInfoProyecto(); //Este método crea la tabla
@@ -279,6 +297,12 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
+
+        /*
+         * Método que retorna un 'DataTable' con la información de los criterios de aceptación asociados a 
+         * un requerimiento con el fin de llenar una tabla para mostrarlos. Utiliza el procedimiento
+         * especificado anteriormente.
+         */
         public DataTable getInfoCriterios(int req)
         {
             DataTable resultado = crearTablaCriterios(); //Este método crea la tabla
@@ -311,26 +335,42 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
+        /*
+         * Hace un llamado a la Controladora de Estructura para obtener una estructura 'DataTable' 
+         * que contenga la información de los sprints asociados un proyecto específico
+         * con el propósito de llenar el combobox respectivo.
+         */
         public DataTable getNombresSprints(int idProyecto) {
             return controladoraEstructura.getNombresSprint(idProyecto);
         }
 
+        /*
+         * Hace un llamado a la Controladora de Estructura para obtener una estructura 'DataTable' 
+         * que contenga la información de los módulos asociados un sprint específico
+         * con el propósito de llenar el combobox respectivo.
+         */
         public DataTable getNombresModulos(int idSprint)
         {
             return controladoraEstructura.getNombresModulo(idSprint);
         }
 
+        /*
+         * Procedimiento que retorna un 'DataTable' con la información de los requerimientos.
+         */
         public DataTable getRequerimientos() {
 
             return controladoraBDRequerimiento.getRequerimientos();
         }
 
+
+        /*
+         * Método que recibe los datos para un nuevo criterio de aceptación, los encapsula
+         * y pasa a la controladora de BD para su posterior inserción. Retorna un String[] 
+         * con el estado de la transacción.                   
+         */
         public String[] insertarCriterio(String nombreCriterio, int escenario, String contexto, String resultado,
             int idRequerimiento)
         {
-
-            
-
             Object[] datosCriterio = new Object[5];
             datosCriterio[0] = nombreCriterio;
             datosCriterio[1] = escenario;
@@ -340,14 +380,16 @@ namespace SAPR.App_Code.Controladoras
 
             EntidadCriterio criterio = new EntidadCriterio(datosCriterio);
             return controladoraBDRequerimiento.insertarCriterio(criterio);
-
         }
 
+        /*
+         * Método que recibe la Entidad a modificar, además de los datos modificados de un criterio de aceptación, 
+         * los cuales encapsula y pasa a la controladora de BD para realizar la actualización. Retorna un String[] 
+         * con el estado de la transacción.                   
+         */
         public String[] modificarCriterio(String nombreCriterio, int escenario, String contexto, String resultado,
         int idRequerimiento, EntidadCriterio criterioViejo)
         {
-
-
             int idCriterioViejo = controladoraBDRequerimiento.getIdCriterio(criterioViejo.NombreCriterio, idRequerimiento);
 
             Object[] datosCriterio = new Object[5];
@@ -361,18 +403,26 @@ namespace SAPR.App_Code.Controladoras
             return controladoraBDRequerimiento.modificarCriterio(idCriterioViejo, criterioNuevo);
         }
 
+        /*
+         * Método que recibe el identificador de un criterio de aceptación y lo pasa a la Controladora de
+         * BD para su eliminación. Retorna un String[] con el estado de la transacción.
+         */
         public String[] eliminarCriterio(int idCriterio) {
             return controladoraBDRequerimiento.eliminarCriterio(idCriterio);               
         }
 
+        /*
+         * Método que recibe el identificador de un requerimiento y retorna una estructura 'DataTable' con 
+         * la información de los criterios de aceptación asociados a este.
+         */
         public DataTable getCriteriosDeRequerimiento(int idRequerimiento) {
             return getInfoCriterios(idRequerimiento);        
         }
 
-        public DataTable getCriteriosDeProyecto(int idProyecto){
-            return controladoraBDRequerimiento.getCriteriosDeProyecto(idProyecto);
-        }
-
+        /*
+         * Método que a partir del identificador de un criterio de aceptación, obtiene una entidad 
+         * con la información de este.
+         */
         public EntidadCriterio getCriterio(int idCriterio)
         {
             EntidadCriterio resultado = null;
@@ -403,7 +453,10 @@ namespace SAPR.App_Code.Controladoras
             return resultado;
         }
 
-
+        /*
+         * Procedimiento que se utiliza para convertir un objeto a un arreglo de bytes, se utiliza para
+         * el manejo de archivos de la aplicación.
+         */
         private byte[] ObjectToByteArray(Object obj)
         {
             if (obj == null)
@@ -416,16 +469,26 @@ namespace SAPR.App_Code.Controladoras
             }
         }
 
-
+        /*
+         * Método que a partir del identificador de un proyecto, retorna una estructura 'DataTable'
+         * con la información de los requerimientos asociados a este.
+         */
         public DataTable getRequerimientosDeProyecto(int idProyecto) { 
             return controladoraBDRequerimiento.getRequerimientosDeProyecto(idProyecto);
         }
 
+        /*
+         * Método que a partir del identificador de un módulo, retorna una hilera con su nombre.
+         */
         public String getNombreModulo(int idModulo)
         {
             return controladoraEstructura.getNombreModulo(idModulo);
         }
 
+        /*
+         * Método que a partir del identificador de un módulo, retorna un
+         * entero con el identificador del sprint al que pertenece.
+         */
         public int getidS(int idModulo)
         {
             return controladoraEstructura.getidS(idModulo);
